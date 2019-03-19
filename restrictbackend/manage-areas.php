@@ -18,7 +18,7 @@ $areas = $areacon->findAreas();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>internet and cable provider</title>
+    <title>BSC Network</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +42,28 @@ $areas = $areacon->findAreas();
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <style type="text/css">
+        .panel-heading{
+            color: #fff;
+            background-color: #a1a1a1;
+            background-image: none;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border: 1px solid #a1a1a1;
+        }
+        .panel-body{
+            border: 1px solid #a1a1a1;
+        }
+        .btn{
+            background-color: #595959;
+            border: 2px solid #595959;
+        }
+        .btn:hover{
+            background-color: white;
+            color: black;
+            border: 2px solid #595959;
+        }
+    </style>
 </head>
 
 <body>
@@ -58,57 +79,65 @@ $areas = $areacon->findAreas();
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Area</h1>
-                    
-                <a href="manage-area-form.php" class="btn btn-info" role="button" style="float: right;">
-                <i class="glyphicon glyphicon-user"></i> New Area
-                </a>
-
-                </div>
-                <!-- /.col-lg-12 -->
-                <div class="col-lg-12">
-                <hr>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Code Brgy</th>
-                            <th>Barangay</th>
-                            <th>Code Municipality</th>
-                            <th>Municipality</th>
-                            <th>Code Province</th>
-                            <th>Province</th>
-                            <th>Zipcode</th>
-                            <th>Status</th>
-                            <th>Description</th>
-                            <th>Date Create </th>
-                            <th>Date Updated</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($areas as $area): ?>
-
-                    <tr>
-                    <td><?php echo $area->areaid ?></td>
-                    <td><?php echo $area->codebrgy ?></td>
-                    <td><?php echo $area->barangay ?></td>
-                    <td><?php echo $area->codemuni ?></td>
-                    <td><?php echo $area->municipality ?></td>
-                    <td><?php echo $area->codeprov; ?></td>
-                    <td><?php echo $area->province; ?></td>
-                    <td><?php echo $area->zipcode; ?></td>
-                    <td><?php echo $area->getStatus(); ?></td>
-                    <td><?php echo $area->description ?></td>
-                    <td><?php echo $area->create_at; ?></td>
-                    <td><?php echo $area->update_at; ?></td>
-                    <td><a href="manage-area-form.php?id=<?php echo $area->areaid ?>" class="btn btn-info btn-xs">Update</a></td>
-                    </tr>
-
-                    <?php endforeach ?>
-                    </tbody>
-                </table>
-
+                    <a href="manage-area-form.php" class="btn btn-info" role="button" style="float: right;">
+                    <i class="glyphicon glyphicon-user"></i> New Area
+                    </a>
                 </div>
             </div>
+                <!-- /.col-lg-12 -->
+                <br>
+                <div class="panel-heading">
+                    <form method="post">
+                        <input type="submit" name="All" value="All" class="btn btn-info">
+                        <button name="Available" type="submit" class="btn btn-info"><i class="glyphicon glyphicon-check"></i> Available</button>
+                        <button name="Unavailable" type="submit" class="btn btn-info"><i class="glyphicon glyphicon-ban-circle"></i> Unavailable</button>
+                    </form>
+                    <form class="form1" name="form1" action="" method="post">
+                        <input type="text" name="t1" style="float: right; margin-top: -25px; color: black; ">
+                        <input type="submit" name="submit1" value="Search" class="btn btn-info" style="float: right; margin-right: 10px; margin-top: -35px;">
+                    </form>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Code Brgy</th>
+                                <th>Barangay</th>
+                                <th>Code Municipality</th>
+                                <th>Municipality</th>
+                                <th>Code Province</th>
+                                <th>Province</th>
+                                <th>Zipcode</th>
+                                <th>Status</th>
+                                <th>Description</th>
+                                <th>Date Create </th>
+                                <th>Date Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($areas as $area): ?>
+
+                        <tr>
+                        <td><?php echo $area->areaid ?></td>
+                        <td><?php echo $area->codebrgy ?></td>
+                        <td><?php echo $area->barangay ?></td>
+                        <td><?php echo $area->codemuni ?></td>
+                        <td><?php echo $area->municipality ?></td>
+                        <td><?php echo $area->codeprov; ?></td>
+                        <td><?php echo $area->province; ?></td>
+                        <td><?php echo $area->zipcode; ?></td>
+                        <td><?php echo $area->getStatus(); ?></td>
+                        <td><?php echo $area->description ?></td>
+                        <td><?php echo $area->create_at; ?></td>
+                        <td><?php echo $area->update_at; ?></td>
+                        <td><a href="manage-area-form.php?id=<?php echo $area->areaid ?>" class="btn btn-info btn-xs">Update</a></td>
+                        </tr>
+
+                        <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
             <!-- /.row -->
     
             

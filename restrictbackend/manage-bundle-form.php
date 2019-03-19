@@ -21,7 +21,7 @@ $bundle = $bundlecon->bundleData($bundleid);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>internet and cable provider</title>
+    <title>BSC Network</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -69,7 +69,7 @@ $bundle = $bundlecon->bundleData($bundleid);
     
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Update Profile</h1>
+            <h1 class="page-header">Update Bundle</h1>
         </div>
     </div>
 
@@ -77,11 +77,6 @@ $bundle = $bundlecon->bundleData($bundleid);
         <div class="wrap-login100">
             <form class="login100-form validate-form" method="POST" action="manage-bundle-form-action.php">
                 <input type="hidden" name="id" value="<?php echo $bundle->bundleid ?>">
-
-                <div class="wrap-input100 validate-input" data-validate="Enter Code">
-                    <input class="input100 has-val" type="text" name="code" value="<?php echo $bundle->code ?>">
-                    <span class="focus-input100" data-placeholder="Plan Code"></span>
-                </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter Description">
                     <input class="input100 has-val" type="text" name="name" value="<?php echo $bundle->name ?>">
@@ -101,8 +96,8 @@ $bundle = $bundlecon->bundleData($bundleid);
                 <div class="wrap-input100 validate-input" data-validate="Enter Status">
                     <select class="input100 has-val" name="status">
                         <option selected></option>
-                        <option value="1" <?php if ($bundle->status == 1) {echo 'selected="selected"'; } ?>> Active</option>
-                        <option value="2" <?php if ($bundle->status == 2) {echo 'selected="selected"'; } ?>> In Active</option>
+                        <option value="1" <?php if ($bundle->status == 1) {echo 'selected="selected"'; } ?>> Available</option>
+                        <option value="2" <?php if ($bundle->status == 2) {echo 'selected="selected"'; } ?>> Unavailable</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Status"></span>
                 </div>
@@ -122,7 +117,7 @@ $bundle = $bundlecon->bundleData($bundleid);
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">New Profile</h1>
+            <h1 class="page-header">New Bundle</h1>
         </div>
     </div>
 
@@ -130,11 +125,6 @@ $bundle = $bundlecon->bundleData($bundleid);
         <div class="wrap-login100">
             <form class="login100-form validate-form" method="POST" action="manage-bundle-form-action.php">
                 <input type="hidden" name="id">
-
-                <div class="wrap-input100 validate-input" data-validate="Enter Code">
-                    <input class="input100 has-val" type="text" name="code">
-                    <span class="focus-input100" data-placeholder="Plan Code"></span>
-                </div>
 
               
                 <div class="wrap-input100 validate-input" data-validate="Enter Description">
@@ -152,15 +142,15 @@ $bundle = $bundlecon->bundleData($bundleid);
                     <span class="focus-input100" data-placeholder="Publish Fee (php)"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Status">
+                <!-- <div class="wrap-input100 validate-input" data-validate="Enter Status">
                     <select class="input100" name="status">
                         <option selected></option>
-                        <option value="1"> Active</option>
-                        <option value="2"> In Active</option>
+                        <option value="1"> Available</option>
+                        <option value="2"> Unavailable</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Status"></span>
-                </div>
-
+                </div> -->
+                <input type="hidden" name="status" value="1">
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>

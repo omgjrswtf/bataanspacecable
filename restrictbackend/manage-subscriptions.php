@@ -21,7 +21,7 @@ $subgoings = $subscriptioncon->findAllSchedOngoing();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>internet and cable provider</title>
+    <title>BSC-Network</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

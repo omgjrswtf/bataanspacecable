@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="dashboard.php">internet company</a>
+                <a class="navbar-brand" href="dashboard.php">BSC-Network</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -101,7 +101,7 @@
                             <a href="manage-verifysched.php"><i class="fa fa-sitemap fa-fw"></i> Verifying</a>
                         </li>
                         <li>
-                            <a href="manage-admins.php"><i class="fa fa-users fa-fw"></i> manage admin</a>
+                            <a href="manage-admins.php"><i class="fa fa-users fa-fw"></i> Manage admin</a>
                         </li>
                          <li>
                             <a href="manage-statiscal.php"><i class="fa fa-bar-chart fa-fw"></i> Statistics</a>

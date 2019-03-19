@@ -20,7 +20,7 @@ $admin = $admincon->adminData($adminid);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>internet and cable provider</title>
+    <title>BSC Network</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -125,26 +125,25 @@ $admin = $admincon->adminData($adminid);
                 <div class="wrap-input100 validate-input" data-validate="Enter Role">
                     <select class="input100 has-val" name="role">
                         <option selected></option>
-                        <option value="1" <?php if ($admin->role == 1) {echo 'selected="selected"'; } ?>> Super Admin</option>
-                        <option value="0" <?php if ($admin->role == 2) {echo 'selected="selected"'; } ?>> Admin</option>
+                        <option value="1" <?php if ($admin->role == 1) {echo 'selected="selected"'; } ?>> Manager</option>
+                        <option value="2" <?php if ($admin->role == 2) {echo 'selected="selected"'; } ?>> Staff</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Role"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Position">
+                <!-- <div class="wrap-input100 validate-input" data-validate="Enter Position">
                     <select class="input100 has-val" name="status">
                         <option selected></option>
                         <option value="1" <?php if ($admin->status == 1) {echo 'selected="selected"'; } ?>> Active</option>
-                        <option value="2" <?php if ($admin->status == 2) {echo 'selected="selected"'; } ?>> In Active</option>
-                        <option value="3" <?php if ($admin->status == 3) {echo 'selected="selected"'; } ?>> Deactivated</option>
+                        <option value="2" <?php if ($admin->status == 2) {echo 'selected="selected"'; } ?>> Deactive</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Position"></span>
-                </div>
-
+                </div> -->
+                <input type="hidden" name="status" value="<?php echo $admin->status ?>">
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
-                        <input type="submit" name="submit" value="Log in" class="login100-form-btn">
+                        <input type="submit" name="submit" value="Submit" class="login100-form-btn">
                     </div>
                 </div>
             </form>
@@ -217,13 +216,13 @@ $admin = $admincon->adminData($adminid);
                 <div class="wrap-input100 validate-input" data-validate="Enter Role">
                     <select class="input100" name="role">
                     	<option selected></option>
-                    	<option value="1"> Super Admin</option>
-                    	<option value="2"> Admin</option>
+                    	<option value="1"> Manager</option>
+                    	<option value="2"> Staff</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Remarks"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Status"> 
+                <!-- <div class="wrap-input100 validate-input" data-validate="Enter Status"> 
                     <select class="input100" name="status">
                     	<option selected></option>
                     	<option value="1"> Active</option>
@@ -231,8 +230,8 @@ $admin = $admincon->adminData($adminid);
                     	<option value="3"> Deactivated</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Status"></span>
-                </div>
-
+                </div> -->
+                <input type="hidden" name="status" value="1">
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
