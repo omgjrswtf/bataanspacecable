@@ -21,7 +21,7 @@ $bundles = $bundlecon->findBundles();
     <title>internet and cable provider</title>
 
     <!-- MetisMenu CSS -->
-    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.css" rel="stylesheet">
@@ -31,6 +31,9 @@ $bundles = $bundlecon->findBundles();
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
 
     <link rel="stylesheet" type="text/css" href="../assets/css/util.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
