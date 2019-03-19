@@ -185,8 +185,7 @@ $bundle = $bundlecon->bundleData($bundleid);
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -203,21 +202,22 @@ $bundle = $bundlecon->bundleData($bundleid);
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <!--===============================================================================================-->
-	<script src="../assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="../assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="../assets/vendor/animsition/js/animsition.min.js"></script>
+    <script src="../assets/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="../assets/vendor/bootstrap/js/popper.js"></script>
-	<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/popper.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="../assets/vendor/select2/select2.min.js"></script>
+    <script src="../assets/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="../assets/vendor/daterangepicker/moment.min.js"></script>
-	<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="../assets/vendor/daterangepicker/moment.min.js"></script>
+    <script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script src="../assets/vendor/countdowntime/countdowntime.js"></script>
+    <script src="../assets/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="../assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
+
 
 </body>
 

@@ -177,8 +177,6 @@
 
 
 
-    <!-- Metis Menu Plugin JavaScript -->
-      <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -212,8 +210,6 @@
 <!--===============================================================================================-->
     <script src="../assets/js/main.js"></script>
 
-
-  
 
 </body>
 
