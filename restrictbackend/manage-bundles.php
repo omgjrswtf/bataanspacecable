@@ -125,7 +125,7 @@ $bundles = $bundlecon->findBundles();
     <script src="../data/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.js"></script>
 
     <!--===============================================================================================-->
     <script src="../assets/vendor/jquery/jquery-3.2.1.min.js"></script>
