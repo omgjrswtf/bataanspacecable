@@ -142,9 +142,6 @@
 			print_r($verify);
 			$verifycon->save($verify);
 		
-			
-
-
 		break;
 		
 		default:
@@ -152,8 +149,6 @@
 
 		break;
 	}
-
-
 
 header('Location: ../profile-info.php');
 ?>

@@ -15,13 +15,28 @@
 
  ?>
 
+
+<html>
+    <head>
+        <title>Google Map</title>
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+        <style>          
+          #map { 
+            height: 400px;    
+            width: 100%);            
+          }          
+        </style>        
+    </head>    
+    <body>
+
 <?php if ($location): ?>
 
 <h3>Update Location and Address</h3>
 
 <form method="post" action="includes/update-profile-info.php">
-	<input type="hidden" name="lat" value=" <?php echo $lat?> ">
-	<input type="hidden" name="long" value=" <?php echo $long ?> ">
+<!-- 	<input type="hidden" name="lat" value=" <?php echo $lat?> ">
+	<input type="hidden" name="long" value=" <?php echo $long ?> "> -->
 	<input type="hidden" name="id" value=" <?php echo $location->userid; ?> "><br>
 	<input type="hidden" name="locid" value=" <?php echo $location->clientlocid ?>"><br>
 	<input type="hidden" name="verid" value=" <?php echo $verify->id ?> "><br>
@@ -33,8 +48,15 @@
 	<input type="text" name="province"  placeholder="Province"  value="<?php echo $location->province ?>" ><br>
 	<input type="text" name="zipcode" placeholder="Zipcode"  value="<?php echo $location->zipcode ?>" ><br>
 	<textarea name="description" placeholder="Description"><?php echo $location->description ?></textarea>
-	<input type="submit" name="submit" value="Update"><br>
+    
+    <p id="latmoved"></p>
+    <p id="longmoved"></p>
 
+    <input type="hidden" name="lat" id="lat2">
+    <input type="hidden" name="long" id=long2>
+      
+
+	<input type="submit" name="submit" value="Update" onclick="submitform()"><br>
 </form>
 <?php else: ?>
 
@@ -42,8 +64,8 @@
 
 <form method="post" action="includes/update-profile-info.php">
 
-	<input type="hidden" name="lat" value=" <?php echo $lat?> ">
-	<input type="hidden" name="long" value=" <?php echo $long ?> ">
+<!-- 	<input type="hidden" name="lat" value=" <?php echo $lat?> ">
+	<input type="hidden" name="long" value=" <?php echo $long ?> "> -->
 	<input type="hidden" name="id" value=" <?php echo $clientid ?> "><br>
 	<input type="hidden" name="locid" value=""><br>
 	<input type="hidden" name="verid" value=""><br>
@@ -55,6 +77,13 @@
 	<input type="text" name="province"  placeholder="Province" ><br>
 	<input type="text" name="zipcode" placeholder="Zipcode" ><br>
 	<textarea name="description" placeholder="Description"></textarea>
+
+
+    <p id="latmoved"></p>
+    <p id="longmoved"></p>
+
+    <input type="hidden" name="lat" id="lat2">
+    <input type="hidden" name="long" id=long2>
 	<input type="submit" name="submit" value="Update"><br>
 
 </form>
@@ -63,41 +92,96 @@
 
 
 
-
-
-
 <!--The div element for the map -->
-<div id="map"></div>
-<!-- Replace the value of the key parameter with your own API key. -->
-
-<style type="text/css">
-	/* Set the size of the div element that contains the map */
-#map {
-  height: 400px;  /* The height is 400 pixels */
-  width: 100%;  /* The width is the width of the web page */
- }
-
-</style>
 
 
-<script type="text/javascript">
-	
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: <?php echo "$lat"; ?>, lng: <?php echo "$long"; ?>};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
+<!--    <div id="latclicked"></div>
+        <div id="longclicked"></div> -->
+        
 
-</script>
+        
+        <div style="padding:10px">
+            <div id="map"></div>
+        </div>
 
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwPLpFDqINTMZB4Qzd6jM5zFAGyEvp99E&callback=initMap">
-</script>
+        
+        <script type="text/javascript">
+        var map;
+        
+        function initMap() {                            
+            var latitude = <?php echo "$lat"; ?>; // YOUR LATITUDE VALUE
+            var longitude = <?php echo "$long"?>; // YOUR LONGITUDE VALUE
+            
+            var myLatLng = {lat: latitude, lng: longitude};
+            
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: myLatLng,
+              zoom: 14,
+              disableDoubleClickZoom: true, // disable the default map zoom on double click
+            });
+            
+            // // Update lat/long value of div when anywhere in the map is clicked    
+            // google.maps.event.addListener(map,'click',function(event) {                
+            //     document.getElementById('latclicked').innerHTML = event.latLng.lat();
+            //     document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+            // });
+            
+            // Update lat/long value of div when you move the mouse over the map
+            google.maps.event.addListener(map,'mousemove',function(event) {
+                document.getElementById('latmoved').innerHTML = event.latLng.lat();
+                document.getElementById('longmoved').innerHTML = event.latLng.lng();
+
+                document.getElementById('lat2').value =  document.getElementById('latmoved').innerHTML;
+                document.getElementById('long2').value = document.getElementById('longmoved').innerHTML;
+
+            });
+                    
+            var marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              draggable: true,
+              //title: 'Hello World'
+              
+              // setting latitude & longitude as title of the marker
+              // title is shown when you hover over the marker
+              title: latitude + ', ' + longitude 
+            });    
+            
+            // // Update lat/long value of div when the marker is clicked
+            // marker.addListener('click', function(event) {              
+            //   document.getElementById('latclicked').innerHTML = event.latLng.lat();
+            //   document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+            // });
+            
+            // Create new marker on double click event on the map
+            // google.maps.event.addListener(map,'dblclick',function(event) {
+            //     var marker = new google.maps.Marker({
+            //       position: event.latLng, 
+            //       map: map, 
+            //       title: event.latLng.lat()+', '+event.latLng.lng()
+            //     });
+                
+            //     // Update lat/long value of div when the marker is clicked
+            //     marker.addListener('click', function() {
+            //       document.getElementById('latclicked').innerHTML = event.latLng.lat();
+            //       document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+            //     });            
+            // });
+            
+            // Create new marker on single click event on the map
+            /*google.maps.event.addListener(map,'click',function(event) {
+                var marker = new google.maps.Marker({
+                  position: event.latLng, 
+                  map: map, 
+                  title: event.latLng.lat()+', '+event.latLng.lng()
+                });                
+            });*/
+        }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwPLpFDqINTMZB4Qzd6jM5zFAGyEvp99E&callback=initMap"
+        async defer></script>
+    </body>    
+</html>
 
 
 
