@@ -22,20 +22,19 @@ $admin = $admincon->adminData($adminid);
 
     <title>internet and cable provider</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
     <link rel="stylesheet" type="text/css" href="../assets/css/util.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
@@ -256,40 +255,35 @@ $admin = $admincon->adminData($adminid);
 
     </div>
     <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+ <!-- jQuery -->
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css"></script>
 
     <!-- Morris Charts JavaScript -->
-    <script src="../vendor/raphael/raphael.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.js"></script>
     <script src="../vendor/morrisjs/morris.min.js"></script>
     <script src="../data/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.js"></script>
 
     <!--===============================================================================================-->
-	<script src="../assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="../assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="../assets/vendor/animsition/js/animsition.min.js"></script>
+    <script src="../assets/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="../assets/vendor/bootstrap/js/popper.js"></script>
-	<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/popper.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="../assets/vendor/select2/select2.min.js"></script>
+    <script src="../assets/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="../assets/vendor/daterangepicker/moment.min.js"></script>
-	<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="../assets/vendor/daterangepicker/moment.min.js"></script>
+    <script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script src="../assets/vendor/countdowntime/countdowntime.js"></script>
+    <script src="../assets/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="../assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 
 </body>
 
