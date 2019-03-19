@@ -20,7 +20,7 @@ $area = $areacon->areaData($areaid);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BSC Network</title>
+    <title>internet and cable provider</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -68,7 +68,7 @@ $area = $areacon->areaData($areaid);
     
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Update Area</h1>
+            <h1 class="page-header">Update Profile</h1>
         </div>
     </div>
 
@@ -115,8 +115,8 @@ $area = $areacon->areaData($areaid);
                  <div class="wrap-input100 validate-input" data-validate="Enter Status">
                     <select class="input100 has-val" name="status">
                         <option selected></option>
-                        <option value="1" <?php if ($area->status == 1) {echo 'selected="selected"'; } ?>> Available</option>
-                        <option value="2" <?php if ($area->status == 2) {echo 'selected="selected"'; } ?>>  Unavailable</option>
+                        <option value="1" <?php if ($area->status == 1) {echo 'selected="selected"'; } ?>> Active</option>
+                        <option value="2" <?php if ($area->status == 2) {echo 'selected="selected"'; } ?>> In Activearea</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Status"></span>
                 </div>
@@ -141,7 +141,7 @@ $area = $areacon->areaData($areaid);
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">New Area</h1>
+            <h1 class="page-header">New Profile</h1>
         </div>
     </div>
 
@@ -185,15 +185,15 @@ $area = $areacon->areaData($areaid);
                     <span class="focus-input100" data-placeholder="Zip Code"></span>
                 </div>
 
-                <!-- <div class="wrap-input100 validate-input" data-validate="Enter Status">
+                <div class="wrap-input100 validate-input" data-validate="Enter Status">
                     <select class="input100" name="status">
                         <option selected></option>
                         <option value="1"> Active</option>
                         <option value="2"> In Active</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Status"></span>
-                </div> -->
-                <input type="hidden" name="status" value="1">
+                </div>
+
                 <div class="wrap-input100 validate-input" data-validate="Enter Description">
                     <textarea class="input100 has-val" name="description"></textarea>
                     <span class="focus-input100" data-placeholder="Description"></span>

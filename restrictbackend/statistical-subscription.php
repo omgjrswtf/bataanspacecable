@@ -20,7 +20,7 @@ $subsyears = $subscriptioncon->findAllSubsYear();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BSC-Network</title>
+    <title>internet and cable provider</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

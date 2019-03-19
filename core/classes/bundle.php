@@ -35,28 +35,28 @@ class Bundle {
 
     		case '2':
     			$var = "<p>
-    					<li>10 mpbs </li>
+    					<li>5 mpbs </li>
     					<li>free modem and wifi </li>
     					</p>";
     		break;
 
     		case '3':
     			$var = "<p>
-    					<li>20 mpbs </li>
+    					<li>5 mpbs </li>
     					<li>free modem and wifi </li>
     					</p>";
     		break;
 
     		case '4':
     			$var = "<p>
-    					<li>50 mpbs </li>
+    					<li>5 mpbs </li>
     					<li>free modem and wifi </li>
     					</p>";
     		break;
 
     		case '5':
     			$var = "<p>
-    					<li>100 mpbs </li>
+    					<li>5 mpbs </li>
     					<li>free modem and wifi </li>
     					</p>";
     		break;

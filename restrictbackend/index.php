@@ -7,7 +7,7 @@
 -->
 <html>
 	<head>
-		<title>BSC-Network</title>
+		<title>internet and cable provider</title>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>
 		<link rel="stylesheet" href="assets/css/style-complete.css"/>
@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>BSC-Network</title>
+	<title>Login V2</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -90,7 +90,7 @@
 				}
 			?>
 			<span class="login100-form-title p-b-26">
-				Welcome to BSC-Network
+				Welcome
 			</span>
 			<span class="login100-form-title p-b-48">
 				<i class="zmdi zmdi-font"></i>

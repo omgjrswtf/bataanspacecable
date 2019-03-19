@@ -2,7 +2,8 @@
 
 include '../core/init.php';
 
-$clients = $clientcon->findClients();
+$clients = $clientcon->findClient();
+
 
 ?>
 
@@ -18,7 +19,7 @@ $clients = $clientcon->findClients();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BSC Network</title>
+    <title>internet and cable provider</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -42,28 +43,7 @@ $clients = $clientcon->findClients();
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style type="text/css">
-        .panel-heading{
-            color: #fff;
-            background-color: #a1a1a1;
-            background-image: none;
-            border-top-left-radius: 0px;
-            border-top-right-radius: 0px;
-            border: 1px solid #a1a1a1;
-        }
-        .panel-body{
-            border: 1px solid #a1a1a1;
-        }
-        .btn{
-            background-color: #595959;
-            border: 2px solid #595959;
-        }
-        .btn:hover{
-            background-color: white;
-            color: black;
-            border: 2px solid #595959;
-        }
-    </style>
+
 </head>
 
 <body>
@@ -78,63 +58,66 @@ $clients = $clientcon->findClients();
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Client</h1>
+                    <h1 class="page-header">Client Profile</h1>
+
                 </div>
-            </div>
                 <!-- /.col-lg-12 -->
-                <br>
-                <div class="panel-heading">
-                    <form method="post">
-                        <input type="submit" name="All" value="All" class="btn btn-info">
-                        <button name="Available" type="submit" class="btn btn-info"><i class="glyphicon glyphicon-check"></i> Available</button>
-                        <button name="Unavailable" type="submit" class="btn btn-info"><i class="glyphicon glyphicon-ban-circle"></i> Unavailable</button>
-                    </form>
-                    <form class="form1" name="form1" action="" method="post">
-                        <input type="text" name="t1" style="float: right; margin-top: -25px; color: black; ">
-                        <input type="submit" name="submit1" value="Search" class="btn btn-info" style="float: right; margin-right: 10px; margin-top: -35px;">
-                    </form>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Full Name</th>
-                                <th>Contact</th>
-                                <th>Gender</th>
-                                <th>Birth</th>
-                                <th>Email</th>
-                                <th>Password</th>
-                                <th>Status</th>
-                                <th>Activity</th>
-                                <th>Date Create</th>
-                                <th>Date Updated</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach ($clients as $client): ?>
-
+                <div class="col-lg-12">
+                <hr>
+                <table class="table table-hover">
+                    <thead>
                         <tr>
-                        <td><?php echo $client->clientid ?></td>
-                        <td><?php echo $client->fname, " ", $client->mname, " ", $client->lname; ?></td>
-                        <td><?php echo $client->contact ?></td>
-                        <td><?php echo $client->getGend() ?></td>
-                        <td><?php echo $client->datebirth ?></td>
-                        <td><?php echo $client->email ?></td>
-                        <td><?php echo $client->password ?></td>
-                        <td><?php echo $client->getStatus() ?></td>
-                        <td><?php echo $client->getActivity() ?></td>
-                        <td><?php echo $client->create_at; ?></td>
-                        <td><?php echo $client->update_at; ?></td>
-                        <td><a href="manage-client-form.php?id=<?php echo $client->clientid ?>" class="btn btn-info btn-xs">Update</a></td>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
+                            <th>Contact</th>
+                            <th>Gender</th>
+                            <th>Date Birth</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Activity</th>
+                            <th>Date Create</th>
+                            <th>Date Updated</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($clients as $client): ?>
 
-                        <?php endforeach ?>
-                        </tbody>
-                    </table>
+                    <tr>
+                    <td><?php echo $client->clientid ?></td>
+                    <td><?php echo $client->fname ?></td>
+                    <td><?php echo $client->mname ?></td>
+                    <td><?php echo $client->lname ?></td>
+                    <td><?php echo $client->contact ?></td>
+                    <td><?php echo $client->gender; ?></td>
+                    <td><?php echo $client->datebirth; ?></td>
+                    <td><?php echo $client->email; ?></td>
+                    <td><?php echo $client->status; ?></td>
+                    <td><?php echo $client->activity ?></td>
+                    <td><?php echo $client->create_at; ?></td>
+                    <td><?php echo $client->update_at; ?></td>
+                    <td><a href="manage-admin-form.php?id=<?php echo $admin->adminid ?>" class="btn btn-info btn-xs">Update</a></td>
+                    </tr>
+
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+
                 </div>
             </div>
             <!-- /.row -->
+    
+            
+        
+
+
+           
+
+
+
+        </div>
+
     </div>
     <!-- /#wrapper -->
 
