@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V2</title>
+	<title>BSC-Network</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -90,7 +90,7 @@
 				}
 			?>
 			<span class="login100-form-title p-b-26">
-				Welcome
+				Welcome To BSC-Network
 			</span>
 			<span class="login100-form-title p-b-48">
 				<i class="zmdi zmdi-font"></i>

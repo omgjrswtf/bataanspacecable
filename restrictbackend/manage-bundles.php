@@ -18,7 +18,7 @@ $bundles = $bundlecon->findBundles();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>internet and cable provider</title>
+    <title>BSC-Network</title>
 
     <!-- MetisMenu CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css" rel="stylesheet">

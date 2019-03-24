@@ -21,7 +21,7 @@ $bundle = $bundlecon->bundleData($bundleid);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>internet and cable provider</title>
+    <title>BSC-Network</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css" rel="stylesheet">
 
@@ -151,14 +151,15 @@ $bundle = $bundlecon->bundleData($bundleid);
                     <span class="focus-input100" data-placeholder="Publish Fee (php)"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Status">
+                <!-- <div class="wrap-input100 validate-input" data-validate="Enter Status">
                     <select class="input100" name="status">
                         <option selected></option>
                         <option value="1"> Active</option>
                         <option value="2"> In Active</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Status"></span>
-                </div>
+                </div> -->
+                <input type="hidden" name="status" value="1">
 
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">

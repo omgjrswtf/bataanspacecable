@@ -20,7 +20,7 @@ $area = $areacon->areaData($areaid);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>internet and cable provider</title>
+    <title>BSC-Network</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css" rel="stylesheet">
 
@@ -184,14 +184,15 @@ $area = $areacon->areaData($areaid);
                     <span class="focus-input100" data-placeholder="Zip Code"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Status">
+                <!-- <div class="wrap-input100 validate-input" data-validate="Enter Status">
                     <select class="input100" name="status">
                         <option selected></option>
                         <option value="1"> Active</option>
                         <option value="2"> In Active</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Status"></span>
-                </div>
+                </div> -->
+                <input type="hidden" name="status" value="1">
 
                 <div class="wrap-input100 validate-input" data-validate="Enter Description">
                     <textarea class="input100 has-val" name="description"></textarea>

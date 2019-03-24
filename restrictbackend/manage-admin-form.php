@@ -20,7 +20,7 @@ $admin = $admincon->adminData($adminid);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>internet and cable provider</title>
+    <title>BSC-Network</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css" rel="stylesheet">
 
@@ -222,7 +222,7 @@ $admin = $admincon->adminData($adminid);
                     <span class="focus-input100" data-placeholder="Remarks"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Status"> 
+                <!-- <div class="wrap-input100 validate-input" data-validate="Enter Status"> 
                     <select class="input100" name="status">
                     	<option selected></option>
                     	<option value="1"> Active</option>
@@ -230,7 +230,8 @@ $admin = $admincon->adminData($adminid);
                     	<option value="3"> Deactivated</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Status"></span>
-                </div>
+                </div> -->
+                <input type="hidden" name="status" value="1">
 
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
