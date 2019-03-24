@@ -7,16 +7,8 @@
 
 	$subscription = $subscriptioncon->subsClientData($client_id);
 	if ($subscription) {
-
-			$bundle = $bundlecon->bundleCode($subscription->types);
-				
-
+		$bundle = $bundlecon->bundleCode($subscription->types);
 	}
-
-
-
-
-
  ?>
 
 
@@ -42,12 +34,14 @@
 			    <th>Date of Schedule</th>
 			    <th>Type of Subscription</th> 
 			    <th>Status</th>
+			    <th>Action</th>
 			  </tr>
 			<tbody>
 				<tr>
 					<td><?php echo $subscription->getDateFromDay(); ?></td>
 					<td><?php echo $bundle->name; ?></td>
 					<td><?php echo $subscription->getStatus(); ?></td>
+					<td><a href="<?php echo "installation-info.php?id=$subscription->subcriptionid" ?>">more info</a></td>
 				</tr>
 			</tbody>
 			</table>

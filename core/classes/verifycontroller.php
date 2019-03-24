@@ -72,6 +72,37 @@ class VerifyController{
 	    return $results;
 	}
 
+	public function findUser($verify_id){
+
+		$stmt = $this->pdo->prepare("
+			SELECT
+				verify_id as id,
+				ver_userid as userid,
+				ver_profbilling as profbilling,
+				ver_id as profid,
+				ver_xcoordinates as xcoor,
+				ver_ycoordinates as ycoor,
+				ver_stage as stage,
+				ver_status as status,
+				ver_createat as create_at,
+				ver_updateat as update_at
+				
+			FROM tbl_veriyrequirement 
+			WHERE ver_userid = :ver_userid
+		");
+		$stmt->bindParam(':ver_userid', $verify_id);
+		$stmt->execute();
+
+	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Verify');
+	    $results = $stmt->fetch();
+
+	    $this->json = json_encode($results);
+	    $this->data = json_decode($this->json);
+
+	    return $results;
+	}
+
+
 	public function findVerifyId($verify_id){
 
 		$stmt = $this->pdo->prepare("
@@ -218,19 +249,20 @@ class VerifyController{
 
 	try {
 	$update_at = date('Y-m-d H:i:s');
+	
 	$stmt = $this->pdo->prepare("
 		UPDATE tbl_veriyrequirement 
 		SET 
-			verify_id = :verify_id,
-			ver_userid = :ver_userid,
+			verify_id 		= :verify_id,
+			ver_userid 		= :ver_userid,
 			ver_profbilling = :ver_profbilling,
-			ver_id = :ver_id,
+			ver_id 			= :ver_id,
 			ver_xcoordinates = :ver_xcoordinates,
 			ver_ycoordinates = :ver_ycoordinates,
-			ver_stage = :ver_stage,
-			ver_status = :ver_status,
-			ver_createat = :ver_createat,
-			ver_updateat = :ver_updateat
+			ver_stage 		= :ver_stage,
+			ver_status 		= :ver_status,
+			ver_createat 	= :ver_createat,
+			ver_updateat 	= :ver_updateat
 		WHERE verify_id = :verify_id
 		");
 		$stmt->bindParam(":verify_id", $verify->id);
@@ -242,7 +274,7 @@ class VerifyController{
 		$stmt->bindParam(":ver_stage", $verify->stage);
 		$stmt->bindParam(":ver_status", $verify->status);
 		$stmt->bindParam(":ver_createat", $verify->create_at);
-		$stmt->bindParam(":ver_updateat", $verify->update_at);
+		$stmt->bindParam(":ver_updateat", $update_at);
 	return $stmt->execute();
 
 	} catch (PDOException $ex) {

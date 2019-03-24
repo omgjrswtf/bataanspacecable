@@ -16,9 +16,11 @@ class VerifyscheduleController{
 		$stmt = $this->pdo->prepare("
 			SELECT
 				verifysched_id as id,
-				vshcd_userid as userid,
-				vschd_billing as profbilling,
+				vsch_userid as userid,
+				vsch_billing as profbilling,
+				vsch_billingpic as profbillingpic,
 				vsch_id as profid,
+				vsch_idpic as profidpic,
 				vsch_date as `date`,
 				vsch_year as year,
 				vsch_stage as stage,
@@ -27,9 +29,9 @@ class VerifyscheduleController{
 				vsch_updateat as update_at
 				
 			FROM tbl_verifyschedule 
-			WHERE vshcd_userid = :vshcd_userid and vsch_stage in (1,2,3)
+			WHERE vsch_userid = :vsch_userid and vsch_stage in (1,2,3)
 		");
-		$stmt->bindParam(':vshcd_userid', $verify_id);
+		$stmt->bindParam(':vsch_userid', $verify_id);
 		$stmt->execute();
 
 	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Verifyschedule');
@@ -40,14 +42,50 @@ class VerifyscheduleController{
 
 	    return $results;
 	}
+
+	public function findUser($verify_id){
+
+		$stmt = $this->pdo->prepare("
+			SELECT
+				verifysched_id as id,
+				vsch_userid as userid,
+				vsch_billing as profbilling,
+				vsch_billingpic as profbillingpic,
+				vsch_id as profid,
+				vsch_idpic as profidpic,
+				vsch_date as `date`,
+				vsch_year as year,
+				vsch_stage as stage,
+				vsch_status as status,
+				vsch_createat as create_at,
+				vsch_updateat as update_at
+				
+			FROM tbl_verifyschedule 
+			WHERE vsch_userid = :vsch_userid
+		");
+		$stmt->bindParam(':vsch_userid', $verify_id);
+		$stmt->execute();
+
+	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Verifyschedule');
+	    $results = $stmt->fetch();
+
+	    $this->json = json_encode($results);
+	    $this->data = json_decode($this->json);
+
+	    return $results;
+	}
+
+
 	public function findIdVerify($verify_id){
 
 		$stmt = $this->pdo->prepare("
 			SELECT
 				verifysched_id as id,
-				vshcd_userid as userid,
-				vschd_billing as profbilling,
+				vsch_userid as userid,
+				vsch_billing as profbilling,
+				vsch_billingpic as profbillingpic,
 				vsch_id as profid,
+				vsch_idpic as profidpic,
 				vsch_date as `date`,
 				vsch_year as year,
 				vsch_stage as stage,
@@ -135,17 +173,24 @@ class VerifyscheduleController{
 		$stmt = $this->pdo->prepare("
 			SELECT
 				verifysched_id as id,
-				vshcd_userid as userid,
-				vschd_billing as profbilling,
+				vsch_userid as userid,
+				vsch_billing as profbilling,
+				vsch_billingpic as profbillingpic,
 				vsch_id as profid,
+				vsch_idpic as profidpic,
 				vsch_date as `date`,
 				vsch_year as year,
 				vsch_stage as stage,
 				vsch_status as status,
 				vsch_createat as create_at,
-				vsch_updateat as update_at
+				vsch_updateat as update_at,
+				c_fname AS fname, 
+				c_mname AS mname,
+				c_lname AS lname
 				
 			FROM tbl_verifyschedule 
+			INNER JOIN `tbl_client`
+			    ON (`vsch_userid` = `client_id`)
 			where vsch_stage = 1;
 		");
 		$stmt->execute();
@@ -162,49 +207,27 @@ class VerifyscheduleController{
 	public function findVerifyAccepted(){
 		$stmt = $this->pdo->prepare("
 			SELECT
-				verifysched_id as id,
-				vshcd_userid as userid,
-				vschd_billing as profbilling,
-				vsch_id as profid,
-				vsch_date as `date`,
-				vsch_year as year,
-				vsch_stage as stage,
-				vsch_status as status,
-				vsch_createat as create_at,
-				vsch_updateat as update_at
+				verifysched_id AS id,
+				vsch_userid AS userid,
+				vsch_billing AS profbilling,
+				vsch_billingpic AS profbillingpic,
+				vsch_id AS profid,
+				vsch_idpic AS profidpic,
+				vsch_date AS `date`,
+				vsch_year AS `year`,
+				vsch_stage AS stage,
+				vsch_status AS STATUS,
+				vsch_createat AS create_at,
+				vsch_updateat AS update_at,
+				c_fname AS fname, 
+				c_mname AS mname,
+				c_lname AS lname
 				
 			FROM tbl_verifyschedule 
-			where vsch_stage = 2;
-		");
-		$stmt->execute();
-
-		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Verifyschedule');
-		$results = $stmt->fetchAll();
-		
-		$this->json = json_encode($results);
-		$this->data = json_decode($this->json);
-
-		return $results;
-	}
-
-
-	public function findVerifyPending(){
-		$stmt = $this->pdo->prepare("
-			SELECT
-				verifysched_id as id,
-				vshcd_userid as userid,
-				vschd_billing as profbilling,
-				vsch_id as profid,
-				vsch_date as `date`,
-				vsch_year as year,
-				vsch_stage as stage,
-				vsch_status as status,
-				vsch_createat as create_at,
-				vsch_updateat as update_at
-				
-			FROM tbl_verifyschedule 
-			where vsch_stage = 2;
-		");
+			  INNER JOIN `tbl_client`
+			    ON (`vsch_userid` = `client_id`)
+			WHERE vsch_stage = 2;
+					");
 		$stmt->execute();
 
 		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Verifyschedule');
@@ -220,17 +243,24 @@ class VerifyscheduleController{
 		$stmt = $this->pdo->prepare("
 			SELECT
 				verifysched_id as id,
-				vshcd_userid as userid,
-				vschd_billing as profbilling,
+				vsch_userid as userid,
+				vsch_billing as profbilling,
+				vsch_billingpic as profbillingpic,
 				vsch_id as profid,
+				vsch_idpic as profidpic,
 				vsch_date as `date`,
 				vsch_year as year,
 				vsch_stage as stage,
 				vsch_status as status,
 				vsch_createat as create_at,
-				vsch_updateat as update_at
+				vsch_updateat as update_at,
+				c_fname AS fname, 
+				c_mname AS mname,
+				c_lname AS lname
 				
 			FROM tbl_verifyschedule 
+			  	INNER JOIN `tbl_client`
+			    ON (`vsch_userid` = `client_id`)
 			where vsch_stage = 3;
 		");
 		$stmt->execute();
@@ -254,9 +284,11 @@ class VerifyscheduleController{
 
 		$stmt = $this->pdo->prepare("
 		INSERT INTO `tbl_verifyschedule` (
-			`vshcd_userid`,
-			`vschd_billing`,
+			`vsch_userid`,
+			`vsch_billing`,
+			`vsch_billingpic`,
 			`vsch_id`,
+			`vsch_idpic`,
 			`vsch_date`,
 			`vsch_year`,
 			`vsch_stage`,
@@ -265,9 +297,11 @@ class VerifyscheduleController{
 			`vsch_updateat`
 			)
 		VALUES (
-			:vshcd_userid,
-			:vschd_billing,
+			:vsch_userid,
+			:vsch_billing,
+			:vsch_billingpic,
 			:vsch_id,
+			:vsch_idpic,
 			:vsch_date,  
 			:vsch_year, 
 			:vsch_stage, 
@@ -275,17 +309,66 @@ class VerifyscheduleController{
 			:vsch_createat,
 			:vsch_updateat);
 		");
-
-		$stmt->bindParam(":vshcd_userid", $verifyschedule->userid);
-		$stmt->bindParam(":vschd_billing", $verifyschedule->profbilling);
+	
+		$stmt->bindParam(":vsch_userid", $verifyschedule->userid);
+		$stmt->bindParam(":vsch_billing", $verifyschedule->profbilling);
+		$stmt->bindParam(":vsch_billingpic", $verifyschedule->profbillingpic);
 		$stmt->bindParam(":vsch_id", $verifyschedule->profid);
+		$stmt->bindParam(":vsch_idpic", $verifyschedule->profidpic);
 		$stmt->bindParam(":vsch_date", $verifyschedule->date);
 		$stmt->bindParam(":vsch_year", $verifyschedule->year);
 		$stmt->bindParam(":vsch_stage", $verifyschedule->stage);
 		$stmt->bindParam(":vsch_status", $verifyschedule->status);
 		$stmt->bindParam(":vsch_createat", $created_at);
 		$stmt->bindParam(":vsch_updateat", $created_at);
+		return $stmt->execute();
+			
+	} catch (PDOException $ex) {
+		echo $ex->getMessage();	
+		}
+	}
 
+
+	public function saveonce(Verifyschedule $verifyschedule){
+		$created_at = date('Y-m-d H:i:s');
+	try {
+	if (isset($verifyschedule->id)) {
+		return $this->update($verifyschedule);
+	}
+
+		$stmt = $this->pdo->prepare("
+		INSERT INTO `tbl_verifyschedule` (
+			`vsch_userid`,
+			`vsch_billing`,
+			`vsch_billingpic`,
+			`vsch_date`,
+			`vsch_year`,
+			`vsch_stage`,
+			`vsch_status`,
+			`vsch_createat`,
+			`vsch_updateat`
+			)
+		VALUES (
+			:vsch_userid,
+			:vsch_billing,
+			:vsch_billingpic,
+			:vsch_date,  
+			:vsch_year, 
+			:vsch_stage, 
+			:vsch_status,
+			:vsch_createat,
+			:vsch_updateat);
+		");
+	
+		$stmt->bindParam(":vsch_userid", $verifyschedule->userid);
+		$stmt->bindParam(":vsch_billing", $verifyschedule->profbilling);
+		$stmt->bindParam(":vsch_billingpic", $verifyschedule->profbillingpic);
+		$stmt->bindParam(":vsch_date", $verifyschedule->date);
+		$stmt->bindParam(":vsch_year", $verifyschedule->year);
+		$stmt->bindParam(":vsch_stage", $verifyschedule->stage);
+		$stmt->bindParam(":vsch_status", $verifyschedule->status);
+		$stmt->bindParam(":vsch_createat", $created_at);
+		$stmt->bindParam(":vsch_updateat", $created_at);
 		return $stmt->execute();
 			
 	} catch (PDOException $ex) {
@@ -302,9 +385,11 @@ class VerifyscheduleController{
 		UPDATE tbl_verifyschedule 
 		SET 
 			verifysched_id = :verifysched_id,
-			vshcd_userid = :vshcd_userid,
-			vschd_billing = :vschd_billing,
+			vsch_userid = :vsch_userid,
+			vsch_billing = :vsch_billing,
+			vsch_billingpic = :vsch_billingpic,
 			vsch_id = :vsch_id,
+			vsch_idpic = :vsch_idpic,
 			vsch_date = :vsch_date,
 			vsch_year = :vsch_year,
 			vsch_stage = :vsch_stage,
@@ -314,9 +399,11 @@ class VerifyscheduleController{
 		WHERE verifysched_id = :verifysched_id
 		");
 		$stmt->bindParam(":verifysched_id", $verifyschedule->id);
-		$stmt->bindParam(":vshcd_userid", $verifyschedule->userid);
-		$stmt->bindParam(":vschd_billing", $verifyschedule->profbilling);
+		$stmt->bindParam(":vsch_userid", $verifyschedule->userid);
+		$stmt->bindParam(":vsch_billing", $verifyschedule->profbilling);
+		$stmt->bindParam(":vsch_billingpic", $verifyschedule->profbillingpic);
 		$stmt->bindParam(":vsch_id", $verifyschedule->profid);
+		$stmt->bindParam(":vsch_idpic", $verifyschedule->profidpic);
 		$stmt->bindParam(":vsch_date", $verifyschedule->date);
 		$stmt->bindParam(":vsch_year", $verifyschedule->year);
 		$stmt->bindParam(":vsch_stage", $verifyschedule->stage);

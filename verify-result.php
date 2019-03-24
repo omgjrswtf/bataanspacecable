@@ -8,9 +8,6 @@ require_once 'core/init.php';
     $clientid = $_SESSION['client_id'];
 $client = $clientcon->clientData($clientid);
 
-$id = $_POST['id'];
-$billing = $_POST['billing'];
-
 
 
 $tomorrow = date("Y-m-d", time() + 172800);
@@ -19,10 +16,25 @@ $newdate= date("M jS, Y", strtotime($tomorrow));
 $year = date('Y');
 $newday = date('z') + 2;
 
-$subscriptionSend = "subscriptionprocess/sendverifyprocess.php?clientid=$client->clientid&id=$id&billing=$billing&year=$year&day=$newday";
+$err = 0;
+$action = $_POST['action'];
 
 
- ?>
+if ($action == 1) {
+	$billing = $_POST['billing'];
+	$err = 0;
+	$subscriptionSend = "subscriptionprocess/sendverifyprocess.php?clientid=$client->clientid&billing=$billing&year=$year&day=$newday&action=1";
+} elseif ($action == 2) {
+	$id = $_POST['id'];
+	$err = 0;
+	$subscriptionSend = "subscriptionprocess/sendverifyprocess.php?clientid=$client->clientid&id=$id&year=$year&day=$newday&action=2";
+}
+else{
+	$err = 1;
+}
+
+
+?>
 
 <style>
 table, th, td {
@@ -35,7 +47,10 @@ table, th, td {
 <br><br>
 
 
-<form method="post" action=" <?php print $subscriptionSend;  ?> ">
+<form method="post" action=" <?php print $subscriptionSend;  ?> " enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+
  <table>
 	<tr>
 	<th colspan="2">Service Overview</th>
@@ -60,14 +75,29 @@ table, th, td {
 		</td>
 	</tr>
 	<tr>
-		<td>
-		<b>Type Identification(ID):</b><br>
-		<?php echo "$id"; ?>
-		</td>
-		<td>
-		<b>Type of Billing:</b><br>
-		<?php echo "$billing bill"; ?>
-		</td>
+		<?php if ($action == 1): ?>
+			<td>
+				<b>Type of Billing:</b><br>
+				
+			</td>
+			<td>
+				<?php echo "$billing bill"; ?>
+			</td>
+		<?php endif ?>
+
+		<?php if ($action == 2): ?>
+			<td>
+				<b>Type Identification(ID):</b><br>
+				
+			</td>
+			<td>
+				<?php echo "$id"; ?>
+			</td>
+		<?php endif ?>
+		
+
+
+	
 	</tr>
 </table>
 
@@ -75,3 +105,8 @@ table, th, td {
 
 </form>
 
+<?php 
+
+if ($err == 1) {
+	header('Location: verification-info.php?err=1');
+}

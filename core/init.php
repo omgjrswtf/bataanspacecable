@@ -11,6 +11,7 @@
 	require_once 'classes/subscriptioncontroller.php';
 	require_once 'classes/verifyschedulecontroller.php';
 	require_once 'classes/smscontroller.php';
+	require_once 'classes/billingcontroller.php';
 
 
 	require_once 'classes/user.php';
@@ -24,6 +25,7 @@
 	require_once 'classes/subscription.php';
 	require_once 'classes/verifyschedule.php';
 	require_once 'classes/sms.php';
+	require_once 'classes/billing.php';
 
 
 	global $pdo;
@@ -40,7 +42,8 @@
 	$verifycon = new VerifyController($pdo);
 	$subscriptioncon = new SubscriptionController($pdo);
 	$verifyschedulecon = new VerifyscheduleController($pdo);
-	$smscon = new SmsController($pdo)
+	$smscon = new SmsController($pdo);
+	$billingcon = new BillingController($pdo);
 	// $user = new User();
 
 

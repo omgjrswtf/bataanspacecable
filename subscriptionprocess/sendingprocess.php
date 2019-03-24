@@ -10,6 +10,8 @@
  	$id 		= $_GET['clientid'];
  	$bundleid 	= $_GET['bundlecode'];
  	$locationid = $_GET['location'];
+ 	$addedvalue = $_GET['advl']; //added to today update last day of month
+ 	$estimated 	= $_GET['esti'];  //added estimated price and length
 
 
  	$client = $clientcon->clientData($id);
@@ -33,27 +35,31 @@
 	$subscription->username = $client->fname ." ". $client->mname ." ". $client->lname;
 	$subscription->usercontact = $client->contact;
 	$subscription->dueyear = date('Y');
-	$subscription->duedate = date('z') + 3;
+	$subscription->duedate = date('z') + 2;
 	$subscription->xcoor = $verify->xcoor;
 	$subscription->ycoor = $verify->ycoor;
 	$subscription->types = $bundle->code;
+	$subscription->addon = $estimated;
+	$subscription->added = $addedvalue;
 	$subscription->status = 1;
 	$subscription->active = 1;
 	$subscriptioncon->save($subscription);
 
 
 	$sms =  new Sms();
-	$sms->userid 			= $clientid;
+	$sms->userid 			= $id;
 	$sms->message 			= "Your schedule of your subscription installing was already pending to the system. Thank You";
 	$sms->contact 			= $client->contact;
 	$sms->transactionid 	= 0;
 	$sms->status 			= 1;
-	$smscon->send($sms);
+	// $smscon->send($sms);
 	$smscon->save($sms);
 
 	header('Location: ../subscription-info.php');
 	
-	}else{
+	}
+
+	else{
 	header('Location: ../subscription-service.php?err=1');
 	}
 

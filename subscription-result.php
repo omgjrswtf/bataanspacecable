@@ -6,9 +6,10 @@ if (!$_SESSION) {
     header('Location: index.php');
 }
 //Post method get all
-$client_id = $_SESSION['client_id'];
+$client_id  = $_SESSION['client_id'];
 $bundlecode = $_POST['bundleselect'];
-
+$wire       = $_POST['estimated']; 
+$estimated  = 7 * $wire;
 
 //include controllers
 $client = $clientcon->clientData($client_id);
@@ -17,9 +18,15 @@ $location = $locationcon->findLocation($client_id);
 
 $bundle = $bundlecon->bundleCode($bundlecode);
 
-$tomorrow = date("Y-m-d", time() + 172800);
+$tomorrow = date("Y-m-t", time() + 172800);
 $newdate= date("M jS, Y", strtotime($tomorrow));
 
+
+$totaldate  = date("t", strtotime($tomorrow));
+$daynow     = date("d") + 2;
+$dayleft    = $totaldate - $daynow;
+
+$addedvalue = round(($bundle->price / $totaldate) * ($dayleft),2);
 
  ?>
 
@@ -42,7 +49,7 @@ table, th, td {
 <?php if ($location): ?>
   
 <?php 
-$subscriptionSend = "subscriptionprocess/sendingprocess.php?clientid=$client->clientid&bundlecode=$bundlecode&location=$location->clientlocid";
+$subscriptionSend = "subscriptionprocess/sendingprocess.php?clientid=$client->clientid&bundlecode=$bundlecode&location=$location->clientlocid&esti=$estimated&advl=$addedvalue";
  ?>
 
 
@@ -92,6 +99,8 @@ $subscriptionSend = "subscriptionprocess/sendingprocess.php?clientid=$client->cl
   </tr>
 </table>
 <br><br>
+
+
 <table>
   <tr>
   <th colspan="3">Payable</th>
@@ -114,9 +123,41 @@ $subscriptionSend = "subscriptionprocess/sendingprocess.php?clientid=$client->cl
       <td>
             x 1
       </td>
-      <td>
-            <?php echo $bundle->getBundleCodetoName(); ?>
+      <td align="right">
+            <?php echo $bundle->getBundlePrice(); ?>
       </td>
+  </tr>
+
+<?php if ($bundle->getPrefix() == "B"): ?>
+  <tr>
+    <td>Digital and Cable</td>
+    <td>x 1</td>
+    <td align="right"><?php echo "&#x20b1; ". $bundle->getAddedValue().".00"; ?></td>
+  </tr>
+
+  <tr>
+    <td>Advance 1 month</td>
+    <td>x 1</td>
+    <td align="right">&#x20b1; <?php echo $bundle->price.".00"; ?></td>
+  </tr>
+
+  <tr>
+    <td>Day left this month</td>
+    <td><?php echo $dayleft; ?> days</td>
+    <td align="right">&#x20b1;<?php echo $addedvalue; ?></td>
+  </tr>
+
+  <tr>
+    <td>Wire Added</td>
+    <td>x <?php echo $wire."ft"; ?></td>
+    <td align="right">&#x20b1;<?php echo $estimated.".00"; ?></td>
+  </tr>
+
+<?php endif ?>
+  <tr>
+    <td></td>
+    <td>Total</td>
+    <td align="right">&#x20b1; <?php echo ($bundle->price * 2) + $addedvalue + $estimated.".00"; ?></td>
   </tr>
 </table>
 
@@ -179,6 +220,8 @@ $subscriptionSend = "subscriptionprocess/sendingprocess.php?clientid=$client->cl
   </tr>
 </table>
 <br><br>
+
+
 <table>
   <tr>
   <th colspan="3">Payable</th>
@@ -201,12 +244,43 @@ $subscriptionSend = "subscriptionprocess/sendingprocess.php?clientid=$client->cl
       <td>
             x 1
       </td>
-      <td>
-            <?php echo $bundle->getBundleCodetoName(); ?>
+      <td align="right">
+            <?php echo $bundle->getBundlePrice(); ?>
       </td>
   </tr>
-</table>
 
+<?php if ($bundle->getPrefix() == "B"): ?>
+  <tr>
+    <td>Digital and Cable</td>
+    <td>x 1</td>
+    <td align="right"><?php echo "&#x20b1; ". $bundle->getAddedValue().".00"; ?></td>
+  </tr>
+
+  <tr>
+    <td>Advance 1 month</td>
+    <td>x 1</td>
+    <td align="right">&#x20b1; <?php echo $bundle->price.".00"; ?></td>
+  </tr>
+
+  <tr>
+    <td>Day left this month</td>
+    <td><?php echo $dayleft; ?> days</td>
+    <td align="right">&#x20b1;<?php echo $addedvalue; ?></td>
+  </tr>
+
+  <tr>
+    <td>Wire Added</td>
+    <td>x <?php echo $wire."ft"; ?></td>
+    <td align="right">&#x20b1;<?php echo $estimated.".00"; ?></td>
+  </tr>
+
+<?php endif ?>
+  <tr>
+    <td></td>
+    <td>Total</td>
+    <td align="right">&#x20b1; <?php echo ($bundle->price * 2) + $addedvalue + $estimated.".00"; ?></td>
+  </tr>
+</table>
 <input type="submit" name="submit" value="submit">
  </form>
 

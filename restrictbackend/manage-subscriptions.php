@@ -2,10 +2,10 @@
 
 include '../core/init.php';
 
-$subpendings = $subscriptioncon->findAllSchedPending();
-$subpaccepts = $subscriptioncon->findAllSchedAccepted();
-$subgoings = $subscriptioncon->findAllSchedOngoing();
-
+$subpendings = $subscriptioncon->findAllSchedPending();//1
+$subpaccepts = $subscriptioncon->findAllSchedAccepted();//2
+$subgoings = $subscriptioncon->findAllSchedOngoing();//3
+$subsunadds = $subscriptioncon->findAllSchedUnAddress();//4
 
 ?>
 
@@ -115,6 +115,52 @@ $subgoings = $subscriptioncon->findAllSchedOngoing();
                 </table>
 
                 </div>
+
+                <div class="col-lg-12">
+                <h3>Unaddress Client Verification</h3>
+                <hr>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Client</th>
+                            <th>Contact</th>
+                            <th>Date</th>
+                            <th>Service</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($subsunadds as $subsunadd): ?>
+
+                    <tr>
+                    <td><?php echo $subsunadd->subcriptionid ?></td>
+                    <td><?php echo $subsunadd->username ?></td>
+                    <td><?php echo $subsunadd->usercontact ?></td>
+                    <td><?php echo $subsunadd->getDateFromDay(); ?></td>
+                    <td><?php $bundle = $bundlecon->bundleCode($subsunadd->types);
+                        echo "$bundle->name";
+                        ?></td>
+                    <td><?php echo $subsunadd->getStatus(); ?></td>
+                    <td><?php echo $subsunadd->create_at; ?></td>
+
+                    <td>
+                        <a href="manage-subscription-form.php?id=<?php echo $subsunadd->subcriptionid ?>" class="btn btn-info btn-xs">Update</a>
+                        <a href="manage-addressing-form.php?id=<?php echo $subsunadd->subcriptionid ?>&year=<?php echo $subsunadd->dueyear; ?>&date=<?php echo $subsunadd->duedate; ?>" class="btn btn-info btn-xs">Address</a>
+                    </td>
+
+                    </tr>
+
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+
+                </div>
+
+
+
             
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
@@ -225,7 +271,7 @@ $subgoings = $subscriptioncon->findAllSchedOngoing();
 
     </div>
     <!-- /#wrapper -->
- <!-- jQuery -->
+    <!-- jQuery -->
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css"></script>
@@ -238,7 +284,7 @@ $subgoings = $subscriptioncon->findAllSchedOngoing();
     <!-- Custom Theme JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.js"></script>
 
-    <!--===============================================================================================-->
+<!--===============================================================================================-->
     <script src="../assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
     <script src="../assets/vendor/animsition/js/animsition.min.js"></script>

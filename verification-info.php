@@ -13,9 +13,6 @@ require_once 'core/init.php';
 
     // print_r($verifyschedule);   
 
-
-
-
  ?>
 
 
@@ -26,102 +23,98 @@ require_once 'core/init.php';
  </head>
  <body>
 
- 	<!-- levelone location -->
+    <?php if (!$verify): ?>
+    <h5><a href="#">Verification Level One</a></h5>
+    <hr>
+    <p><i>notice:</i> there is no address and geolocation </p>
+        <a href="geolocation-process.php">Please update your location here</a>
+    <br>
+    <br>
+    <h5><a href="#">Verification Level One</a></h5>
+    <hr>
+    <p><i>notice:</i> there is no address and geolocation </p>
+        <a href="geolocation-process.php">Please update your location here</a>
+    <br>
+    <br>
+
+    <?php endif ?>
+
     <?php if (!empty($verify->stage) and $verify->stage == 1): ?>
 
     <h5><a href="#">Verification Level One</a></h5>
-	<hr>
-    	<p>Your location is updated!</p>
- 	<br>
-    <br>
-
-    <?php endif ?>
-
-    <?php if ($verify): ?>
-        
-
-     	<?php if (!empty($verify->stage) and $verify->stage == 2 or $verify->stage == 3): ?>
-            
-        <h5><a href="#">Verification Level One</a></h5>
-        <hr>
-            <p>Your location is updated!</p>
-        <br>
-        <br>
-        <?php endif ?>
-    
- 	<?php else: ?>
- 	
- 	<h5><a href="#">Verification Level One</a></h5>
-	<hr>
-    <p><i>notice:</i> there is no address and geolocation </p>
-    	<a href="geolocation-process.php">Please update your location here</a>
- 	<br>
-    <br>
-
-
-    <?php endif ?>
-
-
-    <?php if ($verifyschedule): ?>
-    <h5><a href="#">Verification ID and Billing</a></h5>
     <hr>
-    <p><i>notice:</i> Please visit the message page for the schedule of your passing the id and billing requirements <a href="message-info.php">this page</a></p>
+        <p>Your location is updated!</p>
     <br>
     <br>
 
-        
-    <?php else: ?>
-    <!-- levelone billing -->
-    <?php if (!empty($verify->stage) and $verify->stage == 2 ): ?>
 
-    <h5><a href="#">Verification Level Two</a></h5>
-    <hr>
-         <p>Your billing requirement is updated!</p>
-    <br>
-    <br>
-    <?php endif ?>
-    <?php if (!empty($verify->stage) and $verify->stage == 3): ?>
-
-    <h5><a href="#">Verification Level Two</a></h5>
-    <hr>
-        <p>Your billing requirement is updated!</p>
-    <br>
-    <br>
-        
-    <?php else: ?>
-    
     <h5><a href="#">Verification Level Two</a></h5>
     <hr>
     <p><i>notice:</i> need to schedule requirement : Billing</p>
-        <a href="verify-scheduling.php">Please set a schedule here for validating requirements</a>
+        <a href="verify-scheduling.php?action=1">Please set a schedule here for validating requirements</a>
     <br>
     <br>
-    <?php endif ?>
 
-
-    <!-- levelthree id -->
-    <?php if (!empty($verify->stage) and $verify->stage == 3): ?>
-
-    <h5><a href="#">Verification Level Three</a></h5>
-    <hr>
-        <p>Your id requirement is updated!</p>
-    <br>
-    <br>
-        
-    <?php else: ?>
-    
     <h5><a href="#">Verification Level Three</a></h5>
     <hr>
     <p><i>notice:</i> need to schedule requirement: Identification (ID)</p>
-        <a href="verify-scheduling.php">Please set a schedule here for validating requirements</a>
+        <a href="">Please set a schedule first in validating requirement in billing</a>
+    <br>
+    <br>
+
+    <?php endif ?>
+
+    <?php if (!empty($verify->stage) and $verify->stage == 4): ?>
+
+    <h5><a href="#">Verification Level One</a></h5>
+    <hr>
+        <p>Your location is updated!</p>
+    <br>
+    <br>
+
+
+    <h5><a href="#">Verification Level Two</a></h5>
+    <hr>
+    <p><i>notice:</i> your requirement : Billing - is already under validation</p>
+       <p>Please update your Level 3 verification</p>
+    <br>
+    <br>
+
+
+    <h5><a href="#">Verification Level Three</a></h5>
+    <hr>
+    <p><i>notice:</i> need to schedule requirement: Identification (ID)</p>
+        <a href="verify-scheduling.php?action=2">Please set a schedule here for validating requirements</a>
     <br>
     <br>
     <?php endif ?>
 
-    <?php endif ?>
 
-    <!-- leveltwo -->
-    
+
+    <?php if (!empty($verify->stage) and $verify->stage == 5): ?>
+
+    <h5><a href="#">Verification Level One</a></h5>
+    <hr>
+        <p>Your location is updated!</p>
+    <br>
+    <br>
+
+
+    <h5><a href="#">Verification Level Two</a></h5>
+    <hr>
+    <p><i>notice:</i> your requirement : Billing - is already under validation</p>
+       <p>Please visit the site on the schedule date</p>
+    <br>
+    <br>
+
+
+    <h5><a href="#">Verification Level Three</a></h5>
+    <hr>
+    <p><i>notice:</i> your requirement : Identification (ID) - is already under validation</p>
+        <p>Please visit the site on the schedule date</p>
+    <br>
+    <br>
+    <?php endif ?>
  
  </body>
  </html>

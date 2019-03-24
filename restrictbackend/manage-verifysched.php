@@ -91,7 +91,7 @@ $verifyscheduleongoings = $verifyschedulecon->findVerifyOngoing();
 
                     <tr>
                     <td><?php echo $verifyschedulesched->id ?></td>
-                    <td><?php echo $verifyschedulesched->userid ?></td>
+                    <td><?php echo $verifyschedulesched->getClientName() ?></td>
                     <td><?php echo $verifyschedulesched->profid ?></td>
                     <td><?php echo $verifyschedulesched->profbilling ?></td>
                     <td><?php echo $verifyschedulesched->getDateFromDay() ?></td>
@@ -133,7 +133,7 @@ $verifyscheduleongoings = $verifyschedulecon->findVerifyOngoing();
 
                     <tr>
                     <td><?php echo $verifyscheduleaccept->id ?></td>
-                    <td><?php echo $verifyscheduleaccept->userid ?></td>
+                    <td><?php echo $verifyscheduleaccept->getClientName() ?></td>
                     <td><?php echo $verifyscheduleaccept->profid ?></td>
                     <td><?php echo $verifyscheduleaccept->profbilling ?></td>
                     <td><?php echo $verifyscheduleaccept->getDateFromDay() ?></td>
@@ -175,7 +175,7 @@ $verifyscheduleongoings = $verifyschedulecon->findVerifyOngoing();
 
                     <tr>
                     <td><?php echo $verifyscheduleongoing->id ?></td>
-                    <td><?php echo $verifyscheduleongoing->userid ?></td>
+                    <td><?php echo $verifyscheduleongoing->getClientName() ?></td>
                     <td><?php echo $verifyscheduleongoing->profid ?></td>
                     <td><?php echo $verifyscheduleongoing->profbilling ?></td>
                     <td><?php echo $verifyscheduleongoing->getDateFromDay() ?></td>

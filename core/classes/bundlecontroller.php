@@ -141,7 +141,7 @@ class BundleController{
 		UPDATE ref_bundles 
 		SET 
 			bundle_id = :bundle_id,
-			b_code as :b_code,
+			b_code = :b_code,
 			b_name = :b_name,
 			b_volume = :b_volume,
 			b_price = :b_price,

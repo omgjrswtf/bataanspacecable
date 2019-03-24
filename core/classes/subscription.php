@@ -11,6 +11,8 @@ class Subscription {
 	public $xcoor;
 	public $ycoor;
 	public $types;
+	public $addon; //add on wiring computed
+	public $added; //added bill for estimated value for end of month
 	public $status;
 	public $active;
 	public $create_at;
@@ -30,7 +32,7 @@ class Subscription {
     	$dateofyear = $this->duedate;
     	$year 		= $this->dueyear; 
    		$newDate = DateTime::createFromFormat('z Y', $dateofyear . ' ' . $year);
-		$newDate = $newDate->format('d - m - Y'); // for example
+		$newDate = $newDate->format('d-m-Y'); // for example
   		return $newDate;
 	}
 
@@ -42,18 +44,22 @@ class Subscription {
 				$var = "Pending";
 			break;
 			case '2':
-				$var = "Verified";
+				$var = "Verified and Address";
 			break;
 			case '3':
 				$var = "On-going";
 			break;
 			case '4':
-				$var = "Installed";
+				$var = "Verifies - Waiting for bind techical";
 			break;
 			case '5':
 				$var = "Monthly Due";
 			break;
 			case '6':
+				$var = "Uninstalled";
+			break;
+
+			case '7':
 				$var = "Uninstalled";
 			break;
 

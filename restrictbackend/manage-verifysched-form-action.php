@@ -25,7 +25,7 @@ switch ($action) {
 		$sms->contact 			= $client->contact;
 		$sms->transactionid 	= 0;
 		$sms->status 			= 1;
-		$smscon->send($sms);
+		// $smscon->send($sms);
 		$smscon->save($sms);
 
 		// header('Location: manage-verifysched.php');
@@ -44,7 +44,7 @@ switch ($action) {
 	case 'going':
 		$verifyschedule = $verifyschedulecon->findIdVerify($id);
 		$verifyschedule->stage = 3;
-		$verifyschedulecon->save($verifyschedule);
+		// $verifyschedulecon->save($verifyschedule);
 		print_r($verifyschedule);
 
 		$client = $clientcon->clientData($verifyschedule->userid);
@@ -55,8 +55,8 @@ switch ($action) {
 		$sms->contact 			= $client->contact;
 		$sms->transactionid 	= 0;
 		$sms->status 			= 1;
-		$smscon->send($sms);
-		$smscon->save($sms);
+		// $smscon->send($sms);
+		// $smscon->save($sms);
 		// header('Location: manage-verifysched.php');
 	break;
 
@@ -65,14 +65,15 @@ switch ($action) {
 	break;
 
 	case 'done':
-		$verify = $verifycon->findVerifyId($id);
 		$verifyschedule = $verifyschedulecon->findIdVerify($id);
 
+		$verify = $verifycon->findUserVerify($verifyschedule->userid);
 		$verify->profbilling = $verifyschedule->profbilling;
 		$verify->profid = $verifyschedule->profid;
 		$verify->stage = 3;
-		$verifycon->save($verify);
 		// print_r($verify);
+		$verifycon->save($verify);
+		
 		// echo "<br><br>";
 
 		$verifyschedule->stage = 4;
@@ -89,7 +90,7 @@ switch ($action) {
 		$sms->contact 			= $client->contact;
 		$sms->transactionid 	= 0;
 		$sms->status 			= 1;
-		$smscon->send($sms);
+		// $smscon->send($sms);
 		$smscon->save($sms);
 
 
@@ -100,10 +101,7 @@ switch ($action) {
 		# code...
 	break;
 
-
-
 }
-
 
 		header('Location: manage-verifysched.php');
 

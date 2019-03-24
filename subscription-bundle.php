@@ -18,10 +18,17 @@ include 'core/init.php';
 <form method="post" action="subscription-result.php">
 <select name="bundleselect">
 	<?php foreach ($bundles as $bundle): ?>
-<option value="<?php echo $bundle->code;  ?>"><?php echo $bundle->name ." pesos";  ?></option> 	
- 	
- 	<?php endforeach ?>
+<option value="<?php echo $bundle->code;  ?>"><?php echo $bundle->name ." pesos";  ?></option>
+<?php endforeach ?>
 </select>
+<br>
+<br>
+	<p>
+	<b><i>notice:</i></b>
+	please enter the distance between your house and the nearest electrit pole into "feet"
+	</p>
+<input type="text" name="estimated" placeholder="estimate length">
+
 
 
 

@@ -24,6 +24,8 @@ class SubscriptionController{
 				sb_xcoordinates as xcoor,
 				sb_ycoordinates as ycoor,
 				sb_types as types,
+				sb_addon as addon,
+				sb_added as added,
 				sb_status as status,
 				sb_active as active,
 				sb_createat as create_at,
@@ -57,6 +59,8 @@ class SubscriptionController{
 				sb_xcoordinates as xcoor,
 				sb_ycoordinates as ycoor,
 				sb_types as types,
+				sb_addon as addon,
+				sb_added as added,
 				sb_status as status,
 				sb_active as active,
 				sb_createat as create_at,
@@ -89,12 +93,46 @@ class SubscriptionController{
 				sb_xcoordinates as xcoor,
 				sb_ycoordinates as ycoor,
 				sb_types as types,
+				sb_addon as addon,
+				sb_added as added,
 				sb_status as status,
 				sb_active as active,
 				sb_createat as create_at,
 				sb_updateat as update_at
 			FROM tbl_subcription 
 			Where sb_status = 1;
+		");
+		$stmt->execute();
+
+		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Subscription');
+		$results = $stmt->fetchAll();
+		
+		$this->json = json_encode($results);
+		$this->data = json_decode($this->json);
+
+		return $results;
+	}
+
+	public function findAllSchedUnAddress(){
+		$stmt = $this->pdo->prepare("
+			SELECT
+				subcription_id as subcriptionid,
+				sb_userid as userid,
+				sb_username as username,
+				sb_usercontact as usercontact,
+				sb_dueyear as dueyear,
+				sb_duedate as duedate,
+				sb_xcoordinates as xcoor,
+				sb_ycoordinates as ycoor,
+				sb_types as types,
+				sb_addon as addon,
+				sb_added as added,
+				sb_status as status,
+				sb_active as active,
+				sb_createat as create_at,
+				sb_updateat as update_at
+			FROM tbl_subcription 
+			Where sb_status = 4;
 		");
 		$stmt->execute();
 
@@ -119,6 +157,8 @@ class SubscriptionController{
 				sb_xcoordinates as xcoor,
 				sb_ycoordinates as ycoor,
 				sb_types as types,
+				sb_addon as addon,
+				sb_added as added,
 				sb_status as status,
 				sb_active as active,
 				sb_createat as create_at,
@@ -149,6 +189,8 @@ class SubscriptionController{
 				sb_xcoordinates as xcoor,
 				sb_ycoordinates as ycoor,
 				sb_types as types,
+				sb_addon as addon,
+				sb_added as added,
 				sb_status as status,
 				sb_active as active,
 				sb_createat as create_at,
@@ -413,6 +455,8 @@ class SubscriptionController{
 			`sb_xcoordinates`,
 			`sb_ycoordinates`,
 			`sb_types`,
+			`sb_addon`,
+			`sb_added`,
 			`sb_status`,
 			`sb_active`,
 			`sb_createat`,
@@ -427,6 +471,8 @@ class SubscriptionController{
 			:sb_xcoordinates, 
 			:sb_ycoordinates, 
 			:sb_types,
+			:sb_addon,
+			:sb_added,
 			:sb_status,
 			:sb_active,
 			:sb_createat,
@@ -440,6 +486,8 @@ class SubscriptionController{
 		$stmt->bindParam(":sb_xcoordinates", $subscription->xcoor);
 		$stmt->bindParam(":sb_ycoordinates", $subscription->ycoor);
 		$stmt->bindParam(":sb_types", $subscription->types);
+		$stmt->bindParam(":sb_addon", $subscription->addon);
+		$stmt->bindParam(":sb_added", $subscription->added);
 		$stmt->bindParam(":sb_status", $subscription->status);
 		$stmt->bindParam(":sb_active", $subscription->active);
 		$stmt->bindParam(":sb_createat", $create_at);
@@ -470,6 +518,8 @@ class SubscriptionController{
 			sb_xcoordinates = :sb_xcoordinates,
 			sb_ycoordinates = :sb_ycoordinates,
 			sb_types = :sb_types,
+			sb_addon = :sb_addon,
+			sb_added = :sb_added,
 			sb_status = :sb_status,
 			sb_active = :sb_active,
 			sb_createat = :sb_createat,
@@ -485,6 +535,8 @@ class SubscriptionController{
 		$stmt->bindParam(":sb_xcoordinates", $subscription->xcoor);
 		$stmt->bindParam(":sb_ycoordinates", $subscription->ycoor);
 		$stmt->bindParam(":sb_types", $subscription->types);
+		$stmt->bindParam(":sb_addon", $subscription->addon);
+		$stmt->bindParam(":sb_added", $subscription->added);
 		$stmt->bindParam(":sb_status", $subscription->status);
 		$stmt->bindParam(":sb_active", $subscription->active);
 		$stmt->bindParam(":sb_createat", $subscription->create_at);

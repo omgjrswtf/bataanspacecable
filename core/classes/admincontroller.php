@@ -86,6 +86,45 @@ class AdminController{
 	    return $results;
 	}
 
+	public function adminIsbooked($year,$date,$id){
+		$stmt = $this->pdo->prepare("
+			SELECT 
+				admin_id AS adminid,
+				a_firstname AS firstname,
+				a_middlename AS middlename,
+				a_lastname AS lastname,
+				a_username AS username,
+				a_password AS password,
+				a_address AS address,
+				a_datebirth AS datebirth,
+				a_contact AS contact,
+				a_email AS email,
+				a_role AS role,
+				a_status AS status,
+				a_createat AS create_at,
+				a_updateat AS update_at
+			FROM
+			  tbl_admin
+			INNER JOIN tbl_billing
+			    ON (admin_id = bl_adminid)
+			WHERE a_role = 1 AND bl_dueyear = :bl_dueyear AND bl_duedate = :bl_duedate and bl_subscriptionid != :bl_subscriptionid
+			GROUP BY bl_adminid
+			HAVING COUNT(bl_adminid) < 4
+		");
+		$stmt->bindParam(':bl_dueyear', $year);
+		$stmt->bindParam(':bl_duedate', $date);
+		$stmt->bindParam(':bl_subscriptionid', $id);
+		$stmt->execute();
+
+		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Admin');
+		$results = $stmt->fetchAll();
+		
+		$this->json = json_encode($results);
+		$this->data = json_decode($this->json);
+
+		return $results;
+	}
+
 	public function findAdmins(){
 		$stmt = $this->pdo->prepare("
 			SELECT

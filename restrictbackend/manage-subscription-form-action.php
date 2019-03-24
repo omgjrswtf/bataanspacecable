@@ -4,7 +4,8 @@ include '../core/init.php';
 $id = $_GET['id'];
 $action = $_GET['action'];
 
-echo "$id $action<br>";
+
+// echo "$id $action<br>";
 
 
 
@@ -12,7 +13,7 @@ switch ($action) {
 	case 'verified':
 		#verified
 	$subscription = $subscriptioncon->subscriptionData($id);
-	$subscription->status = 2;
+	$subscription->status = 5;
 	// print_r($subscription);
 	$subscriptioncon->save($subscription);
 
@@ -20,11 +21,57 @@ switch ($action) {
 
 	$sms =  new Sms();
 	$sms->userid 			= $client->clientid;
-	$sms->message 			= "Scheduling of your request for subscription is already accepted please visit at the site on this schedule subscription thank".$subscription->getDateFromDay();
+	$sms->message 			= "Scheduling of your request for subscription is already accepted, we will addresing technical incharge for installation. Please visit at the site on this schedule subscription thank".$subscription->getDateFromDay();
 	$sms->contact 			= $client->contact;
 	$sms->transactionid 	= 0;
 	$sms->status 			= 1;
-	$smscon->send($sms);
+	// $smscon->send($sms);
+	$smscon->save($sms);
+
+	// header('Location: manage-subscriptions.php');
+
+	break;
+
+
+	case 'address':
+		if (isset($_GET['adminid'])) {
+			$adminid = $_GET['adminid'];
+		}
+	
+		#address
+	$subscription = $subscriptioncon->subscriptionData($id);
+	$subscription->status = 2;
+	// print_r($subscription);
+	$subscriptioncon->save($subscription);
+
+	$client = $clientcon->clientData($subscription->userid);
+	$location = $locationcon->findLocation($subscription->userid);
+	$verify = $verifycon->findUserVerify($subscription->userid);
+
+	$billing = new Billing();
+	$billing->subscriptionid 	= $id;
+	$billing->userid 		 	= $client->clientid;
+	$billing->adminid			= $adminid;
+	$billing->dueyear			= $subscription->dueyear;
+	$billing->duedate 			= $subscription->duedate;
+	$billing->address 			= $location->clientlocid;
+	$billing->xcoor 			= $verify->xcoor;
+	$billing->ycoor 			= $verify->ycoor;
+	$billing->product 			= $subscription->types;
+	$billing->addon 			= $subscription->addon;
+	$billing->added 			= $subscription->added;
+	$billing->active 			= 1;
+	$billing->status 			= 1;
+
+	$billingcon->save($billing);
+
+	$sms =  new Sms();
+	$sms->userid 			= $client->clientid;
+	$sms->message 			= "Scheduling of your request for subscription is already accepted and already address for the technical in charge. Please visit at the site on this schedule subscription thank".$subscription->getDateFromDay();
+	$sms->contact 			= $client->contact;
+	$sms->transactionid 	= 0;
+	$sms->status 			= 1;
+	// $smscon->send($sms);
 	$smscon->save($sms);
 
 	// header('Location: manage-subscriptions.php');
@@ -33,7 +80,7 @@ switch ($action) {
 
 	case 'done':
 	$subscription = $subscriptioncon->subscriptionData($id);
-	$subscription->status = 4;
+	$subscription->status = 5;
 	// print_r($subscription);
 	$subscriptioncon->save($subscription);
 
@@ -45,7 +92,7 @@ switch ($action) {
 	$sms->contact 			= $client->contact;
 	$sms->transactionid 	= 0;
 	$sms->status 			= 1;
-	$smscon->send($sms);
+	// $smscon->send($sms);
 	$smscon->save($sms);
 
 	// header('Location: manage-subscriptions.php');
@@ -73,7 +120,7 @@ switch ($action) {
 	$sms->contact 			= $client->contact;
 	$sms->transactionid 	= 0;
 	$sms->status 			= 1;
-	$smscon->send($sms);
+	// $smscon->send($sms);
 	$smscon->save($sms);
 
 	// header('Location: manage-subscriptions.php');

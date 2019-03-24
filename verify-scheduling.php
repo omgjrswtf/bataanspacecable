@@ -6,8 +6,14 @@ require_once 'core/init.php';
     }
     $clientid = $_SESSION['client_id'];
 
+$err = 0;
 
-
+if (isset($_GET['action']) || !empty($_GET['action'])) {
+	$action = $_GET['action'];
+	$err = 0;
+}else{
+	$err = 1;
+}
 
  ?>
 
@@ -18,13 +24,24 @@ require_once 'core/init.php';
  </head>
  <body>
 
- 	<form method="post" action="verify-result.php">
+	<?php if ($action == 1): ?>
+
+	<form method="post" action="verify-result.php">
+		<input type="hidden" name="action" value="1">
  		<label>Billing Statement</label>
  		<select name="billing">
  			<option value="electricty">electricty</option>
  			<option value="water">water</option>
  		</select>
  		<br>
+ 		<input type="submit" name="submit" value="Schedule">
+ 	</form>
+
+
+
+	<?php elseif ($action == 2): ?>
+		<form method="post" action="verify-result.php">
+		<input type="hidden" name="action" value="2">
  		<label>Identification (ID)</label>
  		<select name="id">
  			<option value="passport">passport</option>
@@ -33,8 +50,20 @@ require_once 'core/init.php';
  		</select>
  		<br>
  		<input type="submit" name="submit" value="Schedule">
-
  	</form>
- 
+
+	<?php else: ?>
+
+	<?php $err = 1 ?>
+	<?php endif ?>
+
+
+<?php 
+
+if ($err == 1) {
+	header('Location: verification-info.php?err=1');
+}
+
+?>
  </body>
  </html>

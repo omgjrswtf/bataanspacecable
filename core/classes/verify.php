@@ -40,6 +40,9 @@ class Verify {
 		  	case '3':
 		  		$var = "Verified Level 3 Passed";
 		  	break;
+		  	case '4':
+		  		$var = "Under Verication Level 2";
+		  	break;
 		  	
 		  	default:
 		  		$var = "undefined";

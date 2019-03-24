@@ -119,8 +119,12 @@
 						$stage = 3;
 					break;
 
-					case '3':
-						$stage = 1;
+					case '4':
+						$stage = 4;
+					break;
+
+					case '5':
+						$stage = 4;
 					break;
 					
 					default:

@@ -3,23 +3,17 @@
 class Billing {
 	
 	public $billingid;
-	public $subcriptionid;
+	public $subscriptionid;
 	public $userid;
-	public $username;
-	public $usercontact;
 	public $adminid;
-	public $adminstatus;
-	public $adminname;
-	public $admincontact;
 	public $dueyear;
 	public $duedate;
 	public $address;
-	public $ycoor;
 	public $xcoor;
-	public $barangay;
-	public $province;
-	public $municipality;
-	public $zipcode;
+	public $ycoor;
+	public $product;
+	public $addon;
+	public $added;
 	public $active;
 	public $status;
 	public $create_at;
