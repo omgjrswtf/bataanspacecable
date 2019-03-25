@@ -30,10 +30,18 @@ require_once 'core/init.php';
         <a href="geolocation-process.php">Please update your location here</a>
     <br>
     <br>
-    <h5><a href="#">Verification Level One</a></h5>
+
+    <h5><a href="#">Verification Level Two</a></h5>
     <hr>
-    <p><i>notice:</i> there is no address and geolocation </p>
-        <a href="geolocation-process.php">Please update your location here</a>
+    <p><i>notice:</i> please verify first your location</p>
+
+    <br>
+    <br>
+
+
+    <h5><a href="#">Verification Level Three</a></h5>
+    <hr>
+    <p><i>notice:</i> please verify first your location</p>
     <br>
     <br>
 

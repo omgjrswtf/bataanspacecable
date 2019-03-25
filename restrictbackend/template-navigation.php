@@ -83,7 +83,7 @@
                             <a href="manage-bundles.php"><i class="fa fa-info fa-fw"></i> Bundles</a>
                         </li>
                         <li>
-                            <a href="dashboard.php"><i class="fa fa-credit-card-alt fa-fw"></i> Billing</a>
+                            <a href="manage-billings.php"><i class="fa fa-credit-card-alt fa-fw"></i> Billing</a>
                         </li>
                         <li>
                             <a href="manage-clients.php"><i class="fa fa-user fa-fw"></i> Client</a>
@@ -101,7 +101,7 @@
                             <a href="manage-verifysched.php"><i class="fa fa-sitemap fa-fw"></i> Verifying</a>
                         </li>
                         <li>
-                            <a href="manage-admins.php"><i class="fa fa-users fa-fw"></i> manage admin</a>
+                            <a href="manage-admins.php"><i class="fa fa-users fa-fw"></i> Employees</a>
                         </li>
                          <li>
                             <a href="manage-statiscal.php"><i class="fa fa-bar-chart fa-fw"></i> Statistics</a>

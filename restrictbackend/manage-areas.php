@@ -43,6 +43,34 @@ $areas = $areacon->findAreas();
     <link rel="stylesheet" type="text/css" href="../assets/vendor/animsition/css/animsition.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/vendor/select2/select2.min.css">  
     <link rel="stylesheet" type="text/css" href="../assets/vendor/daterangepicker/daterangepicker.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.jszip"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
+
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -76,7 +104,7 @@ $areas = $areacon->findAreas();
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
                 <hr>
-                <table class="table table-hover">
+                <table class="table table-hover" id="myTable">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -91,6 +119,7 @@ $areas = $areacon->findAreas();
                             <th>Description</th>
                             <th>Date Create </th>
                             <th>Date Updated</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -132,7 +161,12 @@ $areas = $areacon->findAreas();
 
     </div>
     <!-- /#wrapper -->
-  <!-- jQuery -->
+
+    <script type="text/javascript">
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
+    </script>
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css"></script>
@@ -145,8 +179,7 @@ $areas = $areacon->findAreas();
     <!-- Custom Theme JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.js"></script>
 
-    <!--===============================================================================================-->
-    <script src="../assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+
 <!--===============================================================================================-->
     <script src="../assets/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
