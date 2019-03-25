@@ -2,7 +2,8 @@
 
 include '../core/init.php';
 
-// $bundles = $bundlecon->findBundles();
+$billinginstalls = $billingcon->findbillinginstallation();
+$billingmonthlydues = $billingcon->findbillingmonthly();
 
 ?>
 
@@ -94,41 +95,78 @@ include '../core/init.php';
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Bundle</h1>
-                    
-                <a href="manage-bundle-form.php" class="btn btn-info" role="button" style="float: right;">
-                <i class="glyphicon glyphicon-user"></i> New Bundle
-                </a>
+                    <h1 class="page-header">Billing Record</h1>
 
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
+                <h3>Installion Billing</h3>
                 <hr>
-                <table class="table table-hover" id="myTable">
+                <table class="table table-hover" id="billinginstalls">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Description</th>
-                            <th>Volume Speed</th>
-                            <th>Price/Fee</th>
-                            <th>Status</th>
-                            <th>Date Create </th>
-                            <th>Date Updated</th>
+                            <th>Reference ID</th>
+                            <th>Client</th>
+                            <th>Scheduled</th>
+                            <th>Address</th>
+                            <th>Product</th>
+                            <th>Date Create</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($bundles as $bundle): ?>
+                    <?php foreach ($billinginstalls as $billinginstall): ?>
 
                     <tr>
-                   <!--  <td><?php echo $bundle->bundleid ?></td>
-                    <td><?php echo $bundle->name ?></td>
-                    <td><?php echo $bundle->volume ?></td>
-                    <td><?php echo $bundle->price ?></td>
-                    <td><?php echo $bundle->getStatus(); ?></td>
-                    <td><?php echo $bundle->create_at; ?></td>
-                    <td><?php echo $bundle->update_at; ?></td>
-                    <td><a href="manage-bundle-form.php?id=<?php echo $bundle->bundleid ?>" class="btn btn-info btn-xs">Update</a></td> -->
+                    <td><?php echo $billinginstall->billingid ?></td>
+                    <td><?php echo $billinginstall->fname." ".$billinginstall->mname." ".$billinginstall->lname; ?></td>
+                    <td><?php echo $billinginstall->getDate(); ?></td>
+                    <td><?php echo $billinginstall->description ?></td>
+                    <td><?php echo $billinginstall->name; ?></td>
+                    <td><?php echo $billinginstall->create_at; ?></td>
+                    <td>
+                        <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
+                        <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
+                        <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>" class="btn btn-info btn-xs">Done</a>
+                    </td>
+                    </tr>
+
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+
+                </div>
+
+                <div class="col-lg-12">
+                <h3>Monthly Due Billing</h3>
+                 <hr>
+                <table class="table table-hover" id="billingmonthlydues">
+                    <thead>
+                        <tr>
+                            <th>Reference ID</th>
+                            <th>Client</th>
+                            <th>Scheduled</th>
+                            <th>Address</th>
+                            <th>Product</th>
+                            <th>Date Create</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($billingmonthlydues as $billingmonthlydue): ?>
+
+                    <tr>
+                    <td><?php echo $billingmonthlydue->billingid ?></td>
+                    <td><?php echo $billingmonthlydue->fname." ".$billingmonthlydue->mname." ".$billingmonthlydue->lname; ?></td>
+                    <td><?php echo $billingmonthlydue->getDate(); ?></td>
+                    <td><?php echo $billingmonthlydue->description ?></td>
+                    <td><?php echo $billingmonthlydue->name; ?></td>
+                    <td><?php echo $billingmonthlydue->create_at; ?></td>
+                    <td>
+                        <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
+                        <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
+                        <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>" class="btn btn-info btn-xs">Done</a>
+                    </td>
                     </tr>
 
                     <?php endforeach ?>
@@ -154,7 +192,8 @@ include '../core/init.php';
 
     <script type="text/javascript">
     $(document).ready( function () {
-        $('#myTable').dataTable();
+        $('#billinginstalls').dataTable();
+        $('#billingmonthlydues').dataTable();
     } );
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css"></script>

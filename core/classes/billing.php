@@ -19,6 +19,11 @@ class Billing {
 	public $create_at;
 	public $update_at;
 
+
+	//1 installation
+	//2 monthly
+	//3 payed
+	//4 added payment
 	public function __construct($data = null)
     {
         //echo 'The class "', __CLASS__, '" was created.<br />';
@@ -27,6 +32,16 @@ class Billing {
     public function __destruct()	
     {
         //echo 'The class "', __CLASS__, '" was destroyed.<br />';
+    }
+
+
+    public function getDate()
+    {
+    	$dateofyear = $this->duedate;
+    	$year 		= $this->dueyear; 
+   		$newDate = DateTime::createFromFormat('z Y', $dateofyear . ' ' . $year);
+		$newDate = $newDate->format('d - m - Y'); // for example
+  		return $newDate;
     }
 
 }
