@@ -145,7 +145,7 @@ $admin = $admincon->adminData($adminid);
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
-                        <input type="submit" name="submit" value="Log in" class="login100-form-btn">
+                        <input type="submit" name="submit" value="Submit" class="login100-form-btn">
                     </div>
                 </div>
             </form>
