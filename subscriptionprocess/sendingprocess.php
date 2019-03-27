@@ -62,5 +62,5 @@
 	else{
 	$hearder = "Location: ../subscription-service.php?err=1";
 	}
-	header($hearder);
+	header($header);
 ?>
