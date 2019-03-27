@@ -28,8 +28,13 @@
 	// print_r($bundle);
 	// echo "<br><br>";
 
-	if ($verify) {
+	if (!$verify) {
 
+	header('Location: ../subscription-service.php?err=1');
+
+	}
+
+	
 	$subscription = new Subscription();
 	$subscription->userid = $id;
 	$subscription->username = $client->fname ." ". $client->mname ." ". $client->lname;
@@ -55,8 +60,11 @@
 	// $smscon->send($sms);
 	$smscon->save($sms);
 
+	header('Location: ../subscription-info.php');
 	
-	}
 
-	header('Location: ../subscription-service.php?err=1');
+
+	
+	
+
 ?>
