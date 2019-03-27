@@ -153,13 +153,18 @@
  	<h4 class="block-title"> Information</h4>
 
 		<input type="hidden"  name="id" value="<?php echo $client->clientid; ?>"><br>
-
+    <label>First Name</label>
 		<input type="text" name="fname" placeholder="Initial Name" value="<?php echo $client->fname ?>" readonly><br>
+    <label>Middle Name</label>
 		<input  type="text" name="mname" placeholder="Middle Name" value="<?php echo $client->mname ?>" readonly><br>
+    <label>Last Name</label>
 		<input type="text" name="lname" placeholder="Last Name" value="<?php echo $client->lname ?>" readonly><br>
-		<input type="text" name="contact" placeholder="Contact Number" value="<?php echo $client->contact ?>" readonly><br>
+		<label>Contact Number</label>
+    <input type="text" name="contact" placeholder="Contact Number" value="<?php echo $client->contact ?>" readonly><br>
+    <label>Sex</label>
 		<input type="text" name="gender" placeholder="Gender" value="<?php echo $client->gender ?>" readonly><br>
-		<input type="text" name="datebirth" placeholder="Date of Birth" value="<?php echo $client->datebirth ?>" readonly><br>
+		<label>Birth Date</label>
+    <input type="text" name="datebirth" placeholder="Date of Birth" value="<?php echo $client->datebirth ?>" readonly><br>
 
 		<a href=" <?php print $subscriptionSend ?>">Update Profile</a>
 	</div>
@@ -167,6 +172,7 @@
 	<div class="block block-border-bottom">
 	<h4 class="block-title">Email Info</h4>
 	<form method="post" action="update-email.php">
+  <label>Email Address</label>
 	<input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
 	<input type="text" name="email" value=" <?php echo $client->email ?> " readonly><br>
 <!-- 	<input type="submit" name="submit" value="update"> -->
@@ -177,6 +183,7 @@
 	<div class="block block-border-bottom">
 	<h4 class="block-title">Security Info</h4>
 	<form method="post" action="update-password.php">
+  <label>Password</label>
 	<input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
 	<input type="password" name="password" value=" <?php echo $client->password ?> "><br>
 	<input type="submit" name="submit" value="update">
