@@ -68,7 +68,7 @@
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
+  <div id="background-wrapper" class="buildings navbar-fixed-top" data-stellar-background-ratio="0.1">
 
     <!-- ======== @Region: #navigation ======== -->
     <div id="navigation" class="wrapper">
@@ -139,7 +139,7 @@
     </div> 
   </div>
 
-
+    <br><br><br><br><br><br><br>
     <!--  1st end get -->
 
       <div id="content">

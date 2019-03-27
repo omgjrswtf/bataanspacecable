@@ -93,7 +93,7 @@ switch ($err) {
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
+  <div id="background-wrapper" class="buildings navbar-fixed-top" data-stellar-background-ratio="0.1">
 
     <!-- ======== @Region: #navigation ======== -->
     <div id="navigation" class="wrapper">
@@ -164,6 +164,9 @@ switch ($err) {
     </div> 
 </div>
 
+
+    <br><br><br><br><br><br><br>
+
     <!--  1st end get -->
 
     <!-- middleger -->
@@ -171,22 +174,20 @@ switch ($err) {
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2 class="block-title">
-            Update Password
-          </h2>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
-          sit amet mauris.</p>
+        <h2>Update Password</h2>
 
 
 	<form method="post" action="includes/update-profile-info.php">
 		
 	<input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
 	<input type="hidden" name="action" value="3">
-
-	<input type="password" name="passold" placeholder="our recent password">
-	<input type="password" name="passnew" placeholder="new password">
-	<input type="password" name="passconfirm" placeholder="confirm password">
-
+  <label>Old Password</label><br>
+	<input type="password" name="passold" placeholder="Old password"><br>
+  <br><label>New Password</label><br>
+	<input type="password" name="passnew" placeholder="New password"><br>
+  <br><label>Confirm Password</label><br>
+	<input type="password" name="passconfirm" placeholder="Confirm password"><br>
+  <br><br>
 	<input type="submit" name="submit" value="update">
 	</form>
 

@@ -67,7 +67,7 @@
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
+  <div id="background-wrapper" class="buildings navbar-fixed-top" data-stellar-background-ratio="0.1">
 
     <!-- ======== @Region: #navigation ======== -->
     <div id="navigation" class="wrapper">
@@ -138,6 +138,7 @@
     </div> 
 </div>
 
+    <br><br><br><br><br><br><br>
     <!--  1st end get -->
 
     <!-- middleger -->
@@ -145,7 +146,7 @@
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2 class="block-title">Personal Information</h2>
+        <h2>Personal Information</h2>
 
 
 
@@ -187,7 +188,7 @@
 	<form method="post" action="update-password.php">
   <label>Password</label>
 	<input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
-	<input type="password" name="password" value=" <?php echo $client->password ?> "><br>
+	<input type="password" name="password" value=" <?php echo $client->password ?> "><br><br>
 	<input type="submit" name="submit" value="update">
 	
 	</form>
