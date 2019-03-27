@@ -74,6 +74,26 @@ class Client {
 
     }
 
+    public function getStatus()
+    {
+    	$status = $this->status;
+
+    	switch ($status) {
+    		case '1':
+    			$var = "Active";
+			break;
+			case '2':
+    			$var = "Inactive";
+			break;
+    		default:
+    			$var = "Undefined";
+			break;
+    	}
+
+    	return $var;
+
+    }
+
 }
 
 ?>
