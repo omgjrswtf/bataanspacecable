@@ -47,6 +47,27 @@ class Client {
 
     }
 
+    public function getSex()
+    {
+    	$gender = $this->gender;
+
+	  switch ($gender) {
+		  	case 'M':
+		  		$var = "Male";
+		  	break;
+		  	case 'F':
+		  		$var = "Female";
+		  	break;
+		  	
+		  	default:
+		  		$var = "undefined";
+	  		break;
+
+  	}	
+  			return $var;
+
+    }
+
     public function getActivity()
     {
     	$activity = $this->activity;

@@ -140,9 +140,7 @@
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2 >Personal Information</h2>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
-          sit amet mauris.</p>
+        <h2 class="block-title">Personal Information</h2>
 
 
 
@@ -150,7 +148,6 @@
 
 
  	<div class="block block-border-bottom">
- 	<h4 class="block-title"> Information</h4>
 
 		<input type="hidden"  name="id" value="<?php echo $client->clientid; ?>"><br>
     <label>First Name</label><br>
@@ -162,9 +159,9 @@
 		<br><label>Contact Number</label><br>
     <input type="text" name="contact" placeholder="Contact Number" value="<?php echo $client->contact ?>" readonly><br>
     <br><label>Sex</label><br>
-		<input type="text" name="gender" placeholder="Gender" value="<?php echo $client->gender ?>" readonly><br>
+		<input type="text" name="gender" placeholder="Gender" value="<?php echo $client->getSex(); ?>" readonly><br>
 		<br><label>Birth Date</label><br>
-    <input type="date" name="datebirth" placeholder="Date of Birth" value="<?php echo $client->datebirth ?>" readonly><br>
+    <input type="text" name="datebirth" placeholder="Birth Date" value="<?php echo $client->datebirth ?>" readonly><br>
     <br>
 		<a href=" <?php print $subscriptionSend ?>">Update Profile</a>
 	</div>
