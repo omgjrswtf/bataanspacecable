@@ -29,7 +29,7 @@ class VerifyscheduleController{
 				vsch_updateat as update_at
 				
 			FROM tbl_verifyschedule 
-			WHERE vsch_userid = :vsch_userid and vsch_stage in (1,2,3)
+			WHERE vsch_userid = :vsch_userid
 		");
 		$stmt->bindParam(':vsch_userid', $verify_id);
 		$stmt->execute();
