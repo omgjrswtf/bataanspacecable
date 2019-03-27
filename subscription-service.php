@@ -148,10 +148,8 @@ if (isset($_GET['err'])) {
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
         <h2 class="block-title">
-            Services and Products
+            Services and Products Available
           </h2>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
-          sit amet mauris.</p>
 		<?php echo $msg; ?>
 
           <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
@@ -159,12 +157,12 @@ if (isset($_GET['err'])) {
             <a href="subscription-cable.php" class="overlay-wrapper">
                 <img src="img/showcase/project1.png" alt="Project 1 image" class="img-responsive underlay">
                 <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Cable and Digistal</span> </span>
+                  <span class="overlay-content"> <span class="h4">Cable and Digital</span> </span>
                 </span>
               </a>
             <div class="item-details bg-noise">
               <h4 class="item-title">
-                  <a href="subscription-cable.php">Cable and Digistal</a>
+                  <a href="subscription-cable.php">Cable and Digital</a>
                 </h4>
               <a href="subscription-cable.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
             </div>

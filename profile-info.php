@@ -84,6 +84,7 @@
                     Flexor
                   </h1>
               </a>
+              <a href="home.php"><button style="color: black;">Back</button></a>
               <div class="navbar-slogan"> 
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
               </div>
@@ -123,6 +124,14 @@
 
             <li>
                 <a href="message-info.php">Message</a>
+            </li>
+
+            <li>
+                <a href="home.php">Back</a>
+            </li>
+
+            <li>
+                <a href="#">Log Out</a>
             </li>
 
             </ul>

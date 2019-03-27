@@ -127,6 +127,10 @@
             </li>
 
             <li>
+                <a href="profile-info.php">Back</a>
+            </li>
+
+            <li>
                 <a href="#">Log Out</a>
             </li>
 

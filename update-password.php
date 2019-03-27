@@ -40,7 +40,7 @@ switch ($err) {
 
 <head>
   <meta charset="utf-8">
-  <title>Flexor Bootstrap Theme</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -149,6 +149,14 @@ switch ($err) {
 
             <li>
                 <a href="message-info.php">Message</a>
+            </li>
+
+            <li>
+                <a href="home.php">Back</a>
+            </li>
+
+            <li>
+                <a href="#">Log Out</a>
             </li>
 
             </ul>
