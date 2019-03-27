@@ -80,7 +80,7 @@ switch ($action) {
 
 	case 'done':
 	$subscription = $subscriptioncon->subscriptionData($id);
-	$subscription->status = 5;
+	$subscription->status = 4;
 	// print_r($subscription);
 	$subscriptioncon->save($subscription);
 
@@ -103,6 +103,36 @@ switch ($action) {
 	break;
 	case 'update':
 		#update
+	break;
+
+	case 'atupdate':
+		#address update;
+		$schedate = $_POST['date'];
+		$year = date("Y", strtotime($schedate));
+		$yeardate = date("z", strtotime($schedate));
+		echo "$yeardate";
+
+		$subscription = $subscriptioncon->subscriptionData($id);
+		$subscription->dueyear = $year;
+		$subscription->duedate = $yeardate;
+		print_r($subscription);
+		$subscriptioncon->save($subscription);
+
+		$billing = $billingcon->billingschedData($id);
+		$billing->dueyear  = $year;
+		$billing->duedate  = $yeardate - 1;
+		print_r($billing);
+		$billingcon->save($billing);
+
+		$sms =  new Sms();
+		$sms->userid 			= $subscription->userid;
+		$sms->message 			= "New update schedule".$schedate. "Please expect on this Date. Thank You";
+		$sms->contact 			= $subscription->usercontact;
+		$sms->transactionid 	= 0;
+		$sms->status 			= 1;
+		// $smscon->send($sms);
+		$smscon->save($sms);
+		
 	break;
 
 	case 'ongoing':
@@ -129,7 +159,7 @@ switch ($action) {
 	
 	default:
 		# code...
-		break;
+	break;
 }
 header('Location: manage-subscriptions.php');
 

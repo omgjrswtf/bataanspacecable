@@ -6,6 +6,8 @@ $subsdays = $subscriptioncon->findAllSubsDay();
 $subsweeks = $subscriptioncon->findAllSubsWeek();
 $subsmonths = $subscriptioncon->findAllSubsMonth();
 $subsyears = $subscriptioncon->findAllSubsYear();
+
+$oversub = $subscriptioncon->findOverSub();
 ?>
 
 
@@ -44,6 +46,10 @@ $subsyears = $subscriptioncon->findAllSubsYear();
     <link rel="stylesheet" type="text/css" href="../assets/vendor/animsition/css/animsition.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/vendor/select2/select2.min.css">  
     <link rel="stylesheet" type="text/css" href="../assets/vendor/daterangepicker/daterangepicker.css">
+
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -71,7 +77,67 @@ $subsyears = $subscriptioncon->findAllSubsYear();
 
                 </div>
                 <!-- /.col-lg-12 -->
-                <div class="col-lg-12">
+
+            <div class="col-lg-12">
+                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                <h3>Subcription Install and Uninstall per Day</h3>
+                <table class="table table-hover" id="oversub">
+                    <thead>
+                        <tr>
+                            <th>Install</th>
+                            <th>Percentage Installed %</th>
+                            <th>Uninstall</th>
+                            <th>Percentage Uninstall %</th>
+                            <th>All</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                    <td><?php echo $oversub->installed ?></td>
+                    <td><?php echo $oversub->percentinstalled ?></td>
+                    <td><?php echo $oversub->unintalled ?></td>
+                    <td><?php echo $oversub->percentunintalled ?></td>
+                    <td><?php echo $oversub->all ?></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                <script type="text/javascript">
+
+                    Highcharts.chart('container', {
+                        data: {
+                            table: 'oversub'
+                        },
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Data extracted from Over Install and Uninstall Subscription Data '
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: 'Raw Data'
+                            }
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                    
+                </script>
+
+                <br>
+                <br>            
+            </div>
+
+
+            <div class="col-lg-12">
                 <h3>Subcription Install and Uninstall per Day</h3>
                 <table class="table table-hover">
                     <thead>

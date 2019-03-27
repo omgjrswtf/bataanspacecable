@@ -106,6 +106,183 @@ class AreaController{
 		return $results;
 	}
 
+
+	public function findAreasPerClient(){
+		$stmt = $this->pdo->prepare("
+			SELECT 
+				COUNT(`ar_barangay`) AS `totbarangay`,
+				ar_barangay AS barangay,
+				ar_municipality AS municipality ,
+				ar_province AS province
+
+
+				FROM
+				  tbl_client
+				  INNER JOIN tbl_clientlocation
+				    ON (client_id = cl_userid)
+				  INNER JOIN ref_areas
+				    ON (cl_barangay = ar_barangay)
+
+				GROUP BY ar_province, ar_municipality , ar_barangay    
+		");
+		$stmt->execute();
+
+		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Area');
+		$results = $stmt->fetchAll();
+		
+		$this->json = json_encode($results);
+		$this->data = json_decode($this->json);
+
+		return $results;
+	}
+
+	public function findSubscriberAreaDay($barangay,$municipality){
+		$stmt = $this->pdo->prepare("
+			SELECT
+				COUNT(ar_barangay) AS total,
+				ar_barangay AS barangay,
+				ar_municipality AS municipality ,
+				ar_province AS province,
+				MAKEDATE(sb_dueyear,sb_duedate)  AS `date`
+
+			FROM
+				tbl_subcription
+			INNER JOIN tbl_client
+			ON (sb_userid = client_id)
+			INNER JOIN tbl_clientlocation
+			ON (sb_userid = cl_userid)
+			INNER JOIN ref_areas
+			ON (cl_barangay = ar_barangay)
+
+			WHERE ar_barangay = :ar_barangay and ar_municipality = :ar_municipality
+			GROUP BY ar_province, ar_municipality , ar_barangay ,
+			sb_types,DAY(MAKEDATE(sb_dueyear,sb_duedate)),MAKEDATE(sb_dueyear,sb_duedate)
+			ORDER BY MAKEDATE(sb_dueyear,sb_duedate) DESC;
+  
+		");
+		$stmt->bindParam(':ar_barangay', $barangay);
+		$stmt->bindParam(':ar_municipality', $municipality);
+		$stmt->execute();
+
+		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Area');
+		$results = $stmt->fetchAll();
+		
+		$this->json = json_encode($results);
+		$this->data = json_decode($this->json);
+
+		return $results;
+	}
+
+	public function findSubscriberAreaWeek($barangay,$municipality){
+		$stmt = $this->pdo->prepare("
+			SELECT 
+			COUNT(ar_barangay) AS total,
+			ar_barangay AS barangay,
+			ar_municipality AS municipality ,
+			ar_province AS province,
+			WEEK(MAKEDATE(sb_dueyear,sb_duedate))+1 AS `week`,
+			MONTHNAME(MAKEDATE(sb_dueyear,sb_duedate)) AS `month`,
+			DATE_FORMAT(MAKEDATE(sb_dueyear,sb_duedate),'%Y %m')  AS `date`
+		FROM
+		  tbl_subcription
+		  INNER JOIN tbl_client
+		    ON (sb_userid = client_id)
+		  INNER JOIN tbl_clientlocation
+		    ON (sb_userid = cl_userid)
+		  INNER JOIN ref_areas
+		    ON (cl_barangay = ar_barangay)
+		WHERE ar_barangay = :ar_barangay and ar_municipality = :ar_municipality
+		GROUP BY ar_province, ar_municipality , ar_barangay ,WEEK(MAKEDATE(sb_dueyear,sb_duedate))+1 ,MONTHNAME(MAKEDATE(sb_dueyear,sb_duedate)), YEAR(MAKEDATE(sb_dueyear,sb_duedate)),DATE_FORMAT(MAKEDATE(sb_dueyear,sb_duedate),'%Y %m')
+		ORDER BY  `date` DESC,WEEK DESC;
+
+  
+		");
+		$stmt->bindParam(':ar_barangay', $barangay);
+		$stmt->bindParam(':ar_municipality', $municipality);
+		$stmt->execute();
+
+		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Area');
+		$results = $stmt->fetchAll();
+		
+		$this->json = json_encode($results);
+		$this->data = json_decode($this->json);
+
+		return $results;
+	}
+
+	public function findSubscriberAreaMonth($barangay,$municipality){
+		$stmt = $this->pdo->prepare("
+			SELECT 
+				COUNT(ar_barangay) AS total,
+				ar_barangay AS barangay,
+				ar_municipality AS municipality ,
+				ar_province AS province,
+				MONTHNAME(MAKEDATE(sb_dueyear,sb_duedate)) AS `month`,
+				DATE_FORMAT(MAKEDATE(sb_dueyear,sb_duedate),'%Y %m')  AS `date`
+
+			FROM
+			  tbl_subcription
+			  INNER JOIN tbl_client
+			    ON (sb_userid = client_id)
+			  INNER JOIN tbl_clientlocation
+			    ON (sb_userid = cl_userid)
+			  INNER JOIN ref_areas
+			    ON (cl_barangay = ar_barangay)
+		    WHERE ar_barangay = :ar_barangay and ar_municipality = :ar_municipality
+			GROUP BY ar_province, ar_municipality , ar_barangay ,MONTHNAME(MAKEDATE(sb_dueyear,sb_duedate)), YEAR(MAKEDATE(sb_dueyear,sb_duedate)),DATE_FORMAT(MAKEDATE(sb_dueyear,sb_duedate),'%Y %m')
+			ORDER BY `date` DESC
+
+  
+		");
+		$stmt->bindParam(':ar_barangay', $barangay);
+		$stmt->bindParam(':ar_municipality', $municipality);
+		$stmt->execute();
+
+		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Area');
+		$results = $stmt->fetchAll();
+		
+		$this->json = json_encode($results);
+		$this->data = json_decode($this->json);
+
+		return $results;
+	}
+
+
+	public function findSubscriberAreaYear($barangay,$municipality){
+		$stmt = $this->pdo->prepare("
+			SELECT 
+				COUNT(ar_barangay) AS total,
+				ar_barangay AS barangay,
+				ar_municipality AS municipality ,
+				ar_province AS province,
+				YEAR(MAKEDATE(sb_dueyear,sb_duedate)) AS `year`
+
+			FROM
+			  tbl_subcription
+			  INNER JOIN tbl_client
+			    ON (sb_userid = client_id)
+			  INNER JOIN tbl_clientlocation
+			    ON (sb_userid = cl_userid)
+			  INNER JOIN ref_areas
+			    ON (cl_barangay = ar_barangay)
+			WHERE ar_barangay = :ar_barangay and ar_municipality = :ar_municipality
+			GROUP BY ar_province, ar_municipality , ar_barangay ,`year`
+			ORDER BY `year` DESC
+
+		");
+		$stmt->bindParam(':ar_barangay', $barangay);
+		$stmt->bindParam(':ar_municipality', $municipality);
+		$stmt->execute();
+
+		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Area');
+		$results = $stmt->fetchAll();
+		
+		$this->json = json_encode($results);
+		$this->data = json_decode($this->json);
+
+		return $results;
+	}
+
 	public function save(Area $area){
 		$created_at = date('Y-m-d H:i:s');
 	try {

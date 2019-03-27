@@ -128,22 +128,22 @@ class AdminController{
 				a_middlename AS middlename,
 				a_lastname AS lastname,
 				a_username AS username,
-				a_password AS password,
+				a_password AS 'password',
 				a_address AS address,
 				a_datebirth AS datebirth,
 				a_contact AS contact,
 				a_email AS email,
-				a_role AS role,
-				a_status AS status,
+				a_role AS 'role',
+				a_status AS 'status',
 				a_createat AS create_at,
 				a_updateat AS update_at
 			FROM
 			  tbl_admin
 			INNER JOIN tbl_billing
 			    ON (admin_id = bl_adminid)
-			WHERE a_role = 1 AND bl_dueyear = :bl_dueyear AND bl_duedate = :bl_duedate and bl_subscriptionid != :bl_subscriptionid
+			WHERE a_role = 1 AND bl_subscriptionid != :bl_subscriptionid
 			GROUP BY bl_adminid
-			HAVING COUNT(bl_adminid) < 4
+			HAVING COUNT(bl_adminid) < 4 AND COUNT(bl_dueyear = :bl_dueyear) < 4 AND COUNT(bl_dueyear = :bl_duedate) < 4 
 		");
 		$stmt->bindParam(':bl_dueyear', $year);
 		$stmt->bindParam(':bl_duedate', $date);

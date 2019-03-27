@@ -1,8 +1,14 @@
 <?php 
 
-include '../core/init.php';
+require_once '../core/init.php';
+    if (!$_SESSION) {
+        header('Location: index.php');
+    }
+    $admin_id = $_SESSION['admin_id'];
 
-$billinginstalls = $billingcon->findbillinginstallation();
+    $admin = $admincon->adminData($admin_id);
+
+$billinginstalls = $billingcon->findbillinginstallationPerAdmin($admin_id);
 $billingmonthlydues = $billingcon->findbillingmonthly();
 
 ?>
@@ -126,7 +132,7 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
                     <td><?php echo $billinginstall->create_at; ?></td>
                     <td>
                         <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
-                        <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
+                        <a href="manage-billing-form-info.php?id=<?php echo $billinginstall->billingid ?>" class="btn btn-info btn-xs">Info</a>
                         <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>" class="btn btn-info btn-xs">Done</a>
                     </td>
                     </tr>

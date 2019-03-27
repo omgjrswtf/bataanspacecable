@@ -4,12 +4,15 @@ include '../core/init.php';
 
 
 
-$code = $_GET['code'];
+$barangay     = $_GET['barangay'];
+$municipality = $_GET['municipality'];
 
-    $bundledays = $subscriptioncon->findSubscriberBundleDay($code);
-    $bundleweeks = $subscriptioncon->findSubscriberBundleWeek($code);
-    $bundlemonth = $subscriptioncon->findSubscriberBundleMonth($code);
-    $bundleyears = $subscriptioncon->findSubscriberBundleYear($code);
+    $areadays = $areacon->findSubscriberAreaDay($barangay,$municipality);
+    $areaweeks = $areacon->findSubscriberAreaWeek($barangay,$municipality);
+    $areamonths = $areacon->findSubscriberAreaMonth($barangay,$municipality);
+    $areayears = $areacon->findSubscriberAreaYear($barangay,$municipality);
+
+
 
 ?>
 
@@ -73,10 +76,10 @@ $code = $_GET['code'];
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Subcription Statical</h1>
+                    <h1 class="page-header">Subcriber per Area Statical</h1>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
-                    <h3>subscribers per bundle per Day</h3>
+                    <h3>Subscribers per area per Day</h3>
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -86,12 +89,12 @@ $code = $_GET['code'];
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($bundledays as $bundleday): ?>
+                        <?php foreach ($areadays as $areaday): ?>
 
                         <tr>
-                        <td><?php echo $bundleday->total ?></td>
-                        <td><?php echo $bundleday->name ?></td>
-                        <td><?php echo $bundleday->date ?></td>
+                        <td><?php echo $areaday->total ?></td>
+                        <td><?php echo $areaday->barangay ." ".$areaday->municipality ?></td>
+                        <td><?php echo $areaday->date ?></td>
                         </tr>
 
                         <?php endforeach ?>
@@ -102,9 +105,9 @@ $code = $_GET['code'];
                     <br>            
                 </div>
 
-                <div class="col-lg-12">
+                    <div class="col-lg-12">
                 <hr>
-                    <h3>subscribers per bundle per Week</h3>
+                    <h3>Subscribers per area per Week</h3>
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -116,14 +119,14 @@ $code = $_GET['code'];
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($bundleweeks as $bundleweek): ?>
+                        <?php foreach ($areaweeks as $areaweek): ?>
 
                         <tr>
-                        <td><?php echo $bundleweek->total ?></td>
-                        <td><?php echo $bundleweek->name ?></td>
-                        <td><?php echo $bundleweek->week ?></td>
-                        <td><?php echo $bundleweek->month ?></td>
-                        <td><?php echo $bundleweek->date ?></td>
+                        <td><?php echo $areaweek->total ?></td>
+                        <td><?php echo $areaweek->barangay ." ".$areaweek->municipality ?></td>
+                        <td><?php echo $areaweek->week ?></td>
+                        <td><?php echo $areaweek->month ?></td>
+                        <td><?php echo $areaweek->date ?></td>
                         </tr>
 
                         <?php endforeach ?>
@@ -136,7 +139,7 @@ $code = $_GET['code'];
 
                 <div class="col-lg-12">
                 <hr>
-                    <h3>subscribers per bundle per Month</h3>
+                    <h3>Subscribers per area per Month</h3>
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -147,13 +150,13 @@ $code = $_GET['code'];
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($bundleweeks as $bundleweek): ?>
+                        <?php foreach ($areamonths as $areamonth): ?>
 
                         <tr>
-                        <td><?php echo $bundleweek->total ?></td>
-                        <td><?php echo $bundleweek->name ?></td>
-                        <td><?php echo $bundleweek->month ?></td>
-                        <td><?php echo $bundleweek->date ?></td>
+                        <td><?php echo $areamonth->total ?></td>
+                        <td><?php echo $areamonth->barangay ." ".$areamonth->municipality ?></td>
+                        <td><?php echo $areamonth->month ?></td>
+                        <td><?php echo $areamonth->date ?></td>
                         </tr>
 
                         <?php endforeach ?>
@@ -166,7 +169,7 @@ $code = $_GET['code'];
 
                 <div class="col-lg-12">
                 <hr>
-                    <h3>subscribers per bundle per Month</h3>
+                    <h3>Subscribers per area per Year</h3>
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -176,17 +179,19 @@ $code = $_GET['code'];
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($bundleyears as $bundleyear): ?>
+                        <?php foreach ($areayears as $areayear): ?>
 
                         <tr>
-                        <td><?php echo $bundleyear->total ?></td>
-                        <td><?php echo $bundleyear->name ?></td>
-                        <td><?php echo $bundleyear->year ?></td>
+                        <td><?php echo $areayear->total ?></td>
+                        <td><?php echo $areayear->barangay ." ".$areayear->municipality ?></td>
+                        <td><?php echo $areayear->year ?></td>
                         </tr>
 
                         <?php endforeach ?>
                         </tbody>
                     </table>
+
+            
 
                     <br>
                     <br>            

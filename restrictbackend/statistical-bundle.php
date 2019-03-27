@@ -3,7 +3,7 @@
 include '../core/init.php';
 
 $bundles = $bundlecon->findBundles();
-
+$overallbundles = $subscriptioncon->OverallBundle();
 
 
 ?>
@@ -45,6 +45,11 @@ $bundles = $bundlecon->findBundles();
     <link rel="stylesheet" type="text/css" href="../assets/vendor/select2/select2.min.css">  
     <link rel="stylesheet" type="text/css" href="../assets/vendor/daterangepicker/daterangepicker.css">
 
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -68,6 +73,70 @@ $bundles = $bundlecon->findBundles();
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Subcription Statical</h1>
+
+                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                <table class="table table-hover" id="overallbundles">
+                    <thead>
+                        <tr>
+                            <th>Installed</th>
+                            <th>Percentage Installed %</th>
+                            <th>Unintalled</th>
+                            <th>Percentage Unintalled %</th>
+                            <th>Subscribe</th>
+                            <th>Revenue</th>
+                            <th>Percentage Revenue %</th>
+                            <th>Lost Revenue</th>
+                            <th>Percentage Lost Revenue %</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+              
+
+                    <tr>
+                    <td><?php echo $overallbundles->installed ?></td>
+                    <td><?php echo $overallbundles->percentinstalled ?></td>
+                    <td><?php echo $overallbundles->unintalled ?></td>
+                    <td><?php echo $overallbundles->percentunintalled ?></td>
+                    <td><?php echo $overallbundles->all ?></td>
+                    <td><?php echo $overallbundles->revenue ?></td>
+                    <td><?php echo $overallbundles->percentrevenue ?></td>
+                    <td><?php echo $overallbundles->lostrevenue ?></td>
+                    <td><?php echo $overallbundles->percentlost ?></td>
+                    <td><?php echo $overallbundles->amount ?></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                <script type="text/javascript">
+
+                    Highcharts.chart('container', {
+                        data: {
+                            table: 'overallbundles'
+                        },
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Data extracted from Over Bundle Data '
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: 'Pesos '
+                            }
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                    
+                </script>
+
 
                 <hr>
            
