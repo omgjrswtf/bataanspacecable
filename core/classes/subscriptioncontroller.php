@@ -81,6 +81,54 @@ class SubscriptionController{
 	    return $results;
 	}
 
+	public function subsBundledata($subscription_id){
+
+		$stmt = $this->pdo->prepare("
+			SELECT 
+				subcription_id AS subcriptionid,
+				sb_userid AS userid,
+				sb_username AS username,
+				sb_usercontact AS usercontact,
+				sb_dueyear AS dueyear,
+				sb_duedate AS duedate,
+				sb_xcoordinates AS xcoor,
+				sb_ycoordinates AS ycoor,
+				sb_types AS 'types',
+				sb_addon AS addon,
+				sb_added AS added,
+				sb_status AS 'status',
+				sb_active AS active,
+				sb_createat AS create_at,
+				sb_updateat AS update_at,
+				bundle_id AS bundleid,
+				b_code AS CODE,
+				b_name AS NAME,
+				b_volume AS volume,
+				b_price AS price,
+				b_status AS STATUS,
+				b_createat AS create_at,
+				b_updateat AS update_at
+				
+			FROM
+			  tbl_subcription
+			  INNER JOIN ref_bundles
+			    ON (sb_types = b_code)
+
+			WHERE subcription_id = :subcription_id 
+		");
+		$stmt->bindParam(':subcription_id', $subscription_id);
+		$stmt->execute();
+
+	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subscription');
+	    $results = $stmt->fetch();
+
+	    $this->json = json_encode($results);
+	    $this->data = json_decode($this->json);
+
+	    return $results;
+	}
+
+
 	public function findAllSchedPending(){
 		$stmt = $this->pdo->prepare("
 			SELECT
@@ -209,6 +257,38 @@ class SubscriptionController{
 		return $results;
 	}
 
+	public function findOverSub(){
+		$stmt = $this->pdo->prepare("
+			SELECT
+				`all` AS `all`,
+				installed AS installed,
+				unintalled AS unintalled,
+				ROUND((`installed`/`all`)*100) AS percentinstalled,
+				ROUND((`unintalled`/`all`)*100) AS percentunintalled
+
+				FROM (
+				SELECT  
+					COUNT(IF(`sb_status` IN (4), `sb_status`, NULL)) AS `installed`,
+					COUNT(IF(`sb_status` IN (6), `sb_status`, NULL)) AS `unintalled`,
+					COUNT(sb_status) AS `all`
+				FROM
+				tbl_subcription
+
+					
+				HAVING COUNT(sb_status)) AS b
+		");
+		$stmt->execute();
+
+	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subscription');
+	    $results = $stmt->fetch();
+
+	    $this->json = json_encode($results);
+	    $this->data = json_decode($this->json);
+
+	    return $results;
+	}
+
+
 	public function findAllSubsDay(){
 		$stmt = $this->pdo->prepare("
 			SELECT  
@@ -308,6 +388,50 @@ class SubscriptionController{
 		$this->data = json_decode($this->json);
 
 		return $results;
+	}
+
+
+	public function OverallBundle(){
+
+		$stmt = $this->pdo->prepare("
+			SELECT
+				installed AS installed,
+				unintalled AS unintalled,
+				`all` AS `all`,
+				ROUND((`installed`/`all`)*100) AS percentinstalled,
+				ROUND((`unintalled`/`all`)*100) AS percentunintalled,
+				revenue AS revenue,
+				lostrevenue AS lostrevenue,
+				amount AS amount,
+				ROUND((revenue/amount)*100) AS percentrevenue,
+				ROUND((lostrevenue/amount)*100) AS percentlost
+
+				FROM(
+				SELECT  
+				COUNT(IF(`sb_status` IN (4), `sb_status`, NULL)) AS `installed`,
+				COUNT(IF(`sb_status` IN (6), `sb_status`, NULL)) AS `unintalled`,
+				COUNT(sb_status) AS `all`,
+				SUM(CASE WHEN `sb_status` IN (4) THEN `b_price` ELSE 0 END) AS revenue,
+				SUM(CASE WHEN `sb_status` IN (6) THEN `b_price` ELSE 0 END) AS lostrevenue,
+				SUM(b_price) AS amount		
+				FROM
+				tbl_subcription
+
+				INNER JOIN ref_bundles
+				    ON (sb_types = b_code)
+
+				HAVING COUNT(b_price)) AS b		
+			
+		");
+		$stmt->execute();
+
+	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subscription');
+	    $results = $stmt->fetch();
+
+	    $this->json = json_encode($results);
+	    $this->data = json_decode($this->json);
+
+	    return $results;
 	}
 
 	public function findSubscriberBundleDay($code){
