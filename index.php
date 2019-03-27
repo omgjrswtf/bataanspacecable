@@ -124,7 +124,7 @@
               <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
               <a class="navbar-brand" href="index.php" title="Home">
                 <h1 class="hidden">
-                    <img src="img/logo.png" alt="Flexor Logo">
+                    <img src="img/cable.png" alt="BSC-Network Logo">
                     BSC-Network
                   </h1>
               </a>
