@@ -55,12 +55,12 @@
 	// $smscon->send($sms);
 	$smscon->save($sms);
 
-	header('Location: ../subscription-info.php');
+	$header = "Location: ../subscription-info.php";
 	
 	}
 
 	else{
-	header('Location: ../subscription-service.php?err=1');
+	$hearder = "Location: ../subscription-service.php?err=1";
 	}
-
+	header()
 ?>
