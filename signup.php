@@ -43,7 +43,7 @@ $error = "";
 
 <head>
   <meta charset="utf-8">
-  <title>Register - Flexor Bootstrap Theme</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -106,7 +106,7 @@ $error = "";
           <a class="navbar-brand center-block" href="index.html" title="Home">
             <h1 class="hidden">
                 <img src="img/logo.png" alt="Flexor Logo">
-                Flexor
+                BSC-Network
               </h1>
           </a>
         </div>

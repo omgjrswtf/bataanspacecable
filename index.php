@@ -125,7 +125,7 @@
               <a class="navbar-brand" href="index.html" title="Home">
                 <h1 class="hidden">
                     <img src="img/logo.png" alt="Flexor Logo">
-                    Flexor
+                    BSC-Network
                   </h1>
               </a>
               <div class="navbar-slogan">
