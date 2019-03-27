@@ -58,7 +58,7 @@ class VerifyController{
 				ver_updateat as update_at
 				
 			FROM tbl_veriyrequirement 
-			WHERE ver_userid = :ver_userid and ver_stage = 3
+			WHERE ver_userid = :ver_userid and ver_stage = 6
 		");
 		$stmt->bindParam(':ver_userid', $verify_id);
 		$stmt->execute();
