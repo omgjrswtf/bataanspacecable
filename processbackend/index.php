@@ -63,7 +63,7 @@
 			$username = $admincon->checkInput($username);
 			$password = $admincon->checkInput($password);
 
-			$admin = $admincon->login($username, $password);
+			$admin = $admincon->loginadmin($username, $password);
 
 			if($admin){
 				$_SESSION['admin_id'] = $admin->adminid;

@@ -43,6 +43,30 @@ class Billing {
 		$newDate = $newDate->format('d - m - Y'); // for example
   		return $newDate;
     }
+    public function getStatus()
+    {
+    	$status = $this->active;
+    	switch ($status) {
+    		case '1':
+    			$var = "Under Installation Process";
+			break;
+			case '2':
+				$var = "Monthly Payment Process";
+			break;
+			case '3':
+				$var = "Payed";
+			break;
+			case '4':
+				$var = "Added Payment";
+			break;
+    		
+    		
+    		default:
+    			$var = "undefined";
+    		break;
+    	}
+    	return $var;
+    }
 
 }
 
