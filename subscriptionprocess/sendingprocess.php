@@ -43,9 +43,9 @@
 	$subscription->added = $addedvalue;
 	$subscription->status = 1;
 	$subscription->active = 1;
-	$subscriptioncon->save($subscription);
+	// $subscriptioncon->save($subscription);
 
-
+	print_r($subscription);
 	$sms =  new Sms();
 	$sms->userid 			= $id;
 	$sms->message 			= "Your schedule of your subscription installing was already pending to the system. Thank You";
@@ -55,12 +55,12 @@
 	// $smscon->send($sms);
 	$smscon->save($sms);
 
-	header('Location: ../subscription-info.php');
+	// header('Location: ../subscription-info.php');
 	
 	}
 
 	else{
-	header('Location: ../subscription-service.php?err=1');
+	// header('Location: ../subscription-service.php?err=1');
 	}
 
 ?>
