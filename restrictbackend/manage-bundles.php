@@ -94,11 +94,39 @@ $bundles = $bundlecon->findBundles();
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Bundle</h1>
-                    
+                <h1 class="page-header">Bundle</h1>
+                    <?php 
+                        $err = '';
+
+                        if (isset($_GET['err'])) {
+                           $err = $_GET['err'];
+                        }
+                         
+                      
+                        switch ($err) {
+                            case '1':
+                                $msg = "Insert new date was error";
+                            break;
+                            case '2':
+                                $msg = "Data was updated";
+                            break;
+                            case '3':
+                                $msg = "New Bundle was added";
+                            break;
+                            
+                            default:
+                                $mgs = "";
+                            break;
+                        }
+                    ?>
                 <a href="manage-bundle-form.php" class="btn btn-info" role="button" style="float: right;">
                 <i class="glyphicon glyphicon-user"></i> New Bundle
                 </a>
+                    <?php 
+                    if (!empty($msg)) {
+                        echo "<i><b>Notice: </b></i> ".$msg;
+                    }
+                    ?>
 
                 </div>
                 <!-- /.col-lg-12 -->

@@ -3,6 +3,19 @@
 include '../core/init.php';
 
 $areas = $areacon->findAreas();
+$err = $_GET['err'];
+switch ($err) {
+    case '2':
+        $msg = "Succefully Added";
+    break;
+    case '3':
+        $msg = "Succefully Updated";
+    break;
+    
+    default:
+        $msg = "Undefine Update";
+    break;
+}
 
 ?>
 
@@ -95,6 +108,8 @@ $areas = $areacon->findAreas();
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Area</h1>
+
+                    <i><b>Notice: </b></i> <?php echo " $msg"; ?>
                     
                 <a href="manage-area-form.php" class="btn btn-info" role="button" style="float: right;">
                 <i class="glyphicon glyphicon-user"></i> New Area

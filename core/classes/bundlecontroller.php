@@ -39,6 +39,62 @@ class BundleController{
 	    return $results;
 	}
 
+	public function getSame($name){
+
+		$stmt = $this->pdo->prepare("
+			SELECT
+				bundle_id as bundleid,
+				b_code as code,
+				b_name as name,
+				b_volume as volume,
+				b_price as price,
+				b_status as status,
+				b_createat as create_at,
+				b_updateat as update_at
+				
+			FROM ref_bundles 
+			WHERE b_name = :b_name 
+		");
+		$stmt->bindParam(':b_name', $name);
+		$stmt->execute();
+
+	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Bundle');
+	    $results = $stmt->fetch();
+
+	    $this->json = json_encode($results);
+	    $this->data = json_decode($this->json);
+
+	    return $results;
+	}
+
+	public function lastbundle(){
+  
+		$stmt = $this->pdo->prepare("
+			SELECT
+				bundle_id AS bundleid,
+				b_code AS 'code',
+				b_name AS 'name',
+				b_volume AS 'volume',
+				b_price AS price,
+				b_status AS 'status',
+				b_createat AS create_at,
+				b_updateat AS update_at
+
+			FROM ref_bundles 
+			ORDER BY bundle_id DESC
+			LIMIT 1
+		");
+		$stmt->execute();
+
+	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Bundle');
+	    $results = $stmt->fetch();
+
+	    $this->json = json_encode($results);
+	    $this->data = json_decode($this->json);
+
+	    return $results;
+	}
+
 	public function bundleCode($bundle_code){
   
 		$stmt = $this->pdo->prepare("
@@ -94,13 +150,14 @@ class BundleController{
 	public function save(Bundle $bundle){
 		$created_at = date('Y-m-d H:i:s');
 	try {
+
 	if (isset($bundle->bundleid)) {
 		return $this->update($bundle);
 	}
 
 		$stmt = $this->pdo->prepare("
 		INSERT INTO `ref_bundles` (
-			`b_code`
+			`b_code`,
 			`b_name`,
 			`b_volume`,
 			`b_price`,
