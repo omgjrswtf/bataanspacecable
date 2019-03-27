@@ -156,15 +156,15 @@
 
 <form method="post" action="signup-action.php">
   <input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
-  
+  <label>First Name</label><br>
   <input type="text" name="fname" placeholder="Initial Name"><br>
-  
+  <br><label>Middle Name</label><br>
   <input type="text" name="mname" placeholder="Middle Name"><br>
   <br><label>Last Name</label><br>
   <input type="text" name="lname" placeholder="Last Name"><br>
   <br><label>Contact Number</label><br>
   <input type="text" name="contact" placeholder="Contact Number"><br>
-  
+  <br><label>Sex</label><br>
   <select name="gender">
     <option selected></option>
     <option value="M"> Male</option>
