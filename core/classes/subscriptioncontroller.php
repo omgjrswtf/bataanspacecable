@@ -563,7 +563,7 @@ class SubscriptionController{
 
 	public function save(Subscription $subscription){
 		$created_at = date('Y-m-d H:i:s');
-		// print_r($subscription);
+		
 	try {
 	if (isset($subscription->subcriptionid)) {
 		return $this->update($subscription);
@@ -627,7 +627,7 @@ class SubscriptionController{
 
 	public function update(Subscription $subscription)
 	{
-		print_r($subscription);
+
 	try {
 	$update_at = date('Y-m-d H:i:s');
 	$stmt = $this->pdo->prepare("
