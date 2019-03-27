@@ -54,7 +54,7 @@ if ($verify) {
 
 <head>
   <meta charset="utf-8">
-  <title>Home</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -187,7 +187,7 @@ if ($verify) {
               <div class="row">
                 <div class="col-md-6 col-md-push-6 item-caption">
                   <h2 class="h1 text-weight-light">
-                      Welcome to <span class="text-primary">Flexor</span>
+                      Welcome to <span class="text-primary">BSC-Network</span>
                     </h2>
                   <h4>
                       Super flexible responsive theme with a modest design touch.
@@ -205,7 +205,7 @@ if ($verify) {
               <div class="row">
                 <div class="col-md-6 text-right-md item-caption">
                   <h2 class="h1 text-weight-light">
-                      <span class="text-primary">Flexor</span> Bootstrap Theme
+                      <span class="text-primary">Bataan Space Cable Network</span> 
                     </h2>
                   <h4>
                       High quality, responsive theme!
