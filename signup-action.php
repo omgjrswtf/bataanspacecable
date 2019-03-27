@@ -25,7 +25,7 @@ if (!$client) {
 	$client->activity = 0;
 
 	$clientcon->saveonce($client);
-	header('Location: index.php');
+	header('Location: login.php');
 }
 
 
