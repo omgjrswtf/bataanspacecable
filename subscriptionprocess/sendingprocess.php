@@ -43,7 +43,7 @@
 	$subscription->added = $addedvalue;
 	$subscription->status = 1;
 	$subscription->active = 1;
-	// $subscriptioncon->save($subscription);
+	$subscriptioncon->save($subscription);
 
 	print_r($subscription);
 	$sms =  new Sms();
