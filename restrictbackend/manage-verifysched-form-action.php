@@ -76,7 +76,7 @@ switch ($action) {
 		
 		// echo "<br><br>";
 
-		$verifyschedule->stage = 4;
+		$verifyschedule->stage = 6;
 		$verifyschedulecon->save($verifyschedule);
 		// print_r($verifyschedule);
 

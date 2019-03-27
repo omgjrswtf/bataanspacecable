@@ -234,6 +234,26 @@ require_once 'core/init.php';
     <p>Please visit the site on the schedule date <?php echo $verifyschedule->getDateFromDay() ?></p>
     </div>
     <?php endif ?>
+
+
+    <?php if (!empty($verify->stage) and $verify->stage == 6): ?>
+    <div class="block block-border-bottom">
+    <h5><a href="#">Verification Level One</a></h5>
+        <p>Your location is updated!</p>
+
+    </div>
+    <div class="block block-border-bottom">
+    <h5><a href="#">Verification Level Two</a></h5>
+    <p><i>notice:</i> your requirement : Billing - is already verified</p>
+    </div>
+    <div class="block block-border-bottom">
+    <h5><a href="#">Verification Level Three</a></h5>
+
+    <p><i>notice:</i> your requirement : Identification (ID) - is already verified. You may now able to subscribe</p>
+    <a href="subscription-service.php">subscribe now.. .</a>
+
+    </div>
+    <?php endif ?>
  
 
 
