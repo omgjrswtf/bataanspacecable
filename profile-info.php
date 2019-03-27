@@ -155,17 +155,17 @@
 		<input type="hidden"  name="id" value="<?php echo $client->clientid; ?>"><br>
     <label>First Name</label><br>
 		<input type="text" name="fname" placeholder="Initial Name" value="<?php echo $client->fname ?>" readonly><br>
-    <label>Middle Name</label><br>
+    <br><label>Middle Name</label><br>
 		<input  type="text" name="mname" placeholder="Middle Name" value="<?php echo $client->mname ?>" readonly><br>
-    <label>Last Name</label><br>
+    <br><label>Last Name</label><br>
 		<input type="text" name="lname" placeholder="Last Name" value="<?php echo $client->lname ?>" readonly><br>
-		<label>Contact Number</label><br>
+		<br><label>Contact Number</label><br>
     <input type="text" name="contact" placeholder="Contact Number" value="<?php echo $client->contact ?>" readonly><br>
-    <label>Sex</label><br>
+    <br><label>Sex</label><br>
 		<input type="text" name="gender" placeholder="Gender" value="<?php echo $client->gender ?>" readonly><br>
-		<label>Birth Date</label><br>
-    <input type="text" name="datebirth" placeholder="Date of Birth" value="<?php echo $client->datebirth ?>" readonly><br>
-
+		<br><label>Birth Date</label><br>
+    <input type="date" name="datebirth" placeholder="Date of Birth" value="<?php echo $client->datebirth ?>" readonly><br>
+    <br>
 		<a href=" <?php print $subscriptionSend ?>">Update Profile</a>
 	</div>
 
