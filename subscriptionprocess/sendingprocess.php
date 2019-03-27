@@ -58,5 +58,5 @@
 	
 	}
 
-	header('$Location: ../subscription-service.php?err=1');
+	header('Location: ../subscription-service.php?err=1');
 ?>
