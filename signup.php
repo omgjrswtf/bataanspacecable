@@ -43,7 +43,7 @@ $error = "";
 
 <head>
   <meta charset="utf-8">
-  <title>Register - Flexor Bootstrap Theme</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -103,10 +103,10 @@ $error = "";
       <div class="header">
         <div class="header-inner">
           <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-          <a class="navbar-brand center-block" href="index.html" title="Home">
+          <a class="navbar-brand center-block" href="index.php" title="Home">
             <h1 class="hidden">
-                <img src="img/logo.png" alt="Flexor Logo">
-                Flexor
+                <img src="img/cable.png" alt="BSC-Network Logo">
+                BSC-Network
               </h1>
           </a>
         </div>

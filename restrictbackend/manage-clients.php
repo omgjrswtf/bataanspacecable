@@ -107,9 +107,9 @@ $clients = $clientcon->findClient();
                             <th>Middle Name</th>
                             <th>Last Name</th>
                             <th>Contact</th>
-                            <th>Gender</th>
+                            <th>Sex</th>
                             <th>Date Birth</th>
-                            <th>Email</th>
+                            <th>Email Address</th>
                             <th>Status</th>
                             <th>Activity</th>
                             <th>Date Create</th>
@@ -129,8 +129,8 @@ $clients = $clientcon->findClient();
                     <td><?php echo $client->gender; ?></td>
                     <td><?php echo $client->datebirth; ?></td>
                     <td><?php echo $client->email; ?></td>
-                    <td><?php echo $client->status; ?></td>
-                    <td><?php echo $client->activity ?></td>
+                    <td><?php echo $client->getStatus(); ?></td>
+                    <td><?php echo $client->getActivity(); ?></td>
                     <td><?php echo $client->create_at; ?></td>
                     <td><?php echo $client->update_at; ?></td>
                     <td><a href="manage-client-form.php?id=<?php echo $client->clientid ?>" class="btn btn-info btn-xs">Send New Password</a></td>

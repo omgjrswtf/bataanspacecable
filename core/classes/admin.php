@@ -29,14 +29,48 @@ class Admin {
 
 	public function getPosition()
     {
-    	$status	= $this->role;
+    	$role	= $this->role;
+
+    	switch ($role) {
+    		case '0':
+    			$var = "Admin";	
+			break;
+			case '1':
+				$var = "Cable Technician";
+			break;
+			case '2':
+				$var = "IT";
+			break;
+			case '3':
+				$var = "Clerk";
+			break;
+			case '4':
+				$var = "Cashier";
+			break;
+			case '5':
+				$var = "Manager";
+			break;
+    		default:
+    			$var = "Undefined";
+			break;
+    	}
+
+    		return $var;
+    }
+
+    public function getStatus()
+    {
+    	$status	= $this->status;
 
     	switch ($status) {
     		case '1':
-    			$var = "Super Admin";	
+    			$var = "Active";	
 			break;
 			case '2':
-				$var = "Admid";
+				$var = "Inactive";
+			break;
+			case '3':
+				$var = "Deactivated";
 			break;
     		default:
     			$var = "Undefined";

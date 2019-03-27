@@ -35,7 +35,7 @@ $addedvalue = round(($bundle->price / $totaldate) * ($dayleft),2);
 
 <head>
   <meta charset="utf-8">
-  <title>Flexor Bootstrap Theme</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -146,6 +146,10 @@ $addedvalue = round(($bundle->price / $totaldate) * ($dayleft),2);
                 <a href="message-info.php">Message</a>
             </li>
 
+            <li>
+                <a href="#">Log Out</a>
+            </li>
+
             </ul>
           </div>
           <!--/.navbar-collapse -->
@@ -161,11 +165,8 @@ $addedvalue = round(($bundle->price / $totaldate) * ($dayleft),2);
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2 class="block-title">
-            Showcase
-          </h2>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
-          sit amet mauris.</p>
+        <h2>Cost Estimation</h2>
+        <p>The breakdown cost estimation of your selected bundle.</p>
       <div class="block block-border-bottom">
 
       <?php if ($location): ?>
@@ -175,12 +176,12 @@ $subscriptionSend = "subscriptionprocess/sendingprocess.php?clientid=$client->cl
  ?>
 
 
- <br> your selected bundle is <?php echo $bundle->name; ?>
+ Your selected bundle is <?php echo $bundle->name; ?>
 
-<br>  description : <?php echo $bundle->getTerms(); ?>
+<br>  Description : <?php echo $bundle->getTerms(); ?>
 
 <form method="post" action=" <?php print $subscriptionSend; ?> ">
-
+<br>
 <h4>Customer Info:</h4>
 
 <h5>Address Info:</h5>

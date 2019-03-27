@@ -34,7 +34,7 @@ class Area {
     			$var = "Active";
 			break;
 			case '2':
-    			$var = "In Active";
+    			$var = "Inactive";
 			break;
     		default:
     			$var = "Undefined";

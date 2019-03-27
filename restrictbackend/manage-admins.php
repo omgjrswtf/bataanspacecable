@@ -114,6 +114,7 @@ $admins = $admincon->findAdmins();
                             <th>Birth</th>
                             <th>Contact</th>
                             <th>Email</th>
+                            <th>Job Description</th>
                             <th>Status</th>
                             <th>Date Create</th>
                             <th>Date Updated</th>
@@ -135,6 +136,7 @@ $admins = $admincon->findAdmins();
                     <td><?php echo $admin->contact; ?></td>
                     <td><?php echo $admin->email ?></td>
                     <td><?php echo $admin->getPosition(); ?></td>
+                    <td><?php echo $admin->getStatus(); ?></td>
                     <td><?php echo $admin->create_at; ?></td>
                     <td><?php echo $admin->update_at; ?></td>
                     <td><a href="manage-admin-form.php?id=<?php echo $admin->adminid ?>" class="btn btn-info btn-xs">Update</a></td>

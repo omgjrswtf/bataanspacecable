@@ -54,7 +54,7 @@ if ($verify) {
 
 <head>
   <meta charset="utf-8">
-  <title>Home</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -118,10 +118,10 @@ if ($verify) {
           <div class="row">
             <div class="col-md-8">
               <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-              <a class="navbar-brand" href="index.html" title="Home">
+              <a class="navbar-brand" href="home.php" title="Home">
                 <h1 class="hidden">
-                    <img src="img/logo.png" alt="Flexor Logo">
-                    Flexor
+                    <img src="img/cable.png" alt="BSC-Network Logo">
+                    BSC-Network
                   </h1>
               </a>
               <div class="navbar-slogan"> 
@@ -165,6 +165,10 @@ if ($verify) {
                 <a href="message-info.php">Message</a>
             </li>
 
+            <li>
+                <a href="#">Log Out</a>
+            </li>
+
             </ul>
           </div>
           <!--/.navbar-collapse -->
@@ -187,7 +191,7 @@ if ($verify) {
               <div class="row">
                 <div class="col-md-6 col-md-push-6 item-caption">
                   <h2 class="h1 text-weight-light">
-                      Welcome to <span class="text-primary">Flexor</span>
+                      Welcome to <span class="text-primary">BSC-Network</span>
                     </h2>
                   <h4>
                       Super flexible responsive theme with a modest design touch.
@@ -205,7 +209,7 @@ if ($verify) {
               <div class="row">
                 <div class="col-md-6 text-right-md item-caption">
                   <h2 class="h1 text-weight-light">
-                      <span class="text-primary">Flexor</span> Bootstrap Theme
+                      <span class="text-primary">Bataan Space Cable Network</span> 
                     </h2>
                   <h4>
                       High quality, responsive theme!
@@ -232,178 +236,50 @@ if ($verify) {
         <h2 class="block-title">
             Showcase
           </h2>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
-          sit amet mauris.</p>
         <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
           <div class="item">
-            <a href="#" class="overlay-wrapper">
+            <a href="subscription-cable.php" class="overlay-wrapper">
                 <img src="img/showcase/project1.png" alt="Project 1 image" class="img-responsive underlay">
                 <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 1</span> </span>
+                  <span class="overlay-content"> <span class="h4">Cable and Digital</span> </span>
                 </span>
               </a>
             <div class="item-details bg-noise">
               <h4 class="item-title">
-                  <a href="#">Project 1</a>
+                  <a href="subscription-cable.php">Cable and Digital</a>
                 </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+              <a href="subscription-cable.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
             </div>
           </div>
           <div class="item">
-            <a href="#" class="overlay-wrapper">
+            <a href="subscription-bundle.php" class="overlay-wrapper">
                 <img src="img/showcase/project2.png" alt="Project 2 image" class="img-responsive underlay">
                 <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 2</span> </span>
+                  <span class="overlay-content"> <span class="h4">Bundle Installation</span> </span>
                 </span>
               </a>
             <div class="item-details bg-noise">
               <h4 class="item-title">
-                  <a href="#">Project 2</a>
+                  <a href="subscription-bundle.php">Bundle Installation</a>
                 </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+              <a href="subscription-bundle.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
             </div>
           </div>
           <div class="item">
             <a href="#" class="overlay-wrapper">
                 <img src="img/showcase/project3.png" alt="Project 3 image" class="img-responsive underlay">
                 <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 3</span> </span>
+                  <span class="overlay-content"> <span class="h4">Other Products</span> </span>
                 </span>
               </a>
             <div class="item-details bg-noise">
               <h4 class="item-title">
-                  <a href="#">Project 3</a>
+                  <a href="subscription-other.php">Other Products</a>
                 </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+              <a href="subscription-other.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
             </div>
           </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/showcase/project4.png" alt="Project 4 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 4</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Project 4</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
           </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/showcase/project5.png" alt="Project 5 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 5</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Project 5</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/showcase/project6.png" alt="Project 6 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 6</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Project 6</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/showcase/project7.png" alt="Project 7 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 7</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Project 7</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/showcase/project8.png" alt="Project 8 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 8</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Project 8</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/showcase/project9.png" alt="Project 9 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 9</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Project 9</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/showcase/project10.png" alt="Project 10 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 10</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Project 10</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/showcase/project11.png" alt="Project 11 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 11</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Project 11</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/showcase/project12.png" alt="Project 12 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 12</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Project 12</a>
-                </h4>
-              <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 

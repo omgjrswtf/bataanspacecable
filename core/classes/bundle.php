@@ -35,28 +35,28 @@ class Bundle {
 
     		case '2':
     			$var = "<p>
-    					<li>5 mpbs </li>
+    					<li>10 mpbs </li>
     					<li>free modem and wifi plus digital box</li>
     					</p>";
     		break;
 
     		case '3':
     			$var = "<p>
-    					<li>5 mpbs </li>
+    					<li>20 mpbs </li>
     					<li>free modem and wifi plus digital box</li>
     					</p>";
     		break;
 
     		case '4':
     			$var = "<p>
-    					<li>5 mpbs </li>
+    					<li>50 mpbs </li>
     					<li>free modem and wifi plus digital box</li>
     					</p>";
     		break;
 
     		case '5':
     			$var = "<p>
-    					<li>5 mpbs </li>
+    					<li>100 mpbs </li>
     					<li>free modem and wifi plus digital box</li>
     					</p>";
     		break;
@@ -136,14 +136,14 @@ class Bundle {
         $var = $this->status;
 
         switch ($var) {
-            case '0':
-                $var = "deactive";
-                break;
             case '1':
-                $var = "active";
+                $var = "Active";
+                break;
+            case '2':
+                $var = "Inactive";
                 break;
             default:
-                $var = "undefined";
+                $var = "Undefined";
                 break;
         }
         return $var;

@@ -14,7 +14,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Flexor Bootstrap Theme</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -67,7 +67,7 @@
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
+  <div id="background-wrapper" class="buildings navbar-fixed-top" data-stellar-background-ratio="0.1">
 
     <!-- ======== @Region: #navigation ======== -->
     <div id="navigation" class="wrapper">
@@ -78,12 +78,13 @@
           <div class="row">
             <div class="col-md-8">
               <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-              <a class="navbar-brand" href="index.html" title="Home">
+              <a class="navbar-brand" href="index.php" title="Home">
                 <h1 class="hidden">
                     <img src="img/logo.png" alt="Flexor Logo">
                     Flexor
                   </h1>
               </a>
+              <a href="home.php" style="float: right;"><button style="color: black;">Back</button></a>
               <div class="navbar-slogan"> 
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
               </div>
@@ -125,6 +126,10 @@
                 <a href="message-info.php">Message</a>
             </li>
 
+            <li>
+                <a href="#">Log Out</a>
+            </li>
+
             </ul>
           </div>
           <!--/.navbar-collapse -->
@@ -133,6 +138,7 @@
     </div> 
 </div>
 
+    <br><br><br><br><br><br><br>
     <!--  1st end get -->
 
     <!-- middleger -->
@@ -140,9 +146,7 @@
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2 >Personal Information</h2>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
-          sit amet mauris.</p>
+        <h2>Personal Information</h2>
 
 
 
@@ -150,25 +154,30 @@
 
 
  	<div class="block block-border-bottom">
- 	<h4 class="block-title"> Information</h4>
 
 		<input type="hidden"  name="id" value="<?php echo $client->clientid; ?>"><br>
-
+    <label>First Name</label><br>
 		<input type="text" name="fname" placeholder="Initial Name" value="<?php echo $client->fname ?>" readonly><br>
+    <br><label>Middle Name</label><br>
 		<input  type="text" name="mname" placeholder="Middle Name" value="<?php echo $client->mname ?>" readonly><br>
+    <br><label>Last Name</label><br>
 		<input type="text" name="lname" placeholder="Last Name" value="<?php echo $client->lname ?>" readonly><br>
-		<input type="text" name="contact" placeholder="Contact Number" value="<?php echo $client->contact ?>" readonly><br>
-		<input type="text" name="gender" placeholder="Gender" value="<?php echo $client->gender ?>" readonly><br>
-		<input type="text" name="datebirth" placeholder="Date of Birth" value="<?php echo $client->datebirth ?>" readonly><br>
-
+		<br><label>Contact Number</label><br>
+    <input type="text" name="contact" placeholder="Contact Number" value="<?php echo $client->contact ?>" readonly><br>
+    <br><label>Sex</label><br>
+		<input type="text" name="gender" placeholder="Gender" value="<?php echo $client->getSex(); ?>" readonly><br>
+		<br><label>Birth Date</label><br>
+    <input type="text" name="datebirth" placeholder="Birth Date" value="<?php echo $client->datebirth ?>" readonly><br>
+    <br>
 		<a href=" <?php print $subscriptionSend ?>">Update Profile</a>
 	</div>
 
 	<div class="block block-border-bottom">
 	<h4 class="block-title">Email Info</h4>
 	<form method="post" action="update-email.php">
+  <label>Email Address</label>
 	<input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
-	<input type="text" name="email" value=" <?php echo $client->email ?> " readonly><br>
+	<input type="text" name="email" value=" <?php echo $client->email ?> " readonly style="width: 200px"><br>
 <!-- 	<input type="submit" name="submit" value="update"> -->
 	<form>
 	</form>
@@ -177,8 +186,9 @@
 	<div class="block block-border-bottom">
 	<h4 class="block-title">Security Info</h4>
 	<form method="post" action="update-password.php">
+  <label>Password</label>
 	<input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
-	<input type="password" name="password" value=" <?php echo $client->password ?> "><br>
+	<input type="password" name="password" value=" <?php echo $client->password ?> "><br><br>
 	<input type="submit" name="submit" value="update">
 	
 	</form>

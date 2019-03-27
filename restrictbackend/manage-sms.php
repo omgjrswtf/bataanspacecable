@@ -108,7 +108,6 @@ $smss = $smscon->findSmslog();
                             <th>ID</th>
                             <th>Message</th>
                             <th>Contact</th>
-                            <th>Transaction</th>
                             <th>Status</th>
                             <th>Date Created</th>
                             <th>Action</th>
@@ -121,8 +120,7 @@ $smss = $smscon->findSmslog();
                     <td><?php echo $sms->id ?></td>
                     <td><?php echo $sms->message ?></td>
                     <td><?php echo $sms->contact ?></td>
-                    <td><?php echo $sms->transactionid ?></td>
-                    <td><?php echo $sms->status ?></td>
+                    <td><?php echo $sms->getStatus(); ?></td>
                     <td><?php echo $sms->create_at; ?></td>
                     <td><a href="manage-admin-form.php?id=<?php echo $admin->adminid ?>" class="btn btn-info btn-xs">Update</a></td>
                     </tr>

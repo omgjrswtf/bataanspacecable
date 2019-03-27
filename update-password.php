@@ -40,7 +40,7 @@ switch ($err) {
 
 <head>
   <meta charset="utf-8">
-  <title>Flexor Bootstrap Theme</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -93,7 +93,7 @@ switch ($err) {
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
+  <div id="background-wrapper" class="buildings navbar-fixed-top" data-stellar-background-ratio="0.1">
 
     <!-- ======== @Region: #navigation ======== -->
     <div id="navigation" class="wrapper">
@@ -104,12 +104,13 @@ switch ($err) {
           <div class="row">
             <div class="col-md-8">
               <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-              <a class="navbar-brand" href="index.html" title="Home">
+              <a class="navbar-brand" href="index.php" title="Home">
                 <h1 class="hidden">
                     <img src="img/logo.png" alt="Flexor Logo">
                     Flexor
                   </h1>
               </a>
+              <a href="profile-info.php" style="float: right;"><button style="color: black;">Back</button></a>
               <div class="navbar-slogan"> 
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
               </div>
@@ -151,6 +152,10 @@ switch ($err) {
                 <a href="message-info.php">Message</a>
             </li>
 
+            <li>
+                <a href="#">Log Out</a>
+            </li>
+
             </ul>
           </div>
           <!--/.navbar-collapse -->
@@ -159,6 +164,9 @@ switch ($err) {
     </div> 
 </div>
 
+
+    <br><br><br><br><br><br><br>
+
     <!--  1st end get -->
 
     <!-- middleger -->
@@ -166,22 +174,20 @@ switch ($err) {
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2 class="block-title">
-            Update Password
-          </h2>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
-          sit amet mauris.</p>
+        <h2>Update Password</h2>
 
 
 	<form method="post" action="includes/update-profile-info.php">
 		
 	<input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
 	<input type="hidden" name="action" value="3">
-
-	<input type="password" name="passold" placeholder="our recent password">
-	<input type="password" name="passnew" placeholder="new password">
-	<input type="password" name="passconfirm" placeholder="confirm password">
-
+  <label>Old Password</label><br>
+	<input type="password" name="passold" placeholder="Old password"><br>
+  <br><label>New Password</label><br>
+	<input type="password" name="passnew" placeholder="New password"><br>
+  <br><label>Confirm Password</label><br>
+	<input type="password" name="passconfirm" placeholder="Confirm password"><br>
+  <br><br>
 	<input type="submit" name="submit" value="update">
 	</form>
 

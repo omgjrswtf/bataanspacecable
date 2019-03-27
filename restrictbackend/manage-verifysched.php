@@ -108,7 +108,7 @@ $verifyscheduleongoings = $verifyschedulecon->findVerifyOngoing();
                             <th>Client</th>
                             <th>ID Provided</th>
                             <th>Billing Provided</th>
-                            <th>Status</th>
+                            <th>Schedule Date</th>
                             <th>Date Created</th>
                             <th>Action</th>
                         </tr>
@@ -150,7 +150,7 @@ $verifyscheduleongoings = $verifyschedulecon->findVerifyOngoing();
                             <th>Client</th>
                             <th>ID Provided</th>
                             <th>Billing Provided</th>
-                            <th>Status</th>
+                            <th>Schedule Date</th>
                             <th>Date Created</th>
                             <th>Action</th>
                         </tr>
@@ -192,7 +192,7 @@ $verifyscheduleongoings = $verifyschedulecon->findVerifyOngoing();
                             <th>Client</th>
                             <th>ID Provided</th>
                             <th>Billing Provided</th>
-                            <th>Status</th>
+                            <th>Schedule Date</th>
                             <th>Date Created</th>
                             <th>Action</th>
                         </tr>

@@ -15,7 +15,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Flexor Bootstrap Theme</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -68,7 +68,7 @@
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
+  <div id="background-wrapper" class="buildings navbar-fixed-top" data-stellar-background-ratio="0.1">
 
     <!-- ======== @Region: #navigation ======== -->
     <div id="navigation" class="wrapper">
@@ -79,12 +79,13 @@
           <div class="row">
             <div class="col-md-8">
               <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-              <a class="navbar-brand" href="index.html" title="Home">
+              <a class="navbar-brand" href="index.php" title="Home">
                 <h1 class="hidden">
                     <img src="img/logo.png" alt="Flexor Logo">
                     Flexor
                   </h1>
               </a>
+              <a href="profile-info.php" style="float: right;"><button style="color: black;">Back</button></a>
               <div class="navbar-slogan"> 
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
               </div>
@@ -126,6 +127,10 @@
                 <a href="message-info.php">Message</a>
             </li>
 
+            <li>
+                <a href="#">Log Out</a>
+            </li>
+
             </ul>
           </div>
           <!--/.navbar-collapse -->
@@ -134,7 +139,7 @@
     </div> 
   </div>
 
-
+    <br><br><br><br><br><br><br>
     <!--  1st end get -->
 
       <div id="content">
@@ -151,12 +156,22 @@
 
 <form method="post" action="signup-action.php">
   <input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
+  
   <input type="text" name="fname" placeholder="Initial Name"><br>
+  
   <input type="text" name="mname" placeholder="Middle Name"><br>
+  <br><label>Last Name</label><br>
   <input type="text" name="lname" placeholder="Last Name"><br>
+  <br><label>Contact Number</label><br>
   <input type="text" name="contact" placeholder="Contact Number"><br>
-  <input type="text" name="gender" placeholder="Gender"><br>
-  <input type="text" name="datebirth" placeholder="Date of Birth"><br>
+  
+  <select name="gender">
+    <option selected></option>
+    <option value="M"> Male</option>
+    <option value="F"> Female</option>
+  </select><br>
+  <br><label>Birth Date</label><br>
+  <input type="date" name="datebirth" placeholder="Birth Date"><br>
 
   <input type="submit" name="submit" value="submit"><br>
 </form>
@@ -167,12 +182,22 @@
 <form method="post" action="includes/update-profile-info.php">
   <input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
   <input type="hidden" name="action" value="1">
+  <label>First Name</label><br>
   <input type="text" name="fname"   placeholder="Initial Name" value="<?php echo $client->fname ?>" ><br>
+  <br><label>Middle Name</label><br>
   <input type="text" name="mname"   placeholder="Middle Name" value="<?php echo $client->mname ?>" ><br>
+  <br><label>Last Name</label><br>
   <input type="text" name="lname"   placeholder="Last Name" value="<?php echo $client->lname ?>" ><br>
+  <br><label>Contact Number</label><br>
   <input type="text" name="contact" placeholder="Contact Number"  value="<?php echo $client->contact ?>" ><br>
-  <input type="text" name="gender"  placeholder="Gender"  value="<?php echo $client->gender ?>" ><br>
-  <input type="text" name="datebirth" placeholder="Date of Birth"  value="<?php echo $client->datebirth ?>" ><br>
+  <br><label>Sex</label><br>
+  <select name="gender">
+    <option selected></option>
+    <option value="M" <?php if ($client->gender == "M") {echo 'selected="selected"'; } ?>> Male</option>
+    <option value="F" <?php if ($client->gender == "F") {echo 'selected="selected"'; } ?>> Female</option>
+  </select><br>
+  <br><label>Birth Date</label><br>
+  <input type="date" name="datebirth" placeholder="Date of Birth"  value="<?php echo $client->datebirth ?>" ><br><br><br>
 <input type="submit" name="submit" value="Update"><br>
 
 </form>
