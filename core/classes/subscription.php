@@ -50,7 +50,12 @@ class Subscription {
 				$var = "On-going";
 			break;
 			case '4':
-				$var = "Verifies - Waiting for bind techical";
+				if ($this->active == 0) {
+					$var = "Done Installing";
+				} else {
+					$var = "Verifies - Waiting for bind techical";
+				}
+				
 			break;
 			case '5':
 				$var = "Monthly Due";

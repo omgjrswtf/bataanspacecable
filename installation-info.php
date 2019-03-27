@@ -23,6 +23,8 @@ $dayleft    = $totaldate - $newdate;
 $bundle = $bundlecon->bundleCode($subscription->types);
 
 
+
+
 ?>
 
 <!DOCTYPE html>

@@ -5,9 +5,12 @@
     }
     $client_id = $_SESSION['client_id'];
     $client = $clientcon->clientData($client_id);
-	$subscription = $subscriptioncon->subsClientData($client_id);
+	  $subscription = $subscriptioncon->subsClientData($client_id);
+
 	if ($subscription) {
 		$bundle = $bundlecon->bundleCode($subscription->types);
+    $billing = $billingcon->billingsubsData($subscription->subcriptionid);
+    // print_r($billing);
 	}
  ?>
 
@@ -160,6 +163,14 @@
 
 <?php if (!empty($subscription->status)): ?>
  	<h5><a href="#">Installation</a></h5>
+
+   <?php if ($subscription->status == 6 and $subscription->active == 2): ?>
+   
+    <i><b>Notice: </b>Your Subscription is already unistalled.</i>
+
+    <br>
+    <br>
+    <?php else: ?>
     <hr>
 
     		<table style="width:100%">
@@ -173,14 +184,14 @@
 				<tr>
 					<td><?php echo $subscription->getDateFromDay(); ?></td>
 					<td><?php echo $bundle->name; ?></td>
-					<td><?php echo $subscription->getStatus(); ?></td>
+					<td><?php echo $subscription->getStatus();?></td>
 					<td><a href="<?php echo "installation-info.php?id=$subscription->subcriptionid" ?>">more info</a></td>
 				</tr>
 			</tbody>
 			</table>
     <br>
     <br>
-
+<?php endif ?>
 <?php else: ?>
 
 	<h5><a href="#">Installation</a></h5>
@@ -194,8 +205,36 @@
 
 <?php if (!empty($subscription->status)): ?>
 
-  	<h5><a href="#">Montly Due</a></h5>
-    <hr>
+
+    <?php if ($subscription->status == 6 and $subscription->active == 2): ?>
+    <h5><a href="#">Montly Due</a></h5>
+    <i><b>Notice: </b>Your Subscription is already unistalled.</i>
+
+    <br>
+    <br>
+    <?php else: ?>
+          <h5><a href="#">Montly Due</a></h5>
+        <hr>
+        <table style="width:100%">
+        <tr>
+          <th>Bundle Name</th>
+          <th>Pricing</th> 
+          <th>Status</th>
+     <!--      <th>Action</th> -->
+        </tr>
+      <tbody>
+        <tr>
+          <td><?php echo $billing->name; ?></td>
+          <td><?php echo $billing->price; ?>.00</td>
+          <td><?php echo $billing->getStatus(); ?></td>
+         
+         <!--  <td><a href="<?php echo "installation-info.php?id=$subscription->subcriptionid" ?>">more info</a></td> -->
+        </tr>
+      </tbody>
+      </table>
+    <?php endif ?>
+    
+
     <br>
     <br>
 <?php else: ?>
@@ -207,10 +246,27 @@
 <?php endif ?>
 
 <?php if (!empty($subscription->status)): ?>
-	 <h5><a href="#">Unintallation</a></h5>
+  <?php if ($subscription->status == 4 and $subscription->active == 0): ?>
+    
+
+    <h5><a href="#">Unintallation</a></h5>
     <hr>
+    <a href="cut-form-action.php?action=cut&id=<?php echo $subscription->subcriptionid ?>" class=>Cut Subscription</a>
+
     <br>
     <br>
+      <?php endif ?>
+
+    <?php if ($subscription->status == 6 and $subscription->active == 2): ?>
+    
+
+    <h5><a href="#">Unintallation</a></h5>
+    <hr>
+    <i><b>Notice: </b>Your Subscription is already unistalled.</i>
+
+    <br>
+    <br>
+      <?php endif ?>
 <?php else: ?>
 
     <h5><a href="#">Unintallation</a></h5>
