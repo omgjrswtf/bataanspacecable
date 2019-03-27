@@ -32,11 +32,23 @@ class Admin {
     	$status	= $this->role;
 
     	switch ($status) {
-    		case '1':
-    			$var = "Super Admin";	
+    		case '0':
+    			$var = "Admin";	
+			break;
+			case '1':
+				$var = "Cable Technician";
 			break;
 			case '2':
-				$var = "Admid";
+				$var = "IT";
+			break;
+			case '3':
+				$var = "Clerk";
+			break;
+			case '4':
+				$var = "Cashier";
+			break;
+			case '5':
+				$var = "Manager";
 			break;
     		default:
     			$var = "Undefined";

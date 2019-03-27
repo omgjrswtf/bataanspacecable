@@ -122,11 +122,11 @@ $admin = $admincon->adminData($adminid);
                 </div>
                 <div class="wrap-input100 validate-input" data-validate="Enter Role">
                     <select class="input100 has-val" name="role">
-                        <option value="0" <?php if ($admin->role == 0) {echo 'selected="selected"'; } ?>> Super Admin</option>
+                        <option value="0" <?php if ($admin->role == 0) {echo 'selected="selected"'; } ?>> Admin</option>
                         <option value="1" <?php if ($admin->role == 1) {echo 'selected="selected"'; } ?>> Cable Technician</option>
                         <option value="2" <?php if ($admin->role == 2) {echo 'selected="selected"'; } ?>> IT</option>
-                        <option value="3" <?php if ($admin->role == 3) {echo 'selected="selected"'; } ?>> Cleak</option>
-                        <option value="4" <?php if ($admin->role == 4) {echo 'selected="selected"'; } ?>> Secretary</option>
+                        <option value="3" <?php if ($admin->role == 3) {echo 'selected="selected"'; } ?>> Clerk</option>
+                        <option value="4" <?php if ($admin->role == 4) {echo 'selected="selected"'; } ?>> Cashier</option>
                         <option value="5" <?php if ($admin->role == 5) {echo 'selected="selected"'; } ?>> Manager</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Role"></span>
