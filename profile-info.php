@@ -14,7 +14,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Flexor Bootstrap Theme</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -171,7 +171,7 @@
 	<form method="post" action="update-email.php">
   <label>Email Address</label>
 	<input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
-	<input type="text" name="email" value=" <?php echo $client->email ?> " readonly><br>
+	<input type="text" name="email" value=" <?php echo $client->email ?> " readonly style="width: 200px"><br>
 <!-- 	<input type="submit" name="submit" value="update"> -->
 	<form>
 	</form>

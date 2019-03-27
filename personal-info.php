@@ -15,7 +15,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Flexor Bootstrap Theme</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -190,13 +190,13 @@
   <br><label>Contact Number</label><br>
   <input type="text" name="contact" placeholder="Contact Number"  value="<?php echo $client->contact ?>" ><br>
   <br><label>Sex</label><br>
-  <select class="input100 has-val" name="status">
+  <select name="gender">
     <option selected></option>
     <option value="M" <?php if ($client->gender == "M") {echo 'selected="selected"'; } ?>> Male</option>
     <option value="F" <?php if ($client->gender == "F") {echo 'selected="selected"'; } ?>> Female</option>
   </select><br>
   <br><label>Birth Date</label><br>
-  <input type="text" name="datebirth" placeholder="Date of Birth"  value="<?php echo $client->datebirth ?>" ><br>
+  <input type="date" name="datebirth" placeholder="Date of Birth"  value="<?php echo $client->datebirth ?>" ><br><br><br>
 <input type="submit" name="submit" value="Update"><br>
 
 </form>
