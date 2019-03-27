@@ -78,13 +78,13 @@
           <div class="row">
             <div class="col-md-8">
               <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-              <a class="navbar-brand" href="index.html" title="Home">
+              <a class="navbar-brand" href="index.php" title="Home">
                 <h1 class="hidden">
                     <img src="img/logo.png" alt="Flexor Logo">
                     Flexor
                   </h1>
               </a>
-              <a href="home.php"><button style="color: black;">Back</button></a>
+              <a href="home.php" style="float: right;"><button style="color: black;">Back</button></a>
               <div class="navbar-slogan"> 
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
               </div>
@@ -124,10 +124,6 @@
 
             <li>
                 <a href="message-info.php">Message</a>
-            </li>
-
-            <li>
-                <a href="home.php">Back</a>
             </li>
 
             <li>
