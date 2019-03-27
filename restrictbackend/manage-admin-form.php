@@ -120,12 +120,14 @@ $admin = $admincon->adminData($adminid);
                     <input class="input100 has-val" type="text" name="email" value="<?php echo $admin->email ?>">
                     <span class="focus-input100" data-placeholder="Email Address"></span>
                 </div>
-
                 <div class="wrap-input100 validate-input" data-validate="Enter Role">
                     <select class="input100 has-val" name="role">
-                        <option selected></option>
-                        <option value="1" <?php if ($admin->role == 1) {echo 'selected="selected"'; } ?>> Super Admin</option>
-                        <option value="0" <?php if ($admin->role == 2) {echo 'selected="selected"'; } ?>> Admin</option>
+                        <option value="0" <?php if ($admin->role == 0) {echo 'selected="selected"'; } ?>> Super Admin</option>
+                        <option value="1" <?php if ($admin->role == 1) {echo 'selected="selected"'; } ?>> Cable Technician</option>
+                        <option value="2" <?php if ($admin->role == 2) {echo 'selected="selected"'; } ?>> IT</option>
+                        <option value="3" <?php if ($admin->role == 3) {echo 'selected="selected"'; } ?>> Cleak</option>
+                        <option value="4" <?php if ($admin->role == 4) {echo 'selected="selected"'; } ?>> Secretary</option>
+                        <option value="5" <?php if ($admin->role == 5) {echo 'selected="selected"'; } ?>> Manager</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Role"></span>
                 </div>
@@ -216,10 +218,14 @@ $admin = $admincon->adminData($adminid);
                 <div class="wrap-input100 validate-input" data-validate="Enter Role">
                     <select class="input100" name="role">
                     	<option selected></option>
-                    	<option value="1"> Super Admin</option>
-                    	<option value="2"> Admin</option>
+                    	<option value="0"> Super Admin</option>
+                    	<option value="1"> Cable Technician</option>
+                        <option value="2"> IT</option>
+                        <option value="3"> Clerk</option>
+                        <option value="4"> Secretary</option>
+                        <option value="5"> Manager</option>
                     </select>
-                    <span class="focus-input100" data-placeholder="Remarks"></span>
+                    <span class="focus-input100" data-placeholder="Roles"></span>
                 </div>
 
                 <!-- <div class="wrap-input100 validate-input" data-validate="Enter Status"> 

@@ -68,17 +68,17 @@ $bundle = $bundlecon->bundleData($bundleid);
     
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Update Profile</h1>
+            <h1 class="page-header">Update Bundle</h1>
         </div>
     </div>
 
     <div class="container-login100">
         <div class="wrap-login100">
             <form class="login100-form validate-form" method="POST" action="manage-bundle-form-action.php">
-                <input type="hidden" name="id" value="<?php echo $bundle->bundleid ?>">
+                <input type="hidden" name="id" value="<?php echo $bundle->bundleid ?>" >
 
                 <div class="wrap-input100 validate-input" data-validate="Enter Code">
-                    <input class="input100 has-val" type="text" name="code" value="<?php echo $bundle->code ?>">
+                    <input class="input100 has-val" type="text" name="code" value="<?php echo $bundle->code ?>" readonly>
                     <span class="focus-input100" data-placeholder="Plan Code"></span>
                 </div>
 
@@ -121,7 +121,7 @@ $bundle = $bundlecon->bundleData($bundleid);
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">New Profile</h1>
+            <h1 class="page-header">New Bundle</h1>
         </div>
     </div>
 
@@ -129,11 +129,6 @@ $bundle = $bundlecon->bundleData($bundleid);
         <div class="wrap-login100">
             <form class="login100-form validate-form" method="POST" action="manage-bundle-form-action.php">
                 <input type="hidden" name="id">
-
-                <div class="wrap-input100 validate-input" data-validate="Enter Code">
-                    <input class="input100 has-val" type="text" name="code">
-                    <span class="focus-input100" data-placeholder="Plan Code"></span>
-                </div>
 
               
                 <div class="wrap-input100 validate-input" data-validate="Enter Description">

@@ -1,8 +1,14 @@
-<?php 
+
+
+ <?php 
 
 include '../core/init.php';
 
-$clients = $clientcon->findClient();
+
+$id = $_GET['id'];
+$client = $clientcon->clientData($id);
+
+
 
 
 ?>
@@ -84,8 +90,7 @@ $clients = $clientcon->findClient();
 <body>
 
     <div id="wrapper">
-
-        <!-- Navigation -->
+    	        <!-- Navigation -->
     <?php 
         include 'template-navigation.php'; 
     ?>
@@ -93,68 +98,56 @@ $clients = $clientcon->findClient();
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Client Profile</h1>
-
+                    <h1 class="page-header">Sending Password</h1>
                 </div>
-                <!-- /.col-lg-12 -->
-                <div class="col-lg-12">
-                <hr>
-                <table class="table table-hover" id="myTable">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Last Name</th>
-                            <th>Contact</th>
-                            <th>Gender</th>
-                            <th>Date Birth</th>
-                            <th>Email</th>
-                            <th>Status</th>
-                            <th>Activity</th>
-                            <th>Date Create</th>
-                            <th>Date Updated</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($clients as $client): ?>
 
-                    <tr>
-                    <td><?php echo $client->clientid ?></td>
-                    <td><?php echo $client->fname ?></td>
-                    <td><?php echo $client->mname ?></td>
-                    <td><?php echo $client->lname ?></td>
-                    <td><?php echo $client->contact ?></td>
-                    <td><?php echo $client->gender; ?></td>
-                    <td><?php echo $client->datebirth; ?></td>
-                    <td><?php echo $client->email; ?></td>
-                    <td><?php echo $client->status; ?></td>
-                    <td><?php echo $client->activity ?></td>
-                    <td><?php echo $client->create_at; ?></td>
-                    <td><?php echo $client->update_at; ?></td>
-                    <td><a href="manage-client-form.php?id=<?php echo $client->clientid ?>" class="btn btn-info btn-xs">Send New Password</a></td>
-                    </tr>
+                   <?php 
+					function randomKey($length) {
 
-                    <?php endforeach ?>
-                    </tbody>
-                </table>
+						$key = "";
+					    $pool = array_merge(range(0,9), range('a', 'z'),range('A', 'Z'));
 
-                </div>
-            </div>
-            <!-- /.row -->
-    
-            
-        
+					    for($i=0; $i < $length; $i++) {
+					        $key .= $pool[mt_rand(0, count($pool) - 1)];
+					    }
+					    return $key;
+					}
+                 ?>
 
+		        <div class="container-login100">
+		        <div class="wrap-login100">
+		        	<h4><?php echo "Sending for client ".$client->fname ." ". $client->mname ." ". $client->lname;?></h4>
+		        	<br>
+		        	<br>
+		            <form class="login100-form validate-form" method="POST" action="manage-client-form-action.php?action=2">
+		                <input type="hidden" name="id" value="<?php echo $id; ?>">
 
-           
+		              
+		                <div class="wrap-input100 validate-input" data-validate="Enter Description">
+		                    <input class="input100 has-val" type="text" name="password" value=" <?php echo randomKey(20); ?> ">
+		                    <span class="focus-input100" data-placeholder="Generate Password"></span>
+		                </div>
+
+		                
+
+		                <div class="container-login100-form-btn">
+		                    <div class="wrap-login100-form-btn">
+		                        <div class="login100-form-bgbtn"></div>
+		                        <input type="submit" name="submit" value="Submit" class="login100-form-btn">
+		                    </div>
+		                </div>
+		            </form>
+		        </div>
+		    	</div>
 
 
 
-        </div>
 
-    </div>
+             
+
+        	</div>
+
+    	</div>
     <!-- /#wrapper -->
 
     <script type="text/javascript">

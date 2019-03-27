@@ -76,42 +76,45 @@ $area = $areacon->areaData($areaid);
             <form class="login100-form validate-form" method="POST" action="manage-area-form-action.php">
                 <input type="hidden" name="id" value="<?php echo $area->areaid ?>">
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Code Barangay">
-                    <input class="input100 has-val" type="text" name="codebrgy" value="<?php echo $area->codebrgy ?>">
-                    <span class="focus-input100" data-placeholder="Code Barangay"></span>
-                </div>
+                <!-- <div class="wrap-input100 validate-input" data-validate="Enter Code Barangay"> -->
+                    <input class="input100 has-val" type="hidden" name="codebrgy" value="<?php echo $area->codebrgy ?>">
+                 <!--    <span class="focus-input100" data-placeholder="Code Barangay"></span>
+                </div> -->
 
                 <div class="wrap-input100 validate-input" data-validate="Enter Barangay">
                     <input class="input100 has-val" type="text" name="barangay" value="<?php echo $area->barangay ?>">
                     <span class="focus-input100" data-placeholder="Barangay"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Code Municipality">
-                    <input class="input100 has-val" type="text" name="codemuni" value="<?php echo $area->codemuni ?>">
-                    <span class="focus-input100" data-placeholder="Code Municipality"></span>
-                </div>
+               <!--  <div class="wrap-input100 validate-input" data-validate="Enter Code Municipality"> -->
+                    <input class="input100 has-val" type="hidden" name="codemuni" value="<?php echo $area->codemuni ?>">
+                   <!--  <span class="focus-input100" data-placeholder="Code Municipality"></span>
+                </div> -->
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Municipality">
-                    <input class="input100 has-val" type="text" name="municipality" value="<?php echo $area->municipality ?>">
-                    <span class="focus-input100" data-placeholder="Municipality"></span>
+                <div class="wrap-input100 validate-input" data-validate="Enter Status">
+                    <select class="input100 has-val" name="municipality">
+                        <option selected></option>
+                        <option value="1" <?php if ($area->municipality == "Balanga") {echo 'selected="selected"'; } ?>> Balanga</option>
+                        <option value="2" <?php if ($area->municipality == "Pilar") {echo 'selected="selected"'; } ?>> Pilar</option>
+                    </select>
+                    <span class="focus-input100" data-placeholder="Status"></span>
                 </div>
-
-                <div class="wrap-input100 validate-input" data-validate="Enter Code Province">
-                    <input class="input100 has-val" type="text" name="codeprov" value="<?php echo $area->codeprov ?>">
-                    <span class="focus-input100" data-placeholder="Code Province"></span>
-                </div>
+                <!-- <div class="wrap-input100 validate-input" data-validate="Enter Code Province"> -->
+                    <input class="input100 has-val" type="hidden" name="codeprov" value="<?php echo $area->codeprov ?>">
+                   <!--  <span class="focus-input100" data-placeholder="Code Province"></span>
+                </div> -->
 
                 <div class="wrap-input100 validate-input" data-validate="Enter Province">
-                    <input class="input100 has-val" type="text" name="province" value="<?php echo $area->province ?>">
+                    <input class="input100 has-val" type="text" name="province" value="<?php echo $area->province ?>" readyonly>
                     <span class="focus-input100" data-placeholder="Province"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter Zip Code">
-                    <input class="input100 has-val" type="text" name="zipcode" value="<?php echo $area->zipcode ?>">
+                    <input class="input100 has-val" type="text" name="zipcode" value="<?php echo $area->zipcode?>" readonly>
                     <span class="focus-input100" data-placeholder="Zip Code"></span>
                 </div>
 
-                 <div class="wrap-input100 validate-input" data-validate="Enter Status">
+                <div class="wrap-input100 validate-input" data-validate="Enter Status">
                     <select class="input100 has-val" name="status">
                         <option selected></option>
                         <option value="1" <?php if ($area->status == 1) {echo 'selected="selected"'; } ?>> Active</option>
@@ -140,13 +143,27 @@ $area = $areacon->areaData($areaid);
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">New Profile</h1>
+            <h1 class="page-header">New Area</h1>
         </div>
     </div>
 
     <div class="container-login100">
         <div class="wrap-login100">
+
+            <?php 
+            if (isset($_GET['err'])) {
+                # code...
+           
+                    $err = $_GET['err'];
+
+                    if ($err == 1) {
+                        $msg = "The Location is already in the database";}
+
+                        echo "<i><b>Notice:</b></i> ".$msg; }
+                 ?>
+            <br><br>
             <form class="login100-form validate-form" method="POST" action="manage-area-form-action.php">
+
                 <input type="hidden" name="id">
 
                  <div class="wrap-input100 validate-input" data-validate="Enter Code Barangay">
@@ -164,25 +181,21 @@ $area = $areacon->areaData($areaid);
                     <span class="focus-input100" data-placeholder="Code Municipality"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Municipality">
-                    <input class="input100 has-val" type="text" name="municipality">
+                <div class="wrap-input100 validate-input" data-validate="Enter municipality">
+                    <select class="input100" name="municipality">
+                        <option selected></option>
+                        <option value="1"> Balanga</option>
+                        <option value="2"> Pilar</option>
+                    </select>
                     <span class="focus-input100" data-placeholder="Municipality"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Code Province">
-                    <input class="input100 has-val" type="text" name="codeprov">
-                    <span class="focus-input100" data-placeholder="Code Province"></span>
-                </div>
+                <input type="hidden" name="province" value="bataan">
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Province">
-                    <input class="input100 has-val" type="text" name="province">
-                    <span class="focus-input100" data-placeholder="Province"></span>
-                </div>
-
-                <div class="wrap-input100 validate-input" data-validate="Enter Zip Code">
+         <!--   <div class="wrap-input100 validate-input" data-validate="Enter Zip Code">
                     <input class="input100 has-val" type="text" name="zipcode">
                     <span class="focus-input100" data-placeholder="Zip Code"></span>
-                </div>
+                </div> -->
 
                 <!-- <div class="wrap-input100 validate-input" data-validate="Enter Status">
                     <select class="input100" name="status">

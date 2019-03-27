@@ -51,6 +51,40 @@ class AdminController{
 	    return $results;
 	}
 
+	public function loginadmin($username, $password){
+		$stmt = $this->pdo->prepare("
+			SELECT
+				admin_id as adminid,
+				a_firstname as firstname,
+				a_middlename as middlename,
+				a_lastname as lastname,
+				a_username as username,
+				a_password as password,
+				a_address as address,
+				a_datebirth as datebirth,
+				a_contact as contact,
+				a_email as email,
+				a_role as role,
+				a_status as status,
+				a_createat as create_at,
+				a_updateat as update_at
+
+			FROM tbl_admin
+			WHERE a_username = :username and a_password = :password and status = 1
+		");
+		$stmt->bindParam(':username', $username);
+		$stmt->bindParam(':password', $password);
+		$stmt->execute();
+
+	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Admin');
+	    $results = $stmt->fetch();
+
+	    $this->json = json_encode($results);
+	    $this->data = json_decode($this->json);
+
+	    return $results;
+	}
+
 
 	public function adminData($admin_id){
 
