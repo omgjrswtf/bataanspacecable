@@ -218,11 +218,11 @@ $admin = $admincon->adminData($adminid);
                 <div class="wrap-input100 validate-input" data-validate="Enter Role">
                     <select class="input100" name="role">
                     	<option selected></option>
-                    	<option value="0"> Super Admin</option>
+                    	<option value="0"> Admin</option>
                     	<option value="1"> Cable Technician</option>
                         <option value="2"> IT</option>
                         <option value="3"> Clerk</option>
-                        <option value="4"> Secretary</option>
+                        <option value="4"> Cashier</option>
                         <option value="5"> Manager</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Roles"></span>

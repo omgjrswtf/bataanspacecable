@@ -105,7 +105,9 @@ $admins = $admincon->findAdmins();
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Full Name</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
                             <th>UN</th>
                             <th>Pass</th>
                             <th>Address</th>
@@ -123,7 +125,9 @@ $admins = $admincon->findAdmins();
 
                     <tr>
                     <td><?php echo $admin->adminid ?></td>
-                    <td><?php echo $admin->firstname." ".$admin->middlename." ".$admin->lastname ?></td>
+                    <td><?php echo $admin->firstname ?></td>
+                    <td><?php echo $admin->middlename ?></td>
+                    <td><?php echo $admin->lastname ?></td>
                     <td><?php echo $admin->username ?></td>
                     <td><?php echo $admin->password; ?></td>
                     <td><?php echo $admin->address; ?></td>
