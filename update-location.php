@@ -9,7 +9,7 @@
      $client = $clientcon->clientData($clientid);
 
     $verify = $verifycon->findUserVerify($clientid);
-
+    $areas = $areacon->findAreas();
 	// $lat = $_POST['clat'];
 	// $long = $_POST['clng'];
 
@@ -22,7 +22,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Flexor Bootstrap Theme</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -176,12 +176,32 @@
     <input type="hidden" name="locid" value=" <?php echo $location->clientlocid ?>"><br>
     <input type="hidden" name="verid" value=" <?php echo $verify->id ?> "><br>
     <input type="hidden" name="action" value="4">
+    <label>Unit</label><br>
     <input type="text" name="unit"   placeholder="Unit" value="<?php echo $location->unit ?>" ><br>
+    <br><label>Block</label><br>
     <input type="text" name="block"   placeholder="Block" value="<?php echo $location->getBlock() ?>" ><br>
-    <input type="text" name="barangay"   placeholder="Barangay" value="<?php echo $location->barangay ?>" ><br>
-    <input type="text" name="municipality" placeholder="Municipality"  value="<?php echo $location->municipality ?>" ><br>
-    <input type="text" name="province"  placeholder="Province"  value="<?php echo $location->province ?>" ><br>
-    <input type="text" name="zipcode" placeholder="Zipcode"  value="<?php echo $location->zipcode ?>" ><br>
+    <br><label>Barangay</label><br>
+    <select class="input100" name="barangay" style="width: 160px;">
+      <option value="<?php echo $location->barangay ?>"><?php echo $location->barangay ?></option>
+      <?php foreach ($areas as $area): ?>
+      <option value="<?php echo $area->barangay; ?>"><?php echo $area->barangay; ?></option>
+      <?php endforeach ?>
+    </select><br>
+    <br><label>Municipality</label><br>
+    <select class="input100 has-val" name="municipality" style="width: 160px;">
+      <option selected></option>
+      <option value="Balanga" <?php if ($location->municipality == "Balanga") {echo 'selected="selected"'; } ?>>Balanga</option>
+      <option value="Pilar" <?php if ($location->municipality == "Pilar") {echo 'selected="selected"'; } ?>> Pilar</option>
+    </select><br>
+    <br><label>Province</label><br>
+    <input type="text" name="province"  placeholder="Province"  value="<?php echo $location->province ?>" disable><br>
+    <br><label>Zipcode</label><br>
+    <select class="input100 has-val" name="zipcode" style="width: 160px;">
+      <option selected></option>
+      <option value="2100" <?php if ($location->zipcode == "2100") {echo 'selected="selected"'; } ?>> 2100</option>
+      <option value="2101" <?php if ($location->zipcode == "2101") {echo 'selected="selected"'; } ?>> 2101</option>
+    </select><br>
+    <br><label>Description</label><br>
     <textarea name="description" placeholder="Description"><?php echo $location->description ?></textarea>
     
     <p id="latmoved"></p>
@@ -205,12 +225,32 @@
     <input type="hidden" name="locid" value=""><br>
     <input type="hidden" name="verid" value=""><br>
     <input type="hidden" name="action" value="4">
+    <label>Unit</label><br>
     <input type="text" name="unit"   placeholder="Unit" ><br>
+    <br><label>Block</label><br>
     <input type="text" name="block"   placeholder="Block" ><br>
-    <input type="text" name="barangay"   placeholder="Barangay" ><br>
-    <input type="text" name="municipality" placeholder="Municipality" ><br>
-    <input type="text" name="province"  placeholder="Province" ><br>
-    <input type="text" name="zipcode" placeholder="Zipcode" ><br>
+    <br><label>Barangay</label><br>
+    <select class="input100" name="barangay" style="width: 160px;">
+      <option selected>Barangay</option>
+      <?php foreach ($areas as $area): ?>
+      <option value="<?php echo $area->barangay; ?>"><?php echo $area->barangay; ?></option>
+      <?php endforeach ?>
+    </select><br>
+    <br><label>Municipality</label><br>
+    <select class="input100" name="municipality" style="width: 160px;">
+      <option selected>Municipality</option>
+      <option value="Balanga">Balanga</option>
+      <option value="Pilar">Pilar</option>
+    </select><br>
+    <br><label>Provice</label><br>
+    <input type="text" name="province" value="Bataan" placeholder="Province"><br>
+    <br><label>Zipcode</label><br>
+    <select class="input100" name="zipcode" style="width: 160px;">
+      <option selected>Zipcode</option>
+      <option value="2100">2100</option>
+      <option value="2101">2101</option>
+    </select><br>
+    <br><label>Description</label><br>
     <textarea name="description" placeholder="Description"></textarea>
 
 
