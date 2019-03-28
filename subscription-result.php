@@ -251,7 +251,7 @@
         </td>
     </tr>
 
-  <?php if ($bundle->getPrefix() == "B"): ?>
+  <?php if ($bundle->getPrefix() == "b"): ?>
     <tr>
       <td>Digital and Cable</td>
       <td>x 1</td>
@@ -372,7 +372,7 @@
         </td>
     </tr>
 
-  <?php if ($bundle->getPrefix() == "B"): ?>
+  <?php if ($bundle->getPrefix() == "b"): ?>
     <tr>
       <td>Digital and Cable</td>
       <td>x 1</td>

@@ -239,7 +239,7 @@ class SmsController{
 
 		$ch = curl_init();
 		$parameters = array(
-		    'apikey' => '2576aa2870a5ac518220f119255bb9fb', //Your API KEY
+		    'apikey' => '74993d65cd7fcfdb9b75f60a772db740', //Your API KEY
 		    'number' => "63".substr($sms->contact, -10),
 		    'message' => $sms->message,
 		    'sendername' => 'SEMAPHORE'
