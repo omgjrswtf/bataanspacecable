@@ -77,7 +77,7 @@ $area = $areacon->areaData($areaid);
                 <input type="hidden" name="id" value="<?php echo $area->areaid ?>">
 
                 <!-- <div class="wrap-input100 validate-input" data-validate="Enter Code Barangay"> -->
-                    <input class="input100 has-val" type="hidden" name="codebrgy" value="<?php echo $area->codebrgy ?>">
+                    <!-- <input class="input100 has-val" type="hidden" name="codebrgy" value="<?php echo $area->codebrgy ?>"> -->
                  <!--    <span class="focus-input100" data-placeholder="Code Barangay"></span>
                 </div> -->
 
@@ -87,7 +87,7 @@ $area = $areacon->areaData($areaid);
                 </div>
 
                <!--  <div class="wrap-input100 validate-input" data-validate="Enter Code Municipality"> -->
-                    <input class="input100 has-val" type="hidden" name="codemuni" value="<?php echo $area->codemuni ?>">
+                    <!-- <input class="input100 has-val" type="hidden" name="codemuni" value="<?php echo $area->codemuni ?>"> -->
                    <!--  <span class="focus-input100" data-placeholder="Code Municipality"></span>
                 </div> -->
 
@@ -100,7 +100,7 @@ $area = $areacon->areaData($areaid);
                     <span class="focus-input100" data-placeholder="Status"></span>
                 </div>
                 <!-- <div class="wrap-input100 validate-input" data-validate="Enter Code Province"> -->
-                    <input class="input100 has-val" type="hidden" name="codeprov" value="<?php echo $area->codeprov ?>">
+                    <!-- <input class="input100 has-val" type="hidden" name="codeprov" value="<?php echo $area->codeprov ?>"> -->
                    <!--  <span class="focus-input100" data-placeholder="Code Province"></span>
                 </div> -->
 
@@ -166,20 +166,20 @@ $area = $areacon->areaData($areaid);
 
                 <input type="hidden" name="id">
 
-                 <div class="wrap-input100 validate-input" data-validate="Enter Code Barangay">
+                 <!-- <div class="wrap-input100 validate-input" data-validate="Enter Code Barangay">
                     <input class="input100 has-val" type="text" name="codebrgy">
                     <span class="focus-input100" data-placeholder="Code Barangay"></span>
-                </div>
+                </div> -->
 
                 <div class="wrap-input100 validate-input" data-validate="Enter Barangay">
                     <input class="input100 has-val" type="text" name="barangay">
                     <span class="focus-input100" data-placeholder="Barangay"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter Code Municipality">
+                <!-- <div class="wrap-input100 validate-input" data-validate="Enter Code Municipality">
                     <input class="input100 has-val" type="text" name="codemuni">
                     <span class="focus-input100" data-placeholder="Code Municipality"></span>
-                </div>
+                </div> -->
 
                 <div class="wrap-input100 validate-input" data-validate="Enter municipality">
                     <select class="input100" name="municipality">

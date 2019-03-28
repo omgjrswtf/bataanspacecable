@@ -133,11 +133,8 @@ switch ($err) {
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Code Brgy</th>
                             <th>Barangay</th>
-                            <th>Code Municipality</th>
                             <th>Municipality</th>
-                            <th>Code Province</th>
                             <th>Province</th>
                             <th>Zipcode</th>
                             <th>Status</th>
@@ -152,11 +149,8 @@ switch ($err) {
 
                     <tr>
                     <td><?php echo $area->areaid ?></td>
-                    <td><?php echo $area->codebrgy ?></td>
                     <td><?php echo $area->barangay ?></td>
-                    <td><?php echo $area->codemuni ?></td>
                     <td><?php echo $area->municipality ?></td>
-                    <td><?php echo $area->codeprov; ?></td>
                     <td><?php echo $area->province; ?></td>
                     <td><?php echo $area->zipcode; ?></td>
                     <td><?php echo $area->getStatus(); ?></td>

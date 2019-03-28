@@ -44,9 +44,9 @@ if (isset($_POST['barangay'])) {
 		$err = 1;
 	}else{
 		if ($err != 1) {
-		$area->codebrgy = $_POST['codebrgy'];
+		$area->codebrgy = "arb01";
 		$area->barangay = $_POST['barangay'];
-		$area->codemuni  = $_POST['codemuni'];
+		$area->codemuni  = "arm01";
 		$area->municipality = $municipality;
 		$area->codeprov = "arp01";
 		$area->province = $_POST['province'];
@@ -63,9 +63,9 @@ if (isset($_POST['barangay'])) {
 	}
 }else{
 
-		$area->codebrgy = $_POST['codebrgy'];
+	$area->codebrgy = "arb01";
 	$area->barangay = $_POST['barangay'];
-	$area->codemuni  = $_POST['codemuni'];
+	$area->codemuni  = "arm01";
 	$area->municipality = $municipality;
 	$area->codeprov = "arp01";
 	$area->province = $_POST['province'];

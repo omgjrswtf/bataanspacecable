@@ -22,7 +22,7 @@ if (isset($_GET['action']) || !empty($_GET['action'])) {
 
 <head>
   <meta charset="utf-8">
-  <title>Flexor Bootstrap Theme</title>
+  <title>Bataan Space Cable Network</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -118,7 +118,7 @@ if (isset($_GET['action']) || !empty($_GET['action'])) {
             <?php endif ?>
 
             <li>
-                <a href="verification-info.php">Verification</a>
+                <a href="verification-info.php">Application</a>
             </li>
 
             <li>
@@ -130,7 +130,11 @@ if (isset($_GET['action']) || !empty($_GET['action'])) {
             </li>
 
             <li>
-                <a href="message-info.php">Message</a>
+                <a href="message-info.php">Notifications</a>
+            </li>
+
+            <li>
+                <a href="#">Log Out</a>
             </li>
 
             </ul>
@@ -148,11 +152,9 @@ if (isset($_GET['action']) || !empty($_GET['action'])) {
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2 class="block-title">
-            Showcase
-          </h2>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
-          sit amet mauris.</p>
+        <h2>Requirements</h2>
+        <!-- <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
+          sit amet mauris.</p> -->
 
 
 <div class="block block-border-bottom">
@@ -163,10 +165,10 @@ if (isset($_GET['action']) || !empty($_GET['action'])) {
 		<input type="hidden" name="action" value="1">
  		<label>Billing Statement</label>
  		<select name="billing">
- 			<option value="electricty">electricty</option>
- 			<option value="water">water</option>
+ 			<option value="Electricty Bill">Electricity Bill</option>
+ 			<option value="Water Bill">Water Bill</option>
  		</select>
- 		<br>
+ 		<br><br>
  		<input type="submit" name="submit" value="Schedule">
  	</form>
 
@@ -177,11 +179,12 @@ if (isset($_GET['action']) || !empty($_GET['action'])) {
 		<input type="hidden" name="action" value="2">
  		<label>Identification (ID)</label>
  		<select name="id">
- 			<option value="passport">passport</option>
- 			<option value="tin">tin</option>
- 			<option value="sss">sss</option>
+ 			<option value="Passport">Passport</option>
+ 			<option value="TIN">TIN</option>
+ 			<option value="SSS">SSS</option>
+      <option value="Driver`s License">Driver`s License</option>
  		</select>
- 		<br>
+ 		<br><br>
  		<input type="submit" name="submit" value="Schedule">
  	</form>
 

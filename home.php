@@ -11,9 +11,9 @@
     // print_r($user);
 
 
-if ($client->lname == "") {
-    echo $notice = "You may need to <a href="."personal-info.php".">Update first</a> <br>";
-}
+// if ($client->lname == "") {
+//     echo $notice = "You may need to <a href="."personal-info.php".">Update first</a> <br>";
+// }
 
 
 if ($client->lname) {
@@ -126,6 +126,11 @@ if ($verify) {
               </a>
               <div class="navbar-slogan"> 
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
+
+            <?php if ($client->lname == "") {
+    echo $notice = "You need to <a href="."personal-info.php".">Update first</a> <br>";
+}
+ ?>
               </div>
             </div>
           </div>
@@ -150,7 +155,7 @@ if ($verify) {
             <?php endif ?>
 
             <li>
-                <a href="verification-info.php">Verification</a>
+                <a href="verification-info.php">Application</a>
             </li>
 
             <li>
@@ -162,7 +167,7 @@ if ($verify) {
             </li>
 
             <li>
-                <a href="message-info.php">Message</a>
+                <a href="message-info.php">Notifications</a>
             </li>
 
             <li>

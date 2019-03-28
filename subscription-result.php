@@ -131,7 +131,7 @@ $addedvalue = round(($bundle->price / $totaldate) * ($dayleft),2);
             <?php endif ?>
 
             <li>
-                <a href="verification-info.php">Verification</a>
+                <a href="verification-info.php">Application</a>
             </li>
 
             <li>
@@ -143,7 +143,7 @@ $addedvalue = round(($bundle->price / $totaldate) * ($dayleft),2);
             </li>
 
             <li>
-                <a href="message-info.php">Message</a>
+                <a href="message-info.php">Notifications</a>
             </li>
 
             <li>

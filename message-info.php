@@ -111,7 +111,7 @@ require_once 'core/init.php';
             <?php endif ?>
 
             <li>
-                <a href="verification-info.php">Verification</a>
+                <a href="verification-info.php">Application</a>
             </li>
 
             <li>
@@ -123,7 +123,7 @@ require_once 'core/init.php';
             </li>
 
             <li>
-                <a href="message-info.php">Message</a>
+                <a href="message-info.php">Notifications</a>
             </li>
 
             <li>
@@ -155,7 +155,7 @@ require_once 'core/init.php';
              <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Message</th>
+                            <th>Notifications</th>
                             <th>Date Create </th>
                             
                         </tr>

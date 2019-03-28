@@ -10,8 +10,8 @@
 
     $verify = $verifycon->findUserVerify($clientid);
 
-	$lat = $_POST['clat'];
-	$long = $_POST['clng'];
+	// $lat = $_POST['clat'];
+	// $long = $_POST['clng'];
 
 
  ?>
@@ -119,7 +119,7 @@
             <?php endif ?>
 
             <li>
-                <a href="verification-info.php">Verification</a>
+                <a href="verification-info.php">Application</a>
             </li>
 
             <li>
@@ -131,7 +131,7 @@
             </li>
 
             <li>
-                <a href="message-info.php">Message</a>
+                <a href="message-info.php">Notifications</a>
             </li>
 
             <li>
@@ -156,8 +156,8 @@
         <h2 class="block-title">
             Update Location and Address
           </h2>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
-          sit amet mauris.</p>
+        <!-- <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
+          sit amet mauris.</p> -->
 
            <style>          
           #map { 
@@ -244,8 +244,8 @@
         var map;
         
         function initMap() {                            
-            var latitude = <?php echo "$lat"; ?>; // YOUR LATITUDE VALUE
-            var longitude = <?php echo "$long"?>; // YOUR LONGITUDE VALUE
+            var latitude = 14.6741; // YOUR LATITUDE VALUE
+            var longitude = 120.5113; // YOUR LONGITUDE VALUE
             
             var myLatLng = {lat: latitude, lng: longitude};
             

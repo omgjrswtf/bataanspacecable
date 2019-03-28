@@ -123,7 +123,7 @@ $error = "";
 
           	<?php if($step == '2'):  ?>
 
-			<?php  $email = $_GET['email']; echo 'Welcome to you : '.$email; ?>
+			<?php  $email = $_GET['email']; echo 'Welcome '.$email; ?>
 
 				<form method="post"  action="signup-action.php" accept-charset="UTF-8" role="form">
 					<fieldset>

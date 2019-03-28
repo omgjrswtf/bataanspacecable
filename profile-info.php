@@ -111,7 +111,7 @@
             <?php endif ?>
 
             <li>
-                <a href="verification-info.php">Verification</a>
+                <a href="verification-info.php">Application</a>
             </li>
 
             <li>
@@ -123,7 +123,7 @@
             </li>
 
             <li>
-                <a href="message-info.php">Message</a>
+                <a href="message-info.php">Notifications</a>
             </li>
 
             <li>
@@ -202,7 +202,7 @@
 	<?php if ($location): ?>
 
 	<p>
-		<?php $subscriptionSend = "geolocation-process.php"; ?>
+		<?php $subscriptionSend = "update-location.php"; ?>
 		<?php echo 	"Unit:" .$location->unit ."<br>".
 				   	"Block:" .$location->getBlock() ."<br>".
 				   	"Barangay:" .$location->barangay ."<br>".
@@ -216,7 +216,7 @@
 	<?php else: ?>
 
 		<p>
-		<?php $subscriptionSend = "geolocation-process.php"; ?>
+		<?php $subscriptionSend = "update-location.php"; ?>
 		<?php echo 	"Unit: <i> none </i><br>".
 				   	"Block:<i> none </i><br>".
 				   	"Barangay:<i> none </i><br>".

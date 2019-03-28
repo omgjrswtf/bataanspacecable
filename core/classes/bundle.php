@@ -60,6 +60,20 @@ class Bundle {
     					<li>free modem and wifi plus digital box</li>
     					</p>";
     		break;
+
+            case '6':
+                $var = "<p>
+                        <li>150 mpbs </li>
+                        <li>free modem and wifi plus digital box</li>
+                        </p>";
+            break;
+
+            case '7':
+                $var = "<p>
+                        <li>200 mpbs </li>
+                        <li>free modem and wifi plus digital box</li>
+                        </p>";
+            break;
     		
     		default:
     			$var = "undefined description";
