@@ -78,7 +78,7 @@ $bundle = $bundlecon->bundleData($bundleid);
                 <input type="hidden" name="id" value="<?php echo $bundle->bundleid ?>" >
 
                 <div class="wrap-input100 validate-input" data-validate="Enter Code">
-                    <input class="input100 has-val" type="text" name="code" value="<?php echo $bundle->code ?>" readonly>
+                    <input class="input100 has-val" type="text" name="code" value="<?php echo $bundle->code ?>">
                     <span class="focus-input100" data-placeholder="Plan Code"></span>
                 </div>
 
