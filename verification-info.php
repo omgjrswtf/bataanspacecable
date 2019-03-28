@@ -159,7 +159,7 @@ require_once 'core/init.php';
     <div class="block block-border-bottom">
     <h5><a href="#">Verification Level One</a></h5>
     <p><i>notice:</i> there is no address and geolocation </p>
-        <a href="geolocation-process.php">Please update your location here</a>
+        <a href="update-location.php">Please update your location here</a>
     </div>
 
     <div class="block block-border-bottom">
