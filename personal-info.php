@@ -172,7 +172,7 @@
   </select><br>
   <br><label>Birth Date</label><br>
   <input type="date" name="datebirth" placeholder="Birth Date"><br>
-
+  <br>
   <input type="submit" name="submit" value="submit"><br>
 </form>
 
