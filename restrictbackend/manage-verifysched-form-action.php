@@ -70,7 +70,7 @@ switch ($action) {
 		$verify = $verifycon->findUserVerify($verifyschedule->userid);
 		$verify->profbilling = $verifyschedule->profbilling;
 		$verify->profid = $verifyschedule->profid;
-		$verify->stage = 3;
+		$verify->stage = 6;
 		// print_r($verify);
 		$verifycon->save($verify);
 		
