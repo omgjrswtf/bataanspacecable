@@ -127,11 +127,12 @@ if ($verify) {
               <div class="navbar-slogan"> 
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
 
-            <?php if ($client->lname == "") {
+            
+              </div>
+              <?php if ($client->lname == "") {
     echo $notice = "<div style='float:right;'>You need to <a href="."personal-info.php".">Update first</a> <br></div>";
 }
  ?>
-              </div>
             </div>
           </div>
         </div>
