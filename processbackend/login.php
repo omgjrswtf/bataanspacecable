@@ -1,176 +1,145 @@
 <?php 
-require_once 'core/init.php';
-
-
-	if (isset($_POST['login']) && !empty($_POST['login'])) {
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-
-		if(!empty($username) or !empty($password)){
-			$username = $clientcon->checkInput($username);
-			$password = $clientcon->checkInput($password);
-			
-			$admin = $admincon->loginadmin($username, $password);
-
-			if($admin){
-				$_SESSION['admin_id'] = $admin->adminid;
-				header('Location: dashboard.php');
-				
-			}else{
-				$msg = "The email or password is incorrect!";
-			}
-
-		}else{
-			$msg = "Please enter email and password";
-		}
-	}
+  include '../core/init.php';
 ?>
+<!--
+   This template created by Meralesson.com 
+   This template only use for educational purpose 
+-->
+<html>
+  <head>
+    <title>BSC-Network</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>
+    <link rel="stylesheet" href="assets/css/style-complete.css"/>
+  </head>
+  <!--Helvetica Neue-->
+<body>
+
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>Login - Flexor Bootstrap Theme</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
-
-  <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
-  <meta property="og:title" content="">
-  <meta property="og:image" content="">
-  <meta property="og:url" content="">
-  <meta property="og:site_name" content="">
-  <meta property="og:description" content="">
-
-  <!-- Twitter Cards integration: https://dev.twitter.com/cards/  -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="">
-  <meta name="twitter:title" content="">
-  <meta name="twitter:description" content="">
-  <meta name="twitter:image" content="">
-
-  <!-- Fav and touch icons -->
-  <link rel="shortcut icon" href="img/icons/favicon.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icons/114x114.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icons/72x72.png">
-  <link rel="apple-touch-icon-precomposed" href="img/icons/default.png">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
-
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
-
-  <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
-
-  <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
-  <link href="#" id="colour-scheme" rel="stylesheet">
-
-  <!-- =======================================================
-    Theme Name: Flexor
-    Theme URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
-    Author: BootstrapMade.com
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
-
+  <title>BSC-Network</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->  
+  <link rel="icon" type="image/png" href="../assets/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="../assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="../assets/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="../assets/vendor/animate/animate.css">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="../assets/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="../assets/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="../assets/vendor/select2/select2.min.css">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/util.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+<!--===============================================================================================-->
 </head>
+<body>
+  
+  <?php 
+    if (isset($_GET['msg'])) {
+      $msg = $_GET['msg'];
+    }
+  
+  // include 'includes/login.php';
 
-<body class="fullscreen-centered page-login">
-  <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <div id="background-wrapper" class="benches" data-stellar-background-ratio="0.8">
 
-    <!-- ======== @Region: #content ======== -->
-    <div id="content">
-      <div class="header">
-        <div class="header-inner">
-          <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-          <a class="navbar-brand center-block" href="index.html" title="Home">
-            <h1 class="hidden">
-                <img src="img/logo.png" alt="Flexor Logo">
-                Flexor
-              </h1>
-          </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title"> Login </h3>
-            </div>
-            <div class="panel-body">
-    		<?php 
-			if (isset($msg)) {
-				echo '<div class="span-fp-error">'.$msg.'</div>';
-			}
-			?>
+  if (isset($_POST['login']) && !empty($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-          	<form accept-charset="UTF-8" role="form" method="POST">
+    if(!empty($username) or !empty($password)){
+      $username = $admincon->checkInput($username);
+      $password = $admincon->checkInput($password);
 
-                <fieldset>
-                  <div class="form-group">
-                    <div class="input-group input-group-lg">
-                      <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-                      <input type="email"  class="form-control" placeholder="Email" name="username">
-                    </div>
-                  </div>
+      $admin = $admincon->loginadmin($username, $password);
 
-                  <div class="form-group">
-                    <div class="input-group input-group-lg">
-                      <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
-                      <input type="password" class="form-control" placeholder="Password" name="password">
-                    </div>
-                  </div>
+      if($admin){
+        $_SESSION['admin_id'] = $admin->adminid;
+        header('Location: dashboard.php');
+      }else{
+        $msg = "The user or password is incorrect!";
+      }
 
-                  <div class="checkbox">
-                    <label>
-                        <input name="remember" type="checkbox" value="Remember Me">
-                        Remember Me
-                      </label>
-                  </div>
-	
-          				<input class="btn btn-lg btn-primary btn-block" type="submit" value="Login"  name="login">
-                </fieldset>
-              </form>
-              <p class="m-b-0 m-t">Not signed up? <a href="signup.php">Sign up here</a>.</p>
-            </div>
-          </div>
-        </div>
+    }
+    else{
+      $msg = "Please enter username and password";
+    }
+  }
+?>
+  
+<div class="container-login100">
+  <div class="wrap-login100">
+    <form class="login100-form validate-form" method="POST">
+      <?php 
+        if (isset($msg)) {
+          echo '<li class="error-li">
+              <div class="span-fp-error">'.$msg.'</div>
+             </li>';
+        }
+      ?>
+      <span class="login100-form-title p-b-26">
+        Welcome To BSC-Network
+      </span>
+      <span class="login100-form-title p-b-48">
+        <i class="zmdi zmdi-font"></i>
+      </span>
+
+      <div class="wrap-input100 validate-input" data-validate = "Enter Username">
+        <input class="input100" type="text" name="username">
+        <span class="focus-input100" data-placeholder="Username"></span>
       </div>
 
+      <div class="wrap-input100 validate-input" data-validate="Enter password">
+        <span class="btn-show-pass">
+          <i class="zmdi zmdi-eye"></i>
+        </span>
+        <input class="input100" type="password" name="password">
+        <span class="focus-input100" data-placeholder="Password"></span>
+      </div>
 
-
-	
-
-      <!-- /row -->
-    </div>
+      <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+          <div class="login100-form-bgbtn"></div>
+          <input type="submit" name="login" value="Log in" class="login100-form-btn">
+        </div>
+      </div>
+    </form>
   </div>
-  <!-- Required JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/stellar/stellar.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/counterup/counterup.min.js"></script>
-  <script src="contactform/contactform.js"></script>
+</div>
 
-  <!-- Template Specisifc Custom Javascript File -->
-  <script src="js/custom.js"></script>
 
-  <!--Custom scripts demo background & colour switcher - OPTIONAL -->
-  <script src="js/color-switcher.js"></script>
-
-  <!--Contactform script -->
-  <script src="contactform/contactform.js"></script>
+  <div id="dropDownSelect1"></div>
+  
+<!--===============================================================================================-->
+  <script src="../assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+  <script src="../assets/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+  <script src="../assets/vendor/bootstrap/js/popper.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+  <script src="../assets/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+  <script src="../assets/vendor/daterangepicker/moment.min.js"></script>
+  <script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+  <script src="../assets/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+  <script src="../assets/js/main.js"></script>
 
 </body>
+</html> 
 
-</html>
+  

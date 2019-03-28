@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="dashboard.php">internet company</a>
+                <a class="navbar-brand" href="dashboard.php">BSC-Network</a>
             </div>
             <!-- /.navbar-header -->
 
