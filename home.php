@@ -130,7 +130,7 @@ if ($verify) {
             
               </div>
               <?php if ($client->lname == "") {
-    echo $notice = "<div style='float:right;'>You need to <a href="."personal-info.php".">Update first</a> <br></div>";
+    echo $notice = "<div style='float:right;'>You need to <b><a href="."personal-info.php".">Update first</a></b> <br></div>";
 }
  ?>
             </div>
