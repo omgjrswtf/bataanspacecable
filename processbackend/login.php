@@ -10,11 +10,11 @@ require_once 'core/init.php';
 			$username = $clientcon->checkInput($username);
 			$password = $clientcon->checkInput($password);
 			
-			$client = $clientcon->loginadmin($username, $password);
+			$admin = $admincon->loginadmin($username, $password);
 
-			if($client){
-				$_SESSION['client_id'] = $client->clientid;
-				header('Location: home.php');
+			if($admin){
+				$_SESSION['admin_id'] = $admin->adminid;
+				header('Location: dashboard.php');
 				
 			}else{
 				$msg = "The email or password is incorrect!";

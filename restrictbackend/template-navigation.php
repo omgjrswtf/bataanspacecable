@@ -20,15 +20,27 @@
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
             
-            
-            <?php if ($activeUser->role == 1): ?>
+            <?php if ($activeUser->role == 0): ?>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li class="divider"></li>
-                        <li><a href="../includes/logout.php"><i class="fa fa-sign-out fa-fw"></i> logout</a>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+
+            <?php elseif ($activeUser->role == 1): ?>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li class="divider"></li>
+                        <li><a href="../includes/logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -44,7 +56,7 @@
                         <li><a href="manage-user-password-form.php?id=<?php echo $activeUser->userid; ?>"><i class="fa fa-user fa-fw"></i> Update Password</a>
                         </li>
                         <!-- <li class="divider"></li> -->
-                        <li><a href="includes/logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                 </li>

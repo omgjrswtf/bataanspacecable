@@ -132,7 +132,7 @@
             </li>
 
             <li>
-                <a href="#">Log Out</a>
+                <a href="logout.php">Log Out</a>
             </li>
 
             </ul>

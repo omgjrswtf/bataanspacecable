@@ -28,7 +28,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li class="divider"></li>
-                        <li><a href="../includes/logout.php"><i class="fa fa-sign-out fa-fw"></i> logout</a>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

@@ -113,6 +113,10 @@
             <li>
                 <a href="message-info.php">Notifications</a>
             </li>
+            
+            <li>
+                <a href="logout.php">Log Out</a>
+            </li>
 
             </ul>
           </div>

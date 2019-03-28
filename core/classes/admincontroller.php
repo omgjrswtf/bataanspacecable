@@ -70,7 +70,7 @@ class AdminController{
 				a_updateat as update_at
 
 			FROM tbl_admin
-			WHERE a_username = :username and a_password = :password and status = 1
+			WHERE a_username = :username and a_password = :password
 		");
 		$stmt->bindParam(':username', $username);
 		$stmt->bindParam(':password', $password);
@@ -297,7 +297,7 @@ class AdminController{
 	public function logout(){
 		$_SESSION = array();
 		session_destroy();
-		header('Location: ../restrictbackend/index.php');
+		
 	}
 
 	// public function checkUsername($username){

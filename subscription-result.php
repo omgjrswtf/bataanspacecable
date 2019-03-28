@@ -147,7 +147,7 @@ $addedvalue = round(($bundle->price / $totaldate) * ($dayleft),2);
             </li>
 
             <li>
-                <a href="#">Log Out</a>
+                <a href="logout.php">Log Out</a>
             </li>
 
             </ul>
