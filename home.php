@@ -128,7 +128,7 @@ if ($verify) {
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
 
             <?php if ($client->lname == "") {
-    echo $notice = "You need to <a href="."personal-info.php".">Update first</a> <br>";
+    echo $notice = "<div style='float:right;'>You need to <a href="."personal-info.php".">Update first</a> <br></div>";
 }
  ?>
               </div>
