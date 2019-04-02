@@ -25,7 +25,7 @@ switch ($action) {
 	$sms->contact 			= $client->contact;
 	$sms->transactionid 	= 0;
 	$sms->status 			= 1;
-	$smscon->send($sms);
+	// $smscon->send($sms);
 	$smscon->save($sms);
 
 	header('Location: manage-subscriptions.php');
@@ -71,7 +71,7 @@ switch ($action) {
 	$sms->contact 			= $client->contact;
 	$sms->transactionid 	= 0;
 	$sms->status 			= 1;
-	$smscon->send($sms);
+	// $smscon->send($sms);
 	$smscon->save($sms);
 
 	header('Location: manage-subscriptions.php');
@@ -92,7 +92,7 @@ switch ($action) {
 	$sms->contact 			= $client->contact;
 	$sms->transactionid 	= 0;
 	$sms->status 			= 1;
-	$smscon->send($sms);
+	// $smscon->send($sms);
 	$smscon->save($sms);
 
 	header('Location: manage-subscriptions.php');
@@ -130,7 +130,7 @@ switch ($action) {
 		$sms->contact 			= $subscription->usercontact;
 		$sms->transactionid 	= 0;
 		$sms->status 			= 1;
-		$smscon->send($sms);
+		// $smscon->send($sms);
 		$smscon->save($sms);
 		
 	break;
@@ -150,7 +150,7 @@ switch ($action) {
 	$sms->contact 			= $client->contact;
 	$sms->transactionid 	= 0;
 	$sms->status 			= 1;
-	$smscon->send($sms);
+	// $smscon->send($sms);
 	$smscon->save($sms);
 
 	header('Location: manage-subscriptions.php');

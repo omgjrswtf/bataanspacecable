@@ -25,7 +25,7 @@ switch ($action) {
 		$sms->contact 			= $client->contact;
 		$sms->transactionid 	= 0;
 		$sms->status 			= 1;
-		$smscon->send($sms);
+		// $smscon->send($sms);
 		$smscon->save($sms);
 
 		header('Location: manage-verifysched.php');
@@ -55,7 +55,7 @@ switch ($action) {
 		$sms->contact 			= $client->contact;
 		$sms->transactionid 	= 0;
 		$sms->status 			= 1;
-		$smscon->send($sms);
+		// $smscon->send($sms);
 		$smscon->save($sms);
 		header('Location: manage-verifysched.php');
 	break;
@@ -90,7 +90,7 @@ switch ($action) {
 		$sms->contact 			= $client->contact;
 		$sms->transactionid 	= 0;
 		$sms->status 			= 1;
-		$smscon->send($sms);
+		// $smscon->send($sms);
 		$smscon->save($sms);
 
 
