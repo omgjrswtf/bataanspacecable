@@ -131,7 +131,7 @@ if ($verify) {
               ?>
               <div style="margin-top: 10px; color: white;">
               &nbsp;&nbsp;&nbsp;
-              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
+              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
               </div>
               <?php } ?>
             </div>

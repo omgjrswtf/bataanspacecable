@@ -93,8 +93,9 @@ if (isset($_GET['action']) || !empty($_GET['action'])) {
                   </h1>
               </a>
               <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary">Back </button>
-              <div class="navbar-slogan" style="float: right; margin-top: 10px;"> 
-            <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
+              <div style="margin-top: 10px; color: white;">
+              &nbsp;&nbsp;&nbsp;
+              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
               </div>
             </div>
           </div>
