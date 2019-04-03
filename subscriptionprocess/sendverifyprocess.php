@@ -149,14 +149,14 @@
 
  	// print_r($verifyschedule);
 
-	// $sms =  new Sms();
-	// $sms->userid 			= $id;
-	// $sms->message 			= $sms;
-	// $sms->contact 			= $client->contact;
-	// $sms->transactionid 	= 0;
-	// $sms->status 			= 1;
-	// // $smscon->send($sms);
-	// $smscon->save($sms);
+	$sms =  new Sms();
+	$sms->userid 			= $id;
+	$sms->message 			= $sms;
+	$sms->contact 			= $client->contact;
+	$sms->transactionid 	= 0;
+	$sms->status 			= 1;
+	// $smscon->send($sms);
+	$smscon->save($sms);
 	// print_r($sms);
 
  	header('Location: ../verification-info.php');

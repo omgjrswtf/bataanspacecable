@@ -34,7 +34,6 @@
 
 	}
 
-	
 	$subscription = new Subscription();
 	$subscription->userid = $id;
 	$subscription->username = $client->fname ." ". $client->mname ." ". $client->lname;

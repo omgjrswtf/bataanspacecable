@@ -166,7 +166,7 @@
 
    <?php if ($subscription->status == 6 and $subscription->active == 2): ?>
    
-    <i><b>Notice: </b>Your Subscription is already unistalled.</i>
+    <i><b>Notice: </b>Your Subscription is already uninstalled.</i>
 
     <br>
     <br>
@@ -208,7 +208,7 @@
 
     <?php if ($subscription->status == 6 and $subscription->active == 2): ?>
     <h5><a href="#">Montly Due</a></h5>
-    <i><b>Notice: </b>Your Subscription is already unistalled.</i>
+    <i><b>Notice: </b>Your Subscription is already uninstalled.</i>
 
     <br>
     <br>
@@ -249,7 +249,7 @@
   <?php if ($subscription->status == 4 and $subscription->active == 0): ?>
     
 
-    <h5><a href="#">Unintallation</a></h5>
+    <h5><a href="#">Uninstallation</a></h5>
     <hr>
     <a href="cut-form-action.php?action=cut&id=<?php echo $subscription->subcriptionid ?>" class=>Cut Subscription</a>
 
@@ -260,18 +260,18 @@
     <?php if ($subscription->status == 6 and $subscription->active == 2): ?>
     
 
-    <h5><a href="#">Unintallation</a></h5>
+    <h5><a href="#">Uninstallation</a></h5>
     <hr>
-    <i><b>Notice: </b>Your Subscription is already unistalled.</i>
+    <i><b>Notice: </b>Your Subscription is already uninstalled.</i>
 
     <br>
     <br>
       <?php endif ?>
 <?php else: ?>
 
-    <h5><a href="#">Unintallation</a></h5>
+    <h5><a href="#">Uninstallation</a></h5>
     <hr>
-    <p><i>notice:</i> there is no unistallation/cut entered</p>
+    <p><i>notice:</i> there is no uninstallation/cut entered</p>
     <br>
     <br>
 <?php endif ?>

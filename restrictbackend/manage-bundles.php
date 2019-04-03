@@ -105,13 +105,13 @@ $bundles = $bundlecon->findBundles();
                       
                         switch ($err) {
                             case '1':
-                                $msg = "Insert new date was error";
+                                $msg = "Bundle is already exists.";
                             break;
                             case '2':
-                                $msg = "Data was updated";
+                                $msg = "Data Was Updated";
                             break;
                             case '3':
-                                $msg = "New Bundle was added";
+                                $msg = "New Bundle Was Added Successfully";
                             break;
                             
                             default:
@@ -136,6 +136,7 @@ $bundles = $bundlecon->findBundles();
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Code</th>
                             <th>Description</th>
                             <th>Volume Speed</th>
                             <th>Price/Fee</th>
@@ -150,6 +151,7 @@ $bundles = $bundlecon->findBundles();
 
                     <tr>
                     <td><?php echo $bundle->bundleid ?></td>
+                    <td><?php echo $bundle->code ?></td>
                     <td><?php echo $bundle->name ?></td>
                     <td><?php echo $bundle->volume ?></td>
                     <td><?php echo $bundle->price ?></td>

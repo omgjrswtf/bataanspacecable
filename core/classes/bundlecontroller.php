@@ -72,11 +72,11 @@ class BundleController{
 		$stmt = $this->pdo->prepare("
 			SELECT
 				bundle_id AS bundleid,
-				b_code AS 'code',
-				b_name AS 'name',
-				b_volume AS 'volume',
+				b_code AS code,
+				b_name AS name,
+				b_volume AS volume,
 				b_price AS price,
-				b_status AS 'status',
+				b_status AS status,
 				b_createat AS create_at,
 				b_updateat AS update_at
 
