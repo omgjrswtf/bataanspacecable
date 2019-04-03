@@ -102,11 +102,11 @@ $bundle = $bundlecon->bundleCode($subscription->types);
                     Flexor
                   </h1>
               </a>
-              <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary">Back </button>
               <div style="margin-top: 10px; color: white;">
               &nbsp;&nbsp;&nbsp;
               <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
               </div>
+              <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
             </div>
           </div>
         </div>
