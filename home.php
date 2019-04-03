@@ -129,7 +129,7 @@ if ($verify) {
               }
               else{
               ?>
-              <div class="navbar-slogan" style="float: right; margin-top: 10px; color: white;">
+              <div style="float: right; margin-top: 10px; color: white;">
               <?php echo "<b>Welcome Back </b>". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
               </div>
               <?php } ?>
