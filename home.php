@@ -129,8 +129,9 @@ if ($verify) {
               }
               else{
               ?>
-              <div style="float: right; margin-top: 10px; color: white;">
-              <?php echo "<b>Welcome Back </b>". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
+              <div style="margin-top: 10px; color: white;">
+              &nbsp;&nbsp;&nbsp;
+              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
               </div>
               <?php } ?>
             </div>
