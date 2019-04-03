@@ -124,16 +124,15 @@ if ($verify) {
                     BSC-Network
                   </h1>
               </a>
-              <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary">Back </button>
-              <div class="navbar-slogan" style="float: right; margin-top: 10px; color: white;">
-            <?php echo "<b>Welcome Back </b>". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
-
-            
-              </div>
               <?php if ($client->lname == "") {
-    echo $notice = "<div style='float:right;'>You need to <b><a href="."personal-info.php".">Update first</a></b> <br></div>";
-}
- ?>
+              echo $notice = "<div style='float:right; margin-top: 9px;'>You need to <b><a href="."personal-info.php".">Update first</a></b> <br></div>";
+              }
+              else{
+              ?>
+              <div class="navbar-slogan" style="float: right; margin-top: 10px; color: white;">
+              <?php echo "<b>Welcome Back </b>". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
+              </div>
+              <?php } ?>
             </div>
           </div>
         </div>
