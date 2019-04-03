@@ -114,9 +114,11 @@ $subscription = $subscriptioncon->subsBundledata($id);
                 <hr>
 
                 <p>Current Schedule Date : <?php echo $subscription->getDateFromDay(); ?></p>
+                <br>
+                <hr>
                 <p>Enter new date</p>
                 <input type="date" name="date" required >
-
+                <br><br>
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>

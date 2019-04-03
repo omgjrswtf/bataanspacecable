@@ -140,17 +140,17 @@ $error = "";
 
 				<input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="submit">
 				
-          	  	<div class="checkbox">
+          	  	<!-- <div class="checkbox">
                     <label>
                         <input name="remember" type="checkbox" value="Terms">
                         I agree to the <a href="#">terms and conditions</a>.
                     </label>
-                </div>
+                </div> -->
 
 				</fieldset>
 				</form>
 
-            	<p class="m-b-0 m-t">Already signed up? <a href="login.html">Login here</a>.</p>
+            	<p class="m-b-0 m-t">Already signed up? <a href="login.php">Login here</a>.</p>
 			<?php else: ?>
 
 

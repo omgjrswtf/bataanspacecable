@@ -21,7 +21,7 @@ switch ($action) {
 
 	$sms =  new Sms();
 	$sms->userid 			= $client->clientid;
-	$sms->message 			= "Scheduling of your request for subscription is already accepted, we will addresing technical incharge for installation. Please visit at the site on this schedule subscription thank".$subscription->getDateFromDay();
+	$sms->message 			= "Scheduling of your request for subscription is already accepted, we will addresing technical incharge for installation. Please visit at the site on this schedule subscription Thanks ".$subscription->getDateFromDay();
 	$sms->contact 			= $client->contact;
 	$sms->transactionid 	= 0;
 	$sms->status 			= 1;
@@ -67,7 +67,7 @@ switch ($action) {
 
 	$sms =  new Sms();
 	$sms->userid 			= $client->clientid;
-	$sms->message 			= "Scheduling of your request for subscription is already accepted and already address for the technical in charge. Please visit at the site on this schedule subscription thank".$subscription->getDateFromDay();
+	$sms->message 			= "Scheduling of your request for subscription is already accepted and already address for the technical in charge. Please visit at the site on this schedule subscription Thanks ".$subscription->getDateFromDay();
 	$sms->contact 			= $client->contact;
 	$sms->transactionid 	= 0;
 	$sms->status 			= 1;
@@ -146,7 +146,7 @@ switch ($action) {
 
 	$sms =  new Sms();
 	$sms->userid 			= $client->clientid;
-	$sms->message 			= "Reminder for tomorrow scheduling of your installation,please expect the person incharge for installation".$subscription->getDateFromDay();
+	$sms->message 			= "Reminder for tomorrow scheduling of your installation,Please expect the person incharge for installation ".$subscription->getDateFromDay();
 	$sms->contact 			= $client->contact;
 	$sms->transactionid 	= 0;
 	$sms->status 			= 1;

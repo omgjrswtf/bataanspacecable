@@ -91,7 +91,8 @@ if (isset($_GET['err'])) {
                     Flexor
                   </h1>
               </a>
-              <div class="navbar-slogan"> 
+              <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary">Back </button>
+              <div class="navbar-slogan" style="float: right; margin-top: 10px;"> 
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
               </div>
             </div>
@@ -183,7 +184,7 @@ if (isset($_GET['err'])) {
               <a href="subscription-bundle.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
             </div>
           </div>
-          <div class="item">
+          <!-- <div class="item">
             <a href="#" class="overlay-wrapper">
                 <img src="img/showcase/project3.png" alt="Project 3 image" class="img-responsive underlay">
                 <span class="overlay">
@@ -196,7 +197,7 @@ if (isset($_GET['err'])) {
                 </h4>
               <a href="subscription-other.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
             </div>
-          </div>
+          </div> -->
           </div>
         </div>
 

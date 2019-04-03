@@ -90,7 +90,8 @@
                     Flexor
                   </h1>
               </a>
-              <div class="navbar-slogan"> 
+              <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary">Back </button>
+              <div class="navbar-slogan" style="float: right; margin-top: 10px;"> 
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
               </div>
             </div>

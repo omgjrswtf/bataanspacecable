@@ -92,8 +92,8 @@
                     Flexor
                   </h1>
               </a>
-              <a href="geolocation-process.php" style="float: right;"><button style="color: black;">Back</button></a>
-              <div class="navbar-slogan"> 
+              <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary">Back </button>
+              <div class="navbar-slogan" style="float: right; margin-top: 10px;"> 
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
               </div>
             </div>
@@ -153,9 +153,7 @@
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2 class="block-title">
-            Update Location and Address
-          </h2>
+        
         <!-- <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
           sit amet mauris.</p> -->
 
@@ -168,7 +166,9 @@
 
 
 <?php if ($location): ?>
-
+  <h2 class="block-title">
+    Update Location and Address
+  </h2>
 <form method="post" action="includes/update-profile-info.php">
 <!--    <input type="hidden" name="lat" value=" <?php echo $lat?> ">
     <input type="hidden" name="long" value=" <?php echo $long ?> "> -->
@@ -215,7 +215,7 @@
 </form>
 <?php else: ?>
 
-<h3>Save Location and Address</h3>
+<h2 class="block-title">Save Location and Address</h2>
 
 <form method="post" action="includes/update-profile-info.php">
 

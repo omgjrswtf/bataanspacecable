@@ -106,6 +106,7 @@ $clients = $clientcon->findClient();
                             <th>First Name</th>
                             <th>Middle Name</th>
                             <th>Last Name</th>
+                            <th>Address</th>
                             <th>Contact</th>
                             <th>Sex</th>
                             <th>Date Birth</th>
@@ -119,12 +120,16 @@ $clients = $clientcon->findClient();
                     </thead>
                     <tbody>
                     <?php foreach ($clients as $client): ?>
-
+                    <?php 
+                        $cliendid = $client->clientid; 
+                        $clientlocations = $locationcon->findLocation($cliendid);
+                    ?>
                     <tr>
                     <td><?php echo $client->clientid ?></td>
                     <td><?php echo $client->fname ?></td>
                     <td><?php echo $client->mname ?></td>
                     <td><?php echo $client->lname ?></td>
+                    <td><?php echo $clientlocations->unit." ".$clientlocations->barangay." ".$clientlocations->municipality.", ".$clientlocations->province." ".$clientlocations->zipcode ?></td>
                     <td><?php echo $client->contact ?></td>
                     <td><?php echo $client->gender; ?></td>
                     <td><?php echo $client->datebirth; ?></td>

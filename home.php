@@ -203,7 +203,7 @@ if ($verify) {
                       Super flexible responsive theme with a modest design touch.
                     </h4>
                   <p>Perfect for your App, Web service, company or portfolio! Magna tincidunt sociis ac integer amet non. Rhoncus augue? Tempor porttitor sed, aliquet phasellus a, nisi nunc aliquet nec rhoncus enim porttitor ultrices lacus tristique?</p> -->
-                  <a href="https://bootstrapmade.com" class="btn btn-more btn-lg i-right">Buy Now <i class="fa fa-plus"></i></a>
+                  <!-- <a href="https://bootstrapmade.com" class="btn btn-more btn-lg i-right">Buy Now <i class="fa fa-plus"></i></a> -->
                 </div>
                 <div class="col-md-6 col-md-pull-6 hidden-xs">
                   <img src="img/slides/slide1.png" alt="Slide 1" class="center-block img-responsive">
@@ -221,7 +221,7 @@ if ($verify) {
                       High quality, responsive theme!
                     </h4>
                   <p>Perfect for your App, Web service, company or portfolio! Magna tincidunt sociis ac integer amet non. Rhoncus augue? Tempor porttitor sed, aliquet phasellus a, nisi nunc aliquet nec rhoncus enim porttitor ultrices lacus tristique?</p> -->
-                  <a href="https://bootstrapmade.com" class="btn btn-more btn-lg"><i class="fa fa-plus"></i> Learn More</a>
+                  <!-- <a href="https://bootstrapmade.com" class="btn btn-more btn-lg"><i class="fa fa-plus"></i> Learn More</a> -->
                 </div>
                 <div class="col-md-6 hidden-xs">
                   <img src="img/slides/slide2.png" alt="Slide 2" class="center-block img-responsive">
@@ -240,7 +240,7 @@ if ($verify) {
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
         <h2 class="block-title">
-            Showcase
+            Products
           </h2>
         <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
           <div class="item">
@@ -271,7 +271,7 @@ if ($verify) {
               <a href="subscription-bundle.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
             </div>
           </div>
-          <div class="item">
+          <!-- <div class="item">
             <a href="#" class="overlay-wrapper">
                 <img src="img/showcase/project3.png" alt="Project 3 image" class="img-responsive underlay">
                 <span class="overlay">
@@ -284,7 +284,7 @@ if ($verify) {
                 </h4>
               <a href="subscription-other.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
             </div>
-          </div>
+          </div> -->
           </div>
       </div>
     </div>

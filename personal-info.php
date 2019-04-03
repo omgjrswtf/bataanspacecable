@@ -85,8 +85,8 @@
                     Flexor
                   </h1>
               </a>
-              <a href="profile-info.php" style="float: right;"><button style="color: black;">Back</button></a>
-              <div class="navbar-slogan"> 
+              <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary">Back </button>
+              <div class="navbar-slogan" style="float: right; margin-top: 10px;"> 
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
               </div>
             </div>
@@ -166,14 +166,14 @@
   <input type="text" name="contact" placeholder="Contact Number"><br>
   <br><label>Sex</label><br>
   <select name="gender">
-    <option selected></option>
+    <option selected>Select</option>
     <option value="M"> Male</option>
     <option value="F"> Female</option>
   </select><br>
   <br><label>Birth Date</label><br>
   <input type="date" name="datebirth" placeholder="Birth Date"><br>
   <br>
-  <input type="submit" name="submit" value="submit"><br>
+  <input type="submit" name="submit" value="submit" class="btn btn-primary"><br>
 </form>
 
 
@@ -198,7 +198,7 @@
   </select><br>
   <br><label>Birth Date</label><br>
   <input type="date" name="datebirth" placeholder="Date of Birth"  value="<?php echo $client->datebirth ?>" ><br><br><br>
-<input type="submit" name="submit" value="Update"><br>
+<input type="submit" name="submit" value="Update" class="btn btn-primary"><br>
 
 </form>
 

@@ -102,7 +102,8 @@ $bundle = $bundlecon->bundleCode($subscription->types);
                     Flexor
                   </h1>
               </a>
-              <div class="navbar-slogan"> 
+              <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary">Back </button>
+              <div class="navbar-slogan" style="float: right; margin-top: 10px;"> 
             <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
               </div>
             </div>
@@ -163,10 +164,8 @@ $bundle = $bundlecon->bundleCode($subscription->types);
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
         <h2 class="block-title">
-            Showcase
+            Installation Info
           </h2>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
-          sit amet mauris.</p>
 <div class="block block-border-bottom">
 
 
