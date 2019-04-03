@@ -128,17 +128,17 @@
                     BSC-Network
                   </h1>
               </a>
-              <div class="navbar-slogan">
+              <!-- <div class="navbar-slogan">
                 Responsive HTML Theme
                 <br> By BootstrapMade.com
-              </div>
+              </div> -->
             </div>
             <!--header rightside-->
             <div class="col-md-4">
               <!--user menu-->
-              <ul class="list-inline user-menu pull-right">
+              <!-- <ul class="list-inline user-menu pull-right">
                 <li class="user-button"><a class="btn btn-primary btn-hh-trigger" role="button" data-toggle="collapse" data-target=".header-hidden">Open</a></li>
-              </ul>
+              </ul> -->
               <ul class="list-inline user-menu pull-right">
                 <li class="user-register"><i class="fa fa-edit text-primary "></i> <a href="signup.php" class="text-uppercase">Register</a></li>
                 <li class="user-login"><i class="fa fa-sign-in text-primary"></i> <a href="login.php" class="text-uppercase">Login</a></li>
@@ -230,7 +230,7 @@
                       Super flexible responsive theme with a modest design touch.
                     </h4>
                   <p>Perfect for your App, Web service, company or portfolio! Magna tincidunt sociis ac integer amet non. Rhoncus augue? Tempor porttitor sed, aliquet phasellus a, nisi nunc aliquet nec rhoncus enim porttitor ultrices lacus tristique?</p> -->
-                  <a href="https://bootstrapmade.com" class="btn btn-more btn-lg i-right">Buy Now <i class="fa fa-plus"></i></a>
+                  <!-- <a href="https://bootstrapmade.com" class="btn btn-more btn-lg i-right">Buy Now <i class="fa fa-plus"></i></a> -->
                 </div>
                 <div class="col-md-6 col-md-pull-6 hidden-xs">
                   <img src="img/slides/slide1.png" alt="Slide 1" class="center-block img-responsive">
@@ -248,7 +248,7 @@
                       High quality, responsive theme!
                     </h4>
                   <p>Perfect for your App, Web service, company or portfolio! Magna tincidunt sociis ac integer amet non. Rhoncus augue? Tempor porttitor sed, aliquet phasellus a, nisi nunc aliquet nec rhoncus enim porttitor ultrices lacus tristique?</p> -->
-                  <a href="https://bootstrapmade.com" class="btn btn-more btn-lg"><i class="fa fa-plus"></i> Learn More</a>
+                  <!-- <a href="https://bootstrapmade.com" class="btn btn-more btn-lg"><i class="fa fa-plus"></i> Learn More</a> -->
                 </div>
                 <div class="col-md-6 hidden-xs">
                   <img src="img/slides/slide2.png" alt="Slide 2" class="center-block img-responsive">

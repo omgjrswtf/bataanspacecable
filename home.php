@@ -124,8 +124,9 @@ if ($verify) {
                     BSC-Network
                   </h1>
               </a>
-              <div class="navbar-slogan"> 
-            <?php echo "Welcome Back ". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
+              <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary">Back </button>
+              <div class="navbar-slogan" style="float: right; margin-top: 10px; color: white;">
+            <?php echo "<b>Welcome Back </b>". $client->getGender(). " $client->fname $client->mname $client->lname"; ?>
 
             
               </div>
