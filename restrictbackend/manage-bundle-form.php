@@ -101,7 +101,7 @@ $bundle = $bundlecon->bundleData($bundleid);
                     <select class="input100 has-val" name="status">
                         <option selected></option>
                         <option value="1" <?php if ($bundle->status == 1) {echo 'selected="selected"'; } ?>> Active</option>
-                        <option value="2" <?php if ($bundle->status == 2) {echo 'selected="selected"'; } ?>> In Active</option>
+                        <option value="2" <?php if ($bundle->status == 2) {echo 'selected="selected"'; } ?>> Inactive</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Status"></span>
                 </div>

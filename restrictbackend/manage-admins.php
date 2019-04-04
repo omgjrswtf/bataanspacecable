@@ -76,7 +76,32 @@ $admins = $admincon->findAdmins();
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <style type="text/css">
+        .panel-heading{
+            color: #fff;
+            background-color: #a1a1a1;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border: 1px solid #a1a1a1;
+        }
+        .panel-body{
+            border: 1px solid #a1a1a1;
+        }
+        .btn{
+            background-color: #595959;
+            border: 2px solid #595959;
+        }
+        .btn:hover{
+            background-color: white;
+            color: black;
+            border: 2px solid #595959;
+        }
+        .list{
+            width: 1015px;
+            overflow: auto;
+            margin-left: -5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -92,60 +117,63 @@ $admins = $admincon->findAdmins();
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Profile</h1>
-                    
-                <a href="manage-admin-form.php" class="btn btn-info" role="button" style="float: right;">
-                <i class="glyphicon glyphicon-user"></i> New Profile
-                </a>
-
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
-                <hr>
-                <table class="table table-hover" id="admins">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Last Name</th>
-                            <th>UN</th>
-                            <th>Pass</th>
-                            <th>Address</th>
-                            <th>Birth</th>
-                            <th>Contact</th>
-                            <th>Email</th>
-                            <th>Job Description</th>
-                            <th>Status</th>
-                            <th>Date Create</th>
-                            <th>Date Updated</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($admins as $admin): ?>
+                    <div class="panel-heading">
+                        <a href="manage-admin-form.php" class="btn btn-info" role="button" style="float: right;">
+                        <i class="glyphicon glyphicon-user"></i> New Profile
+                        </a>
+                        <br><br>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list">
+                            <table class="table table-hover" id="admins">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>First Name</th>
+                                        <th>Middle Name</th>
+                                        <th>Last Name</th>
+                                        <th>UN</th>
+                                        <th>Pass</th>
+                                        <th>Address</th>
+                                        <th>Birth</th>
+                                        <th>Contact</th>
+                                        <th>Email</th>
+                                        <th>Job Description</th>
+                                        <th>Status</th>
+                                        <th>Date Create</th>
+                                        <th>Date Updated</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($admins as $admin): ?>
 
-                    <tr>
-                    <td><?php echo $admin->adminid ?></td>
-                    <td><?php echo $admin->firstname ?></td>
-                    <td><?php echo $admin->middlename ?></td>
-                    <td><?php echo $admin->lastname ?></td>
-                    <td><?php echo $admin->username ?></td>
-                    <td><?php echo $admin->password; ?></td>
-                    <td><?php echo $admin->address; ?></td>
-                    <td><?php echo $admin->datebirth; ?></td>
-                    <td><?php echo $admin->contact; ?></td>
-                    <td><?php echo $admin->email ?></td>
-                    <td><?php echo $admin->getPosition(); ?></td>
-                    <td><?php echo $admin->getStatus(); ?></td>
-                    <td><?php echo $admin->create_at; ?></td>
-                    <td><?php echo $admin->update_at; ?></td>
-                    <td><a href="manage-admin-form.php?id=<?php echo $admin->adminid ?>" class="btn btn-info btn-xs">Update</a></td>
-                    </tr>
+                                <tr>
+                                <td><?php echo $admin->adminid ?></td>
+                                <td><?php echo $admin->firstname ?></td>
+                                <td><?php echo $admin->middlename ?></td>
+                                <td><?php echo $admin->lastname ?></td>
+                                <td><?php echo $admin->username ?></td>
+                                <td><?php echo $admin->password; ?></td>
+                                <td><?php echo $admin->address; ?></td>
+                                <td><?php echo $admin->datebirth; ?></td>
+                                <td><?php echo $admin->contact; ?></td>
+                                <td><?php echo $admin->email ?></td>
+                                <td><?php echo $admin->getPosition(); ?></td>
+                                <td><?php echo $admin->getStatus(); ?></td>
+                                <td><?php echo $admin->create_at; ?></td>
+                                <td><?php echo $admin->update_at; ?></td>
+                                <td><a href="manage-admin-form.php?id=<?php echo $admin->adminid ?>" class="btn btn-info btn-xs">Update</a></td>
+                                </tr>
 
-                    <?php endforeach ?>
-                    </tbody>
-                </table>
-
+                                <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /.row -->

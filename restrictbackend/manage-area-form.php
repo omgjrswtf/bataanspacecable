@@ -118,7 +118,7 @@ $area = $areacon->areaData($areaid);
                     <select class="input100 has-val" name="status">
                         <option selected></option>
                         <option value="1" <?php if ($area->status == 1) {echo 'selected="selected"'; } ?>> Active</option>
-                        <option value="2" <?php if ($area->status == 2) {echo 'selected="selected"'; } ?>> In Activearea</option>
+                        <option value="2" <?php if ($area->status == 2) {echo 'selected="selected"'; } ?>> Inactive</option>
                     </select>
                     <span class="focus-input100" data-placeholder="Status"></span>
                 </div>

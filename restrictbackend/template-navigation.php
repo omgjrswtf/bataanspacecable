@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="dashboard.php">BSC-Network</a>
+                <a class="navbar-brand" href="dashboard.php"><div><img src="../img/LogoCable.png" style="width: 30px; height: 30px; white-space: normal;"> BSC-Network</div></a>
             </div>
             <!-- /.navbar-header -->
 

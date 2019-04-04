@@ -142,56 +142,56 @@ switch ($err) {
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
-                <div class="panel-heading">
-                    <?php if (isset($msg)): ?>
+                    <div class="panel-heading">
+                        <?php if (isset($msg)): ?>
+                            
                         
-                    
-                    <i><b>Notice: </b></i> <?php echo " $msg"; ?>
+                        <i><b>Notice: </b></i> <?php echo " $msg"; ?>
 
-                    <?php endif ?>
-                    <a href="manage-area-form.php" class="btn btn-info" role="button" style="float: right;">
-                    <i class="fa fa-map-signs fa-fw"></i> New Area
-                    </a>
-                    <br><br>
-                </div>
-                <div class="panel-body">
-                <div class="list">
-                <table class="table table-hover" id="myTable">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Barangay</th>
-                            <th>Municipality</th>
-                            <th>Province</th>
-                            <th>Zipcode</th>
-                            <th>Status</th>
-                            <th>Description</th>
-                            <th>Date Create </th>
-                            <th>Date Updated</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($areas as $area): ?>
+                        <?php endif ?>
+                        <a href="manage-area-form.php" class="btn btn-info" role="button" style="float: right;">
+                        <i class="fa fa-map-signs fa-fw"></i> New Area
+                        </a>
+                        <br><br>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list">
+                            <table class="table table-hover" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Barangay</th>
+                                        <th>Municipality</th>
+                                        <th>Province</th>
+                                        <th>Zipcode</th>
+                                        <th>Status</th>
+                                        <th>Description</th>
+                                        <th>Date Create </th>
+                                        <th>Date Updated</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($areas as $area): ?>
 
-                    <tr>
-                    <td><?php echo $area->areaid ?></td>
-                    <td><?php echo $area->barangay ?></td>
-                    <td><?php echo $area->municipality ?></td>
-                    <td><?php echo $area->province; ?></td>
-                    <td><?php echo $area->zipcode; ?></td>
-                    <td><?php echo $area->getStatus(); ?></td>
-                    <td><?php echo $area->description ?></td>
-                    <td><?php echo $area->create_at; ?></td>
-                    <td><?php echo $area->update_at; ?></td>
-                    <td><a href="manage-area-form.php?id=<?php echo $area->areaid ?>" class="btn btn-info btn-xs">Update</a></td>
-                    </tr>
+                                <tr>
+                                <td><?php echo $area->areaid ?></td>
+                                <td><?php echo $area->barangay ?></td>
+                                <td><?php echo $area->municipality ?></td>
+                                <td><?php echo $area->province; ?></td>
+                                <td><?php echo $area->zipcode; ?></td>
+                                <td><?php echo $area->getStatus(); ?></td>
+                                <td><?php echo $area->description ?></td>
+                                <td><?php echo $area->create_at; ?></td>
+                                <td><?php echo $area->update_at; ?></td>
+                                <td><a href="manage-area-form.php?id=<?php echo $area->areaid ?>" class="btn btn-info btn-xs">Update</a></td>
+                                </tr>
 
-                    <?php endforeach ?>
-                    </tbody>
-                </table>
-                </div>
-                </div>
+                                <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /.row -->
