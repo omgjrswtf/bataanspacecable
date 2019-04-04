@@ -406,7 +406,7 @@
       <td align="right">&#x20b1; <?php echo ($bundle->price * 2) + $addedvalue + $estimated.".00"; ?></td>
     </tr>
   </table>
-  <input type="submit" name="submit" value="submit">
+  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
    </form>
 
 

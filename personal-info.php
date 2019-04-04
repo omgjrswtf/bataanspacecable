@@ -174,7 +174,7 @@
   <br><label>Birth Date</label><br>
   <input type="date" name="datebirth" placeholder="Birth Date"><br>
   <br>
-  <input type="submit" name="submit" value="submit" class="btn btn-primary"><br>
+  <button type="submit" name="submit" class="btn btn-primary"><span class='glyphicon glyphicon-floppy-disk'></span> Save</button><br>
 </form>
 
 
@@ -199,7 +199,7 @@
   </select><br>
   <br><label>Birth Date</label><br>
   <input type="date" name="datebirth" placeholder="Date of Birth"  value="<?php echo $client->datebirth ?>" ><br><br><br>
-<input type="submit" name="submit" value="Update" class="btn btn-primary"><br>
+  <button type="submit" name="submit" class="btn btn-primary"><span class='glyphicon glyphicon-floppy-disk'></span> Save</button><br>
 
 </form>
 

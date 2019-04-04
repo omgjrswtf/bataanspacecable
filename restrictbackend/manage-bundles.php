@@ -120,7 +120,7 @@ $bundles = $bundlecon->findBundles();
                         }
                     ?>
                 <a href="manage-bundle-form.php" class="btn btn-info" role="button" style="float: right;">
-                <i class="glyphicon glyphicon-user"></i> New Bundle
+                <i class="fa fa-info fa-fw"></i> New Bundle
                 </a>
                     <?php 
                     if (!empty($msg)) {

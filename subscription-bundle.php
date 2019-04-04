@@ -167,11 +167,8 @@
 	Please enter the distance between your house and the nearest electricity pole into "feet".
 	</p>
 <input type="text" name="estimated" placeholder="Estimate Length">
+<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 
-
-
-
-<input type="submit" name="submit" value="submit">
 </form>
 </div>
       </div>

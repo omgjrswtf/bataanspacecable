@@ -129,7 +129,14 @@ $clients = $clientcon->findClient();
                     <td><?php echo $client->fname ?></td>
                     <td><?php echo $client->mname ?></td>
                     <td><?php echo $client->lname ?></td>
-                    <td><?php echo $clientlocations->unit." ".$clientlocations->barangay." ".$clientlocations->municipality.", ".$clientlocations->province." ".$clientlocations->zipcode ?></td>
+                    <td><?php 
+                        if (empty($clientlocations->barangay)) {
+                            
+                        } else {
+                            echo $clientlocations->unit." ".$clientlocations->barangay." ".$clientlocations->municipality.", ".$clientlocations->province." ".$clientlocations->zipcode;
+                        }
+                        ?>        
+                    </td>
                     <td><?php echo $client->contact ?></td>
                     <td><?php echo $client->gender; ?></td>
                     <td><?php echo $client->datebirth; ?></td>

@@ -190,7 +190,7 @@
   <label>Password</label>
 	<input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
 	<input type="password" name="password" value=" <?php echo $client->password ?> "><br><br>
-	<input type="submit" name="submit" value="update">
+	<input type="submit" name="submit" value="update" class="btn btn-primary">
 	
 	</form>
 

@@ -211,8 +211,8 @@
     <input type="hidden" name="lat" id="lat2">
     <input type="hidden" name="long" id=long2>
       
+    <button type="submit" name="submit" onclick="submitform()" class="btn btn-primary"><span class='glyphicon glyphicon-floppy-disk'></span> Save</button><br>
 
-    <input type="submit" name="submit" value="Update" onclick="submitform()"><br>
 </form>
 <?php else: ?>
 
@@ -260,7 +260,7 @@
 
     <input type="hidden" name="lat" id="lat2">
     <input type="hidden" name="long" id=long2>
-    <input type="submit" name="submit" value="Update"><br>
+    <button type="submit" name="submit" class="btn btn-primary"><span class='glyphicon glyphicon-floppy-disk'></span> Save</button><br>
 
 </form>
 
