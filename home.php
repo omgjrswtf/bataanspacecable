@@ -207,7 +207,7 @@ if ($verify) {
                   <!-- <a href="https://bootstrapmade.com" class="btn btn-more btn-lg i-right">Buy Now <i class="fa fa-plus"></i></a> -->
                 </div>
                 <div class="col-md-6 col-md-pull-6 hidden-xs">
-                  <img src="img/slides/slide1.png" alt="Slide 1" class="center-block img-responsive">
+                  <img src="img/slides/slider1.png" alt="Slide 1" class="center-block img-responsive">
                 </div>
               </div>
             </div>
@@ -225,7 +225,7 @@ if ($verify) {
                   <!-- <a href="https://bootstrapmade.com" class="btn btn-more btn-lg"><i class="fa fa-plus"></i> Learn More</a> -->
                 </div>
                 <div class="col-md-6 hidden-xs">
-                  <img src="img/slides/slide2.png" alt="Slide 2" class="center-block img-responsive">
+                  <img src="img/slides/slider2.png" alt="Slide 2" class="center-block img-responsive">
                 </div>
               </div>
             </div>
@@ -254,7 +254,7 @@ if ($verify) {
               <h4 class="item-title">
                   <a href="subscription-cable.php">Cable and Digital</a>
                 </h4>
-              <a href="subscription-cable.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+              <!-- <a href="subscription-cable.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
             </div>
           </div>
           <div class="item">
@@ -268,7 +268,7 @@ if ($verify) {
               <h4 class="item-title">
                   <a href="subscription-bundle.php">Bundle Installation</a>
                 </h4>
-              <a href="subscription-bundle.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+              <!-- <a href="subscription-bundle.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
             </div>
           </div>
           <!-- <div class="item">

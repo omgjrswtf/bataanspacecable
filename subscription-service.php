@@ -85,7 +85,7 @@ if (isset($_GET['err'])) {
           <div class="row">
             <div class="col-md-8">
               <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-              <a class="navbar-brand" href="index.html" title="Home">
+              <a class="navbar-brand" href="home.php" title="Home">
                 <h1 class="hidden">
                     <img src="img/logo.png" alt="Flexor Logo">
                     Flexor
@@ -168,7 +168,7 @@ if (isset($_GET['err'])) {
               <h4 class="item-title">
                   <a href="subscription-cable.php">Cable and Digital</a>
                 </h4>
-              <a href="subscription-cable.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+              <!-- <a href="subscription-cable.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
             </div>
           </div>
           <div class="item">
@@ -182,7 +182,7 @@ if (isset($_GET['err'])) {
               <h4 class="item-title">
                   <a href="subscription-bundle.php">Bundle Installation</a>
                 </h4>
-              <a href="subscription-bundle.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+              <!-- <a href="subscription-bundle.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
             </div>
           </div>
           <!-- <div class="item">

@@ -99,7 +99,7 @@
             <div class="row">
               <div class="col-md-8">
                 <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-                <a class="navbar-brand" href="index.html" title="Home">
+                <a class="navbar-brand" href="home.php" title="Home">
                   <h1 class="hidden">
                       <img src="img/logo.png" alt="Flexor Logo">
                       Flexor
@@ -169,18 +169,12 @@
         <div class="container">
           <h2>Cost Estimation</h2>
           <p>The breakdown cost estimation of your selected bundle.</p>
-        <div class="block block-border-bottom">
 
         <?php if ($location): ?>
     
   <?php 
   $subscriptionSend = "subscriptionprocess/sendingprocess.php?clientid=$client->clientid&bundlecode=$bundlecode&location=$location->clientlocid&esti=$estimated&advl=$addedvalue";
    ?>
-
-
-   Your selected bundle is <?php echo $bundle->name; ?>
-
-  <br>  Description : <?php echo $bundle->getTerms(); ?>
 
   <form method="post" action=" <?php print $subscriptionSend; ?> ">
   <br>
