@@ -20,6 +20,16 @@
 			$subscription->status = 6;
 			$subscription->active = 2;
 			$subscriptioncon->save($subscription);
+
+			$sms =  new Sms();
+			$sms->userid 			= $client->clientid;
+			$sms->message 			= "Your montly billing of subscription is already verified and shutdown";
+			$sms->contact 			= $client->contact;
+			$sms->transactionid 	= 0;
+			$sms->status 			= 1;
+			// $smscon->send($sms);
+			$smscon->save($sms);
+
 			$header = "Location: subscription-info.php?err=6"; 
 
 		break;

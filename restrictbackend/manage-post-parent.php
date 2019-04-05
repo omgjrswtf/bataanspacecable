@@ -1,12 +1,18 @@
 <?php 
 
-include '../core/init.php';
 
-$billinginstalls = $billingcon->findbillinginstallation();
-$billingmonthlydues = $billingcon->findbillingmonthly();
+require_once '../core/init.php';
+    if (!$_SESSION) {
+        header('Location: index.php');
+    }
+    $admin_id = $_SESSION['admin_id'];
 
-?>
+    $admin = $admincon->adminData($admin_id);
 
+    $municipality = $_GET['municipality'];
+	$posts = $postcon->findbyparent($municipality);
+
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -95,39 +101,29 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Billing Record</h1>
+                    <h1 class="page-header">Post Record</h1>
 
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
-                <h3>Installion Billing</h3>
+                <h3>Municipality Record Post</h3>
                 <hr>
-                <table class="table table-hover" id="billinginstalls">
+                <table class="table table-hover" id="postparent">
                     <thead>
                         <tr>
                             <th>Reference ID</th>
-                            <th>Client</th>
-                            <th>Scheduled</th>
-                            <th>Address</th>
-                            <th>Product</th>
-                            <th>Date Create</th>
+                            <th>Barangay/Village</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($billinginstalls as $billinginstall): ?>
+                    <?php foreach ($posts as $post): ?>
 
                     <tr>
-                    <td><?php echo $billinginstall->billingid ?></td>
-                    <td><?php echo $billinginstall->fname." ".$billinginstall->mname." ".$billinginstall->lname; ?></td>
-                    <td><?php echo $billinginstall->getDate(); ?></td>
-                    <td><?php echo $billinginstall->description ?></td>
-                    <td><?php echo $billinginstall->name; ?></td>
-                    <td><?php echo $billinginstall->create_at; ?></td>
+                    <td><?php echo $post->areaid ?></td>
+                    <td><?php echo $post->barangay; ?></td>
                     <td>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
-                        <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>" class="btn btn-info btn-xs">Done</a>
+                        <a href="manage-post-parent-brgy.php?municipality=<?php echo $post->municipality ?>&brgy=<?php echo $post->barangay ?>" class="btn btn-info btn-xs">update</a>
                     </td>
                     </tr>
 
@@ -137,44 +133,7 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
 
                 </div>
 
-                <div class="col-lg-12">
-                <h3>Monthly Due Billing</h3>
-                 <hr>
-                <table class="table table-hover" id="billingmonthlydues">
-                    <thead>
-                        <tr>
-                            <th>Reference ID</th>
-                            <th>Client</th>
-                            <th>Scheduled</th>
-                            <th>Address</th>
-                            <th>Product</th>
-                            <th>Date Create</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($billingmonthlydues as $billingmonthlydue): ?>
-
-                    <tr>
-                    <td><?php echo $billingmonthlydue->billingid ?></td>
-                    <td><?php echo $billingmonthlydue->fname." ".$billingmonthlydue->mname." ".$billingmonthlydue->lname; ?></td>
-                    <td><?php echo $billingmonthlydue->getDate(); ?></td>
-                    <td><?php echo $billingmonthlydue->description ?></td>
-                    <td><?php echo $billingmonthlydue->name; ?></td>
-                    <td><?php echo $billingmonthlydue->create_at; ?></td>
-                    <td>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
-                        <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>" class="btn btn-info btn-xs">Done</a>
-                    </td>
-                    </tr>
-
-                    <?php endforeach ?>
-                    </tbody>
-                </table>
-
-                </div>
-            </div>
+                
             <!-- /.row -->
     
 
@@ -192,8 +151,7 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
 
     <script type="text/javascript">
     $(document).ready( function () {
-        $('#billinginstalls').dataTable();
-        $('#billingmonthlydues').dataTable();
+        $('#postparent').dataTable();
     } );
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css"></script>

@@ -60,7 +60,7 @@
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css?" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -86,7 +86,7 @@
           <div class="row">
             <div class="col-md-8">
               <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-              <a class="navbar-brand" href="home.php" title="Home">
+              <a class="navbar-brand" href="index.html" title="Home">
                 <h1 class="hidden">
                     <img src="img/logo.png" alt="Flexor Logo">
                     Flexor
@@ -292,25 +292,25 @@
             
             map = new google.maps.Map(document.getElementById('map'), {
               center: myLatLng,
-              zoom: 14,
+              zoom: 17,
               disableDoubleClickZoom: true, // disable the default map zoom on double click
             });
             
             // // Update lat/long value of div when anywhere in the map is clicked    
             // google.maps.event.addListener(map,'click',function(event) {                
-            //     document.getElementById('latclicked').innerHTML = event.latLng.lat();
-            //     document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+            //     document.getElementById('latmoved').innerHTML = event.latLng.lat();
+            //     document.getElementById('longmoved').innerHTML =  event.latLng.lng();
             // });
             
             // Update lat/long value of div when you move the mouse over the map
-            google.maps.event.addListener(map,'mousemove',function(event) {
-                document.getElementById('latmoved').innerHTML = event.latLng.lat();
-                document.getElementById('longmoved').innerHTML = event.latLng.lng();
+            // google.maps.event.addListener(map,'mousemove',function(event) {
+            //     document.getElementById('latmoved').innerHTML = event.latLng.lat();
+            //     document.getElementById('longmoved').innerHTML = event.latLng.lng();
 
-                document.getElementById('lat2').value =  document.getElementById('latmoved').innerHTML;
-                document.getElementById('long2').value = document.getElementById('longmoved').innerHTML;
+            //     document.getElementById('lat2').value =  document.getElementById('latmoved').innerHTML;
+            //     document.getElementById('long2').value = document.getElementById('longmoved').innerHTML;
 
-            });
+            // });
                     
             var marker = new google.maps.Marker({
               position: myLatLng,
@@ -323,11 +323,13 @@
               title: latitude + ', ' + longitude 
             });    
             
-            // // Update lat/long value of div when the marker is clicked
-            // marker.addListener('click', function(event) {              
-            //   document.getElementById('latclicked').innerHTML = event.latLng.lat();
-            //   document.getElementById('longclicked').innerHTML =  event.latLng.lng();
-            // });
+            // Update lat/long value of div when the marker is clicked
+            marker.addListener('click', function(event) {              
+              document.getElementById('latmoved').innerHTML = event.latLng.lat();
+              document.getElementById('longmoved').innerHTML =  event.latLng.lng();
+              document.getElementById('lat2').value =  document.getElementById('latmoved').innerHTML;
+              document.getElementById('long2').value = document.getElementById('longmoved').innerHTML;
+            });
             
             // Create new marker on double click event on the map
             // google.maps.event.addListener(map,'dblclick',function(event) {

@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="dashboard.php"><div><img src="../img/LogoCable.png" style="width: 30px; height: 30px; white-space: normal;"> BSC-Network</div></a>
+                <a class="navbar-brand" href="dashboard.php">BSC-Network</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -114,6 +114,9 @@
                         </li>
                         <li>
                             <a href="manage-admins.php"><i class="fa fa-users fa-fw"></i> Employees</a>
+                        </li>
+                        <li>
+                            <a href="manage-posts.php"><i class="fa fa-flag fa-fw"></i> Post</a>
                         </li>
                          <li>
                             <a href="manage-statiscal.php"><i class="fa fa-bar-chart fa-fw"></i> Statistics</a>

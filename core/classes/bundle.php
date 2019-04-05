@@ -118,15 +118,40 @@ class Bundle {
         $var = $var[0];
         
         switch ($var) {
-            case 'A':
+            case 'a':
                 $var = 0;
             break;
 
-            case 'B':
+            case 'b':
                 $var = 475;
             break;
 
-            case 'C':
+            case 'c':
+                $var = 0;
+            break;
+             
+            default:
+                $var = 0;
+            break;
+         } 
+         return $var;
+    }
+
+    public function getAddedBox()
+    {
+        $var = $this->code;
+        $var = $var[0];
+        
+        switch ($var) {
+            case 'a':
+                $var = 0;
+            break;
+
+            case 'b':
+                $var = 1500;
+            break;
+
+            case 'c':
                 $var = 0;
             break;
              

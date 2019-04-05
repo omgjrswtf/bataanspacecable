@@ -8,7 +8,38 @@
   //Post method get all
   $client_id  = $_SESSION['client_id'];
   $bundlecode = $_POST['bundleselect'];
-  $wire       = $_POST['estimated']; 
+
+
+  $qty = "1";
+  if (isset($_POST['qty'])) {
+     $qty = $_POST['qty']; 
+  }
+
+  $latitude1   = $_POST['lat'];
+  $longitude1  = $_POST['long'];
+
+  $post = $postcon->getpostNear($latitude1,$longitude1);
+  $latitude2 = $post->lat;
+  $longitude2 = $post->long;
+
+  $earthRadius = 6371000;
+  // convert from degrees to radians
+  $latFrom = deg2rad($latitude1);
+  $lonFrom = deg2rad($longitude1);
+  $latTo = deg2rad($latitude2);
+  $lonTo = deg2rad($longitude2);
+
+  $lonDelta = $lonTo - $lonFrom;
+  $a = pow(cos($latTo) * sin($lonDelta), 2) +
+    pow(cos($latFrom) * sin($latTo) - sin($latFrom) * cos($latTo) * cos($lonDelta), 2);
+  $b = sin($latFrom) * sin($latTo) + cos($latFrom) * cos($latTo) * cos($lonDelta);
+
+  $angle = atan2(sqrt($a), $b);
+  $distance =  $angle * $earthRadius; //to meter
+  $distance = round($distance * 3.28084,2); //to feet
+  
+  $wire       = $distance; 
+
   $estimated  = 7 * $wire;
 
   //include controllers
@@ -17,6 +48,7 @@
 
 
   $bundle = $bundlecon->bundleCode($bundlecode);
+    $totaldigi = $qty * $bundle->getAddedBox();//ditital box total qty
 
   $tomorrow = date("Y-m-t", time() + 172800);
   $newdate= date("M jS, Y", strtotime($tomorrow));
@@ -26,7 +58,9 @@
   $daynow     = date("d") + 2;
   $dayleft    = $totaldate - $daynow;
 
-  $addedvalue = round(($bundle->price / $totaldate) * ($dayleft),2);
+  $digibox = $qty * $bundle->getAddedBox();
+
+  $addedvalue = round(($bundle->getAddedValue() / $totaldate) * ($dayleft),2);
 
    ?>
 
@@ -73,7 +107,7 @@
     <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
-    <link href="css/style.css?" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
     <link href="#" id="colour-scheme" rel="stylesheet">
@@ -84,6 +118,13 @@
       Author: BootstrapMade.com
       Author URL: https://bootstrapmade.com
     ======================================================= -->
+
+    <style>
+      #map{
+        width:100%;
+         height:300px;
+      }
+    </style>
   </head>
 
   <body class="page-index has-hero">
@@ -99,7 +140,7 @@
             <div class="row">
               <div class="col-md-8">
                 <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-                <a class="navbar-brand" href="home.php" title="Home">
+                <a class="navbar-brand" href="index.html" title="Home">
                   <h1 class="hidden">
                       <img src="img/logo.png" alt="Flexor Logo">
                       Flexor
@@ -169,12 +210,18 @@
         <div class="container">
           <h2>Cost Estimation</h2>
           <p>The breakdown cost estimation of your selected bundle.</p>
+        <div class="block block-border-bottom">
 
         <?php if ($location): ?>
     
   <?php 
   $subscriptionSend = "subscriptionprocess/sendingprocess.php?clientid=$client->clientid&bundlecode=$bundlecode&location=$location->clientlocid&esti=$estimated&advl=$addedvalue";
    ?>
+
+
+   Your selected bundle is <?php echo $bundle->name; ?>
+
+  <br>  Description : <?php echo $bundle->getTerms(); ?>
 
   <form method="post" action=" <?php print $subscriptionSend; ?> ">
   <br>
@@ -249,15 +296,9 @@
 
   <?php if ($bundle->getPrefix() == "b"): ?>
     <tr>
-      <td>Digital and Cable</td>
-      <td>x 1</td>
-      <td align="right"><?php echo "&#x20b1; ". $bundle->getAddedValue().".00"; ?></td>
-    </tr>
-
-    <tr>
-      <td>Advance 1 month</td>
-      <td>x 1</td>
-      <td align="right">&#x20b1; <?php echo $bundle->price.".00"; ?></td>
+      <td>Digital Box</td>
+      <td>x <?php echo "$qty (&#x20b1; ".$bundle->getAddedBox().".00)"; ?></td>
+      <td align="right"><?php echo "&#x20b1; ". $digibox.".00"; ?></td>
     </tr>
 
     <tr>
@@ -269,19 +310,56 @@
     <tr>
       <td>Wire Added</td>
       <td>x <?php echo $wire."ft"; ?></td>
-      <td align="right">&#x20b1;<?php echo $estimated.".00"; ?></td>
+      <td align="right">&#x20b1;<?php echo $estimated; ?></td>
     </tr>
 
   <?php endif ?>
     <tr>
       <td></td>
       <td>Total</td>
-      <td align="right">&#x20b1; <?php echo ($bundle->price * 2) + $addedvalue + $estimated.".00"; ?></td>
+      <td align="right">&#x20b1; <?php echo ($bundle->price - $bundle->getAddedValue()) + $totaldigi + $addedvalue + $estimated; ?></td>
     </tr>
   </table>
 
   <input type="submit" name="submit" value="submit">
    </form>
+
+   <div id="map"></div>
+    <script>
+
+        function initMap() {
+           var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 20,
+              center: {lat: <?php echo $latitude1; ?>, lng: <?php echo $longitude1; ?>}
+           });
+
+        setMarkers(map);
+    }
+        var beaches = [
+            ['My Address', <?php echo $latitude1; ?>, <?php echo $longitude1; ?>, 2],
+            ['Nearest Post', <?php echo $latitude2; ?>, <?php echo $longitude2; ?>, 1]
+
+          ];
+
+        function setMarkers(map) {
+          for (var i = 0; i < beaches.length; i++) {
+              var beach = beaches[i];
+              var marker = new google.maps.Marker({
+                position: {lat: beach[1], lng: beach[2]},
+                map: map,
+                label: beach[0],
+                title: beach[0],
+                zIndex: beach[3]
+              });
+            }
+          }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfwo7C7-WLO8GU-bc6WmvqmsF8FKipzuE&callback=initMap">
+    </script>
+
+
+
 
 
   <?php else: ?>
@@ -371,9 +449,11 @@
   <?php if ($bundle->getPrefix() == "b"): ?>
     <tr>
       <td>Digital and Cable</td>
-      <td>x 1</td>
-      <td align="right"><?php echo "&#x20b1; ". $bundle->getAddedValue().".00"; ?></td>
+      <td>x <?php echo "$qty (&#x20b1; ".$bundle->getAddedBox().".00)"; ?></td>
+      <td align="right"><?php echo "&#x20b1; ". $digibox.".00"; ?></td>
     </tr>
+
+
 
     <tr>
       <td>Advance 1 month</td>
@@ -390,18 +470,52 @@
     <tr>
       <td>Wire Added</td>
       <td>x <?php echo $wire."ft"; ?></td>
-      <td align="right">&#x20b1;<?php echo $estimated.".00"; ?></td>
+      <td align="right">&#x20b1;<?php echo $estimated; ?></td>
     </tr>
 
   <?php endif ?>
     <tr>
       <td></td>
       <td>Total</td>
-      <td align="right">&#x20b1; <?php echo ($bundle->price * 2) + $addedvalue + $estimated.".00"; ?></td>
+      <td align="right">&#x20b1; <?php echo ($bundle->price)+ $totaldigi + $addedvalue + $estimated; ?></td>
     </tr>
   </table>
   <button type="submit" name="submit" class="btn btn-primary">Submit</button>
    </form>
+
+   <div id="map"></div>
+    <script>
+
+        function initMap() {
+           var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 20,
+              center: {lat: <?php echo $latitude1; ?>, lng: <?php echo $longitude1; ?>}
+           });
+
+        setMarkers(map);
+    }
+        var beaches = [
+            ['My Address', <?php echo $latitude1; ?>, <?php echo $longitude1; ?>, 2],
+            ['Nearest Post', <?php echo $latitude2; ?>, <?php echo $longitude2; ?>, 1]
+
+          ];
+
+        function setMarkers(map) {
+          for (var i = 0; i < beaches.length; i++) {
+              var beach = beaches[i];
+              var marker = new google.maps.Marker({
+                position: {lat: beach[1], lng: beach[2]},
+                map: map,
+                label: beach[0],
+                title: beach[0],
+                zIndex: beach[3]
+              });
+            }
+          }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfwo7C7-WLO8GU-bc6WmvqmsF8FKipzuE&callback=initMap">
+    </script>
 
 
 

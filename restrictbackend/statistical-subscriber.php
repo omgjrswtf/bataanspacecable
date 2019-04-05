@@ -76,7 +76,7 @@ $subscriberareas = $areacon->findAreasPerClient();
                 <div class="col-lg-12">
                 <h1 class="page-header">Subcription Statical</h1>
 
-              	<div id="overallarea" style="min-width: 310px; margin: 0 auto; margin-top: -10px;"></div>
+              	<div id="overallarea" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
                 <table class="table table-hover" id="overallarea">
                     <thead>
