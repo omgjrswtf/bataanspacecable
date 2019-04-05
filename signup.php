@@ -1,39 +1,39 @@
 <?php 
-	include 'core/init.php';
+  include 'core/init.php';
 
 
 
 if (isset($_POST['email'])) {
-	$email = $_POST['email'];
+  $email = $_POST['email'];
 }
 
 if (isset($_GET['step'])) {
-	$step = $_GET['step'];
+  $step = $_GET['step'];
 }else{
-	$step = "";
+  $step = "";
 }
 
 
 $error = "";
-	
-	if (empty($step) ) {
+  
+  if (empty($step) ) {
 
 
-		if (!empty($email)) {
-			$client = $clientcon->checkEmail($email);
-			if (isset($client->email)) {
-				$error = "Email already taken. Please enter a new one";
-			}
-			else{
-				header('Location: signup.php?step=2&email='.$email.'');
-			}
-		}else{
-			$error = "Please enter your email to choose";
-		}
+    if (!empty($email)) {
+      $client = $clientcon->checkEmail($email);
+      if (isset($client->email)) {
+        $error = "Email already taken. Please enter a new one";
+      }
+      else{
+        header('Location: signup.php?step=2&email='.$email.'');
+      }
+    }else{
+      $error = "Please enter your email to choose";
+    }
 
-	
+  
 
-		}
+    }
 
 ?>
 
@@ -81,7 +81,7 @@ $error = "";
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style.css?" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -121,57 +121,57 @@ $error = "";
             </div>
             <div class="panel-body">
 
-          	<?php if($step == '2'):  ?>
+            <?php if($step == '2'):  ?>
 
-			<?php  $email = $_GET['email']; echo 'Welcome '.$email; ?>
+      <?php  $email = $_GET['email']; echo 'Welcome '.$email; ?>
 
-				<form method="post"  action="signup-action.php" accept-charset="UTF-8" role="form">
-					<fieldset>
-				<input type="hidden" name="id" value="">
-				<input type="hidden" name="email" value="<?php echo $email; ?>">
+        <form method="post"  action="signup-action.php" accept-charset="UTF-8" role="form">
+          <fieldset>
+        <input type="hidden" name="id" value="">
+        <input type="hidden" name="email" value="<?php echo $email; ?>">
 
-				<div class="form-group">
+        <div class="form-group">
           <div class="input-group input-group-lg">
           <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
-				   <input type="password" class="form-control" placeholder="Password" name="password">
-			   	</div>
+           <input type="password" class="form-control" placeholder="Password" name="password">
+          </div>
 
-      	</div>
+        </div>
 
-				<input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="submit">
-				
-          	  	<!-- <div class="checkbox">
+        <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="submit">
+        
+                <!-- <div class="checkbox">
                     <label>
                         <input name="remember" type="checkbox" value="Terms">
                         I agree to the <a href="#">terms and conditions</a>.
                     </label>
                 </div> -->
 
-				</fieldset>
-				</form>
+        </fieldset>
+        </form>
 
-            	<p class="m-b-0 m-t">Already signed up? <a href="login.php">Login here</a>.</p>
-			<?php else: ?>
-
-
-			<form method="post" accept-charset="UTF-8" role="form">
-			<fieldset>
-
-				<?php 	echo "<br> $error"; ?>
-		 		<div class="form-group">
-	            <div class="input-group input-group-lg">
-	          	<span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-	          		<input type="email" name="email"  class="form-control" placeholder="Email">
-				</div>
-	          	</div>
-
-				<input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign Me Up">
-			</fieldset>
-			</form>
+              <p class="m-b-0 m-t">Already signed up? <a href="login.php">Login here</a>.</p>
+      <?php else: ?>
 
 
-			<?php endif ?>
-            	
+      <form method="post" accept-charset="UTF-8" role="form">
+      <fieldset>
+
+        <?php   echo "<br> $error"; ?>
+        <div class="form-group">
+              <div class="input-group input-group-lg">
+              <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
+                <input type="email" name="email"  class="form-control" placeholder="Email">
+        </div>
+              </div>
+
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign Me Up">
+      </fieldset>
+      </form>
+
+
+      <?php endif ?>
+              
 
 
 

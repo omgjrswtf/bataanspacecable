@@ -53,7 +53,7 @@ require_once 'core/init.php';
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style.css?" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -64,6 +64,32 @@ require_once 'core/init.php';
     Author: BootstrapMade.com
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+  <style type="text/css">
+        .panel-heading{
+            color: #fff;
+            background-color: #a1a1a1;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border: 1px solid #a1a1a1;
+        }
+        .panel-body{
+            border: 1px solid #a1a1a1;
+        }
+        .btn{
+            background-color: #595959;
+            border: 2px solid #595959;
+        }
+        .btn:hover{
+            background-color: white;
+            color: black;
+            border: 2px solid #595959;
+        }
+        .list{
+            width: 1015px;
+            overflow: auto;
+            margin-left: -5px;
+        }
+    </style>
 </head>
 
 <body class="page-index has-hero">
@@ -79,7 +105,7 @@ require_once 'core/init.php';
           <div class="row">
             <div class="col-md-8">
               <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-              <a class="navbar-brand" href="index.html" title="Home">
+              <a class="navbar-brand" href="home.php" title="Home">
                 <h1 class="hidden">
                     <img src="img/logo.png" alt="Flexor Logo">
                     BSC-Network
@@ -147,37 +173,27 @@ require_once 'core/init.php';
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2>Message</h2>
-        <!-- <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
-          sit amet mauris.</p> -->
-
-<div class="block block-border-bottom">
-
-        
+        <div class="panel-heading">
+          <h2>Message</h2>
+        </div>
+        <div class="panel-body">
              <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Notifications</th>
-                            <th>Date Create </th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($smss as $sms): ?>
-
-                    <tr>
+                <thead>
+                  <tr>
+                    <th>Notifications</th>
+                    <th>Date Create </th>    
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($smss as $sms): ?>
+                  <tr>
                     <td><?php echo $sms->message ?></td>
                     <td><?php echo $sms->create_at ?></td>
-                   
-                    </tr>
-
-                    <?php endforeach ?>
-                    </tbody>
-                </table>
-
-
-</div>
-
+                  </tr>
+                  <?php endforeach ?>
+                </tbody>
+              </table>
+          </div>
       </div>
     </div>
   </div>
@@ -215,5 +231,5 @@ require_once 'core/init.php';
     <!-- 2nd end get -->
 
 
-	
+  
 

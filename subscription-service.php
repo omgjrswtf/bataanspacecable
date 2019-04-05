@@ -59,7 +59,7 @@ if (isset($_GET['err'])) {
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style.css?" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -159,7 +159,7 @@ if (isset($_GET['err'])) {
           <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
           <div class="item">
             <a href="subscription-cable.php" class="overlay-wrapper">
-                <img src="img/showcase/project1.png" alt="Project 1 image" class="img-responsive underlay">
+                <img src="img/showcase/digitalcable1.png" alt="Project 1 image" class="img-responsive underlay">
                 <span class="overlay">
                   <span class="overlay-content"> <span class="h4">Cable and Digital</span> </span>
                 </span>
@@ -168,12 +168,12 @@ if (isset($_GET['err'])) {
               <h4 class="item-title">
                   <a href="subscription-cable.php">Cable and Digital</a>
                 </h4>
-              <a href="subscription-cable.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+              <!-- <a href="subscription-cable.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
             </div>
           </div>
           <div class="item">
             <a href="subscription-bundle.php" class="overlay-wrapper">
-                <img src="img/showcase/project2.png" alt="Project 2 image" class="img-responsive underlay">
+                <img src="img/showcase/bunddles.png" alt="Project 2 image" class="img-responsive underlay">
                 <span class="overlay">
                   <span class="overlay-content"> <span class="h4">Bundle Installation</span> </span>
                 </span>
@@ -182,7 +182,7 @@ if (isset($_GET['err'])) {
               <h4 class="item-title">
                   <a href="subscription-bundle.php">Bundle Installation</a>
                 </h4>
-              <a href="subscription-bundle.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+              <!-- <a href="subscription-bundle.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
             </div>
           </div>
           <!-- <div class="item">

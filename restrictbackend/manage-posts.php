@@ -84,7 +84,32 @@ require_once '../core/init.php';
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <style type="text/css">
+        .panel-heading{
+            color: #fff;
+            background-color: #a1a1a1;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border: 1px solid #a1a1a1;
+        }
+        .panel-body{
+            border: 1px solid #a1a1a1;
+        }
+        .btn{
+            background-color: #595959;
+            border: 2px solid #595959;
+        }
+        .btn:hover{
+            background-color: white;
+            color: black;
+            border: 2px solid #595959;
+        }
+        .list{
+            width: 1015px;
+            overflow: auto;
+            margin-left: -5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -104,31 +129,35 @@ require_once '../core/init.php';
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
-                <h3>Municipality Record Post</h3>
-                <hr>
-                <table class="table table-hover" id="postparent">
-                    <thead>
-                        <tr>
-                            <th>Reference ID</th>
-                            <th>Municipality</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($posts as $post): ?>
+                    <div class="panel-heading">
+                        <h3>Municipality Record Post</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list">
+                            <table class="table table-hover" id="postparent">
+                                <thead>
+                                    <tr>
+                                        <th>Reference ID</th>
+                                        <th>Municipality</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($posts as $post): ?>
 
-                    <tr>
-                    <td><?php echo $post->poleid ?></td>
-                    <td><?php echo $post->parentmuni; ?></td>
-                    <td>
-                        <a href="manage-post-parent.php?municipality=<?php echo $post->parentmuni ?>" class="btn btn-info btn-xs">more info</a>
-                    </td>
-                    </tr>
+                                <tr>
+                                <td><?php echo $post->poleid ?></td>
+                                <td><?php echo $post->parentmuni; ?></td>
+                                <td>
+                                    <a href="manage-post-parent.php?municipality=<?php echo $post->parentmuni ?>" class="btn btn-info btn-xs">more info</a>
+                                </td>
+                                </tr>
 
-                    <?php endforeach ?>
-                    </tbody>
-                </table>
-
+                                <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 

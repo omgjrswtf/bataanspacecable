@@ -80,7 +80,32 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <style type="text/css">
+        .panel-heading{
+            color: #fff;
+            background-color: #a1a1a1;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border: 1px solid #a1a1a1;
+        }
+        .panel-body{
+            border: 1px solid #a1a1a1;
+        }
+        .btn{
+            background-color: #595959;
+            border: 2px solid #595959;
+        }
+        .btn:hover{
+            background-color: white;
+            color: black;
+            border: 2px solid #595959;
+        }
+        .list{
+            width: 1015px;
+            overflow: auto;
+            margin-left: -5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -100,79 +125,87 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
-                <h3>Installion Billing</h3>
-                <hr>
-                <table class="table table-hover" id="billinginstalls">
-                    <thead>
-                        <tr>
-                            <th>Reference ID</th>
-                            <th>Client</th>
-                            <th>Scheduled</th>
-                            <th>Address</th>
-                            <th>Product</th>
-                            <th>Date Create</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($billinginstalls as $billinginstall): ?>
+                    <div class="panel-heading">
+                        <h3>Installation Billing</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list">
+                            <table class="table table-hover" id="billinginstalls">
+                                <thead>
+                                    <tr>
+                                        <th>Reference ID</th>
+                                        <th>Client</th>
+                                        <th>Scheduled</th>
+                                        <th>Address</th>
+                                        <th>Product</th>
+                                        <th>Date Create</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($billinginstalls as $billinginstall): ?>
 
-                    <tr>
-                    <td><?php echo $billinginstall->billingid ?></td>
-                    <td><?php echo $billinginstall->fname." ".$billinginstall->mname." ".$billinginstall->lname; ?></td>
-                    <td><?php echo $billinginstall->getDate(); ?></td>
-                    <td><?php echo $billinginstall->description ?></td>
-                    <td><?php echo $billinginstall->name; ?></td>
-                    <td><?php echo $billinginstall->create_at; ?></td>
-                    <td>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
-                        <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>" class="btn btn-info btn-xs">Done</a>
-                    </td>
-                    </tr>
+                                <tr>
+                                <td><?php echo $billinginstall->billingid ?></td>
+                                <td><?php echo $billinginstall->fname." ".$billinginstall->mname." ".$billinginstall->lname; ?></td>
+                                <td><?php echo $billinginstall->getDate(); ?></td>
+                                <td><?php echo $billinginstall->description ?></td>
+                                <td><?php echo $billinginstall->name; ?></td>
+                                <td><?php echo $billinginstall->create_at; ?></td>
+                                <td>
+                                    <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
+                                    <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
+                                    <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>" class="btn btn-info btn-xs">Done</a>
+                                </td>
+                                </tr>
 
-                    <?php endforeach ?>
-                    </tbody>
-                </table>
-
+                                <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+                
+                <div class="col-lg-12"><br><br><br>
+                    <div class="panel-heading">
+                        <h3>Monthly Due Billing</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list">
+                            <table class="table table-hover" id="billingmonthlydues">
+                                <thead>
+                                    <tr>
+                                        <th>Reference ID</th>
+                                        <th>Client</th>
+                                        <th>Scheduled</th>
+                                        <th>Address</th>
+                                        <th>Product</th>
+                                        <th>Date Create</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($billingmonthlydues as $billingmonthlydue): ?>
 
-                <div class="col-lg-12">
-                <h3>Monthly Due Billing</h3>
-                 <hr>
-                <table class="table table-hover" id="billingmonthlydues">
-                    <thead>
-                        <tr>
-                            <th>Reference ID</th>
-                            <th>Client</th>
-                            <th>Scheduled</th>
-                            <th>Address</th>
-                            <th>Product</th>
-                            <th>Date Create</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($billingmonthlydues as $billingmonthlydue): ?>
+                                <tr>
+                                <td><?php echo $billingmonthlydue->billingid ?></td>
+                                <td><?php echo $billingmonthlydue->fname." ".$billingmonthlydue->mname." ".$billingmonthlydue->lname; ?></td>
+                                <td><?php echo $billingmonthlydue->getDate(); ?></td>
+                                <td><?php echo $billingmonthlydue->description ?></td>
+                                <td><?php echo $billingmonthlydue->name; ?></td>
+                                <td><?php echo $billingmonthlydue->create_at; ?></td>
+                                <td>
+                                    <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
+                                    <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
+                                    <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>" class="btn btn-info btn-xs">Done</a>
+                                </td>
+                                </tr>
 
-                    <tr>
-                    <td><?php echo $billingmonthlydue->billingid ?></td>
-                    <td><?php echo $billingmonthlydue->fname." ".$billingmonthlydue->mname." ".$billingmonthlydue->lname; ?></td>
-                    <td><?php echo $billingmonthlydue->getDate(); ?></td>
-                    <td><?php echo $billingmonthlydue->description ?></td>
-                    <td><?php echo $billingmonthlydue->name; ?></td>
-                    <td><?php echo $billingmonthlydue->create_at; ?></td>
-                    <td>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
-                        <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>" class="btn btn-info btn-xs">Done</a>
-                    </td>
-                    </tr>
-
-                    <?php endforeach ?>
-                    </tbody>
-                </table>
-
+                                <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /.row -->
