@@ -140,6 +140,68 @@ class AreaController{
 	}
 
 
+	public function findAllMunicipality(){
+		$stmt = $this->pdo->prepare("
+			SELECT
+				areaid as areaid,
+				ar_codebrgy as codebrgy,
+				ar_barangay as barangay,
+				ar_codemuni as codemuni,
+				ar_municipality as municipality,
+				ar_codeprov as codeprov,
+				ar_province as province,
+				ar_zipcode as zipcode,
+				ar_status as status,
+				ar_description as description,
+				ar_createat as create_at,
+				ar_updateat as update_at
+				
+			FROM ref_areas 
+			GROUP BY ar_municipality
+		");
+		$stmt->execute();
+
+		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Area');
+		$results = $stmt->fetchAll();
+		
+		$this->json = json_encode($results);
+		$this->data = json_decode($this->json);
+
+		return $results;
+	}
+
+	public function findAllMunicipalitybyBarangay($municipality){
+		$stmt = $this->pdo->prepare("
+			SELECT
+				areaid as areaid,
+				ar_codebrgy as codebrgy,
+				ar_barangay as barangay,
+				ar_codemuni as codemuni,
+				ar_municipality as municipality,
+				ar_codeprov as codeprov,
+				ar_province as province,
+				ar_zipcode as zipcode,
+				ar_status as status,
+				ar_description as description,
+				ar_createat as create_at,
+				ar_updateat as update_at
+				
+			FROM ref_areas 
+			WHERE ar_municipality = :ar_municipality
+		");
+		$stmt->bindParam(':ar_municipality', $municipality);
+		$stmt->execute();
+
+		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Area');
+		$results = $stmt->fetchAll();
+		
+		$this->json = json_encode($results);
+		$this->data = json_decode($this->json);
+
+		return $results;
+	}
+
+
 	public function findAreasPerClient(){
 		$stmt = $this->pdo->prepare("
 			SELECT 

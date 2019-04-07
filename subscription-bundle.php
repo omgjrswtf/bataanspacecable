@@ -87,7 +87,7 @@
               </a>
               <div style="margin-top: 10px; color: white;">
               &nbsp;&nbsp;&nbsp;
-              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
+              <?php echo "<b>&#x205E; Welcome </b> $client->fname $client->lname"; ?>
               </div>
               <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
             </div>
@@ -170,17 +170,23 @@
             </p>
           <input type="text" name="qty" placeholder="Estimate Quantity">
 
-          <p id="latmoved"></p>
-          <p id="longmoved"></p>
+          <br><br>
+          <b>Xcoordinates:</b> <p id="latmoved"></p>
+          <b>Ycoordinates:</b> <p id="longmoved"></p>
+          <br>
+          <input type="hidden" name="lat" id="lat2">
+          <input type="hidden" name="long" id=long2>
 
           <input type="hidden" name="lat" id="lat2">
           <input type="hidden" name="long" id=long2>
           <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+          
+          <br><br>
+          <b>Note: </b> Drag the marker to your location and tap the pin. Wait for your X and Y Coordinates to pop up. <br> <br> *Make sure you pin your location properly and you have X and Y Coordinates before click submit button.
 
           </form>
           </div>
-
-          <style>          
+                    <style>          
             #map { 
               height: 400px;    
               width: 100%);            

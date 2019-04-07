@@ -93,7 +93,7 @@ if (isset($_GET['err'])) {
               </a>
               <div style="margin-top: 10px; color: white;">
               &nbsp;&nbsp;&nbsp;
-              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
+              <?php echo "<b>&#x205E; Welcome </b> $client->fname $client->lname"; ?>
               </div>
               <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
             </div>
@@ -158,47 +158,33 @@ if (isset($_GET['err'])) {
 
           <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
           <div class="item">
-            <a href="subscription-cable.php" class="overlay-wrapper">
-                <img src="img/showcase/digitalcable1.png" alt="Project 1 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Cable and Digital</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="subscription-cable.php">Cable and Digital</a>
-                </h4>
-              <!-- <a href="subscription-cable.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
-            </div>
-          </div>
-          <div class="item">
             <a href="subscription-bundle.php" class="overlay-wrapper">
-                <img src="img/showcase/bunddles.png" alt="Project 2 image" class="img-responsive underlay">
+                <img src="img/showcase/digitalcable1.png" alt="Project 1 image" class="img-responsive underlay">
                 <span class="overlay">
                   <span class="overlay-content"> <span class="h4">Bundle Installation</span> </span>
                 </span>
               </a>
             <div class="item-details bg-noise">
               <h4 class="item-title">
-                  <a href="subscription-bundle.php">Bundle Installation</a>
+                  <a href="subscription-cable.php">Bundle Installation</a>
                 </h4>
-              <!-- <a href="subscription-bundle.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
+              <!-- <a href="subscription-cable.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
             </div>
           </div>
-          <!-- <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="img/showcase/project3.png" alt="Project 3 image" class="img-responsive underlay">
+          <div class="item">
+            <a href="subscription-cable.php" class="overlay-wrapper">
+                <img src="img/showcase/digitalcable1.png" alt="Project 2 image" class="img-responsive underlay">
                 <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Other Products</span> </span>
+                  <span class="overlay-content"> <span class="h4">Digital Cable Installation</span> </span>
                 </span>
               </a>
             <div class="item-details bg-noise">
               <h4 class="item-title">
-                  <a href="subscription-other.php">Other Products</a>
+                  <a href="subscription-bundle.php">Digital Cable Installation</a>
                 </h4>
-              <a href="subscription-other.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+              <!-- <a href="subscription-bundle.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
             </div>
-          </div> -->
+          </div>
           </div>
         </div>
 

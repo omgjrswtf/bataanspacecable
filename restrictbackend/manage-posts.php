@@ -7,7 +7,7 @@ require_once '../core/init.php';
     $admin_id = $_SESSION['admin_id'];
 
     $admin = $admincon->adminData($admin_id);
-    $posts = $postcon->findPost();
+    $areas = $areacon->findAllMunicipality();
 
 
 ?>
@@ -143,13 +143,13 @@ require_once '../core/init.php';
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($posts as $post): ?>
+                                <?php foreach ($areas as $area): ?>
 
                                 <tr>
-                                <td><?php echo $post->poleid ?></td>
-                                <td><?php echo $post->parentmuni; ?></td>
+                                <td><?php echo $area->areaid ?></td>
+                                <td><?php echo $area->municipality ?></td>
                                 <td>
-                                    <a href="manage-post-parent.php?municipality=<?php echo $post->parentmuni ?>" class="btn btn-info btn-xs">more info</a>
+                                    <a href="manage-post-parent.php?municipality=<?php echo $area->municipality ?>" class="btn btn-info btn-xs">more info</a>
                                 </td>
                                 </tr>
 

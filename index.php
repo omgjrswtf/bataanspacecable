@@ -221,31 +221,31 @@
             <a href="#" class="overlay-wrapper">
                 <img src="img/showcase/digitalcable1.png" alt="Project 1 image" class="img-responsive underlay">
                 <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">View</span> </span>
+                  <span class="overlay-content"> <span class="h4">Bundle Installation</span> </span>
                 </span>
               </a>
             <div class="item-details bg-noise">
               <h4 class="item-title">
-                  <a href="#">Cable and Digital</a>
+                  <a href="subscription-cable.php">Bundle Installation</a>
                 </h4>
-              <!-- <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
+              <!-- <a href="subscription-cable.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
             </div>
           </div>
           <div class="item">
             <a href="#" class="overlay-wrapper">
-                <img src="img/showcase/bunddles.png" alt="Project 2 image" class="img-responsive underlay">
+                <img src="img/showcase/digitalcable1.png" alt="Project 2 image" class="img-responsive underlay">
                 <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">View</span> </span>
+                  <span class="overlay-content"> <span class="h4">Digital Cable Installation</span> </span>
                 </span>
               </a>
             <div class="item-details bg-noise">
               <h4 class="item-title">
-                  <a href="#">Bundle Installation</a>
+                  <a href="subscription-bundle.php">Digital Cable Installation</a>
                 </h4>
-              <!-- <a href="#" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
+              <!-- <a href="subscription-bundle.php" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a> -->
             </div>
           </div>
-        </div>
+          </div>
       </div>
     </div>
    

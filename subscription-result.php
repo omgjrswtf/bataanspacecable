@@ -148,7 +148,7 @@
                 </a>
                 <div style="margin-top: 10px; color: white;">
               &nbsp;&nbsp;&nbsp;
-              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
+              <?php echo "<b>&#x205E; Welcome </b> $client->fname $client->lname"; ?>
               </div>
               <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
               </div>
@@ -190,7 +190,7 @@
               </li>
 
               <li>
-                  <a href="#">Log Out</a>
+                  <a href="logout.php">Log Out</a>
               </li>
 
               </ul>
@@ -220,8 +220,6 @@
 
 
    Your selected bundle is <?php echo $bundle->name; ?>
-
-  <br>  Description : <?php echo $bundle->getTerms(); ?>
 
   <form method="post" action=" <?php print $subscriptionSend; ?> ">
   <br>

@@ -30,7 +30,7 @@ class VerifyController{
 		$stmt->execute();
 
 	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Verify');
-	    $results = $stmt->fetchall();
+	    $results = $stmt->fetchAll();
 
 	    $this->json = json_encode($results);
 	    $this->data = json_decode($this->json);
@@ -39,7 +39,7 @@ class VerifyController{
 	}
 
 	public function findUserVerify($verify_id){
-
+		
 		$stmt = $this->pdo->prepare("
 			SELECT
 				verify_id as id,
@@ -60,11 +60,11 @@ class VerifyController{
 		$stmt->execute();
 
 	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Verify');
-	    $results = $stmt->fetchAll();
+	    $results = $stmt->fetch();
 
 	    $this->json = json_encode($results);
 	    $this->data = json_decode($this->json);
-
+	    
 	    return $results;
 	}
 
