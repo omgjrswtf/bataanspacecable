@@ -1,35 +1,35 @@
 <?php 
-	require_once 'core/init.php';
+  require_once 'core/init.php';
     if (!$_SESSION) {
         header('Location: index.php');
     }
     $clientid = $_SESSION['client_id'];
- 	$client = $clientcon->clientData($clientid);
+  $client = $clientcon->clientData($clientid);
 
- 	//error
+  //error
 
- 	$error = '';
+  $error = '';
 
- 	$err = '';
+  $err = '';
 if (isset($_GET['error'])) {
-	$err	= $_GET['error'];
+  $err  = $_GET['error'];
 }
 switch ($err) {
-	case '1':
-		$error = "your password is not the same in your old password";
-	break;
+  case '1':
+    $error = "your password is not the same in your old password";
+  break;
 
-	case '2':
-		$error = "your new password is the same in your old password";
-	break;
+  case '2':
+    $error = "your new password is the same in your old password";
+  break;
 
-	case '3':
-		$error = "your new password is not the same to your confirm password";
-	break;
-	
-	default:
-		$error = "undefine error";
-	break;
+  case '3':
+    $error = "your new password is not the same to your confirm password";
+  break;
+  
+  default:
+    $error = "undefine error";
+  break;
 }
 
 
@@ -78,7 +78,7 @@ switch ($err) {
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style.css?" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -178,19 +178,19 @@ switch ($err) {
         <h2>Update Password</h2>
 
 
-	<form method="post" action="includes/update-profile-info.php">
-		
-	<input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
-	<input type="hidden" name="action" value="3">
+  <form method="post" action="includes/update-profile-info.php">
+    
+  <input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
+  <input type="hidden" name="action" value="3">
   <label>Old Password</label><br>
-	<input type="password" name="passold" placeholder="Old password"><br>
+  <input type="password" name="passold" placeholder="Old password"><br>
   <br><label>New Password</label><br>
-	<input type="password" name="passnew" placeholder="New password"><br>
+  <input type="password" name="passnew" placeholder="New password"><br>
   <br><label>Confirm Password</label><br>
-	<input type="password" name="passconfirm" placeholder="Confirm password"><br>
+  <input type="password" name="passconfirm" placeholder="Confirm password"><br>
   <br><br>
-	<input type="submit" name="submit" value="update">
-	</form>
+  <input type="submit" name="submit" value="update">
+  </form>
 
 
       </div>

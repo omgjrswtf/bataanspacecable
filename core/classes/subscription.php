@@ -1,5 +1,4 @@
 <?php 
-
 class Subscription {
 	
 	public $subcriptionid;
@@ -16,17 +15,14 @@ class Subscription {
 	public $active;
 	public $create_at;
 	public $update_at;
-
 	public function __construct($data = null)
     {
         //echo 'The class "', __CLASS__, '" was created.<br />';
     }
-
     public function __destruct()	
     {
         //echo 'The class "', __CLASS__, '" was destroyed.<br />';
     }
-
     public function getDateFromDay() {
     	$dateofyear = $this->duedate;
     	$year 		= $this->dueyear; 
@@ -34,10 +30,8 @@ class Subscription {
 		$newDate = $newDate->format('d-m-Y'); // for example
   		return $newDate;
 	}
-
 	public function getStatus(){
 		$status = $this->status;
-
 		switch ($status) {
 			case '1':
 				$var = "Pending";
@@ -62,19 +56,14 @@ class Subscription {
 			case '6':
 				$var = "Uninstalled";
 			break;
-
 			case '7':
 				$var = "Uninstalled";
 			break;
-
 			default:
 				$var = "undefined";
 			break;
 		}
 			return $var;
-
 	}
-
 }
-
 ?>

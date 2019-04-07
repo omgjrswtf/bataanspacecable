@@ -9,10 +9,10 @@ $client = $clientcon->clientData($clientid);
 $err = 0;
 
 if (isset($_GET['action']) || !empty($_GET['action'])) {
-	$action = $_GET['action'];
-	$err = 0;
+  $action = $_GET['action'];
+  $err = 0;
 }else{
-	$err = 1;
+  $err = 1;
 }
 
  ?>
@@ -60,7 +60,7 @@ if (isset($_GET['action']) || !empty($_GET['action'])) {
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style.css?" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -160,46 +160,46 @@ if (isset($_GET['action']) || !empty($_GET['action'])) {
 
 
 <div class="block block-border-bottom">
-	
-	<?php if ($action == 1): ?>
+  
+  <?php if ($action == 1): ?>
 
-	<form method="post" action="verify-result.php">
-		<input type="hidden" name="action" value="1">
- 		<label>Billing Statement</label>
- 		<select name="billing">
- 			<option value="Electricty Bill">Electricity Bill</option>
- 			<option value="Water Bill">Water Bill</option>
- 		</select>
- 		<br><br>
- 		<input type="submit" name="submit" value="Schedule">
- 	</form>
+  <form method="post" action="verify-result.php">
+    <input type="hidden" name="action" value="1">
+    <label>Billing Statement</label>
+    <select name="billing">
+      <option value="Electricty Bill">Electricity Bill</option>
+      <option value="Water Bill">Water Bill</option>
+    </select>
+    <br><br>
+    <input type="submit" name="submit" value="Schedule">
+  </form>
 
 
 
-	<?php elseif ($action == 2): ?>
-		<form method="post" action="verify-result.php">
-		<input type="hidden" name="action" value="2">
- 		<label>Identification (ID)</label>
- 		<select name="id">
- 			<option value="Passport">Passport</option>
- 			<option value="TIN">TIN</option>
- 			<option value="SSS">SSS</option>
+  <?php elseif ($action == 2): ?>
+    <form method="post" action="verify-result.php">
+    <input type="hidden" name="action" value="2">
+    <label>Identification (ID)</label>
+    <select name="id">
+      <option value="Passport">Passport</option>
+      <option value="TIN">TIN</option>
+      <option value="SSS">SSS</option>
       <option value="Driver`s License">Driver`s License</option>
- 		</select>
- 		<br><br>
- 		<input type="submit" name="submit" value="Schedule">
- 	</form>
+    </select>
+    <br><br>
+    <input type="submit" name="submit" value="Schedule">
+  </form>
 
-	<?php else: ?>
+  <?php else: ?>
 
-	<?php $err = 1 ?>
-	<?php endif ?>
+  <?php $err = 1 ?>
+  <?php endif ?>
 
 
 <?php 
 
 if ($err == 1) {
-	header('Location: verification-info.php?err=1');
+  header('Location: verification-info.php?err=1');
 }
 
 ?>

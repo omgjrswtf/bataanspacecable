@@ -21,16 +21,16 @@ $action = $_POST['action'];
 
 
 if ($action == 1) {
-	$billing = $_POST['billing'];
-	$err = 0;
-	$subscriptionSend = "subscriptionprocess/sendverifyprocess.php?clientid=$client->clientid&billing=$billing&year=$year&day=$newday&action=1";
+  $billing = $_POST['billing'];
+  $err = 0;
+  $subscriptionSend = "subscriptionprocess/sendverifyprocess.php?clientid=$client->clientid&billing=$billing&year=$year&day=$newday&action=1";
 } elseif ($action == 2) {
-	$id = $_POST['id'];
-	$err = 0;
-	$subscriptionSend = "subscriptionprocess/sendverifyprocess.php?clientid=$client->clientid&id=$id&year=$year&day=$newday&action=2";
+  $id = $_POST['id'];
+  $err = 0;
+  $subscriptionSend = "subscriptionprocess/sendverifyprocess.php?clientid=$client->clientid&id=$id&year=$year&day=$newday&action=2";
 }
 else{
-	$err = 1;
+  $err = 1;
 }
 
 
@@ -81,7 +81,7 @@ else{
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style.css?" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -187,53 +187,53 @@ else{
     <input type="file" name="fileToUpload" id="fileToUpload">
 
  <table class="table table-bordered">
-	<tr>
-	<th colspan="2">Service Overview</th>
-	</tr>
-	<tr>
-	    <td><b>Your Name:</b><br>
-	    	<?php echo "$client->fname $client->mname $client->lname"; ?>
-    	</td>
-    	<td>
-    		<b>Your Contact:</b><br>
-	    	<?php echo "$client->contact"; ?>
-    	</td>
-	</tr>
-	<tr>
-		<td>
-		<b>Type Of Service:</b><br>
-		Scheduling of Verification
-		</td>
-		<td>
-		<b>Transaction date:</b><br>
-		<?php echo "$newdate"; ?>
-		</td>
-	</tr>
-	<tr>
-		<?php if ($action == 1): ?>
-			<td>
-				<b>Type of Billing:</b><br>
-				
-			</td>
-			<td>
-				<?php echo "$billing bill"; ?>
-			</td>
-		<?php endif ?>
+  <tr>
+  <th colspan="2">Service Overview</th>
+  </tr>
+  <tr>
+      <td><b>Your Name:</b><br>
+        <?php echo "$client->fname $client->mname $client->lname"; ?>
+      </td>
+      <td>
+        <b>Your Contact:</b><br>
+        <?php echo "$client->contact"; ?>
+      </td>
+  </tr>
+  <tr>
+    <td>
+    <b>Type Of Service:</b><br>
+    Scheduling of Verification
+    </td>
+    <td>
+    <b>Transaction date:</b><br>
+    <?php echo "$newdate"; ?>
+    </td>
+  </tr>
+  <tr>
+    <?php if ($action == 1): ?>
+      <td>
+        <b>Type of Billing:</b><br>
+        
+      </td>
+      <td>
+        <?php echo "$billing bill"; ?>
+      </td>
+    <?php endif ?>
 
-		<?php if ($action == 2): ?>
-			<td>
-				<b>Type Identification(ID):</b><br>
-				
-			</td>
-			<td>
-				<?php echo "$id"; ?>
-			</td>
-		<?php endif ?>
-		
+    <?php if ($action == 2): ?>
+      <td>
+        <b>Type Identification(ID):</b><br>
+        
+      </td>
+      <td>
+        <?php echo "$id"; ?>
+      </td>
+    <?php endif ?>
+    
 
 
-	
-	</tr>
+  
+  </tr>
 </table>
 
 <input type="submit" name="submit" value="submit">
@@ -243,7 +243,7 @@ else{
 <?php 
 
 if ($err == 1) {
-	header('Location: verification-info.php?err=1');
+  header('Location: verification-info.php?err=1');
 }
 
 ?>

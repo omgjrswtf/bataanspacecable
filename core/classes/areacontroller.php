@@ -43,6 +43,39 @@ class AreaController{
 	    return $results;
 	}
 
+	public function findBar($barangay){
+	
+	    $stmt = $this->pdo->prepare("
+			SELECT
+				areaid as areaid,
+				ar_codebrgy as codebrgy,
+				ar_barangay as barangay,
+				ar_codemuni as codemuni,
+				ar_municipality as municipality,
+				ar_codeprov as codeprov,
+				ar_province as province,
+				ar_zipcode as zipcode,
+				ar_status as status,
+				ar_description as description,
+				ar_createat as create_at,
+				ar_updateat as update_at
+				
+			FROM ref_areas 
+			WHERE ar_barangay = :ar_barangay
+		");
+		$stmt->bindParam(':ar_barangay', $barangay);
+		$stmt->execute();
+
+	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Area');
+	    $results = $stmt->fetch();
+
+	    $this->json = json_encode($results);
+	    $this->data = json_decode($this->json);
+
+	    return $results;
+
+	}
+
 	public function findBarangay($barangay,$municipality){
 	
 	    $stmt = $this->pdo->prepare("

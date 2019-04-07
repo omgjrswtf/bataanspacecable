@@ -2,28 +2,28 @@
 require_once 'core/init.php';
 
 
-	if (isset($_POST['login']) && !empty($_POST['login'])) {
-		$username = $_POST['username'];
-		$password = $_POST['password'];
+  if (isset($_POST['login']) && !empty($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-		if(!empty($username) or !empty($password)){
-			$username = $clientcon->checkInput($username);
-			$password = $clientcon->checkInput($password);
-			
-			$client = $clientcon->login($username, $password);
+    if(!empty($username) or !empty($password)){
+      $username = $clientcon->checkInput($username);
+      $password = $clientcon->checkInput($password);
+      
+      $client = $clientcon->login($username, $password);
 
-			if($client){
-				$_SESSION['client_id'] = $client->clientid;
-				header('Location: home.php');
-				
-			}else{
-				$msg = "The email or password is incorrect!";
-			}
+      if($client){
+        $_SESSION['client_id'] = $client->clientid;
+        header('Location: home.php');
+        
+      }else{
+        $msg = "The email or password is incorrect!";
+      }
 
-		}else{
-			$msg = "Please enter email and password";
-		}
-	}
+    }else{
+      $msg = "Please enter email and password";
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +69,7 @@ require_once 'core/init.php';
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style.css?" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -107,13 +107,13 @@ require_once 'core/init.php';
               <h3 class="panel-title"> Login </h3>
             </div>
             <div class="panel-body">
-    		<?php 
-			if (isset($msg)) {
-				echo '<div class="span-fp-error">'.$msg.'</div>';
-			}
-			?>
+        <?php 
+      if (isset($msg)) {
+        echo '<div class="span-fp-error">'.$msg.'</div>';
+      }
+      ?>
 
-          	<form accept-charset="UTF-8" role="form" method="POST">
+            <form accept-charset="UTF-8" role="form" method="POST">
 
                 <fieldset>
                   <div class="form-group">
@@ -136,8 +136,8 @@ require_once 'core/init.php';
                         Remember Me
                       </label>
                   </div>
-	
-          				<input class="btn btn-lg btn-primary btn-block" type="submit" value="Login"  name="login">
+  
+                  <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login"  name="login">
                 </fieldset>
               </form>
               <p class="m-b-0 m-t">Not signed up? <a href="signup.php">Sign up here</a>.</p>
@@ -148,7 +148,7 @@ require_once 'core/init.php';
 
 
 
-	
+  
 
       <!-- /row -->
     </div>
