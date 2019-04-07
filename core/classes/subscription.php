@@ -8,9 +8,8 @@ class Subscription {
 	public $usercontact;
 	public $dueyear;
 	public $duedate;
-	public $xcoor;
-	public $ycoor;
 	public $types;
+	public $qtydg; //quantity of dgbox
 	public $addon; //add on wiring computed
 	public $added; //added bill for estimated value for end of month
 	public $status;

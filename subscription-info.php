@@ -58,7 +58,7 @@
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css?" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -111,7 +111,7 @@
                 <a href="home.php"><i class="fa fa-home"></i></a>
             </li>
 
-            <?php if ($client->fname || $client->mname || $client->lname): ?>
+            <?php if ($client->fname || $client->mname  || $client->lname): ?>
             <li>
                 <a href="profile-info.php">Personal Info</a>
             </li>
@@ -185,7 +185,7 @@
 			<tbody>
 				<tr>
 					<td><?php echo $subscription->getDateFromDay(); ?></td>
-					<td><?php echo $bundle->name; ?></td>
+					<td><?php echo "$subscription->types"; ?></td>
 					<td><?php echo $subscription->getStatus();?></td>
 					<td><a href="<?php echo "installation-info.php?id=$subscription->subcriptionid" ?>">more info</a></td>
 				</tr>
@@ -215,25 +215,31 @@
     <br>
     <br>
     <?php else: ?>
-          <h5><a href="#">Montly Due</a></h5>
+        <h5><a href="#">Montly Due</a></h5>
         <hr>
+        <?php if ($billing): ?>
+          
+        
         <table style="width:100%">
         <tr>
           <th>Bundle Name</th>
           <th>Pricing</th> 
           <th>Status</th>
-     <!--      <th>Action</th> -->
+          <!--      <th>Action</th> -->
         </tr>
-      <tbody>
-        <tr>
-          <td><?php echo $billing->name; ?></td>
-          <td><?php echo $billing->price; ?>.00</td>
-          <td><?php echo $billing->getStatus(); ?></td>
-         
-         <!--  <td><a href="<?php echo "installation-info.php?id=$subscription->subcriptionid" ?>">more info</a></td> -->
-        </tr>
-      </tbody>
-      </table>
+        <tbody>
+          <tr>
+            <td><?php echo $billing->name; ?></td>
+            <td><?php echo $billing->price; ?>.00</td>
+            <td><?php echo $billing->getStatus(); ?></td>
+           
+           <!--  <td><a href="<?php echo "installation-info.php?id=$subscription->subcriptionid" ?>">more info</a></td> -->
+          </tr>
+        </tbody>
+        </table>
+        <?php else: ?>
+          <p><i><b>Notice:</b></i>There is no record of monthly due for now</p>
+        <?php endif ?>
     <?php endif ?>
     
 

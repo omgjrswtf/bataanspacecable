@@ -72,6 +72,7 @@ $subscriberareas = $areacon->findAreasPerClient();
 
 
         <div id="page-wrapper">
+
             <div class="row">
                 <div class="col-lg-12">
                 <h1 class="page-header">Subcription Statical</h1>
@@ -167,17 +168,48 @@ $subscriberareas = $areacon->findAreasPerClient();
     
                 </script>
 
+                <div class="row">
                 <hr>
 
                 <h3>Area List</h3>
 
                 <br>
-           
                 <?php foreach ($areas as $area): ?>
-                    
-                <a href="statistical-area-info.php?barangay=<?php echo $area->barangay ?>&municipality=<?php echo $area->municipality?>" class="btn btn-info btn-xs"><?php print $area->barangay ." ".$area->municipality ?></a>
+                <div class="col-lg-6 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-map fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">
+                                    <?php
+                                    $text = substr($area->barangay,0,1);
+                                    echo $text[0];
+                                    ?>
+                                </div>
+                                    <div><?php print $area->barangay ." ".$area->municipality ?></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <a href="statistical-area-info.php?barangay=<?php echo $area->barangay ?>&municipality=<?php echo $area->municipality?>"><span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div></a>
+                            </div>
+                        </a>
+                    </div>
                 
+                </div>
                 <?php endforeach ?>
+                </div>
+
+                
+           
+                    
+                
          
 
                 <!-- /.row -->

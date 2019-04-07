@@ -91,10 +91,9 @@
 			<span class="login100-form-title p-b-26">
 				Welcome To BSC-Network
 			</span>
-			<center><img src="../img/LogoCable.png" style="width: 100px; height: 100px;"></center>
-			<!-- <span class="login100-form-title p-b-48">
+			<span class="login100-form-title p-b-48">
 				<i class="zmdi zmdi-font"></i>
-			</span> -->
+			</span>
 
 			<div class="wrap-input100 validate-input" data-validate = "Enter Username">
 				<input class="input100" type="text" name="username">

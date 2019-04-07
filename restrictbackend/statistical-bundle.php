@@ -137,14 +137,48 @@ $overallbundles = $subscriptioncon->OverallBundle();
                     
                 </script>
 
-
+                <div class="row">
                 <hr>
-           
+                <h4>Bundle List</h4>
+                <br>
                 <?php foreach ($bundles as $bundle): ?>
-                    
-                <a href="statistical-bundle-info.php?code=<?php echo $bundle->code ?> " class="btn btn-info btn-xs"><?php print $bundle->name ?></a>
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-map fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">
+                                    <?php
+                                    $str = $bundle->name;
+                                    // Split it into pieces, with the delimiter being a space. This creates an array.
+                                    $split = explode(" ", $str);
+                                    // Get the last value in the array.
+                                    // count($split) returns the total amount of values.
+                                    // Use -1 to get the index.
+                                    echo $split[count($split)-1]." pesos plan";
+                                    ?>
+                                </div>
+                                    <div><?php print $bundle->name ?></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <a href="statistical-bundle-info.php?code=<?php echo $bundle->code ?> ><span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div></a>
+                            </div>
+                        </a>
+                    </div>
                 
+                </div>
+                                    
                 <?php endforeach ?>
+                </div>
          
 
                 <!-- /.row -->

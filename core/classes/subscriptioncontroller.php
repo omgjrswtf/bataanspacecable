@@ -21,9 +21,8 @@ class SubscriptionController{
 				sb_usercontact as usercontact,
 				sb_dueyear as dueyear,
 				sb_duedate as duedate,
-				sb_xcoordinates as xcoor,
-				sb_ycoordinates as ycoor,
 				sb_types as types,
+				sb_qtydg as qtydg,
 				sb_addon as addon,
 				sb_added as added,
 				sb_status as status,
@@ -56,9 +55,8 @@ class SubscriptionController{
 				sb_usercontact as usercontact,
 				sb_dueyear as dueyear,
 				sb_duedate as duedate,
-				sb_xcoordinates as xcoor,
-				sb_ycoordinates as ycoor,
 				sb_types as types,
+				sb_qtydg as qtydg,
 				sb_addon as addon,
 				sb_added as added,
 				sb_status as status,
@@ -91,10 +89,9 @@ class SubscriptionController{
 				sb_usercontact AS usercontact,
 				sb_dueyear AS dueyear,
 				sb_duedate AS duedate,
-				sb_xcoordinates AS xcoor,
-				sb_ycoordinates AS ycoor,
 				sb_types AS 'types',
 				sb_addon AS addon,
+				sb_qtydg as qtydg,
 				sb_added AS added,
 				sb_status AS 'status',
 				sb_active AS active,
@@ -138,9 +135,8 @@ class SubscriptionController{
 				sb_usercontact as usercontact,
 				sb_dueyear as dueyear,
 				sb_duedate as duedate,
-				sb_xcoordinates as xcoor,
-				sb_ycoordinates as ycoor,
 				sb_types as types,
+				sb_qtydg as qtydg,
 				sb_addon as addon,
 				sb_added as added,
 				sb_status as status,
@@ -170,9 +166,8 @@ class SubscriptionController{
 				sb_usercontact as usercontact,
 				sb_dueyear as dueyear,
 				sb_duedate as duedate,
-				sb_xcoordinates as xcoor,
-				sb_ycoordinates as ycoor,
 				sb_types as types,
+				sb_qtydg as qtydg,
 				sb_addon as addon,
 				sb_added as added,
 				sb_status as status,
@@ -202,9 +197,8 @@ class SubscriptionController{
 				sb_usercontact as usercontact,
 				sb_dueyear as dueyear,
 				sb_duedate as duedate,
-				sb_xcoordinates as xcoor,
-				sb_ycoordinates as ycoor,
 				sb_types as types,
+				sb_qtydg as qtydg,
 				sb_addon as addon,
 				sb_added as added,
 				sb_status as status,
@@ -234,9 +228,8 @@ class SubscriptionController{
 				sb_usercontact as usercontact,
 				sb_dueyear as dueyear,
 				sb_duedate as duedate,
-				sb_xcoordinates as xcoor,
-				sb_ycoordinates as ycoor,
 				sb_types as types,
+				sb_qtydg as qtydg,
 				sb_addon as addon,
 				sb_added as added,
 				sb_status as status,
@@ -576,9 +569,8 @@ class SubscriptionController{
 			`sb_usercontact`,
 			`sb_dueyear`,
 			`sb_duedate`,
-			`sb_xcoordinates`,
-			`sb_ycoordinates`,
 			`sb_types`,
+			`sb_qtydg`,
 			`sb_addon`,
 			`sb_added`,
 			`sb_status`,
@@ -591,10 +583,9 @@ class SubscriptionController{
 			:sb_username,
 			:sb_usercontact,
 			:sb_dueyear,
-			:sb_duedate,  
-			:sb_xcoordinates, 
-			:sb_ycoordinates, 
+			:sb_duedate,
 			:sb_types,
+			:sb_qtydg,
 			:sb_addon,
 			:sb_added,
 			:sb_status,
@@ -607,9 +598,8 @@ class SubscriptionController{
 		$stmt->bindParam(":sb_usercontact", $subscription->usercontact);
 		$stmt->bindParam(":sb_dueyear", $subscription->dueyear);
 		$stmt->bindParam(":sb_duedate", $subscription->duedate);
-		$stmt->bindParam(":sb_xcoordinates", $subscription->xcoor);
-		$stmt->bindParam(":sb_ycoordinates", $subscription->ycoor);
 		$stmt->bindParam(":sb_types", $subscription->types);
+		$stmt->bindParam(":sb_qtydg", $subscription->qtydg);
 		$stmt->bindParam(":sb_addon", $subscription->addon);
 		$stmt->bindParam(":sb_added", $subscription->added);
 		$stmt->bindParam(":sb_status", $subscription->status);
@@ -639,9 +629,8 @@ class SubscriptionController{
 			sb_usercontact = :sb_usercontact,
 			sb_dueyear = :sb_dueyear,
 			sb_duedate = :sb_duedate,
-			sb_xcoordinates = :sb_xcoordinates,
-			sb_ycoordinates = :sb_ycoordinates,
 			sb_types = :sb_types,
+			sb_qtydg = :sb_qtydg,
 			sb_addon = :sb_addon,
 			sb_added = :sb_added,
 			sb_status = :sb_status,
@@ -656,9 +645,8 @@ class SubscriptionController{
 		$stmt->bindParam(":sb_usercontact", $subscription->usercontact);
 		$stmt->bindParam(":sb_dueyear", $subscription->dueyear);
 		$stmt->bindParam(":sb_duedate", $subscription->duedate);
-		$stmt->bindParam(":sb_xcoordinates", $subscription->xcoor);
-		$stmt->bindParam(":sb_ycoordinates", $subscription->ycoor);
 		$stmt->bindParam(":sb_types", $subscription->types);
+		$stmt->bindParam(":sb_qtydg", $subscription->qtydg);
 		$stmt->bindParam(":sb_addon", $subscription->addon);
 		$stmt->bindParam(":sb_added", $subscription->added);
 		$stmt->bindParam(":sb_status", $subscription->status);

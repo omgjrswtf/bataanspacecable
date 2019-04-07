@@ -79,33 +79,6 @@ $clients = $clientcon->findClient();
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <style type="text/css">
-        .panel-heading{
-            color: #fff;
-            background-color: #a1a1a1;
-            border-top-left-radius: 0px;
-            border-top-right-radius: 0px;
-            border: 1px solid #a1a1a1;
-        }
-        .panel-body{
-            border: 1px solid #a1a1a1;
-        }
-        .btn{
-            background-color: #595959;
-            border: 2px solid #595959;
-        }
-        .btn:hover{
-            background-color: white;
-            color: black;
-            border: 2px solid #595959;
-        }
-        .list{
-            width: 1015px;
-            overflow: auto;
-            margin-left: -5px;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -125,65 +98,60 @@ $clients = $clientcon->findClient();
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
-                    <div class="panel-heading">
+                <hr>
+                <table class="table table-hover" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
+                            <th>Address</th>
+                            <th>Contact</th>
+                            <th>Sex</th>
+                            <th>Date Birth</th>
+                            <th>Email Address</th>
+                            <th>Status</th>
+                            <th>Activity</th>
+                            <th>Date Create</th>
+                            <th>Date Updated</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($clients as $client): ?>
+                    <?php 
+                        $cliendid = $client->clientid; 
+                        $clientlocations = $locationcon->findLocation($cliendid);
+                    ?>
+                    <tr>
+                    <td><?php echo $client->clientid ?></td>
+                    <td><?php echo $client->fname ?></td>
+                    <td><?php echo $client->mname ?></td>
+                    <td><?php echo $client->lname ?></td>
+                    <td><?php 
+                        if (empty($clientlocations->barangay)) {
+                            
+                        } else {
+                            echo $clientlocations->unit." ".$clientlocations->barangay." ".$clientlocations->municipality.", ".$clientlocations->province." ".$clientlocations->zipcode;
+                        }
+                        ?>        
+                    </td>
+                    <td><?php echo $client->contact ?></td>
+                    <td><?php echo $client->gender; ?></td>
+                    <td><?php echo $client->datebirth; ?></td>
+                    <td><?php echo $client->email; ?></td>
+                    <td><?php echo $client->getStatus(); ?></td>
+                    <td><?php echo $client->getActivity(); ?></td>
+                    <td><?php echo $client->create_at; ?></td>
+                    <td><?php echo $client->update_at; ?></td>
+                    <td><a href="manage-client-form.php?id=<?php echo $client->clientid ?>" class="btn btn-info btn-xs">Send New Password</a></td>
+                    </tr>
 
-                    </div>
-                    <div class="panel-body">
-                        <div class="list">
-                            <table class="table table-hover" id="myTable">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>First Name</th>
-                                        <th>Middle Name</th>
-                                        <th>Last Name</th>
-                                        <th>Address</th>
-                                        <th>Contact</th>
-                                        <th>Sex</th>
-                                        <th>Date Birth</th>
-                                        <th>Email Address</th>
-                                        <th>Status</th>
-                                        <th>Activity</th>
-                                        <th>Date Create</th>
-                                        <th>Date Updated</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach ($clients as $client): ?>
-                                <?php 
-                                    $cliendid = $client->clientid; 
-                                    $clientlocations = $locationcon->findLocation($cliendid);
-                                ?>
-                                <tr>
-                                <td><?php echo $client->clientid ?></td>
-                                <td><?php echo $client->fname ?></td>
-                                <td><?php echo $client->mname ?></td>
-                                <td><?php echo $client->lname ?></td>
-                                <td><?php 
-                                    if (empty($clientlocations->barangay)) {
-                                        
-                                    } else {
-                                        echo $clientlocations->unit." ".$clientlocations->barangay." ".$clientlocations->municipality.", ".$clientlocations->province." ".$clientlocations->zipcode;
-                                    }
-                                    ?>        
-                                </td>
-                                <td><?php echo $client->contact ?></td>
-                                <td><?php echo $client->gender; ?></td>
-                                <td><?php echo $client->datebirth; ?></td>
-                                <td><?php echo $client->email; ?></td>
-                                <td><?php echo $client->getStatus(); ?></td>
-                                <td><?php echo $client->getActivity(); ?></td>
-                                <td><?php echo $client->create_at; ?></td>
-                                <td><?php echo $client->update_at; ?></td>
-                                <td><a href="manage-client-form.php?id=<?php echo $client->clientid ?>" class="btn btn-info btn-xs">Send New Password</a></td>
-                                </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
 
-                                <?php endforeach ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- /.row -->

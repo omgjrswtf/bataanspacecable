@@ -11,7 +11,8 @@
  	$bundleid 	= $_GET['bundlecode'];
  	$locationid = $_GET['location'];
  	$addedvalue = $_GET['advl']; //added to today update last day of month
- 	$estimated 	= $_GET['esti'];  //added estimated price and length
+ 	$estimated 	= $_GET['esti']; //added estimated price and length
+ 	$qty 		= $_GET['qty'];  //qty of digital box
 
 
  	$client = $clientcon->clientData($id);
@@ -40,9 +41,8 @@
 	$subscription->usercontact = $client->contact;
 	$subscription->dueyear = date('Y');
 	$subscription->duedate = date('z') + 2;
-	$subscription->xcoor = $verify->xcoor;
-	$subscription->ycoor = $verify->ycoor;
 	$subscription->types = $bundle->code;
+	$subscription->qtydg = $qty;
 	$subscription->addon = $estimated;
 	$subscription->added = $addedvalue;
 	$subscription->status = 1;
