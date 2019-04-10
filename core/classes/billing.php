@@ -60,6 +60,10 @@ class Billing {
 				$var = "Added Payment";
 			break;
 
+			case '7':
+				$var = "Monthly Due";
+			break;
+
 			case '5':
 				$var = "Cut";
 			break;
