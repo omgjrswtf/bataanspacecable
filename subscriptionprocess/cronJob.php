@@ -4,19 +4,23 @@
   
 
 $billing = $billingcon->billingDataMonthly();
-$billing = $billingcon->billingDatabiMonthly();
+$billing1 = $billingcon->billingDatabiMonthly();
 
-  print_r($billing);
+  print_r($billing1);
 
 $datenow = date("d");
 $datetom = date("d") + 4;
 
+if ($billing) {
+	# code...
 
 switch ($billing->active) {
 	case '2':
 	
 	$billing->active = 7;
 	$billingcon->save($billing);
+
+	$client = $clientcon->clientData($billing->userid);
 
 	$sms =  new Sms();
 	$sms->userid 			= $id;
@@ -29,23 +33,12 @@ switch ($billing->active) {
 
 	break;
 
-	case '7':
-	$billing->active = 6;
-	$billingcon->save($billing);
-
-	$sms =  new Sms();
-	$sms->userid 			= $id;
-	$sms->messege 			= "Reminder You have exceed your monthly due. PLease expect that your monthly due is increase";
-	$sms->contact 			= $client->contact;
-	$sms->transactionid 	= 0;
-	$sms->status 			= 1;
-	$smscon->send($sms);
-	$smscon->save($sms);
-	break;
 	
 	default:
 		# code...
 	break;
+}
+
 }
 
 
