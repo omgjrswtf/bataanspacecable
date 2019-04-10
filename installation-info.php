@@ -9,10 +9,12 @@
 
 $id = $_GET['id'];
 
+$mic = $miccon->micDatas();
 $subscription = $subscriptioncon->subscriptionData($id);
-$estimated = $subscription->added;
+
+$estimated  = $mic->bundleft * $wire;
 $addedvalue = $subscription->addon;
-$wire = (int)$addedvalue / 7;
+$wire = (int)$addedvalue / $mic->bundleft;
 
 
 $newday = $subscription->getDateFromDay();
@@ -21,6 +23,10 @@ $totaldate  = date("t");
 $dayleft    = $totaldate - $newdate;
 
 $bundle = $bundlecon->bundleCode($subscription->types);
+
+
+
+
 
 
 
@@ -70,7 +76,7 @@ $bundle = $bundlecon->bundleCode($subscription->types);
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css?" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -104,7 +110,7 @@ $bundle = $bundlecon->bundleCode($subscription->types);
               </a>
               <div style="margin-top: 10px; color: white;">
               &nbsp;&nbsp;&nbsp;
-              <?php echo "<b>&#x205E; Welcome </b> $client->fname $client->lname"; ?>
+              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
               </div>
               <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
             </div>
@@ -198,36 +204,30 @@ $bundle = $bundlecon->bundleCode($subscription->types);
       </td>
   </tr>
 
-<?php if ($bundle->getPrefix() == "B"): ?>
+<?php if ($bundle->getPrefix() == "b"): ?>
   <tr>
     <td>Digital and Cable</td>
-    <td>x 1</td>
-    <td align="right"><?php echo "&#x20b1; ". $bundle->getAddedValue().".00"; ?></td>
-  </tr>
-
-  <tr>
-    <td>Advance 1 month</td>
-    <td>x 1</td>
-    <td align="right">&#x20b1; <?php echo $bundle->price.".00"; ?></td>
+    <td>x <?php echo "$qty (&#x20b1; ".$mic->bundledgb.".00)"; ?></td>
+      <td align="right"><?php echo "&#x20b1; ". $digibox.".00"; ?></td>
   </tr>
 
   <tr>
     <td>Day left this month</td>
     <td><?php echo $dayleft; ?> days</td>
-    <td align="right">&#x20b1;<?php echo $addedvalue; ?>.00</td>
+    <td align="right">&#x20b1;<?php echo $addedvalue; ?></td>
   </tr>
 
   <tr>
     <td>Wire Added</td>
     <td>x <?php echo $wire."ft"; ?></td>
-    <td align="right">&#x20b1;<?php echo $estimated.".00"; ?></td>
+    <td align="right">&#x20b1;<?php echo $estimated; ?></td>
   </tr>
 
 <?php endif ?>
   <tr>
     <td></td>
     <td>Total</td>
-    <td align="right">&#x20b1; <?php echo ($bundle->price * 2) + (int)$addedvalue + (int)$estimated.".00"; ?></td>
+    <td align="right">&#x20b1; <?php echo ($bundle->price - 475) + (int)$addedvalue + (int)$estimated + ($subscription->qtydg * $mic->bundledgb); ?></td>
   </tr>
 </table>
 

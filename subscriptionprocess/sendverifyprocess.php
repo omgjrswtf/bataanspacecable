@@ -119,21 +119,13 @@
  		$verifyschedule->status 		= 1;
 
  		$verify = $verifycon->findUser($client_id);
- 		$verify->profbilling = $billingverify;
  		$verify->stage = 4;
  		$verifycon->save($verify);
 
  		$verifyschedulecon->saveonce($verifyschedule);
 
- 		$sms =  new Sms();
-		$sms->userid 			= $id;
-		$sms->message 			= "Your billing validation for schedule of your verification was already pending to the system. Thank You";
-		$sms->contact 			= $client->contact;
-		$sms->transactionid 	= 0;
-		$sms->status 			= 1;
-		// $smscon->send($sms);
-		$smscon->save($sms);
-		// print_r($sms);
+ 		$sms1 = "Your billing validation for schedule of your verification was already pending to the system. Thank You";
+
 
 	}
 
@@ -149,26 +141,29 @@
 
 
 		$verify = $verifycon->findUser($client_id);
-		$verify->profid = $idverify;
  		$verify->stage = 5;
  		$verifycon->save($verify);
 
- 		$sms =  new Sms();
-		$sms->userid 			= $id;
-		$sms->message 			= "Your ID validation for schedule of your verification was already pending to the system. Thank You";
-		$sms->contact 			= $client->contact;
-		$sms->transactionid 	= 0;
-		$sms->status 			= 1;
-		// $smscon->send($sms);
-		$smscon->save($sms);
-		// print_r($sms);
+ 		$sms1 = "Your billing validation for schedule of your verification was already pending to the system. Thank You";
 
 	}
 
 
- 	// print_r($verifyschedule);
 
-	
+
+ 	// print_r($verifyschedule);
+	echo "<br>";
+	$sms =  new Sms();
+	$sms->userid 			= $id;
+	$sms->message 			= $sms1;
+	$sms->contact 			= $client->contact;
+	$sms->transactionid 	= 0;
+	$sms->status 			= 1;
+	// $smscon->send($sms);
+	$smscon->save($sms);
+
+	// print_r($sms);
+
 
  	header('Location: ../verification-info.php');
 

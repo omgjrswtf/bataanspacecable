@@ -59,6 +59,14 @@ class Billing {
 			case '4':
 				$var = "Added Payment";
 			break;
+
+			case '5':
+				$var = "Cut";
+			break;
+
+			case '6':
+				$var = "Unpayed for two months";
+			break;
     		
     		
     		default:

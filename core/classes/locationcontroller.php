@@ -75,35 +75,34 @@ class LocationController{
 	    return $results;
 	}
 	
-	public function findLocationAll(){
-
-		$stmt = $this->pdo->prepare("
-			SELECT
-				clientloc_id as clientlocid,
-				cl_userid as userid,
-				cl_unit as unit,
-				cl_block as block,
-				cl_barangay as barangay,
-				cl_municipality as municipality,
-				cl_province as province,
-				cl_zipcode as zipcode,
-				cl_description as description,
-				cl_status as status,
-				cl_createat as create_at,
-				cl_updateat as update_at
+	// public function findAreas(){
+	// 	$stmt = $this->pdo->prepare("
+	// 		SELECT
+	// 			areaid as areaid,
+	// 			ar_codebrgy as codebrgy,
+	// 			ar_barangay as barangay,
+	// 			ar_codemuni as codemuni,
+	// 			ar_municipality as municipality,
+	// 			ar_codeprov as codeprov,
+	// 			ar_province as province,
+	// 			ar_zipcode as zipcode,
+	// 			ar_status as status,
+	// 			ar_description as description,
+	// 			ar_createat as create_at,
+	// 			ar_updateat as update_at
 				
-			FROM tbl_clientlocation
-		");
-		$stmt->execute();
+	// 		FROM ref_areas 
+	// 	");
+	// 	$stmt->execute();
 
-	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Location');
-	    $results = $stmt->fetch();
+	// 	$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Area');
+	// 	$results = $stmt->fetchAll();
+		
+	// 	$this->json = json_encode($results);
+	// 	$this->data = json_decode($this->json);
 
-	    $this->json = json_encode($results);
-	    $this->data = json_decode($this->json);
-
-	    return $results;
-	}
+	// 	return $results;
+	// }
 
 	public function save(Location $location){
 		$created_at = date('Y-m-d H:i:s');

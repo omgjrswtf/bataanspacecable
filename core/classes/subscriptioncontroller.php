@@ -1,13 +1,18 @@
 <?php 
 require_once 'subscription.php';
+
 class SubscriptionController{
 		protected $pdo;
 		public $data;
 		public $subscription;
+
 	function __construct($pdo){
 		$this->pdo = $pdo; 
 	}
+
+
 	public function subscriptionData($subscription_id){
+
 		$stmt = $this->pdo->prepare("
 			SELECT
 				subcription_id as subcriptionid,
@@ -30,13 +35,18 @@ class SubscriptionController{
 		");
 		$stmt->bindParam(':subcription_id', $subscription_id);
 		$stmt->execute();
+
 	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subscription');
 	    $results = $stmt->fetch();
+
 	    $this->json = json_encode($results);
 	    $this->data = json_decode($this->json);
+
 	    return $results;
 	}
+
 	public function subsClientData($subscription_id){
+
 		$stmt = $this->pdo->prepare("
 			SELECT
 				subcription_id as subcriptionid,
@@ -59,13 +69,18 @@ class SubscriptionController{
 		");
 		$stmt->bindParam(':sb_userid', $subscription_id);
 		$stmt->execute();
+
 	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subscription');
 	    $results = $stmt->fetch();
+
 	    $this->json = json_encode($results);
 	    $this->data = json_decode($this->json);
+
 	    return $results;
 	}
+
 	public function subsBundledata($subscription_id){
+
 		$stmt = $this->pdo->prepare("
 			SELECT 
 				subcription_id AS subcriptionid,
@@ -95,16 +110,22 @@ class SubscriptionController{
 			  tbl_subcription
 			  INNER JOIN ref_bundles
 			    ON (sb_types = b_code)
+
 			WHERE subcription_id = :subcription_id 
 		");
 		$stmt->bindParam(':subcription_id', $subscription_id);
 		$stmt->execute();
+
 	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subscription');
 	    $results = $stmt->fetch();
+
 	    $this->json = json_encode($results);
 	    $this->data = json_decode($this->json);
+
 	    return $results;
 	}
+
+
 	public function findAllSchedPending(){
 		$stmt = $this->pdo->prepare("
 			SELECT
@@ -126,13 +147,16 @@ class SubscriptionController{
 			Where sb_status = 1;
 		");
 		$stmt->execute();
+
 		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Subscription');
 		$results = $stmt->fetchAll();
 		
 		$this->json = json_encode($results);
 		$this->data = json_decode($this->json);
+
 		return $results;
 	}
+
 	public function findAllSchedUnAddress(){
 		$stmt = $this->pdo->prepare("
 			SELECT
@@ -151,16 +175,19 @@ class SubscriptionController{
 				sb_createat as create_at,
 				sb_updateat as update_at
 			FROM tbl_subcription 
-			Where sb_status = 4;
+			Where sb_status = 8;
 		");
 		$stmt->execute();
+
 		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Subscription');
 		$results = $stmt->fetchAll();
 		
 		$this->json = json_encode($results);
 		$this->data = json_decode($this->json);
+
 		return $results;
 	}
+
 	public function findAllSchedAccepted(){
 		$stmt = $this->pdo->prepare("
 			SELECT
@@ -182,13 +209,16 @@ class SubscriptionController{
 			Where sb_status = 2;
 		");
 		$stmt->execute();
+
 		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Subscription');
 		$results = $stmt->fetchAll();
 		
 		$this->json = json_encode($results);
 		$this->data = json_decode($this->json);
+
 		return $results;
 	}
+
 	public function findAllSchedOngoing(){
 		$stmt = $this->pdo->prepare("
 			SELECT
@@ -210,13 +240,16 @@ class SubscriptionController{
 			Where sb_status = 3;
 		");
 		$stmt->execute();
+
 		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Subscription');
 		$results = $stmt->fetchAll();
 		
 		$this->json = json_encode($results);
 		$this->data = json_decode($this->json);
+
 		return $results;
 	}
+
 	public function findOverSub(){
 		$stmt = $this->pdo->prepare("
 			SELECT
@@ -225,6 +258,7 @@ class SubscriptionController{
 				unintalled AS unintalled,
 				ROUND((`installed`/`all`)*100) AS percentinstalled,
 				ROUND((`unintalled`/`all`)*100) AS percentunintalled
+
 				FROM (
 				SELECT  
 					COUNT(IF(`sb_status` IN (4), `sb_status`, NULL)) AS `installed`,
@@ -232,16 +266,22 @@ class SubscriptionController{
 					COUNT(sb_status) AS `all`
 				FROM
 				tbl_subcription
+
 					
 				HAVING COUNT(sb_status)) AS b
 		");
 		$stmt->execute();
+
 	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subscription');
 	    $results = $stmt->fetch();
+
 	    $this->json = json_encode($results);
 	    $this->data = json_decode($this->json);
+
 	    return $results;
 	}
+
+
 	public function findAllSubsDay(){
 		$stmt = $this->pdo->prepare("
 			SELECT  
@@ -250,17 +290,23 @@ class SubscriptionController{
 				MAKEDATE(sb_dueyear,sb_duedate)  AS `date`
 			FROM
 			tbl_subcription
+
 			GROUP BY DAY(MAKEDATE(sb_dueyear,sb_duedate)),MAKEDATE(sb_dueyear,sb_duedate)
 			ORDER BY MAKEDATE(sb_dueyear,sb_duedate) DESC;
+
 		");
 		$stmt->execute();
+
 		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Subscription');
 		$results = $stmt->fetchAll();
 		
 		$this->json = json_encode($results);
 		$this->data = json_decode($this->json);
+
 		return $results;
 	}
+
+
 	public function findAllSubsWeek(){
 		$stmt = $this->pdo->prepare("
 			SELECT  
@@ -271,15 +317,19 @@ class SubscriptionController{
 				DATE_FORMAT(MAKEDATE(sb_dueyear,sb_duedate),'%Y %m')  AS `date`
 			FROM
 			tbl_subcription
+
 			GROUP BY WEEK(MAKEDATE(sb_dueyear,sb_duedate))+1 ,MONTHNAME(MAKEDATE(sb_dueyear,sb_duedate)), YEAR(MAKEDATE(sb_dueyear,sb_duedate)),DATE_FORMAT(MAKEDATE(sb_dueyear,sb_duedate),'%Y %m')
 			ORDER BY  `date` DESC,WEEK DESC;
+
 		");
 		$stmt->execute();
+
 		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Subscription');
 		$results = $stmt->fetchAll();
 		
 		$this->json = json_encode($results);
 		$this->data = json_decode($this->json);
+
 		return $results;
 	}
 	
@@ -295,15 +345,19 @@ class SubscriptionController{
 			    
 			GROUP BY  MONTHNAME(MAKEDATE(sb_dueyear,sb_duedate)), YEAR(MAKEDATE(sb_dueyear,sb_duedate)),DATE_FORMAT(MAKEDATE(sb_dueyear,sb_duedate),'%Y %m')
 			ORDER BY `date` DESC
+
 		");
 		$stmt->execute();
+
 		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Subscription');
 		$results = $stmt->fetchAll();
 		
 		$this->json = json_encode($results);
 		$this->data = json_decode($this->json);
+
 		return $results;
 	}
+
 	public function findAllSubsYear(){
 		$stmt = $this->pdo->prepare("
 			SELECT  
@@ -315,16 +369,23 @@ class SubscriptionController{
 			    
 			GROUP BY `year`
 			ORDER BY `year` DESC
+
+
 		");
 		$stmt->execute();
+
 		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Subscription');
 		$results = $stmt->fetchAll();
 		
 		$this->json = json_encode($results);
 		$this->data = json_decode($this->json);
+
 		return $results;
 	}
+
+
 	public function OverallBundle(){
+
 		$stmt = $this->pdo->prepare("
 			SELECT
 				installed AS installed,
@@ -337,6 +398,7 @@ class SubscriptionController{
 				amount AS amount,
 				ROUND((revenue/amount)*100) AS percentrevenue,
 				ROUND((lostrevenue/amount)*100) AS percentlost
+
 				FROM(
 				SELECT  
 				COUNT(IF(`sb_status` IN (4), `sb_status`, NULL)) AS `installed`,
@@ -347,18 +409,24 @@ class SubscriptionController{
 				SUM(b_price) AS amount		
 				FROM
 				tbl_subcription
+
 				INNER JOIN ref_bundles
 				    ON (sb_types = b_code)
+
 				HAVING COUNT(b_price)) AS b		
 			
 		");
 		$stmt->execute();
+
 	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subscription');
 	    $results = $stmt->fetch();
+
 	    $this->json = json_encode($results);
 	    $this->data = json_decode($this->json);
+
 	    return $results;
 	}
+
 	public function findSubscriberBundleDay($code){
 	 $stmt = $this->pdo->prepare("
   			SELECT 
@@ -378,12 +446,17 @@ class SubscriptionController{
 		");
 		  $stmt->bindParam(':sb_types', $code);
 		  $stmt->execute();
+
 		 	  $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subscription');
 		  $results = $stmt->fetchAll();
+
 		  $this->json = json_encode($results);
 		  $this->data = json_decode($this->json);
+
 		  return $results;
   	}
+
+
   	public function findSubscriberBundleWeek($code){
 	 $stmt = $this->pdo->prepare("
   			SELECT 
@@ -394,6 +467,7 @@ class SubscriptionController{
 				WEEK(MAKEDATE(sb_dueyear,sb_duedate))+1 AS `week`,
 				MONTHNAME(MAKEDATE(sb_dueyear,sb_duedate)) AS `month`,
 				DATE_FORMAT(MAKEDATE(sb_dueyear,sb_duedate),'%Y %m')  AS `date`
+
 			FROM
 			  `tbl_subcription`
 			  INNER JOIN `ref_bundles`
@@ -402,15 +476,20 @@ class SubscriptionController{
 			    
 			GROUP BY WEEK(MAKEDATE(sb_dueyear,sb_duedate))+1 ,MONTHNAME(MAKEDATE(sb_dueyear,sb_duedate)), YEAR(MAKEDATE(sb_dueyear,sb_duedate)),DATE_FORMAT(MAKEDATE(sb_dueyear,sb_duedate),'%Y %m')
 			ORDER BY  `date` DESC,WEEK DESC;
+
 		");
 		  $stmt->bindParam(':sb_types', $code);
 		  $stmt->execute();
+
 		  $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subscription');
 		  $results = $stmt->fetchAll();
+
 		  $this->json = json_encode($results);
 		  $this->data = json_decode($this->json);
+
 		  return $results;
   	}
+
   	public function findSubscriberBundleMonth($code){
 	 $stmt = $this->pdo->prepare("
   			SELECT 
@@ -420,22 +499,29 @@ class SubscriptionController{
 				b_price AS price,
 				MONTHNAME(MAKEDATE(sb_dueyear,sb_duedate)) AS `month`,
 				DATE_FORMAT(MAKEDATE(sb_dueyear,sb_duedate),'%Y %m')  AS `date`
+
 				FROM
 				`bscndb`.`tbl_subcription`
 				INNER JOIN `bscndb`.`ref_bundles`
 				ON (`tbl_subcription`.`sb_types` = `ref_bundles`.`b_code`)
 				WHERE sb_types = :sb_types
+
 			GROUP BY  b_code,MONTHNAME(MAKEDATE(sb_dueyear,sb_duedate)), YEAR(MAKEDATE(sb_dueyear,sb_duedate)),DATE_FORMAT(MAKEDATE(sb_dueyear,sb_duedate),'%Y %m')
 			ORDER BY `date` DESC
+
 		");
 		  $stmt->bindParam(':sb_types', $code);
 		  $stmt->execute();
+
 		  $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subscription');
 		  $results = $stmt->fetchAll();
+
 		  $this->json = json_encode($results);
 		  $this->data = json_decode($this->json);
+
 		  return $results;
   	}
+
   	public function findSubscriberBundleYear($code){
 	 $stmt = $this->pdo->prepare("
   			SELECT 
@@ -444,6 +530,7 @@ class SubscriptionController{
 				b_name AS name,
 				b_price AS price,
 				YEAR(MAKEDATE(sb_dueyear,sb_duedate)) AS `year`
+
 			FROM
 			  `bscndb`.`tbl_subcription`
 			  INNER JOIN `bscndb`.`ref_bundles`
@@ -452,15 +539,21 @@ class SubscriptionController{
 			    
 			GROUP BY b_code,`year`
 			ORDER BY `year` DESC
+
+
 		");
 		  $stmt->bindParam(':sb_types', $code);
 		  $stmt->execute();
+
 		  $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subscription');
 		  $results = $stmt->fetchAll();
+
 		  $this->json = json_encode($results);
 		  $this->data = json_decode($this->json);
+
 		  return $results;
   	}
+
 	public function save(Subscription $subscription){
 		$created_at = date('Y-m-d H:i:s');
 		
@@ -468,6 +561,7 @@ class SubscriptionController{
 	if (isset($subscription->subcriptionid)) {
 		return $this->update($subscription);
 	}
+
 		$stmt = $this->pdo->prepare("
 		INSERT INTO `tbl_subcription` (
 			`sb_userid`,
@@ -512,14 +606,18 @@ class SubscriptionController{
 		$stmt->bindParam(":sb_active", $subscription->active);
 		$stmt->bindParam(":sb_createat", $create_at);
 		$stmt->bindParam(":sb_updateat", $update_at);
+
 		return $stmt->execute();
 			
 	} catch (PDOException $ex) {
 		echo $ex->getMessage();	
 		}
 	}
+
+
 	public function update(Subscription $subscription)
 	{
+
 	try {
 	$update_at = date('Y-m-d H:i:s');
 	$stmt = $this->pdo->prepare("
@@ -557,6 +655,7 @@ class SubscriptionController{
 		$stmt->bindParam(":sb_updateat", $update_at);
 	
 	return $stmt->execute();
+
 	} catch (PDOException $ex) {
 		echo $ex->getMessage();
 		}

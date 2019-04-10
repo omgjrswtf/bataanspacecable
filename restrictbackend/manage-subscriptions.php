@@ -2,10 +2,10 @@
 
 include '../core/init.php';
 
-$subpendings = $subscriptioncon->findAllSchedPending();//1
-$subpaccepts = $subscriptioncon->findAllSchedAccepted();//2
-$subgoings = $subscriptioncon->findAllSchedOngoing();//3
-$subsunadds = $subscriptioncon->findAllSchedUnAddress();//4
+$subpendings = $subscriptioncon->findAllSchedPending();//
+$subpaccepts = $subscriptioncon->findAllSchedAccepted();//
+$subgoings = $subscriptioncon->findAllSchedOngoing();//
+$subsunadds = $subscriptioncon->findAllSchedUnAddress();//
 
 ?>
 

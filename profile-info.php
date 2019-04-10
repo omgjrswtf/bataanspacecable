@@ -52,7 +52,7 @@
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css?" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -78,7 +78,7 @@
           <div class="row">
             <div class="col-md-8">
               <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-              <a class="navbar-brand" href="home.php" title="Home">
+              <a class="navbar-brand" href="index.php" title="Home">
                 <h1 class="hidden">
                     <img src="img/logo.png" alt="Flexor Logo">
                     Flexor
@@ -86,7 +86,7 @@
               </a>
               <div style="margin-top: 10px; color: white;">
               &nbsp;&nbsp;&nbsp;
-              <?php echo "<b>&#x205E; Welcome </b> $client->fname $client->lname"; ?>
+              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
               </div>
               <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
             </div>
@@ -154,80 +154,80 @@
     <?php $subscriptionSend = "personal-info.php?clientid=$client->clientid&action=1"; ?>
 
 
-  <div class="block block-border-bottom">
+ 	<div class="block block-border-bottom">
 
-    <input type="hidden"  name="id" value="<?php echo $client->clientid; ?>"><br>
+		<input type="hidden"  name="id" value="<?php echo $client->clientid; ?>"><br>
     <label>First Name</label><br>
-    <input type="text" name="fname" placeholder="Initial Name" value="<?php echo $client->fname ?>" readonly><br>
+		<input type="text" name="fname" placeholder="Initial Name" value="<?php echo $client->fname ?>" readonly><br>
     <br><label>Middle Name</label><br>
-    <input  type="text" name="mname" placeholder="Middle Name" value="<?php echo $client->mname ?>" readonly><br>
+		<input  type="text" name="mname" placeholder="Middle Name" value="<?php echo $client->mname ?>" readonly><br>
     <br><label>Last Name</label><br>
-    <input type="text" name="lname" placeholder="Last Name" value="<?php echo $client->lname ?>" readonly><br>
-    <br><label>Contact Number</label><br>
+		<input type="text" name="lname" placeholder="Last Name" value="<?php echo $client->lname ?>" readonly><br>
+		<br><label>Contact Number</label><br>
     <input type="text" name="contact" placeholder="Contact Number" value="<?php echo $client->contact ?>" readonly><br>
     <br><label>Sex</label><br>
-    <input type="text" name="gender" placeholder="Gender" value="<?php echo $client->getSex(); ?>" readonly><br>
-    <br><label>Birth Date</label><br>
+		<input type="text" name="gender" placeholder="Gender" value="<?php echo $client->getSex(); ?>" readonly><br>
+		<br><label>Birth Date</label><br>
     <input type="text" name="datebirth" placeholder="Birth Date" value="<?php echo $client->datebirth ?>" readonly><br>
     <br>
-    <a href=" <?php print $subscriptionSend ?>">Update Profile</a>
-  </div>
+		<a href=" <?php print $subscriptionSend ?>">Update Profile</a>
+	</div>
 
-  <div class="block block-border-bottom">
-  <h4 class="block-title">Email Info</h4>
-  <form method="post" action="update-email.php">
+	<div class="block block-border-bottom">
+	<h4 class="block-title">Email Info</h4>
+	<form method="post" action="update-email.php">
   <label>Email Address</label>
-  <input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
-  <input type="text" name="email" value=" <?php echo $client->email ?> " readonly style="width: 200px"><br>
-<!--  <input type="submit" name="submit" value="update"> -->
-  <form>
-  </form>
-  </div>
+	<input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
+	<input type="text" name="email" value=" <?php echo $client->email ?> " readonly style="width: 200px"><br>
+<!-- 	<input type="submit" name="submit" value="update"> -->
+	<form>
+	</form>
+	</div>
 
-  <div class="block block-border-bottom">
-  <h4 class="block-title">Security Info</h4>
-  <form method="post" action="update-password.php">
+	<div class="block block-border-bottom">
+	<h4 class="block-title">Security Info</h4>
+	<form method="post" action="update-password.php">
   <label>Password</label>
-  <input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
-  <input type="password" name="password" value=" <?php echo $client->password ?> "><br><br>
-  <input type="submit" name="submit" value="update" class="btn btn-primary">
-  
-  </form>
+	<input type="hidden" name="id" value="<?php echo $client->clientid; ?>"><br>
+	<input type="password" name="password" value=" <?php echo $client->password ?> "><br><br>
+	<input type="submit" name="submit" value="update" class="btn btn-primary">
+	
+	</form>
 
-  </div>
-  
+	</div>
+	
 
-  <div class="block block-border-bottom">
-  <h4 class="block-title">Address Info</h4>
+	<div class="block block-border-bottom">
+ 	<h4 class="block-title">Address Info</h4>
 
-  <?php if ($location): ?>
+	<?php if ($location): ?>
 
-  <p>
-    <?php $subscriptionSend = "update-location.php"; ?>
-    <?php echo  "Unit:" .$location->unit ."<br>".
-            "Block:" .$location->getBlock() ."<br>".
-            "Barangay:" .$location->barangay ."<br>".
-            "Municipality/City:" .$location->municipality ."<br>".
-            "Province:" .$location->province ."<br>".
-            "Zipcode:" .$location->zipcode ."<br>"?></p>
-  <p> <?php echo "Alternate Info: ". $location->getAddress(); ?></p>
+	<p>
+		<?php $subscriptionSend = "update-location.php"; ?>
+		<?php echo 	"Unit:" .$location->unit ."<br>".
+				   	"Block:" .$location->getBlock() ."<br>".
+				   	"Barangay:" .$location->barangay ."<br>".
+				   	"Municipality/City:" .$location->municipality ."<br>".
+				   	"Province:" .$location->province ."<br>".
+				   	"Zipcode:" .$location->zipcode ."<br>"?></p>
+	<p>	<?php echo "Alternate Info: ". $location->getAddress(); ?></p>
 
-  <a href="<?php print $subscriptionSend; ?>">Update Address</a>
-  
-  <?php else: ?>
+	<a href="<?php print $subscriptionSend; ?>">Update Address</a>
+	
+	<?php else: ?>
 
-    <p>
-    <?php $subscriptionSend = "update-location.php"; ?>
-    <?php echo  "Unit: <i> none </i><br>".
-            "Block:<i> none </i><br>".
-            "Barangay:<i> none </i><br>".
-            "Municipality/City:<i> none </i><br>".
-            "Province:<i> none </i><br>".
-            "Zipcode:<i> none </i><br>"?></p>
-  <p> <?php echo "Alternate Info:<i> none </i>" ?></p>
-  <a href="<?php print $subscriptionSend; ?>">Update Address</a>
+		<p>
+		<?php $subscriptionSend = "update-location.php"; ?>
+		<?php echo 	"Unit: <i> none </i><br>".
+				   	"Block:<i> none </i><br>".
+				   	"Barangay:<i> none </i><br>".
+				   	"Municipality/City:<i> none </i><br>".
+				   	"Province:<i> none </i><br>".
+				   	"Zipcode:<i> none </i><br>"?></p>
+	<p>	<?php echo "Alternate Info:<i> none </i>" ?></p>
+	<a href="<?php print $subscriptionSend; ?>">Update Address</a>
 
-  <?php endif ?>
+	<?php endif ?>
 
 
 

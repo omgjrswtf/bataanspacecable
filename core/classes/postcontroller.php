@@ -85,6 +85,33 @@ class PostController{
 	    return $results;
 	}
 
+	public function postId($id){
+
+		$stmt = $this->pdo->prepare("
+			SELECT
+				poleid AS poleid,
+				p_parentmuni AS parentmuni,
+				p_parentbrgy AS parentbrgy,
+				p_lat AS lat,
+				p_long	AS `long`,
+				p_active AS active,
+				p_createat AS createat,
+				p_updateat AS updateat
+			FROM tbl_pole 
+			WHERE poleid = :poleid
+		");
+	  	$stmt->bindParam(':poleid', $id);
+		$stmt->execute();
+
+	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Post');
+	    $results = $stmt->fetch();
+
+	    $this->json = json_encode($results);
+	    $this->data = json_decode($this->json);
+
+	    return $results;
+	}
+
 	public function getpostNear($lat,$long){
 
 		$stmt = $this->pdo->prepare("
@@ -176,8 +203,8 @@ class PostController{
 		$created_at = date('Y-m-d H:i:s');
 		
 	try {
-	if (isset($location->clientlocid)) {
-		return $this->update($location);
+	if (isset($post->poleid)) {
+		return $this->update($post);
 	}
 
 		$stmt = $this->pdo->prepare("

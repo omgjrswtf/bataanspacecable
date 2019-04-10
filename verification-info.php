@@ -5,9 +5,9 @@ require_once 'core/init.php';
         header('Location: index.php');
     }
     $clientid = $_SESSION['client_id'];
-  $client = $clientcon->clientData($clientid);
+ 	$client = $clientcon->clientData($clientid);
 
-  $verify = $verifycon->findUserVerify($clientid);
+ 	$verify = $verifycon->findUserVerify($clientid);
 
 
     $verifyschedule = $verifyschedulecon->findUserVerify($clientid);
@@ -59,7 +59,7 @@ require_once 'core/init.php';
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css?" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -93,7 +93,7 @@ require_once 'core/init.php';
               </a>
               <div style="margin-top: 10px; color: white;">
               &nbsp;&nbsp;&nbsp;
-              <?php echo "<b>&#x205E; Welcome </b> $client->fname $client->lname"; ?>
+              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
               </div>
               <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
             </div>

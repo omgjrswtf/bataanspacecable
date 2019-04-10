@@ -13,6 +13,7 @@
 	require_once 'classes/smscontroller.php';
 	require_once 'classes/billingcontroller.php';
 	require_once 'classes/postcontroller.php';
+	require_once 'classes/miccontroller.php';
 
 
 	require_once 'classes/user.php';
@@ -28,6 +29,7 @@
 	require_once 'classes/sms.php';
 	require_once 'classes/billing.php';
 	require_once 'classes/post.php';
+	require_once 'classes/mic.php';
 
 
 	global $pdo;
@@ -47,6 +49,7 @@
 	$smscon = new SmsController($pdo);
 	$billingcon = new BillingController($pdo);
 	$postcon = new PostController($pdo);
+	$miccon = new MicController($pdo);
 	// $user = new User();
 
 

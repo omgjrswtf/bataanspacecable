@@ -83,6 +83,43 @@ class billingController{
 	    return $results;
 	}
 
+	public function billingDataDisplay($billing_id){
+
+		$stmt = $this->pdo->prepare("
+			SELECT
+				billing_id AS billingid ,
+				bl_subscriptionid AS subscriptionid ,
+				bl_userid AS userid ,
+				bl_adminid AS adminid ,
+				bl_dueyear AS dueyear ,
+				bl_duedate AS duedate ,
+				bl_address AS address ,
+				bl_xcoordinates AS xcoor ,
+				bl_ycoordinates AS ycoor ,
+				bl_product AS product ,
+				bl_addon AS addon ,
+				bl_added AS added ,
+				bl_active AS active ,
+				bl_status AS 'status' ,
+				bl_createat AS create_at ,
+				bl_updateat AS update_at
+				
+			FROM tbl_billing 
+			WHERE bl_subscriptionid = :bl_subscriptionid and bl_active =  2
+			ORDER BY DECS
+		");
+		$stmt->bindParam(':bl_subscriptionid', $billing_id);
+		$stmt->execute();
+
+	    $stmt->setFetchMode(PDO::FETCH_CLASS, 'billing');
+	    $results = $stmt->fetch();
+
+	    $this->json = json_encode($results);
+	    $this->data = json_decode($this->json);
+
+	    return $results;
+	}
+
 
 	public function billingsubsData($billing_id){
 

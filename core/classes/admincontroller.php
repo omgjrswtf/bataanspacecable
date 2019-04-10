@@ -70,7 +70,7 @@ class AdminController{
 				a_updateat as update_at
 
 			FROM tbl_admin
-			WHERE a_username = :username and a_password = :password
+			WHERE a_username = :username and a_password = :password and a_role = 1
 		");
 		$stmt->bindParam(':username', $username);
 		$stmt->bindParam(':password', $password);
@@ -139,15 +139,14 @@ class AdminController{
 				a_updateat AS update_at
 			FROM
 			  tbl_admin
-			INNER JOIN tbl_billing
+			Left JOIN tbl_billing
 			    ON (admin_id = bl_adminid)
-			WHERE a_role = 1 AND bl_subscriptionid != :bl_subscriptionid
+			WHERE a_role = 1
 			GROUP BY bl_adminid
 			HAVING COUNT(bl_adminid) < 4 AND COUNT(bl_dueyear = :bl_dueyear) < 4 AND COUNT(bl_dueyear = :bl_duedate) < 4 
 		");
 		$stmt->bindParam(':bl_dueyear', $year);
 		$stmt->bindParam(':bl_duedate', $date);
-		$stmt->bindParam(':bl_subscriptionid', $id);
 		$stmt->execute();
 
 		$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Admin');

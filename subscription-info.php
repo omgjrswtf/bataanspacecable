@@ -58,7 +58,7 @@
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css?" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -92,7 +92,7 @@
               </a>
               <div style="margin-top: 10px; color: white;">
               &nbsp;&nbsp;&nbsp;
-              <?php echo "<b>&#x205E; Welcome </b> $client->fname $client->lname"; ?>
+              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
               </div>
               <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
             </div>
@@ -153,6 +153,23 @@
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
         <h2>Subscription</h2>
+
+        <?php 
+
+        if (isset($_GET['err'])) {
+          switch ($_GET['err']) {
+            case '3':
+              $var = "Your Subscription is already save and added to your record";
+              break;
+            
+            default:
+              $var = "Undefined Message";
+              break;
+          }
+
+          echo "<i><b>Notice: </b></i> $var";
+        }
+         ?>
         <!-- <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a
           sit amet mauris.</p> -->
 <div class="block block-border-bottom">

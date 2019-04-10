@@ -9,10 +9,18 @@
   $client_id  = $_SESSION['client_id'];
   $bundlecode = $_POST['bundleselect'];
 
+  $mic = $miccon->micDatas();
+
+  // print_r($mic);
+
 
   $qty = "1";
   if (isset($_POST['qty'])) {
      $qty = $_POST['qty']; 
+  }
+
+  if (empty($_POST['lat']) and empty($_POST['long'])) {
+   header('Location: subscription-bundle.php?msg=1'); 
   }
 
   $latitude1   = $_POST['lat'];
@@ -40,7 +48,7 @@
   
   $wire       = $distance; 
 
-  $estimated  = 7 * $wire;
+  $estimated  = $mic->bundleft * $wire;
 
   //include controllers
   $client = $clientcon->clientData($client_id);
@@ -48,7 +56,7 @@
 
 
   $bundle = $bundlecon->bundleCode($bundlecode);
-    $totaldigi = $qty * $bundle->getAddedBox();//ditital box total qty
+  $totaldigi = is_numeric($qty) * is_numeric($mic->bundledgb);//ditital box total qty
 
   $tomorrow = date("Y-m-t", time() + 172800);
   $newdate= date("M jS, Y", strtotime($tomorrow));
@@ -58,7 +66,7 @@
   $daynow     = date("d") + 2;
   $dayleft    = $totaldate - $daynow;
 
-  $digibox = $qty * $bundle->getAddedBox();
+  $digibox = is_numeric($qty) * is_numeric($mic->bundledgb);
 
   $addedvalue = round(($bundle->getAddedValue() / $totaldate) * ($dayleft),2);
 
@@ -107,7 +115,7 @@
     <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
-    <link href="css/style.css?" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
     <link href="#" id="colour-scheme" rel="stylesheet">
@@ -148,7 +156,7 @@
                 </a>
                 <div style="margin-top: 10px; color: white;">
               &nbsp;&nbsp;&nbsp;
-              <?php echo "<b>&#x205E; Welcome </b> $client->fname $client->lname"; ?>
+              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
               </div>
               <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
               </div>
@@ -190,7 +198,7 @@
               </li>
 
               <li>
-                  <a href="logout.php">Log Out</a>
+                  <a href="#">Log Out</a>
               </li>
 
               </ul>
@@ -220,6 +228,8 @@
 
 
    Your selected bundle is <?php echo $bundle->name; ?>
+
+  <br>  Description : <?php echo $bundle->getTerms(); ?>
 
   <form method="post" action=" <?php print $subscriptionSend; ?> ">
   <br>
@@ -295,7 +305,7 @@
   <?php if ($bundle->getPrefix() == "b"): ?>
     <tr>
       <td>Digital Box</td>
-      <td>x <?php echo "$qty (&#x20b1; ".$bundle->getAddedBox().".00)"; ?></td>
+      <td>x <?php echo "$qty (&#x20b1; ".$mic->bundledgb.".00)"; ?></td>
       <td align="right"><?php echo "&#x20b1; ". $digibox.".00"; ?></td>
     </tr>
 
@@ -319,7 +329,7 @@
     </tr>
   </table>
 
-  <input type="submit" name="submit" value="submit">
+  <input type="submit" name="submit" value="submit" class="btn btn-primary">
    </form>
 
    <div id="map"></div>
@@ -447,7 +457,7 @@
   <?php if ($bundle->getPrefix() == "b"): ?>
     <tr>
       <td>Digital and Cable</td>
-      <td>x <?php echo "$qty (&#x20b1; ".$bundle->getAddedBox().".00)"; ?></td>
+      <td>x <?php echo "$qty (&#x20b1; ".$mic->bundledgb.".00)"; ?></td>
       <td align="right"><?php echo "&#x20b1; ". $digibox.".00"; ?></td>
     </tr>
 

@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="dashboard.php"><div><img src="../img/LogoCable.png" style="width: 30px; height: 30px; white-space: normal;"> BSC-Network</div></a>
+                <a class="navbar-brand" href="dashboard.php">BSC-Network</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -27,6 +27,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li class="divider"></li>
+                        <li><a href="manage-handles.php"><i class="fa fa-gear fa-fw"></i> Update Handler</a></li>
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>

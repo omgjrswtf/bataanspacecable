@@ -5,6 +5,7 @@
         header('Location: index.php');
     }
 
+
  	$client_id 	 = $_SESSION['client_id'];
 
  	$id 		= $_GET['clientid'];
@@ -20,6 +21,8 @@
 	$bundle = $bundlecon->bundleCode($bundleid);
 	$verify = $verifycon->findRealVerify($id);
 
+
+
 	// print_r($verify);
 	// echo "<br><br>";
 	// print_r($client);
@@ -33,7 +36,7 @@
 
 	header('Location: ../subscription-service.php?err=1');
 
-	}
+	}else{
 
 	$subscription = new Subscription();
 	$subscription->userid = $id;
@@ -52,14 +55,19 @@
 
 	$sms =  new Sms();
 	$sms->userid 			= $id;
-	$sms->message 			= "Your schedule of your subscription installing was already pending to the system. Thank You";
+	$sms->messege 			= "Your schedule of your subscription installing was already pending to the system. Thank You";
 	$sms->contact 			= $client->contact;
 	$sms->transactionid 	= 0;
 	$sms->status 			= 1;
 	// $smscon->send($sms);
 	$smscon->save($sms);
 
-	header('Location: ../subscription-info.php');
+	header('Location: ../subscription-info.php?err=3');
+
+
+	}
+
+
 	
 
 

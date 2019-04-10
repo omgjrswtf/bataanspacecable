@@ -13,7 +13,7 @@ switch ($action) {
 	case 'verified':
 		#verified
 	$subscription = $subscriptioncon->subscriptionData($id);
-	$subscription->status = 5;
+	$subscription->status = 8;
 	// print_r($subscription);
 	$subscriptioncon->save($subscription);
 
@@ -47,6 +47,7 @@ switch ($action) {
 	$client = $clientcon->clientData($subscription->userid);
 	$location = $locationcon->findLocation($subscription->userid);
 	$verify = $verifycon->findUserVerify($subscription->userid);
+	print_r($verify);
 
 	$billing = new Billing();
 	$billing->subscriptionid 	= $id;
@@ -62,7 +63,7 @@ switch ($action) {
 	$billing->added 			= $subscription->added;
 	$billing->active 			= 1;
 	$billing->status 			= 1;
-
+	// print_r($billing);
 	$billingcon->save($billing);
 
 	$sms =  new Sms();
@@ -161,6 +162,6 @@ switch ($action) {
 		# code...
 	break;
 }
-header('Location: manage-subscriptions.php');
+// header('Location: manage-subscriptions.php');
 
 ?>

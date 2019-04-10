@@ -1,15 +1,19 @@
-
 <?php 
-	require_once '../core/init.php';
-	if (!$_SESSION) {
-		header('Location: index.php');
-	}
-	$admin_id = $_SESSION['admin_id'];
+require_once '../core/init.php';
+    if (!$_SESSION) {
+        header('Location: index.php');
+    }
 
-	$admin = $admincon->adminData($admin_id);
-?>
 
-<!DOCTYPE html>
+if (isset($_GET['id'])) {
+   $id = $_GET['id'];
+}
+
+$mic = $miccon->micData($id);
+
+ ?>
+
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,6 +25,7 @@
     <meta name="author" content="">
 
     <title>BSC-Network</title>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -60,30 +65,55 @@
         <!-- Navigation -->
     <?php include 'template-navigation.php'; ?>
 
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <!-- /.row -->
-        
-                        <!-- /.panel-footer -->
-                    </div>
-                    <!-- /.panel .chat-panel -->
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
+    <div id="page-wrapper">
+
+      <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Update Bundle Mics</h1>
         </div>
-        <!-- /#page-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
 
- <!-- jQuery -->
+    
+    <div class="row">
+    <?php if ($mic): ?>
+            
+              <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" method="POST" action="manage-handle-form-action.php">
+                <input type="hidden" name="id" value="<?php echo $mic->mics_id ?>">
+
+
+                <div class="wrap-input100 validate-input" data-validate="Enter Fee per Feet">
+                    <input class="input100 has-val" type="text" name="ft" value="<?php echo $mic->bundleft ?>">
+                    <span class="focus-input100" data-placeholder="Fee wire per ft "></span>
+                </div>
+
+
+                <div class="wrap-input100 validate-input" data-validate="Enter Fee Digital Box">
+                    <input class="input100 has-val" type="text" name="dgbox" value="<?php echo $mic->bundledgb ?>" readyonly>
+                    <span class="focus-input100" data-placeholder="Digital Box"></span>
+                </div>
+
+
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <input type="submit" name="submit" value="Submit" class="login100-form-btn">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <?php endif ?>
+        
+        
+            
+    </div>
+      
+    </div>
+         
+    </div>
+
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css"></script>

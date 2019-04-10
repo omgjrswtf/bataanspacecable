@@ -34,7 +34,7 @@ switch ($action) {
 	break;
 
 	case 'cancel':
-		# code...
+		
 	break;
 
 	case 'verified':

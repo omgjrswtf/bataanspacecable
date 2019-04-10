@@ -1,6 +1,9 @@
 <?php 
 
-include '../core/init.php';
+require_once '../core/init.php';
+    if (!$_SESSION) {
+        header('Location: index.php');
+    }
 
 $areas = $areacon->findAreas();
 

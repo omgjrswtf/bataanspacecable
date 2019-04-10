@@ -102,7 +102,19 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Billing Record</h1>
+                <?php if (isset($_GET['err'])) {
+                    switch ($_GET['err']) {
+                        case '2':
+                            $var = "Installatin was succesfully updated/done";    
+                        break;
+                            
+                        default:
+                            $var = "Undefined error";
+                            break;
+                    }
 
+                        echo "<i><b>Notice :</b></i> $var";
+                } ?>
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">

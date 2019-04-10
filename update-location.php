@@ -1,6 +1,6 @@
 <?php 
 
-    require_once 'core/init.php';
+  	require_once 'core/init.php';
     if (!$_SESSION) {
         header('Location: index.php');
     }
@@ -10,8 +10,9 @@
 
     $verify = $verifycon->findUserVerify($clientid);
     $areas = $areacon->findAreas();
-  // $lat = $_POST['clat'];
-  // $long = $_POST['clng'];
+	// $lat = $_POST['clat'];
+	// $long = $_POST['clng'];
+
 
  ?>
 
@@ -59,7 +60,7 @@
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css?" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -70,20 +71,6 @@
     Author: BootstrapMade.com
     Author URL: https://bootstrapmade.com
   ======================================================= -->
-  <script src="js/jquery-1.12.4.min.js"></script>
-  <script type="text/javascript">
-        $(document).ready(function(){
-            $('#cmbBarangay').on('change',function(){
-                var unit = document.getElementById("unit").value;
-                var block = document.getElementById("block").value;
-                //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
-                var optionText = $("#cmbBarangay option:selected").text();
-                // var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?instructor='+optionValue;
-                // window.history.pushState({ path: newurl }, '', newurl);
-                location.href="update-location.php?unit="+unit+"&block="+block+"&barangay="+optionText;
-            });
-        });
-    </script>
 </head>
 
 <body class="page-index has-hero">
@@ -107,7 +94,7 @@
               </a>
               <div style="margin-top: 10px; color: white;">
               &nbsp;&nbsp;&nbsp;
-              <?php echo "<b>&#x205E; Welcome </b> $client->fname $client->lname"; ?>
+              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
               </div>
               <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
             </div>
@@ -217,27 +204,79 @@
     </select><br>
     <br><label>Description</label><br>
     <textarea name="description" placeholder="Description"><?php echo $location->description ?></textarea>
-    <br><br>
-    <?php if (!empty($verify->xcoor) AND !empty($verify->ycoor)){ ?>
-              <b>Xcoordinates:</b> <p id="latmoved"><?php echo $verify->xcoor; ?></p>
-              <b>Ycoordinates:</b> <p id="longmoved"><?php echo $verify->ycoor; ?></p>
-    <?php }else{ ?>
-              <b>Xcoordinates:</b> <p id="latmoved"></p>
-              <b>Ycoordinates:</b> <p id="longmoved"></p>
-    <?php } ?>
     
-    <br>
-    <input type="hidden" name="lat" id="lat2" value="<?php echo $verify->xcoor; ?>">
-    <input type="hidden" name="long" id=long2 value="<?php echo $verify->ycoor; ?>">
+    <p id="latmoved"></p>
+    <p id="longmoved"></p>
+
+    <input type="hidden" name="lat" id="lat2">
+    <input type="hidden" name="long" id=long2>
       
     <button type="submit" name="submit" onclick="submitform()" class="btn btn-primary"><span class='glyphicon glyphicon-floppy-disk'></span> Save</button><br>
 
+</form>
+<?php else: ?>
 
-    <br><br>
-    <b>Note: </b> Drag the marker to your location and tap the pin. Wait for your X and Y Coordinates to pop up. <br> <br> *Make sure you pin your location properly and you have X and Y Coordinates before click save button.
-    <br>
+<h2 class="block-title">Save Location and Address</h2>
 
-    <div style="padding:10px">
+<form method="post" action="includes/update-profile-info.php">
+
+<!--    <input type="hidden" name="lat" value=" <?php echo $lat?> ">
+    <input type="hidden" name="long" value=" <?php echo $long ?> "> -->
+    <input type="hidden" name="id" value=" <?php echo $clientid ?> "><br>
+    <input type="hidden" name="locid" value=""><br>
+    <input type="hidden" name="verid" value=""><br>
+    <input type="hidden" name="action" value="4">
+    <label>Unit</label><br>
+    <input type="text" name="unit"   placeholder="Unit" ><br>
+    <br><label>Block</label><br>
+    <input type="text" name="block"   placeholder="Block" ><br>
+    <br><label>Barangay</label><br>
+    <select class="input100" name="barangay" style="width: 160px;">
+      <option selected>Barangay</option>
+      <?php foreach ($areas as $area): ?>
+      <option value="<?php echo $area->barangay; ?>"><?php echo $area->barangay; ?></option>
+      <?php endforeach ?>
+    </select><br>
+    <br><label>Municipality</label><br>
+    <select class="input100" name="municipality" style="width: 160px;">
+      <option selected>Municipality</option>
+      <option value="Balanga">Balanga</option>
+      <option value="Pilar">Pilar</option>
+    </select><br>
+    <br><label>Provice</label><br>
+    <input type="text" name="province" value="Bataan" placeholder="Province"><br>
+    <br><label>Zipcode</label><br>
+    <select class="input100" name="zipcode" style="width: 160px;">
+      <option selected>Zipcode</option>
+      <option value="2100">2100</option>
+      <option value="2101">2101</option>
+    </select><br>
+    <br><label>Description</label><br>
+    <textarea name="description" placeholder="Description"></textarea>
+
+
+    <p id="latmoved"></p>
+    <p id="longmoved"></p>
+
+    <input type="hidden" name="lat" id="lat2">
+    <input type="hidden" name="long" id=long2>
+    <button type="submit" name="submit" class="btn btn-primary"><span class='glyphicon glyphicon-floppy-disk'></span> Save</button><br>
+
+</form>
+
+<?php endif ?>
+
+
+
+<!--The div element for the map -->
+
+
+<!--    <div id="latclicked"></div>
+        <div id="longclicked"></div> -->
+        
+
+        
+        <div style="padding:10px">
             <div id="map"></div>
         </div>
 
@@ -246,24 +285,33 @@
         var map;
         
         function initMap() {                            
-            var latitude = <?php echo $verify->xcoor; ?>; // YOUR LATITUDE VALUE
-            var longitude = <?php echo $verify->ycoor; ?>; // YOUR LONGITUDE VALUE
+            var latitude = 14.6741; // YOUR LATITUDE VALUE
+            var longitude = 120.5113; // YOUR LONGITUDE VALUE
             
             var myLatLng = {lat: latitude, lng: longitude};
             
             map = new google.maps.Map(document.getElementById('map'), {
               center: myLatLng,
-              zoom: 14,
+              zoom: 17,
               disableDoubleClickZoom: true, // disable the default map zoom on double click
             });
             
             // // Update lat/long value of div when anywhere in the map is clicked    
             // google.maps.event.addListener(map,'click',function(event) {                
-            //     document.getElementById('latclicked').innerHTML = event.latLng.lat();
-            //     document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+            //     document.getElementById('latmoved').innerHTML = event.latLng.lat();
+            //     document.getElementById('longmoved').innerHTML =  event.latLng.lng();
             // });
             
             // Update lat/long value of div when you move the mouse over the map
+            // google.maps.event.addListener(map,'mousemove',function(event) {
+            //     document.getElementById('latmoved').innerHTML = event.latLng.lat();
+            //     document.getElementById('longmoved').innerHTML = event.latLng.lng();
+
+            //     document.getElementById('lat2').value =  document.getElementById('latmoved').innerHTML;
+            //     document.getElementById('long2').value = document.getElementById('longmoved').innerHTML;
+
+            // });
+                    
             var marker = new google.maps.Marker({
               position: myLatLng,
               map: map,
@@ -282,12 +330,6 @@
               document.getElementById('lat2').value =  document.getElementById('latmoved').innerHTML;
               document.getElementById('long2').value = document.getElementById('longmoved').innerHTML;
             });
-            
-            // // Update lat/long value of div when the marker is clicked
-            // marker.addListener('click', function(event) {              
-            //   document.getElementById('latclicked').innerHTML = event.latLng.lat();
-            //   document.getElementById('longclicked').innerHTML =  event.latLng.lng();
-            // });
             
             // Create new marker on double click event on the map
             // google.maps.event.addListener(map,'dblclick',function(event) {
@@ -314,169 +356,6 @@
             });*/
         }
         </script>
-
-</form>
-<?php else: ?>
-
-<h2 class="block-title">Save Location and Address</h2>
-
-<form method="post" action="includes/update-profile-info.php">
-
-<!--    <input type="hidden" name="lat" value=" <?php echo $lat?> ">
-    <input type="hidden" name="long" value=" <?php echo $long ?> "> -->
-    <input type="hidden" name="id" value=" <?php echo $clientid ?> "><br>
-    <input type="hidden" name="locid" value=""><br>
-    <input type="hidden" name="verid" value=""><br>
-    <input type="hidden" name="action" value="4">
-    <label>Unit</label><br>
-    <input type="text" name="unit" id="unit" placeholder="Unit" value="<?php if(!empty($_GET['unit'])){ echo $_GET['unit'];} ?>"><br>
-    <br><label>Block</label><br>
-    <input type="text" name="block" id="block" placeholder="Block" value="<?php if(!empty($_GET['block'])){ echo $_GET['block'];} ?>"><br>
-    <br><label>Barangay</label><br>
-    <select class="input100" name="barangay" style="width: 160px;" id="cmbBarangay">
-      <?php  if (isset($_GET['barangay'])) {
-                echo "<option value='"; echo $_GET['barangay']; echo "' selected>"; echo $_GET['barangay']; echo "</option>";
-              }
-      ?>
-      <option>---Select---</option>
-      <?php foreach ($areas as $area): ?>
-      <option value="<?php echo $area->barangay; ?>"><?php echo $area->barangay; ?></option>
-      <?php endforeach ?>
-    </select><br>
-    <?php if (isset($_GET['unit']) AND isset($_GET['block']) AND isset($_GET['barangay']) AND !empty($_GET['unit']) AND !empty($_GET['block'])) {
-      $area = $areacon->findBar($_GET['barangay']);
-    ?>
-      <br><label>Municipality</label><br>
-      <input type="text" name="municipality" value="<?php echo $area->municipality; ?>" readonly><br>
-      <br><label>Provice</label><br>
-      <input type="text" name="province" value="<?php echo $area->province; ?>" readonly><br>
-      <br><label>Zipcode</label><br>
-      <input type="text" name="zipcode" value="<?php echo $area->zipcode; ?>" readonly><br>
-      <?php if ($area->municipality == "Balanga") { ?>
-            <br><label>Description</label><br>
-            <textarea name="description" value="Balanga Location" readonly>Balanga Location</textarea>  
-      <?php  
-            }elseif ($area->municipality == "Pilar") {
-      ?>
-            <br><label>Description</label><br>
-            <textarea name="description" value="Pilar Location" readonly>Pilar Location</textarea>
-      <?php 
-            } 
-      ?>
-      
-    
-    <br><br>
-    <b>Xcoordinates:</b> <p id="latmoved"></p>
-    <b>Ycoordinates:</b> <p id="longmoved"></p>
-    <br>
-
-      <input type="hidden" name="lat" id="lat2">
-      <input type="hidden" name="long" id=long2>
-      <button type="submit" name="submit" class="btn btn-primary"><span class='glyphicon glyphicon-floppy-disk'></span> Save</button><br><br>
-
-
-      <br><br>
-      <b>Note: </b> Drag the marker to your location and tap the pin. Wait for your X and Y Coordinates to pop up. <br> <br> *Make sure you pin your location properly and you have X and Y Coordinates before click save button.
-      <br>
-
-      <div style="padding:10px">
-            <div id="map"></div>
-        </div>
-
-        
-        <script type="text/javascript">
-        var map;
-        
-        function initMap() {                            
-            var latitude = 14.6741; // YOUR LATITUDE VALUE
-            var longitude = 120.5113; // YOUR LONGITUDE VALUE
-            
-            var myLatLng = {lat: latitude, lng: longitude};
-            
-            map = new google.maps.Map(document.getElementById('map'), {
-              center: myLatLng,
-              zoom: 14,
-              disableDoubleClickZoom: true, // disable the default map zoom on double click
-            });
-            
-            // // Update lat/long value of div when anywhere in the map is clicked    
-            // google.maps.event.addListener(map,'click',function(event) {                
-            //     document.getElementById('latclicked').innerHTML = event.latLng.lat();
-            //     document.getElementById('longclicked').innerHTML =  event.latLng.lng();
-            // });
-            
-            var marker = new google.maps.Marker({
-              position: myLatLng,
-              map: map,
-              draggable: true,
-              //title: 'Hello World'
-              
-              // setting latitude & longitude as title of the marker
-              // title is shown when you hover over the marker
-              title: latitude + ', ' + longitude 
-            });    
-            
-            // Update lat/long value of div when the marker is clicked
-            marker.addListener('click', function(event) {              
-              document.getElementById('latmoved').innerHTML = event.latLng.lat();
-              document.getElementById('longmoved').innerHTML =  event.latLng.lng();
-              document.getElementById('lat2').value =  document.getElementById('latmoved').innerHTML;
-              document.getElementById('long2').value = document.getElementById('longmoved').innerHTML;
-            });  
-            
-            // // Update lat/long value of div when the marker is clicked
-            // marker.addListener('click', function(event) {              
-            //   document.getElementById('latclicked').innerHTML = event.latLng.lat();
-            //   document.getElementById('longclicked').innerHTML =  event.latLng.lng();
-            // });
-            
-            // Create new marker on double click event on the map
-            // google.maps.event.addListener(map,'dblclick',function(event) {
-            //     var marker = new google.maps.Marker({
-            //       position: event.latLng, 
-            //       map: map, 
-            //       title: event.latLng.lat()+', '+event.latLng.lng()
-            //     });
-                
-            //     // Update lat/long value of div when the marker is clicked
-            //     marker.addListener('click', function() {
-            //       document.getElementById('latclicked').innerHTML = event.latLng.lat();
-            //       document.getElementById('longclicked').innerHTML =  event.latLng.lng();
-            //     });            
-            // });
-            
-            // Create new marker on single click event on the map
-            /*google.maps.event.addListener(map,'click',function(event) {
-                var marker = new google.maps.Marker({
-                  position: event.latLng, 
-                  map: map, 
-                  title: event.latLng.lat()+', '+event.latLng.lng()
-                });                
-            });*/
-        }
-        </script>   
-    <?php 
-          } else{
-    ?>
-        
-    <?php } ?>
-    
-
-</form>
-
-<?php endif ?>
-
-
-
-<!--The div element for the map -->
-
-
-<!--    <div id="latclicked"></div>
-        <div id="longclicked"></div> -->
-        
-
-        
-        
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwPLpFDqINTMZB4Qzd6jM5zFAGyEvp99E&callback=initMap"
         async defer></script>
 

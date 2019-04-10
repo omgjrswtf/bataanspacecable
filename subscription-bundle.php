@@ -5,7 +5,7 @@
     }
     $client_id = $_SESSION['client_id'];
     $client = $clientcon->clientData($client_id);
-   $bundles = $bundlecon->findBundles();
+    $bundles = $bundlecon->findBundles();
 
 
 ?>
@@ -53,7 +53,7 @@
   <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css?" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
@@ -87,7 +87,7 @@
               </a>
               <div style="margin-top: 10px; color: white;">
               &nbsp;&nbsp;&nbsp;
-              <?php echo "<b>&#x205E; Welcome </b> $client->fname $client->lname"; ?>
+              <?php echo "<b>&#x205E; Welcome </b>". $client->getGender(). " $client->fname $client->lname"; ?>
               </div>
               <button onclick="history.go(-1);" style="float: right; color: white;" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
             </div>
@@ -148,6 +148,23 @@
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
         <h2>Cost Estimation</h2>
+        <?php 
+        if (isset($_GET['msg'])) {
+          switch ($_GET['msg']) {
+            case '1':
+              $var = "Please select your location";
+              break;
+            
+            default:
+              $var = "undefined error";
+              break;
+          }
+
+          echo "<i><b>Notice :</b>$var</i>";
+        }
+
+
+         ?>
 
           <div class="block block-border-bottom">
 
@@ -157,7 +174,7 @@
             Select a bundle you want.
           </p>
           <select name="bundleselect">
-            <?php foreach ($bundles as $bundle): ?>
+          	<?php foreach ($bundles as $bundle): ?>
           <option value="<?php echo $bundle->code;  ?>"><?php echo $bundle->name ." pesos";  ?></option>
           <?php endforeach ?>
           </select>
@@ -170,23 +187,17 @@
             </p>
           <input type="text" name="qty" placeholder="Estimate Quantity">
 
-          <br><br>
-          <b>Xcoordinates:</b> <p id="latmoved"></p>
-          <b>Ycoordinates:</b> <p id="longmoved"></p>
-          <br>
-          <input type="hidden" name="lat" id="lat2">
-          <input type="hidden" name="long" id=long2>
+          <p id="latmoved"></p>
+          <p id="longmoved"></p>
 
           <input type="hidden" name="lat" id="lat2">
           <input type="hidden" name="long" id=long2>
           <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-          
-          <br><br>
-          <b>Note: </b> Drag the marker to your location and tap the pin. Wait for your X and Y Coordinates to pop up. <br> <br> *Make sure you pin your location properly and you have X and Y Coordinates before click submit button.
 
           </form>
           </div>
-                    <style>          
+
+          <style>          
             #map { 
               height: 400px;    
               width: 100%);            

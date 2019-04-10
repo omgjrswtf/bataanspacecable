@@ -226,7 +226,7 @@ class VerifyscheduleController{
 			FROM tbl_verifyschedule 
 			  INNER JOIN `tbl_client`
 			    ON (`vsch_userid` = `client_id`)
-			WHERE vsch_stage = 5;
+			WHERE vsch_stage = 2;
 					");
 		$stmt->execute();
 

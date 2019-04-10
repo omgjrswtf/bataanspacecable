@@ -5,7 +5,7 @@ class Sms {
 
 	public $id;
 	public $userid;
-	public $messege;
+	public $message;
 	public $contact;
 	public $transactionid;
 	public $status;

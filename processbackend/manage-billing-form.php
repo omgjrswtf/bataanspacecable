@@ -9,7 +9,7 @@ require_once '../core/init.php';
     $admin = $admincon->adminData($admin_id);
 
     $id = $_GET['id'];
-
+    $mic = $miccon->micDatas();
     $billinginstalls = $billingcon->findbillinginstallationAdmin($admin_id);
 
     $client = $clientcon->clientData($billinginstalls->userid);
@@ -18,8 +18,9 @@ require_once '../core/init.php';
     $subscription = $subscriptioncon->subscriptionData($billinginstalls->subscriptionid);
     $estimated = $subscription->added;
     $addedvalue = $subscription->addon;
-    $wire = (int)$addedvalue / 7;
+    $wire = (int)$addedvalue / $mic->bundleft;
 
+     $digibox =  $mic->bundledgb * $subscription->qtydg;
 
     $newday = $subscription->getDateFromDay();
     $newdate= date("d", strtotime($newday));
@@ -152,36 +153,29 @@ require_once '../core/init.php';
       </td>
   </tr>
 
-<?php if ($bundle->getPrefix() == "B"): ?>
+<?php if ($bundle->getPrefix() == "b"): ?>
   <tr>
-    <td>Digital and Cable</td>
-    <td>x 1</td>
-    <td align="right"><?php echo "&#x20b1; ". $bundle->getAddedValue().".00"; ?></td>
+      <td>Digital Box</td>
+      <td>x <?php echo "$subscription->qtydg (&#x20b1; ".$mic->bundledgb.")"; ?></td>
+      <td align="right"><?php echo "&#x20b1; ". $digibox; ?></td>
   </tr>
-
-  <tr>
-    <td>Advance 1 month</td>
-    <td>x 1</td>
-    <td align="right">&#x20b1; <?php echo $bundle->price.".00"; ?></td>
-  </tr>
-
   <tr>
     <td>Day left this month</td>
     <td><?php echo $dayleft; ?> days</td>
-    <td align="right">&#x20b1;<?php echo $estimated; ?>.00</td>
+    <td align="right">&#x20b1;<?php echo $estimated; ?></td>
   </tr>
 
   <tr>
     <td>Wire Added</td>
     <td>x <?php echo $wire."ft"; ?></td>
-    <td align="right">&#x20b1;<?php echo $addedvalue.".00"; ?></td>
+    <td align="right">&#x20b1;<?php echo $addedvalue?></td>
   </tr>
 
 <?php endif ?>
   <tr>
     <td></td>
     <td>Total</td>
-    <td align="right">&#x20b1; <?php echo ($bundle->price * 2) + (int)$addedvalue + (int)$estimated.".00"; ?></td>
+    <td align="right">&#x20b1; <?php echo ($bundle->price - 475) + (int)$addedvalue + (int)$estimated + $digibox; ?></td>
   </tr>
 </table>
 

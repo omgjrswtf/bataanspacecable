@@ -99,6 +99,23 @@ $verifyscheduleongoings = $verifyschedulecon->findVerifyOngoing();
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
+                    <?php if (isset($_GET['msg'])): ?>
+                    <?php switch ($_GET['msg']) {
+                        case '1':
+                            $var = "successfully updated";
+                        break;
+                        
+                        default:
+                            $var = "Undefined message";
+                        break;
+
+                       
+                    }  
+                             echo "<i><b>Notice: </b> $var</i>";
+                    ?>
+                    <?php endif ?>
+
+                   
                 <hr>
                 <h3>Pending Client Verification</h3>
                 <table class="table table-hover" id="verifyschedulescheds">
@@ -126,7 +143,7 @@ $verifyscheduleongoings = $verifyschedulecon->findVerifyOngoing();
                     <td>
                         <a href="manage-verifysched-form.php?id=<?php echo $verifyschedulesched->id ?>&action=update" class="btn btn-info btn-xs">Update</a>
                         <a href="manage-verifysched-form-action.php?id=<?php echo $verifyschedulesched->id ?>&action=accept" class="btn btn-info btn-xs">Accept</a>
-                        <a href="manage-verifysched-form-action.php?id=<?php echo $verifyschedulesched->id ?>&action=cancel" class="btn btn-info btn-xs">Cancel</a>
+                        <!-- <a href="manage-verifysched-form-action.php?id=<?php echo $verifyschedulesched->id ?>&action=cancel" class="btn btn-info btn-xs">Cancel</a> -->
                     </td>
                     </tr>
 
@@ -169,7 +186,7 @@ $verifyscheduleongoings = $verifyschedulecon->findVerifyOngoing();
                         <a href="manage-verifysched-form.php?id=<?php echo $verifyscheduleaccept->id ?>&action=update" class="btn btn-info btn-xs">Update</a>
                         <a href="manage-verifysched-form-action.php?id=<?php echo $verifyscheduleaccept->id ?>&action=done" class="btn btn-info btn-xs">Done</a>
                         <a href="manage-verifysched-form-action.php?id=<?php echo $verifyscheduleaccept->id ?>&action=going" class="btn btn-info btn-xs">On Going</a>
-                        <a href="manage-verifysched-form-action.php?id=<?php echo $verifyscheduleaccept->id ?>&action=cancel" class="btn btn-info btn-xs">Cancel</a>
+                        <!-- <a href="manage-verifysched-form-action.php?id=<?php echo $verifyscheduleaccept->id ?>&action=cancel" class="btn btn-info btn-xs">Cancel</a> -->
                     </td>
                     </tr>
 
@@ -210,7 +227,7 @@ $verifyscheduleongoings = $verifyschedulecon->findVerifyOngoing();
                     <td>
                         <a href="manage-verifysched-form.php?id=<?php echo $verifyscheduleongoing->id ?>&action=update" class="btn btn-info btn-xs">Update</a>
                         <a href="manage-verifysched-form-action.php?id=<?php echo $verifyscheduleongoing->id ?>&action=done" class="btn btn-info btn-xs">Done</a>
-                        <a href="manage-verifysched-form-action.php?id=<?php echo $verifyscheduleongoing->id ?>&action=cancel" class="btn btn-info btn-xs">Cancel</a>
+                        <!-- <a href="manage-verifysched-form-action.php?id=<?php echo $verifyscheduleongoing->id ?>&action=cancel" class="btn btn-info btn-xs">Cancel</a> -->
                     </td>
                     </tr>
 

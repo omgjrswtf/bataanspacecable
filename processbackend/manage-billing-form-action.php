@@ -8,6 +8,7 @@ require_once '../core/init.php';
 
     $admin = $admincon->adminData($admin_id);
 
+    $mic = $miccon->micDatas();
 if (isset($_GET['action'])) {
 
 	$action = $_GET['action'];
@@ -21,7 +22,8 @@ switch ($action) {
 
 	$id  = $_GET['id'];
 	$est = $_POST['est'];
-	$est = $est * 7;
+	$qty = $_POST['qty'];
+	$est = $est * $mic->bundleft;
 
 	$billing = $billingcon->billingschedData($id);
 	// echo "$est";
@@ -30,7 +32,9 @@ switch ($action) {
 	$billingcon->save($billing);
 
 	$subscription = $subscriptioncon->subscriptionData($billing->subscriptionid);
+	$subscription->qtydg = $qty;
 	$subscription->addon = $est;
+
 	// print_r($subscription);
 	$subscriptioncon->save($subscription);
 

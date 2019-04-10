@@ -1,9 +1,12 @@
 <?php 
 
-include '../core/init.php';
+require_once '../core/init.php';
+    if (!$_SESSION) {
+        header('Location: index.php');
+    }
 
-$billinginstalls = $billingcon->findbillinginstallation();
-$billingmonthlydues = $billingcon->findbillingmonthly();
+$mics = $miccon->findMics();
+
 
 ?>
 
@@ -21,7 +24,6 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
 
     <title>BSC-Network</title>
 
-    <!-- MetisMenu CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -47,10 +49,8 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
-
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.jszip"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -73,7 +73,6 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -95,78 +94,32 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Billing Record</h1>
+                    <h1 class="page-header">Bundle Handlers</h1>
+                    
 
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
-                <h3>Installion Billing</h3>
                 <hr>
-                <table class="table table-hover" id="billinginstalls">
+                <table class="table table-hover" id="admins">
                     <thead>
                         <tr>
-                            <th>Reference ID</th>
-                            <th>Client</th>
-                            <th>Scheduled</th>
-                            <th>Address</th>
-                            <th>Product</th>
+                            <th>Fee per Feet Wire</th>
+                            <th>Fee per Bundle</th>
                             <th>Date Create</th>
+                            <th>Date Updated</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($billinginstalls as $billinginstall): ?>
+                    <?php foreach ($mics as $mic): ?>
 
                     <tr>
-                    <td><?php echo $billinginstall->billingid ?></td>
-                    <td><?php echo $billinginstall->fname." ".$billinginstall->mname." ".$billinginstall->lname; ?></td>
-                    <td><?php echo $billinginstall->getDate(); ?></td>
-                    <td><?php echo $billinginstall->description ?></td>
-                    <td><?php echo $billinginstall->name; ?></td>
-                    <td><?php echo $billinginstall->create_at; ?></td>
-                    <td>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
-                        <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>" class="btn btn-info btn-xs">Done</a>
-                    </td>
-                    </tr>
-
-                    <?php endforeach ?>
-                    </tbody>
-                </table>
-
-                </div>
-
-                <div class="col-lg-12">
-                <h3>Monthly Due Billing</h3>
-                 <hr>
-                <table class="table table-hover" id="billingmonthlydues">
-                    <thead>
-                        <tr>
-                            <th>Reference ID</th>
-                            <th>Client</th>
-                            <th>Scheduled</th>
-                            <th>Address</th>
-                            <th>Product</th>
-                            <th>Date Create</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($billingmonthlydues as $billingmonthlydue): ?>
-
-                    <tr>
-                    <td><?php echo $billingmonthlydue->billingid ?></td>
-                    <td><?php echo $billingmonthlydue->fname." ".$billingmonthlydue->mname." ".$billingmonthlydue->lname; ?></td>
-                    <td><?php echo $billingmonthlydue->getDate(); ?></td>
-                    <td><?php echo $billingmonthlydue->description ?></td>
-                    <td><?php echo $billingmonthlydue->name; ?></td>
-                    <td><?php echo $billingmonthlydue->create_at; ?></td>
-                    <td>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
-                        <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>" class="btn btn-info btn-xs">Done</a>
-                    </td>
+                    <td><?php echo $mic->bundleft ?> pesos</td>
+                    <td><?php echo $mic->bundledgb ?> pesos</td>
+                    <td><?php echo $mic->create_at; ?></td>
+                    <td><?php echo $mic->update_at; ?></td>
+                    <td><a href="manage-handle-form.php?id=<?php echo $mic->mics_id  ?>" class="btn btn-info btn-xs">Update</a></td>
                     </tr>
 
                     <?php endforeach ?>
@@ -177,37 +130,33 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
             </div>
             <!-- /.row -->
     
+            
+        
+
+
+           
+
 
 
         </div>
 
     </div>
     <!-- /#wrapper -->
-
-    <!-- jQuery -->
-
-    <!-- Metis Menu Plugin JavaScript -->
-
-
-
     <script type="text/javascript">
     $(document).ready( function () {
-        $('#billinginstalls').dataTable();
-        $('#billingmonthlydues').dataTable();
+        $('#admins').DataTable();
     } );
     </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css"></script>
 
     <!-- Morris Charts JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.js"></script>
-<!--     <script src="../vendor/morrisjs/morris.min.js"></script>
-    <script src="../data/morris-data.js"></script> -->
+    <script src="../vendor/morrisjs/morris.min.js"></script>
+    <script src="../data/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.js"></script>
-
-    <!--===============================================================================================-->
-<!--     <script src="../assets/vendor/jquery/jquery-3.2.1.min.js"></script> -->
 <!--===============================================================================================-->
     <script src="../assets/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -222,6 +171,7 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
     <script src="../assets/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
     <script src="../assets/js/main.js"></script>
+
 
 </body>
 

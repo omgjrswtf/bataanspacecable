@@ -79,33 +79,6 @@ $bundles = $bundlecon->findBundles();
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-    <style type="text/css">
-        .panel-heading{
-            color: #fff;
-            background-color: #a1a1a1;
-            border-top-left-radius: 0px;
-            border-top-right-radius: 0px;
-            border: 1px solid #a1a1a1;
-        }
-        .panel-body{
-            border: 1px solid #a1a1a1;
-        }
-        .btn{
-            background-color: #595959;
-            border: 2px solid #595959;
-        }
-        .btn:hover{
-            background-color: white;
-            color: black;
-            border: 2px solid #595959;
-        }
-        .list{
-            width: 1015px;
-            overflow: auto;
-            margin-left: -5px;
-        }
-    </style>
 
 </head>
 
@@ -146,56 +119,52 @@ $bundles = $bundlecon->findBundles();
                             break;
                         }
                     ?>
+                <a href="manage-bundle-form.php" class="btn btn-info" role="button" style="float: right;">
+                <i class="fa fa-info fa-fw"></i> New Bundle
+                </a>
+                    <?php 
+                    if (!empty($msg)) {
+                        echo "<i><b>Notice: </b></i> ".$msg;
+                    }
+                    ?>
+
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
-                    <div class="panel-heading">
-                        <?php 
-                            if (!empty($msg)) {
-                                echo "<i><b>Notice: </b></i> ".$msg;
-                            }
-                        ?>
-                        <a href="manage-bundle-form.php" class="btn btn-info" role="button" style="float: right;">
-                        <i class="fa fa-info fa-fw"></i> New Bundle
-                        </a>
-                        <br><br>
-                    </div>
-                    <div class="panel-body">
-                        <div class="list">
-                            <table class="table table-hover" id="myTable">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Code</th>
-                                        <th>Description</th>
-                                        <th>Volume Speed</th>
-                                        <th>Price/Fee</th>
-                                        <th>Status</th>
-                                        <th>Date Create </th>
-                                        <th>Date Updated</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach ($bundles as $bundle): ?>
+                <hr>
+                <table class="table table-hover" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Code</th>
+                            <th>Description</th>
+                            <th>Volume Speed</th>
+                            <th>Price/Fee</th>
+                            <th>Status</th>
+                            <th>Date Create </th>
+                            <th>Date Updated</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($bundles as $bundle): ?>
 
-                                <tr>
-                                <td><?php echo $bundle->bundleid ?></td>
-                                <td><?php echo $bundle->code ?></td>
-                                <td><?php echo $bundle->name ?></td>
-                                <td><?php echo $bundle->volume ?></td>
-                                <td><?php echo $bundle->price ?></td>
-                                <td><?php echo $bundle->getStatus(); ?></td>
-                                <td><?php echo $bundle->create_at; ?></td>
-                                <td><?php echo $bundle->update_at; ?></td>
-                                <td><a href="manage-bundle-form.php?id=<?php echo $bundle->bundleid ?>" class="btn btn-info btn-xs">Update</a></td>
-                                </tr>
+                    <tr>
+                    <td><?php echo $bundle->bundleid ?></td>
+                    <td><?php echo $bundle->code ?></td>
+                    <td><?php echo $bundle->name ?></td>
+                    <td><?php echo $bundle->volume ?></td>
+                    <td><?php echo $bundle->price ?></td>
+                    <td><?php echo $bundle->getStatus(); ?></td>
+                    <td><?php echo $bundle->create_at; ?></td>
+                    <td><?php echo $bundle->update_at; ?></td>
+                    <td><a href="manage-bundle-form.php?id=<?php echo $bundle->bundleid ?>" class="btn btn-info btn-xs">Update</a></td>
+                    </tr>
 
-                                <?php endforeach ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+
                 </div>
             </div>
             <!-- /.row -->

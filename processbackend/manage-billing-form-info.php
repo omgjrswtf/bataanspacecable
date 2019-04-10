@@ -7,6 +7,8 @@ require_once '../core/init.php';
     $admin_id = $_SESSION['admin_id'];
 
     $admin = $admincon->adminData($admin_id);
+    $mic = $miccon->micDatas();
+
 
     $id = $_GET['id'];
 
@@ -18,7 +20,10 @@ require_once '../core/init.php';
     $subscription = $subscriptioncon->subscriptionData($billinginstalls->subscriptionid);
     $estimated = $subscription->added;
     $addedvalue = $subscription->addon;
-    $wire = (int)$addedvalue / 7;
+    $wire = (int)$addedvalue / $mic->bundleft;
+
+
+    $digibox =  ($mic->bundledgb) * is_numeric($subscription->qtydg);
 
 
     $newday = $subscription->getDateFromDay();
@@ -30,8 +35,8 @@ require_once '../core/init.php';
     $bundle = $bundlecon->bundleCode($billinginstalls->product);
 
 
-$lat = $billinginstalls->xcoor;
-$long = $billinginstalls->ycoor;
+    $lat = $billinginstalls->xcoor;
+    $long = $billinginstalls->ycoor;
 
  ?>
 
@@ -124,39 +129,34 @@ $long = $billinginstalls->ycoor;
       </td>
   </tr>
 
-<?php if ($bundle->getPrefix() == "B"): ?>
+<?php if ($bundle->getPrefix() == "b"): ?>
   <tr>
-    <td>Digital and Cable</td>
-    <td>x 1</td>
-    <td align="right"><?php echo "&#x20b1; ". $bundle->getAddedValue().".00"; ?></td>
-  </tr>
-
-  <tr>
-    <td>Advance 1 month</td>
-    <td>x 1</td>
-    <td align="right">&#x20b1; <?php echo $bundle->price.".00"; ?></td>
+      <td>Digital Box</td>
+      <td>x <?php echo "$subscription->qtydg (&#x20b1; ".$mic->bundledgb.".00)"; ?></td>
+      <td align="right"><?php echo "&#x20b1; ". $digibox.".00"; ?></td>
   </tr>
 
   <tr>
     <td>Day left this month</td>
     <td><?php echo $dayleft; ?> days</td>
-    <td align="right">&#x20b1;<?php echo $estimated; ?>.00</td>
+    <td align="right">&#x20b1;<?php echo $estimated; ?></td>
   </tr>
 
   <tr>
     <td>Wire Added</td>
     <td>x <?php echo $wire."ft"; ?></td>
-    <td align="right">&#x20b1;<?php echo $addedvalue.".00"; ?></td>
+    <td align="right">&#x20b1;<?php echo $addedvalue; ?></td>
   </tr>
 
 <?php endif ?>
   <tr>
     <td></td>
     <td>Total</td>
-    <td align="right">&#x20b1; <?php echo ($bundle->price * 2) + (int)$addedvalue + (int)$estimated.".00"; ?></td>
+    <td align="right">&#x20b1; <?php echo ($bundle->price - 475) + (int)$addedvalue + (int)$estimated + $digibox; ?></td>
   </tr>
 </table>
-<input type="text" name="est" placeholder="Enter estimated of wire">
+<p>Wire:<input type="text" name="est" placeholder="Enter estimated of wire"><br></p>
+<p>Digital Box:<input type="text" name="qty" placeholder="Enter estimated digital box"></p>
 <input type="submit" name="submit" value="Update" class="btn btn-info btn-xs">
 </form>
 <br>
