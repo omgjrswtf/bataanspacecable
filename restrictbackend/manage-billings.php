@@ -125,7 +125,7 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
                     <td><?php echo $billinginstall->name; ?></td>
                     <td><?php echo $billinginstall->create_at; ?></td>
                     <td>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
+                       <!--  <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a> -->
                         <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
                         <a href="manage-billing-form-action.php?id=<?php echo $billinginstall->billingid ?>" class="btn btn-info btn-xs">Done</a>
                     </td>
@@ -163,7 +163,7 @@ $billingmonthlydues = $billingcon->findbillingmonthly();
                     <td><?php echo $billingmonthlydue->name; ?></td>
                     <td><?php echo $billingmonthlydue->create_at; ?></td>
                     <td>
-                        <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a>
+                       <!--  <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>"&action=update class="btn btn-info btn-xs">Update</a> -->
                         <a href="manage-billing-form-info.php" class="btn btn-info btn-xs">Info</a>
                         <a href="manage-billing-form-action.php?id=<?php echo $billingmonthlydue->billingid ?>" class="btn btn-info btn-xs">Done</a>
                     </td>
